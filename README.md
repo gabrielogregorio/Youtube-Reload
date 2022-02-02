@@ -26,7 +26,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/gabrielogregorio/Youtube-Reload)
 
 ### Como Iniciar           
-Este projeto ultiza o VueJs no próprio navegador, incluindo o arquivo javascript do Vuejs. Para executar o projeto basta abrir o arquivo index.html em um navegador. Também é possível executar o projeto em um servidor apache.
+Use os comandos npm install e npm run serve e acesse http://localhost:8080/
 
 ### Capturas de tela
 ![Tela inicial](1.png)
