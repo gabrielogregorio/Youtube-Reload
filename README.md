@@ -16,7 +16,11 @@
 
 <h3>Informações gerais</h3>
 
-Um dos meus primeiros projetos usando VueJs, estou migrando para o github pages
+Um dos meus primeiros projetos usando VueJs, estou migrando para o github pages, então não espere boas práticas.
+
+![Tela inicial](1.png)
+![Playlist Gerada](2.png)
+![Tela de favoritos](3.png)
 
 ![GitHub estrelas](https://img.shields.io/github/stars/gabrielogregorio/youtube-reload)
 ![GitHub last commit](https://img.shields.io/github/last-commit/gabrielogregorio/youtube-reload?style=flat-square)
@@ -34,7 +38,3 @@ npm run serve
 
 Acesse http://localhost:8080/
 
-### Capturas de tela
-![Tela inicial](1.png)
-![Playlist Gerada](2.png)
-![Tela de favoritos](3.png)
