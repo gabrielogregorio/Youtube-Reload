@@ -9,24 +9,30 @@
 <p align="center">
   Gere playlists com músicas que você nunca ouviu.
   <br>
-  <a href="https://gabrielogregorio.com/projetos/youtubeReload/"><strong>Ver demonstrativo »</strong></a>
+  <a href="https://gabrielogregorio.github.io/youtube-reload/"><strong>Ver demonstrativo »</strong></a>
   <br>
   <br>
-  <a href="https://github.com/gabrielogregorio/Youtube-Reload/issues/new?template=bug_report.md">Reportar bug</a>
-  ·
-  <a href="https://github.com/gabrielogregorio/Youtube-Reload/issues/new?template=feature_request.md">Solicitar Recursos</a>
 </p>
 
 <h3>Informações gerais</h3>
 
-![GitHub estrelas](https://img.shields.io/github/stars/gabrielogregorio/Youtube-Reload)
-![GitHub last commit](https://img.shields.io/github/last-commit/gabrielogregorio/Youtube-Reload?style=flat-square)
-![GitHub contributors](https://img.shields.io/github/contributors/gabrielogregorio/Youtube-Reload)
-![GitHub language count](https://img.shields.io/github/languages/count/gabrielogregorio/Youtube-Reload)
-![GitHub repo size](https://img.shields.io/github/repo-size/gabrielogregorio/Youtube-Reload)
+Um dos meus primeiros projetos usando VueJs, estou migrando para o github pages
+
+![GitHub estrelas](https://img.shields.io/github/stars/gabrielogregorio/youtube-reload)
+![GitHub last commit](https://img.shields.io/github/last-commit/gabrielogregorio/youtube-reload?style=flat-square)
+![GitHub contributors](https://img.shields.io/github/contributors/gabrielogregorio/youtube-reload)
+![GitHub language count](https://img.shields.io/github/languages/count/gabrielogregorio/youtube-reload)
+![GitHub repo size](https://img.shields.io/github/repo-size/gabrielogregorio/youtube-reload)
 
 ### Como Iniciar           
-Use os comandos npm install e npm run serve e acesse http://localhost:8080/
+Use os comandos abaixo
+
+```bash    
+npm install
+npm run serve
+```
+
+Acesse http://localhost:8080/
 
 ### Capturas de tela
 ![Tela inicial](1.png)
