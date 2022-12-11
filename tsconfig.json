@@ -22,7 +22,8 @@
       "@/widgets/*": ["src/components/widgets/*"],
       "@/components/*": ["src/components/*"],
       "@/helpers/*": ["src/core/helpers/*"],
-      "@/interfaces/*": ["src/core/interfaces/*"]
+      "@/interfaces/*": ["src/core/interfaces/*"],
+      "@/services/*": ["src/core/services/*"]
     },
     "noEmit": true,
     "jsx": "preserve",

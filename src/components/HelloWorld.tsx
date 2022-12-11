@@ -1,32 +1,24 @@
+/* eslint-disable max-lines-per-function */
+/* eslint-disable max-lines */
 import { Navbar } from '@/components/layout/navbar';
-import { IMusic } from '@/interfaces/music';
+import { IMusic, IMusicWithTransformation } from '@/interfaces/music';
 import { Card } from '@/widgets/card';
 import { ReactElement, useEffect, useState } from 'react';
 import { parseToYoutubeContent } from '@/helpers/parseToYoutubeContent';
+import { IReactions, MusicService, ReactionEnum } from '@/services/MusicService';
 import { dataMusic } from '../data.reload';
 
 export const HelloWorld = (): ReactElement => {
   const [playList, setplayList] = useState<IMusic[]>([]);
-  const [alteracoes, setalteracoes] = useState(0);
-  const [playlistDislike, setplaylistDislike] = useState([]);
-  const [playlistLike, setplaylistLike] = useState([]);
-  const [authors, setauthors] = useState([]);
   const [ignoreDates, setignoreDates] = useState([2019, 2020, 2021]);
-  const [jsonItems, setjsonItems] = useState<
-    { author: string; title: string; id: string; like: boolean; dislike: boolean; ano: number; item_id: number }[]
-  >([]);
-
+  const [jsonItems, setjsonItems] = useState<IMusic[]>([]);
   const [ids_json_like, setids_json_like] = useState({});
   const [items, setitems] = useState(dataMusic);
 
-  useEffect(() => {
-    localStorage.setItem('items', JSON.stringify(items));
-  }, [alteracoes]);
-
-  //////////////
+  /// ///////////
   useEffect(() => {
     if (localStorage.getItem('items')) {
-      let jsonItemsCOpy = JSON.parse(localStorage.getItem('items') || '[]');
+      const jsonItemsCOpy = JSON.parse(localStorage.getItem('items') || '[]');
       setjsonItems(jsonItemsCOpy);
 
       // @ts-ignore
@@ -45,23 +37,16 @@ export const HelloWorld = (): ReactElement => {
       setjsonItems(jsonItemsCOpy);
       setitems(jsonItems);
     }
-
-    // lista com todos os autores disponíveis
-    items.forEach((item) => {
-      if (!authors.includes(item.author)) {
-        setauthors((prev) => [...prev, item.author]);
-      }
-    });
   }, []);
 
-  ////////////
+  /// /////////
 
   const functionIgnoreDates = (date) => {
     if (!ignoreDates.includes(date)) {
       setignoreDates((prev) => [...prev, date]);
     } else {
-      var index = ignoreDates.indexOf(date);
-      if (index != -1) {
+      const index = ignoreDates.indexOf(date);
+      if (index !== -1) {
         ignoreDates.splice(index, 1);
       }
     }
@@ -71,24 +56,6 @@ export const HelloWorld = (): ReactElement => {
 
   const updateScreen = (screen): void => {
     setActiveScreen(screen);
-
-    if (screen == 2) {
-      // Carrega os likes
-      setplaylistLike([]);
-      items.forEach((item) => {
-        if (item.like) {
-          setplaylistLike((prev) => [...prev, item]);
-        }
-      });
-    } else if (screen == 3) {
-      // Carrega os dislikes
-      setplaylistDislike([]);
-      items.forEach((item) => {
-        if (item.dislike) {
-          setplaylistDislike((prev) => [...prev, item]);
-        }
-      });
-    }
   };
 
   // Gera uma playlist aleatória
@@ -117,35 +84,17 @@ export const HelloWorld = (): ReactElement => {
     // Escolhe de forma randomica 5 musicas
     setplayList(possiveis.sort(() => Math.random() - 0.5).slice(0, 15));
 
-    console.log(playList, 'aaaaaaaa');
     setTimeout(() => {
       window.scrollBy({ top: 100, left: 0, behavior: 'smooth' });
     }, 200);
   };
 
-  // Envia um dislike
   const sendDislike = (item_id) => {
-    if (!items[item_id].dislike) {
-      items[item_id].dislike = true;
-      items[item_id].like = false;
-    } else {
-      items[item_id].dislike = false;
-    }
-
-    // Acorda o watcher para atualizar o localstorage
-    setalteracoes((prev) => (prev += 1));
+    MusicService.sendReactions(item_id, ReactionEnum.unlike);
   };
 
-  // Envia um like
   const sendLike = (item_id) => {
-    if (!items[item_id].like) {
-      items[item_id].like = true;
-      items[item_id].dislike = false;
-    } else {
-      items[item_id].like = false;
-    }
-    // Acorda o watcher para atualizar o localstorage
-    setalteracoes((prev) => (prev += 1));
+    MusicService.sendReactions(item_id, ReactionEnum.like);
   };
 
   const clearPreferences = () => {
@@ -153,7 +102,20 @@ export const HelloWorld = (): ReactElement => {
     document.location.reload();
   };
 
-  //////////////
+  /// ///////////
+
+  const reactions: IReactions[] = MusicService.getReactions();
+
+  const onlyLikeMusic: string[] = [];
+  const onlyDislikeMusic: string[] = [];
+
+  reactions.forEach((reaction: IReactions) => {
+    if (reaction.reaction === ReactionEnum.like) {
+      onlyLikeMusic.push(reaction.id);
+    } else if (reaction.reaction === ReactionEnum.unlike) {
+      onlyDislikeMusic.push(reaction.id);
+    }
+  });
 
   return (
     <div>
@@ -167,7 +129,9 @@ export const HelloWorld = (): ReactElement => {
 
         <section className="description">
           <h2>Gere playlist com músicas que você nunca ouviu, sem nenhum algoritmo de IA.</h2>
-          <button onClick={() => clearPreferences()}>Limpar Preferências</button>
+          <button type="button" onClick={() => clearPreferences()}>
+            Limpar Preferências
+          </button>
         </section>
 
         <div className={`tela-principal ${activeScreen === 1 ? 'display-block' : 'display-hidden'} `}>
@@ -198,9 +162,11 @@ export const HelloWorld = (): ReactElement => {
 
           <section className="videos">
             <div className="flex-videos">
-              {parseToYoutubeContent(playList).map((playlistLocal) => {
+              {parseToYoutubeContent(playList).map((playlistLocal: IMusicWithTransformation) => {
                 return (
                   <Card
+                    onlyLikeMusic={onlyLikeMusic}
+                    onlyDislikeMusic={onlyDislikeMusic}
                     key={playlistLocal.url}
                     playlistLocal={playlistLocal}
                     sendLike={sendLike}
@@ -219,16 +185,20 @@ export const HelloWorld = (): ReactElement => {
         <div className={`tela-favoritos ${activeScreen === 2 ? 'display-block' : 'display-none'} `}>
           <section className="videos">
             <div className="flex-videos">
-              {parseToYoutubeContent(playList).map((playlistLocal) => {
-                return (
-                  <Card
-                    key={playlistLocal.url}
-                    playlistLocal={playlistLocal}
-                    sendLike={sendLike}
-                    sendDislike={sendDislike}
-                  />
-                );
-              })}
+              {parseToYoutubeContent(playList.filter((item) => onlyLikeMusic.includes(item.item_id))).map(
+                (playlistLocal: IMusicWithTransformation) => {
+                  return (
+                    <Card
+                      onlyLikeMusic={onlyLikeMusic}
+                      onlyDislikeMusic={onlyDislikeMusic}
+                      key={playlistLocal.url}
+                      playlistLocal={playlistLocal}
+                      sendLike={sendLike}
+                      sendDislike={sendDislike}
+                    />
+                  );
+                },
+              )}
             </div>
           </section>
         </div>
@@ -236,16 +206,20 @@ export const HelloWorld = (): ReactElement => {
         <div className={`tela-nao-gostei ${activeScreen === 3 ? 'display-block' : 'display-none'}`}>
           <section className="videos">
             <div className="flex-videos">
-              {parseToYoutubeContent(playList).map((playlistLocal) => {
-                return (
-                  <Card
-                    key={playlistLocal.url}
-                    playlistLocal={playlistLocal}
-                    sendLike={sendLike}
-                    sendDislike={sendDislike}
-                  />
-                );
-              })}
+              {parseToYoutubeContent(playList.filter((item) => onlyDislikeMusic.includes(item.item_id))).map(
+                (playlistLocal: IMusicWithTransformation) => {
+                  return (
+                    <Card
+                      onlyLikeMusic={onlyLikeMusic}
+                      onlyDislikeMusic={onlyDislikeMusic}
+                      key={playlistLocal.url}
+                      playlistLocal={playlistLocal}
+                      sendLike={sendLike}
+                      sendDislike={sendDislike}
+                    />
+                  );
+                },
+              )}
             </div>
           </section>
         </div>

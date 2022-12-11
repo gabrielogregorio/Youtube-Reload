@@ -74,7 +74,7 @@
         "templates": false,
         "identifiers": true,
         "lang": "en_US",
-        "skipWords": [],
+        "skipWords": ["youtube"],
         "minLength": 3
       }
     ],

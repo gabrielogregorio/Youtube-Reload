@@ -14,6 +14,7 @@ export default defineConfig({
       '@/components': resolve(__dirname, './src/components'),
       '@/helpers': resolve(__dirname, './src/core/helpers'),
       '@/interfaces': resolve(__dirname, './src/core/interfaces'),
+      '@/services': resolve(__dirname, './src/core/services'),
     },
   },
   test: {
