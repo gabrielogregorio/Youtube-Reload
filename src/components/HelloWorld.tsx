@@ -1,16 +1,15 @@
+import { Navbar } from '@/components/navbar';
 import { ReactElement, useEffect, useState } from 'react';
 import { dataMusic } from '../data.reload';
 
 export const HelloWorld = (): ReactElement => {
   const [playList, setplayList] = useState([]);
   const [alteracoes, setalteracoes] = useState(0);
-  const [musicas_possiveis, setmusicas_possiveis] = useState([]);
   const [playlistDislike, setplaylistDislike] = useState([]);
   const [playlistLike, setplaylistLike] = useState([]);
   const [authors, setauthors] = useState([]);
   const [ignoreAuthors, setignoreAuthors] = useState([]);
   const [ignoreDates, setignoreDates] = useState([2019, 2020, 2021]);
-  const [itemsLocalStorage, setitemsLocalStorage] = useState('');
   const [jsonItems, setjsonItems] = useState<
     { author: string; title: string; id: string; like: boolean; dislike: boolean; ano: number; item_id: number }[]
   >([]);
@@ -32,7 +31,6 @@ export const HelloWorld = (): ReactElement => {
     }
 
     if (localStorage.getItem('items')) {
-      setitemsLocalStorage(localStorage.getItem('items') as string); //Obter
       let jsonItemsCOpy = JSON.parse(localStorage.getItem('items') || '[]');
       setjsonItems(jsonItemsCOpy);
 
@@ -63,22 +61,6 @@ export const HelloWorld = (): ReactElement => {
 
   ////////////
 
-  const functionIgnoreAuthors = (author) => {
-    if (!ignoreAuthors.includes(author)) {
-      setignoreAuthors((prev) => [...prev, author]);
-      console.log('ignorar' + author);
-    } else {
-      // Excluir o author da lista
-      // Remove 1 item
-      var index = ignoreAuthors.indexOf(author);
-      if (index != -1) {
-        ignoreAuthors.splice(index, 1);
-      }
-    }
-
-    setalteracoes((prev) => (prev += 1));
-  };
-
   const functionIgnoreDates = (date) => {
     if (!ignoreDates.includes(date)) {
       setignoreDates((prev) => [...prev, date]);
@@ -90,32 +72,12 @@ export const HelloWorld = (): ReactElement => {
     }
   };
 
-  const trocarTela = (screen) => {
-    let tela_principal = document.getElementsByClassName('tela-principal')[0];
-    let tela_favoritos = document.getElementsByClassName('tela-favoritos')[0];
-    let tela_nao_gostei = document.getElementsByClassName('tela-nao-gostei')[0];
+  const [activeScreen, setActiveScreen] = useState<number>(1);
 
-    let btn1 = document.getElementsByClassName('btn1')[0];
-    let btn2 = document.getElementsByClassName('btn2')[0];
-    let btn3 = document.getElementsByClassName('btn3')[0];
+  const trocarTela = (screen): void => {
+    setActiveScreen(screen);
 
-    // Valores padrões que os objetos sempre terão
-    btn1.classList = 'btn1';
-    btn2.classList = 'btn2';
-    btn3.classList = 'btn3';
-
-    tela_principal.classList = 'tela-principal';
-    tela_favoritos.classList = 'tela-favoritos';
-    tela_nao_gostei.classList = 'tela-nao-gostei';
-
-    // Seleciona as telas
-    if (screen == 1) {
-      btn1.classList.toggle('nav-active');
-      tela_principal.classList.toggle('display-block');
-    } else if (screen == 2) {
-      btn2.classList.toggle('nav-active');
-      tela_favoritos.classList.toggle('display-block');
-
+    if (screen == 2) {
       // Carrega os likes
       setplaylistLike([]);
       items.forEach((item) => {
@@ -124,9 +86,6 @@ export const HelloWorld = (): ReactElement => {
         }
       });
     } else if (screen == 3) {
-      btn3.classList.toggle('nav-active');
-      tela_nao_gostei.classList.toggle('display-block');
-
       // Carrega os dislikes
       setplaylistDislike([]);
       items.forEach((item) => {
@@ -140,11 +99,9 @@ export const HelloWorld = (): ReactElement => {
   // Gera uma playlist aleatória
   const gerarPlaylistAleatoria = () => {
     const possiveis = [];
-    setmusicas_possiveis([]);
 
     // Registra a posição para otimizar a localização do item
     let item_id = 0;
-    console.log(items, 'aaaaaaaaa');
     items.forEach((item) => {
       console.log('lloooping');
       // Se não tem likes ou dislikes
@@ -168,12 +125,8 @@ export const HelloWorld = (): ReactElement => {
       item_id += 1;
     });
 
-    setmusicas_possiveis(possiveis);
-    console.log(possiveis, 'aaa');
-
     // Escolhe de forma randomica 5 musicas
-    setmusicas_possiveis(possiveis.sort(() => Math.random() - 0.5));
-    setplayList(possiveis.slice(0, 15));
+    setplayList(possiveis.sort(() => Math.random() - 0.5).slice(0, 15));
 
     console.log(playList, 'aaaaaaaa');
     setTimeout(() => {
@@ -245,17 +198,7 @@ export const HelloWorld = (): ReactElement => {
           <h1>
             Youtube<span>Reload</span>
           </h1>
-          <nav>
-            <button onClick={() => trocarTela(1)} className="btn1 nav-active">
-              Inicio
-            </button>
-            <button onClick={() => trocarTela(2)} className="btn2">
-              Favoritos
-            </button>
-            <button onClick={() => trocarTela(3)} className="btn3">
-              Não gostei
-            </button>
-          </nav>
+          <Navbar updateScreen={trocarTela} activeScreen={activeScreen} />
         </header>
 
         <section className="description">
@@ -263,7 +206,7 @@ export const HelloWorld = (): ReactElement => {
           <button onClick={() => limparLocalStorage()}>Limpar Preferências</button>
         </section>
 
-        <div className="tela-principal display-block">
+        <div className={`tela-principal ${activeScreen === 1 ? 'display-block' : 'display-hidden'} `}>
           <div className="grid-filtros">
             <div className="filtro-item">
               <h3>Filtrar épocas</h3>
@@ -287,24 +230,6 @@ export const HelloWorld = (): ReactElement => {
                 </div>
               </div>
             </div>
-
-            {/* <div className="filtro-item">
-              <div className="filtro-grid-3">
-                {authors.map((author, index) => {
-                  return (
-                    <div className="filtro-item-grid">
-                      {ignoreAuthors.includes(author) ? (
-                        <input onClick={() => functionIgnoreAuthors(author)} type="checkbox" />
-                      ) : null}
-                      {!ignoreAuthors.includes(author) ? (
-                        <input onClick={() => functionIgnoreAuthors(author)} type="checkbox" />
-                      ) : null}
-                      <label className="container">{author}</label>
-                    </div>
-                  );
-                })}
-              </div>
-            </div> */}
           </div>
 
           <section className="videos">
@@ -362,7 +287,7 @@ export const HelloWorld = (): ReactElement => {
           </section>
         </div>
 
-        <div className="tela-favoritos display-none">
+        <div className={`tela-favoritos ${activeScreen === 2 ? 'display-block' : 'display-none'} `}>
           <section className="videos">
             <div className="flex-videos">
               {formatPlaylistLikes(playList).map((playlist) => {
@@ -414,7 +339,7 @@ export const HelloWorld = (): ReactElement => {
           </section>
         </div>
 
-        <div className="tela-nao-gostei display-none">
+        <div className={`tela-nao-gostei ${activeScreen === 3 ? 'display-block' : 'display-none'}`}>
           <section className="videos">
             <div className="flex-videos">
               {formatPlaylistDislikes(playList).map((playlist) => {
