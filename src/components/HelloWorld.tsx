@@ -1,8 +1,8 @@
-import { Navbar } from '@/components/navbar';
+import { Navbar } from '@/components/layout/navbar';
 import { IMusic } from '@/interfaces/music';
 import { Card } from '@/widgets/card';
 import { ReactElement, useEffect, useState } from 'react';
-import { parseToYoutubeContent } from '../core/helper/parseToYoutubeContent';
+import { parseToYoutubeContent } from '@/helpers/parseToYoutubeContent';
 import { dataMusic } from '../data.reload';
 
 export const HelloWorld = (): ReactElement => {

@@ -9,8 +9,11 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      '@/layout': resolve(__dirname, './src/components/layout'),
+      '@/widgets': resolve(__dirname, './src/components/widgets'),
       '@/components': resolve(__dirname, './src/components'),
-      '@/hooks': resolve(__dirname, './src/core/hooks'),
+      '@/helpers': resolve(__dirname, './src/core/helpers'),
+      '@/interfaces': resolve(__dirname, './src/core/interfaces'),
     },
   },
   test: {

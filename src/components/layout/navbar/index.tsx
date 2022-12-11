@@ -1,4 +1,4 @@
-import { NavbarItem } from '@/components/navbar/navbarItem';
+import { NavbarItem } from '@/layout/navbar/navbarItem';
 
 type NavbarProps = {
   updateScreen: (index: any) => void;

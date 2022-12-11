@@ -21,13 +21,8 @@
       "@/layout/*": ["src/components/layout/*"],
       "@/widgets/*": ["src/components/widgets/*"],
       "@/components/*": ["src/components/*"],
-      "@/contexts/*": ["src/core/contexts/*"],
       "@/helpers/*": ["src/core/helpers/*"],
-      "@/hooks/*": ["src/core/hooks/*"],
-      "@/interfaces/*": ["src/core/interfaces/*"],
-      "@/normalizers/*": ["src/core/normalizers/*"],
-      "@/shared/*": ["src/core/shared/*"],
-      "@/icons/*": ["src/icons/*"]
+      "@/interfaces/*": ["src/core/interfaces/*"]
     },
     "noEmit": true,
     "jsx": "preserve",
