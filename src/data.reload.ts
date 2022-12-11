@@ -1,50 +1,51 @@
-export const dataMusic = [{ 
+export const dataMusic = [
+  {
     author: 'Regina Spektor',
     title: 'Us',
     id: 'fczPlmz-Vug',
     like: false,
     dislike: false,
-    ano: 2003
- },
- {
+    ano: 2003,
+  },
+  {
     author: 'Cheiro de Amor/Carla Visi',
     title: 'Vai Sacudir, Vai Abalar',
     id: 'bEjaM9GbI6s',
     like: false,
     dislike: false,
-    ano: 1996
- },
- {
+    ano: 1996,
+  },
+  {
     author: 'Regina Spektor',
     title: "Don't Leave Me (Ne Me Quitte Pas)",
     id: 'BWXWivwhi14',
     like: false,
     dislike: false,
-    ano: 2012
- },
- {
+    ano: 2012,
+  },
+  {
     author: 'Banda Eva/Ivete Sangalo',
     title: 'Beleza Rara',
     id: 'I1cJnN-o7vU',
     like: false,
     dislike: false,
-    ano: 1996
- },
- {
+    ano: 1996,
+  },
+  {
     author: 'Thaeme e Thiago',
     title: 'Cafajeste',
     id: '4GnnRiezYd8',
     like: false,
     dislike: false,
-    ano: 2014
-  },   
+    ano: 2014,
+  },
   {
     author: 'Babado Novo',
     title: 'Babado Novo - Bola De Sabão',
     id: '_w3AoEcImkw',
     like: false,
     dislike: false,
-    ano: 2005
+    ano: 2005,
   },
   {
     author: 'Roxette',
@@ -52,7 +53,7 @@ export const dataMusic = [{
     id: 'k2C5TjS2sh4',
     like: false,
     dislike: false,
-    ano: 1986
+    ano: 1986,
   },
   {
     author: 'Vivo',
@@ -60,7 +61,7 @@ export const dataMusic = [{
     id: '3QaxlK4kolw',
     like: false,
     dislike: false,
-    ano: 2014 
+    ano: 2014,
   },
   {
     author: 'Gaby Amarantos',
@@ -68,7 +69,7 @@ export const dataMusic = [{
     id: 's-5RfIXRIto',
     like: false,
     dislike: false,
-    ano: 2012
+    ano: 2012,
   },
   {
     author: 'Psirico',
@@ -76,7 +77,7 @@ export const dataMusic = [{
     id: 'AHVS5DW434g',
     like: false,
     dislike: false,
-    ano: 2014
+    ano: 2014,
   },
   {
     author: 'Banda Vingadora',
@@ -84,7 +85,7 @@ export const dataMusic = [{
     id: 'YzCoZGsod0c',
     like: false,
     dislike: false,
-    ano: 2015
+    ano: 2015,
   },
   {
     author: 'Malu',
@@ -92,7 +93,7 @@ export const dataMusic = [{
     id: 'kykoK_afoAQ',
     like: false,
     dislike: false,
-    ano: 2021
+    ano: 2021,
   },
   {
     author: 'Paula Fernandes',
@@ -100,7 +101,7 @@ export const dataMusic = [{
     id: '1etzkcAo6WA',
     like: false,
     dislike: false,
-    ano: 2010
+    ano: 2010,
   },
   {
     author: 'Luis Fonsi',
@@ -108,7 +109,7 @@ export const dataMusic = [{
     id: 'kJQP7kiw5Fk',
     like: false,
     dislike: false,
-    ano: 2017
+    ano: 2017,
   },
   {
     author: 'Shakira',
@@ -116,7 +117,7 @@ export const dataMusic = [{
     id: 'a5irTX82olg',
     like: false,
     dislike: false,
-    ano: 2010
+    ano: 2010,
   },
   {
     author: 'Naiara Azevedo',
@@ -124,7 +125,7 @@ export const dataMusic = [{
     id: 'cus-lGN0vds',
     like: false,
     dislike: false,
-    ano: 2016
+    ano: 2016,
   },
   {
     author: 'Miley Cyrus',
@@ -132,7 +133,7 @@ export const dataMusic = [{
     id: 'M11SvDtPBhA',
     like: false,
     dislike: false,
-    ano: 2009
+    ano: 2009,
   },
   {
     author: 'Vengaboys',
@@ -140,7 +141,7 @@ export const dataMusic = [{
     id: '6Zbi0XmGtMw',
     like: false,
     dislike: false,
-    ano: 1998
+    ano: 1998,
   },
   {
     author: 'Giulia Be',
@@ -148,7 +149,7 @@ export const dataMusic = [{
     id: 'vz9XHsctOtc',
     like: false,
     dislike: false,
-    ano: 2020
+    ano: 2020,
   },
   {
     author: 'Caroline Jones',
@@ -156,7 +157,7 @@ export const dataMusic = [{
     id: 'VqlwKBrrMXk',
     like: false,
     dislike: false,
-    ano: 2017
+    ano: 2017,
   },
   {
     author: 'Kelly Key',
@@ -164,7 +165,7 @@ export const dataMusic = [{
     id: 'bANQVGy-wq4',
     like: false,
     dislike: false,
-    ano: 2001
+    ano: 2001,
   },
   {
     author: 'Spice Girls',
@@ -172,7 +173,7 @@ export const dataMusic = [{
     id: 'gJLIiF15wjQ',
     like: false,
     dislike: false,
-    ano: 1996
+    ano: 1996,
   },
   {
     author: 'Aqua',
@@ -180,7 +181,7 @@ export const dataMusic = [{
     id: 'ZyhrYis509A',
     like: false,
     dislike: false,
-    ano: 1997
+    ano: 1997,
   },
   {
     author: 'Loona',
@@ -188,7 +189,7 @@ export const dataMusic = [{
     id: 'Q_NqQq51jaM',
     like: false,
     dislike: false,
-    ano: 2009
+    ano: 2009,
   },
   {
     author: 'Vengaboys',
@@ -196,7 +197,7 @@ export const dataMusic = [{
     id: 'YKNkC6Sk7DU',
     like: false,
     dislike: false,
-    ano: 1998
+    ano: 1998,
   },
   {
     author: 'Carly Rae Jepsen',
@@ -204,7 +205,7 @@ export const dataMusic = [{
     id: 'fWNaR-rxAic',
     like: false,
     dislike: false,
-    ano: 2012
+    ano: 2012,
   },
   {
     author: 'Imagine Dragons',
@@ -212,7 +213,7 @@ export const dataMusic = [{
     id: 'ktvTqknDobU',
     like: false,
     dislike: false,
-    ano: 2012
+    ano: 2012,
   },
   {
     author: 'Rednex',
@@ -220,7 +221,7 @@ export const dataMusic = [{
     id: 'mOYZaiDZ7BM',
     like: false,
     dislike: false,
-    ano: 1995
+    ano: 1995,
   },
   {
     author: 'Boom',
@@ -228,7 +229,7 @@ export const dataMusic = [{
     id: '23UGN3qqBWY',
     like: false,
     dislike: false,
-    ano: 2009
+    ano: 2009,
   },
   {
     author: 'Loretta Lynn, Conway Twitty',
@@ -236,7 +237,7 @@ export const dataMusic = [{
     id: '2Gd0tgGVPB0',
     like: false,
     dislike: false,
-    ano: 1973
+    ano: 1973,
   },
   {
     author: 'Avicii',
@@ -244,7 +245,7 @@ export const dataMusic = [{
     id: '6Cp6mKbRTQY',
     like: false,
     dislike: false,
-    ano: 2013
+    ano: 2013,
   },
   {
     author: 'OneRepublic',
@@ -252,7 +253,7 @@ export const dataMusic = [{
     id: 'hT_nvWreIhg',
     like: false,
     dislike: false,
-    ano: 2013
+    ano: 2013,
   },
   {
     author: 'David Guetta',
@@ -260,7 +261,7 @@ export const dataMusic = [{
     id: 'JRfuAukYTKg',
     like: false,
     dislike: false,
-    ano: 2011
+    ano: 2011,
   },
   {
     author: 'Ricky Martin',
@@ -268,7 +269,7 @@ export const dataMusic = [{
     id: 'p47fEXGabaY',
     like: false,
     dislike: false,
-    ano: 1999
+    ano: 1999,
   },
   {
     author: 'Las Ketchup',
@@ -276,7 +277,7 @@ export const dataMusic = [{
     id: 'arZZw8NyPq8',
     like: false,
     dislike: false,
-    ano: 2002
+    ano: 2002,
   },
   {
     author: 'P!nk',
@@ -284,7 +285,7 @@ export const dataMusic = [{
     id: 'yTCDVfMz15M',
     like: false,
     dislike: false,
-    ano: 2012
+    ano: 2012,
   },
   {
     author: 'Latino',
@@ -292,7 +293,7 @@ export const dataMusic = [{
     id: 'LnAJjRflHFE',
     like: false,
     dislike: false,
-    ano: 2004
+    ano: 2004,
   },
   {
     author: 'Perlla',
@@ -300,7 +301,7 @@ export const dataMusic = [{
     id: 'DN5_iOrJjfc',
     like: false,
     dislike: false,
-    ano: 2006
+    ano: 2006,
   },
   {
     author: 'Anastacia',
@@ -308,7 +309,7 @@ export const dataMusic = [{
     id: 'CshDagHHzmI',
     like: false,
     dislike: false,
-    ano: 2017
+    ano: 2017,
   },
   {
     author: 'Anne Marie',
@@ -316,7 +317,7 @@ export const dataMusic = [{
     id: 'FrA98gZGbDI',
     like: false,
     dislike: false,
-    ano: 2016
+    ano: 2016,
   },
   {
     author: 'Luka',
@@ -324,7 +325,7 @@ export const dataMusic = [{
     id: 'vO8XQD6mHNg',
     like: false,
     dislike: false,
-    ano: 2003
+    ano: 2003,
   },
   {
     author: 'Charli XCX',
@@ -332,7 +333,7 @@ export const dataMusic = [{
     id: 'ABhDiXbUaBE',
     like: false,
     dislike: false,
-    ano: 2014
+    ano: 2014,
   },
   {
     author: 'Marcelo D2',
@@ -340,7 +341,7 @@ export const dataMusic = [{
     id: 'fTGIHRT9KsI',
     like: false,
     dislike: false,
-    ano: 2008
+    ano: 2008,
   },
   {
     author: 'Shania Twain',
@@ -348,7 +349,7 @@ export const dataMusic = [{
     id: '8N2k-gv6xNE',
     like: false,
     dislike: false,
-    ano: 1995
+    ano: 1995,
   },
   {
     author: 'Ananda',
@@ -356,7 +357,7 @@ export const dataMusic = [{
     id: 'w_ejwSACf_U',
     like: false,
     dislike: false,
-    ano: 2019
+    ano: 2019,
   },
   {
     author: 'Jessie J',
@@ -364,7 +365,7 @@ export const dataMusic = [{
     id: 'qMxX-QOV9tI',
     like: false,
     dislike: false,
-    ano: 2011
+    ano: 2011,
   },
   {
     author: 'Sean Kingston',
@@ -372,7 +373,7 @@ export const dataMusic = [{
     id: 'MrTz5xjmso4',
     like: false,
     dislike: false,
-    ano: 2009
+    ano: 2009,
   },
   {
     author: 'Joan Osborne',
@@ -380,7 +381,7 @@ export const dataMusic = [{
     id: 'aDdOnl0bHO4',
     like: false,
     dislike: false,
-    ano: 1995
+    ano: 1995,
   },
   {
     author: 'Amy Winehouse',
@@ -388,7 +389,7 @@ export const dataMusic = [{
     id: 'KUmZp8pR1uc',
     like: false,
     dislike: false,
-    ano: 2006
+    ano: 2006,
   },
   {
     author: 'Amy Winehouse',
@@ -396,7 +397,7 @@ export const dataMusic = [{
     id: 'TJAfLE39ZZ8',
     like: false,
     dislike: false,
-    ano: 2006
+    ano: 2006,
   },
   {
     author: 'Avril Lavigne',
@@ -404,7 +405,7 @@ export const dataMusic = [{
     id: '5NPBIwQyPWE',
     like: false,
     dislike: false,
-    ano: 2002
+    ano: 2002,
   },
   {
     author: 'Maroon 5',
@@ -412,7 +413,7 @@ export const dataMusic = [{
     id: '09R8_2nJtjg',
     like: false,
     dislike: false,
-    ano: 2015
+    ano: 2015,
   },
   {
     author: 'Camila Cabello',
@@ -420,7 +421,7 @@ export const dataMusic = [{
     id: 'I3vks3Nblhw',
     like: false,
     dislike: false,
-    ano: 2018
+    ano: 2018,
   },
   {
     author: 'Twenty One Pilots',
@@ -428,7 +429,7 @@ export const dataMusic = [{
     id: 'Pw-0pbY9JeU',
     like: false,
     dislike: false,
-    ano: 2015
+    ano: 2015,
   },
   {
     author: 'Loona',
@@ -436,7 +437,7 @@ export const dataMusic = [{
     id: 'X-77txuiVXs',
     like: false,
     dislike: false,
-    ano: 2010
+    ano: 2010,
   },
   {
     author: 'Cherona',
@@ -444,7 +445,7 @@ export const dataMusic = [{
     id: '3f43xmRqxOM',
     like: false,
     dislike: false,
-    ano: 2009
+    ano: 2009,
   },
   {
     author: 'Aqua',
@@ -452,7 +453,7 @@ export const dataMusic = [{
     id: 'Q_LPJllaogU',
     like: false,
     dislike: false,
-    ano: 2003
+    ano: 2003,
   },
   {
     author: 'Red Hot Chili Peppers',
@@ -460,7 +461,7 @@ export const dataMusic = [{
     id: 'YlUKcNNmywk',
     like: false,
     dislike: false,
-    ano: 1999
+    ano: 1999,
   },
   {
     author: 'Thaeme & Thiago',
@@ -468,7 +469,7 @@ export const dataMusic = [{
     id: 'Ul4fQt4VvoA',
     like: false,
     dislike: false,
-    ano: 2012
+    ano: 2012,
   },
   {
     author: 'Kesha',
@@ -476,7 +477,7 @@ export const dataMusic = [{
     id: 'edP0L6LQzZE',
     like: false,
     dislike: false,
-    ano: 2010
+    ano: 2010,
   },
   {
     author: 'Empreguetes',
@@ -484,7 +485,7 @@ export const dataMusic = [{
     id: 'LuNexytb77g',
     like: false,
     dislike: false,
-    ano: 2012
+    ano: 2012,
   },
   {
     author: 'Jameika Mansur',
@@ -492,7 +493,7 @@ export const dataMusic = [{
     id: '8rGgsN5RAmI',
     like: false,
     dislike: false,
-    ano: 2003
+    ano: 2003,
   },
   {
     author: 'Miranda Cosgrove',
@@ -500,7 +501,7 @@ export const dataMusic = [{
     id: 'AlIUNtQEI_s',
     like: false,
     dislike: false,
-    ano: 2008
+    ano: 2008,
   },
   {
     author: 'Miranda Cosgrove',
@@ -508,7 +509,7 @@ export const dataMusic = [{
     id: 'HPM05dQgdig',
     like: false,
     dislike: false,
-    ano: 2008
+    ano: 2008,
   },
   {
     author: 'Lily Allen',
@@ -516,7 +517,7 @@ export const dataMusic = [{
     id: 'fUYaosyR4bE',
     like: false,
     dislike: false,
-    ano: 2009
+    ano: 2009,
   },
   {
     author: 'Roberta Campos',
@@ -524,6 +525,6 @@ export const dataMusic = [{
     id: 'J08WH4-4798',
     like: false,
     dislike: false,
-    ano: 2008
-  }
-]
+    ano: 2008,
+  },
+];

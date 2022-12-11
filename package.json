@@ -1,44 +1,82 @@
 {
   "name": "youtube-reload",
-  "version": "0.1.0",
-  "private": true,
+  "version": "2.0.0",
+  "homepage": "/",
+  "private": false,
+  "main": "build/index.js",
+ 
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "deploy": "node scripts/gh-pages-deploy.js"
+    "dev": "vite",
+    "build": "vite build",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage --watch=false",
+    "preview": "vite preview",
+    "clear":"rm -rf build coverage",
+    "check": "tsc -p .",
+    "lint": "eslint -c ./.eslintrc.json --ext '.ts' 'src/**'",
+    "prepare": "husky install",
+    "format": "prettier src/* --write"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-icons": "^4.3.1",
+    "react-markdown": "^8.0.3",
+    "react-router-dom": "^6.3.0",
+    "react-syntax-highlighter": "^15.5.0",
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
-    "execa": "latest",
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/node": "^17.0.42",
+    "@types/react": "^18.0.12",
+    "@types/react-dom": "^18.0.5",
+    "@types/react-syntax-highlighter": "^15.5.5",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
+    "@vitejs/plugin-react": "^2.0.1",
+    "@vitest/coverage-c8": "^0.25.3",
+    "@vitest/ui": "^0.25.3",
+    "autoprefixer": "^10.4.13",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.16.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-sonarjs": "^0.16.0",
+    "eslint-plugin-spellcheck": "^0.0.20",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.4",
+    "postcss": "^8.4.19",
+    "prettier": "^2.6.2",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.7",
+    "vitest": "^0.25.3"
   },
   "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
     "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
+      "react-app"
+    ]
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
