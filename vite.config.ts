@@ -13,6 +13,7 @@ export default defineConfig({
       '@/widgets': resolve(__dirname, './src/components/widgets'),
       '@/components': resolve(__dirname, './src/components'),
       '@/helpers': resolve(__dirname, './src/core/helpers'),
+      '@/hooks': resolve(__dirname, './src/core/hooks'),
       '@/interfaces': resolve(__dirname, './src/core/interfaces'),
       '@/constants': resolve(__dirname, './src/core/constants'),
       '@/services': resolve(__dirname, './src/core/services'),

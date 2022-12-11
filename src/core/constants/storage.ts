@@ -1,1 +1,1 @@
-export const STORAGE_LIKES: string = 'reactions';
+export const STORAGE_REACTIONS: string = 'reactions';

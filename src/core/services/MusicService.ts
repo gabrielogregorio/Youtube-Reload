@@ -1,5 +1,5 @@
 import { StorageService } from '@/services/StorageService';
-import { STORAGE_LIKES } from '@/constants/storage';
+import { STORAGE_REACTIONS } from '@/constants/storage';
 
 export enum ReactionEnum {
   'like' = 'like',
@@ -13,13 +13,13 @@ export interface IReactions {
 }
 
 export const initializeAndGetReactions = (): IReactions[] => {
-  const likes: IReactions[] | undefined = StorageService.getItemAndParse<IReactions[]>(STORAGE_LIKES);
+  const likes: IReactions[] | undefined = StorageService.getItemAndParse<IReactions[]>(STORAGE_REACTIONS);
   const initializedReactions: IReactions[] = [];
 
   if (likes) {
     return likes;
   }
-  StorageService.setItem(STORAGE_LIKES, JSON.stringify(initializedReactions));
+  StorageService.setItem(STORAGE_REACTIONS, JSON.stringify(initializedReactions));
   return initializedReactions;
 };
 
@@ -39,18 +39,23 @@ export class MusicService {
         id: idContent,
         reaction,
       });
-      StorageService.setItem(STORAGE_LIKES, JSON.stringify(reactions));
+      StorageService.setItem(STORAGE_REACTIONS, JSON.stringify(reactions));
       return;
     }
 
     const reactIsEqualOldReaction: boolean = reactionToUpdate.reaction === reaction;
     if (reactIsEqualOldReaction) {
       reactionToUpdate.reaction = ReactionEnum.none;
-      StorageService.setItem(STORAGE_LIKES, JSON.stringify(reactions));
+      StorageService.setItem(STORAGE_REACTIONS, JSON.stringify(reactions));
       return;
     }
 
     reactionToUpdate.reaction = reaction;
-    StorageService.setItem(STORAGE_LIKES, JSON.stringify(reactions));
+    StorageService.setItem(STORAGE_REACTIONS, JSON.stringify(reactions));
+  }
+
+  static clearAll(): void {
+    localStorage.removeItem(STORAGE_REACTIONS);
+    document.location.reload();
   }
 }

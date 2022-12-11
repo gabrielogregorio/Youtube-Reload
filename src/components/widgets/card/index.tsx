@@ -12,29 +12,46 @@ type CardProps = {
 
 export const Card = ({ playlistLocal, sendReaction, onlyDislikeMusic, onlyLikeMusic }: CardProps): ReactElement => {
   return (
-    <div key={playlistLocal.url}>
+    <div key={playlistLocal.url} className="flex flex-col group cursor-pointer">
       <div>
         <a target="_blank" href={playlistLocal.url} rel="noreferrer">
-          <img src={playlistLocal.img} alt="" className="object-cover w-full h-[200px] md:h-[180px] md:w-auto" />{' '}
+          <div className="h-[300px] md:h-[180px] md:w-full rounded-md overflow-hidden relative">
+            <img
+              src={playlistLocal.img}
+              alt=""
+              className="relative object-cover h-full w-full left-0 hover:scale-125 transition-all duration-300"
+            />{' '}
+          </div>
         </a>
       </div>
-      <div className="flex flex-col py-[15px] px-[20px]">
-        <div>
-          <p>
-            <a target="_blank" href={playlistLocal.url} rel="noreferrer" className="text-[0.9rem]">
-              {playlistLocal.title}
-            </a>
-          </p>
-        </div>
-        <div className="flex-1">
-          <p>
-            <a target="_blank" href={playlistLocal.url} rel="noreferrer" className="text-[0.9rem]">
-              {playlistLocal.author}
-            </a>
-          </p>
-        </div>
+      <div className="flex-1 flex flex-col py-[15px] px-[20px]">
+        <div className="flex-1 flex flex-col">
+          <div>
+            <p className="overflow-hidden text-ellipsis">
+              <a
+                target="_blank"
+                href={playlistLocal.url}
+                title={playlistLocal.title}
+                rel="noreferrer"
+                className="text-[0.9rem] font-bold">
+                {playlistLocal.title}
+              </a>
+            </p>
+          </div>
 
-        <div className="flex justify-between">
+          <div className="flex-1">
+            <p>
+              <a
+                target="_blank"
+                href={playlistLocal.url}
+                rel="noreferrer"
+                className="text-[0.9rem] font-medium text-[#444444]">
+                {playlistLocal.author}
+              </a>
+            </p>
+          </div>
+        </div>
+        <div className="flex justify-between mt-2 w-full">
           <ReactButton
             variant="blue"
             sendReaction={(): void => sendReaction(playlistLocal.id, ReactionEnum.like)}

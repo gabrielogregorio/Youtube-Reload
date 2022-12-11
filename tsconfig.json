@@ -22,6 +22,7 @@
       "@/widgets/*": ["src/components/widgets/*"],
       "@/components/*": ["src/components/*"],
       "@/helpers/*": ["src/core/helpers/*"],
+      "@/hooks/*": ["src/core/hooks/*"],
       "@/constants/*": ["src/core/constants/*"],
       "@/interfaces/*": ["src/core/interfaces/*"],
       "@/services/*": ["src/core/services/*"]

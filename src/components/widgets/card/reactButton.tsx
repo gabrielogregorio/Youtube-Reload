@@ -32,7 +32,7 @@ export const ReactButton = ({ isSelected, children, variant, sendReaction }: Rea
     <button
       type="button"
       onClick={(): void => sendReaction()}
-      className={`text-[0.9rem] py-[10px] px-[15px] cursor-pointer ml-[20px] bg-transparent transition-all duration-150 border-2 ${
+      className={`text-[0.9rem] py-[10px] px-[15px] cursor-pointer bg-transparent transition-all duration-150 border-2 ${
         styleVariant.normal
       } ${isSelected ? styleVariant.select : styleVariant.unSelect}`}>
       {children}
