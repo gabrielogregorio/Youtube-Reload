@@ -1,14 +1,16 @@
 import { Navbar } from '@/components/navbar';
+import { IMusic } from '@/interfaces/music';
+import { Card } from '@/widgets/card';
 import { ReactElement, useEffect, useState } from 'react';
+import { parseToYoutubeContent } from '../core/helper/parseToYoutubeContent';
 import { dataMusic } from '../data.reload';
 
 export const HelloWorld = (): ReactElement => {
-  const [playList, setplayList] = useState([]);
+  const [playList, setplayList] = useState<IMusic[]>([]);
   const [alteracoes, setalteracoes] = useState(0);
   const [playlistDislike, setplaylistDislike] = useState([]);
   const [playlistLike, setplaylistLike] = useState([]);
   const [authors, setauthors] = useState([]);
-  const [ignoreAuthors, setignoreAuthors] = useState([]);
   const [ignoreDates, setignoreDates] = useState([2019, 2020, 2021]);
   const [jsonItems, setjsonItems] = useState<
     { author: string; title: string; id: string; like: boolean; dislike: boolean; ano: number; item_id: number }[]
@@ -19,17 +21,10 @@ export const HelloWorld = (): ReactElement => {
 
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(items));
-    localStorage.setItem('ignoreAuthors', JSON.stringify({ ignore: ignoreAuthors }));
   }, [alteracoes]);
 
   //////////////
   useEffect(() => {
-    // mount
-    if (localStorage.getItem('ignoreAuthors')) {
-      let ignoreAuthorsJson = localStorage.getItem('ignoreAuthors') as string; //Obter
-      setignoreAuthors(JSON.parse(ignoreAuthorsJson).ignore);
-    }
-
     if (localStorage.getItem('items')) {
       let jsonItemsCOpy = JSON.parse(localStorage.getItem('items') || '[]');
       setjsonItems(jsonItemsCOpy);
@@ -74,7 +69,7 @@ export const HelloWorld = (): ReactElement => {
 
   const [activeScreen, setActiveScreen] = useState<number>(1);
 
-  const trocarTela = (screen): void => {
+  const updateScreen = (screen): void => {
     setActiveScreen(screen);
 
     if (screen == 2) {
@@ -97,27 +92,21 @@ export const HelloWorld = (): ReactElement => {
   };
 
   // Gera uma playlist aleatória
-  const gerarPlaylistAleatoria = () => {
+  const generateRandomPlaylist = () => {
     const possiveis = [];
 
     // Registra a posição para otimizar a localização do item
     let item_id = 0;
     items.forEach((item) => {
-      console.log('lloooping');
       // Se não tem likes ou dislikes
       if (!item.like && !item.dislike) {
         console.log('if1');
-        // O autor foi ignorado?
-        if (!ignoreAuthors.includes(item.author)) {
-          console.log('if2');
-          // O ano foi ignorado
-          if (!ignoreDates.includes(item.ano)) {
-            console.log('if3');
-            // Salve dentro das musicas possívels
-            item.item_id = item_id;
-            possiveis.push(item);
-            console.log('here');
-          }
+        // O ano foi ignorado
+        if (!ignoreDates.includes(item.ano)) {
+          // Salve dentro das musicas possívels
+          item.item_id = item_id;
+          possiveis.push(item);
+          console.log('here');
         }
       }
 
@@ -159,37 +148,12 @@ export const HelloWorld = (): ReactElement => {
     setalteracoes((prev) => (prev += 1));
   };
 
-  const limparLocalStorage = () => {
+  const clearPreferences = () => {
     localStorage.removeItem('items');
-    localStorage.removeItem('ignoreAuthors');
-    document.location.reload(true);
+    document.location.reload();
   };
 
   //////////////
-
-  const formatPlaylist = (playList) => {
-    return playList.map((play) => ({
-      ...play,
-      img: 'https://img.youtube.com/vi/' + play.id + '/hqdefault.jpg',
-      url: 'https://www.youtube.com/watch?v=' + play.id,
-    }));
-  };
-
-  const formatPlaylistLikes = (playList) => {
-    return playlistLike.map((play) => ({
-      ...play,
-      img: 'https://img.youtube.com/vi/' + play.id + '/hqdefault.jpg',
-      url: 'https://www.youtube.com/watch?v=' + play.id,
-    }));
-  };
-
-  const formatPlaylistDislikes = (playList) => {
-    return playlistDislike.map((play) => ({
-      ...play,
-      img: 'https://img.youtube.com/vi/' + play.id + '/hqdefault.jpg',
-      url: 'https://www.youtube.com/watch?v=' + play.id,
-    }));
-  };
 
   return (
     <div>
@@ -198,12 +162,12 @@ export const HelloWorld = (): ReactElement => {
           <h1>
             Youtube<span>Reload</span>
           </h1>
-          <Navbar updateScreen={trocarTela} activeScreen={activeScreen} />
+          <Navbar updateScreen={updateScreen} activeScreen={activeScreen} />
         </header>
 
         <section className="description">
           <h2>Gere playlist com músicas que você nunca ouviu, sem nenhum algoritmo de IA.</h2>
-          <button onClick={() => limparLocalStorage()}>Limpar Preferências</button>
+          <button onClick={() => clearPreferences()}>Limpar Preferências</button>
         </section>
 
         <div className={`tela-principal ${activeScreen === 1 ? 'display-block' : 'display-hidden'} `}>
@@ -234,105 +198,35 @@ export const HelloWorld = (): ReactElement => {
 
           <section className="videos">
             <div className="flex-videos">
-              {formatPlaylist(playList).map((playlist) => {
+              {parseToYoutubeContent(playList).map((playlistLocal) => {
                 return (
-                  <div key={playlist.url} className="item-video">
-                    <div className="video-img">
-                      <a target="_blank" href={playlist.url}>
-                        <img src={playlist.img} alt="" />{' '}
-                      </a>
-                    </div>
-                    <div className="video-conteudo">
-                      <div className="video-conteudo-titulo">
-                        <p>
-                          <a target="_blank" href={playlist.url}>
-                            {playlist.title}
-                          </a>
-                        </p>
-                      </div>
-
-                      <div className="video-conteudo-autor">
-                        <p>
-                          <a target="_blank" href={playlist.url}>
-                            {playlist.author}
-                          </a>
-                        </p>
-                      </div>
-
-                      <div className="video-conteudo-botoes">
-                        {!playlist.like ? <button onClick={() => sendLike(playlist.item_id)}>Gostei</button> : null}
-                        {playlist.like ? (
-                          <button onClick={() => sendLike(playlist.item_id)} className="selected">
-                            Gostei
-                          </button>
-                        ) : null}
-                        {!playlist.dislike ? (
-                          <button onClick={() => sendDislike(playlist.item_id)}>ignorar</button>
-                        ) : null}
-                        {playlist.dislike ? (
-                          <button onClick={() => sendDislike(playlist.item_id)} className="selected">
-                            ignorar
-                          </button>
-                        ) : null}
-                      </div>
-                    </div>
-                  </div>
+                  <Card
+                    key={playlistLocal.url}
+                    playlistLocal={playlistLocal}
+                    sendLike={sendLike}
+                    sendDislike={sendDislike}
+                  />
                 );
               })}
             </div>
           </section>
 
           <section className="gerar-playlist">
-            <button onClick={() => gerarPlaylistAleatoria()}>Gerar Playlist</button>
+            <button onClick={() => generateRandomPlaylist()}>Gerar Playlist</button>
           </section>
         </div>
 
         <div className={`tela-favoritos ${activeScreen === 2 ? 'display-block' : 'display-none'} `}>
           <section className="videos">
             <div className="flex-videos">
-              {formatPlaylistLikes(playList).map((playlist) => {
+              {parseToYoutubeContent(playList).map((playlistLocal) => {
                 return (
-                  <div key={playlist.url} className="item-video">
-                    <div className="video-img">
-                      <a target="_blank" href={playlist.url}>
-                        <img src={playlist.img} alt="" />{' '}
-                      </a>
-                    </div>
-                    <div className="video-conteudo">
-                      <div className="video-conteudo-titulo">
-                        <p>
-                          <a target="_blank" href={playlist.url}>
-                            {playlist.title}
-                          </a>
-                        </p>
-                      </div>
-
-                      <div className="video-conteudo-autor">
-                        <p>
-                          <a target="_blank" href={playlist.url}>
-                            {playlist.author}
-                          </a>
-                        </p>
-                      </div>
-
-                      <div className="video-conteudo-botoes">
-                        {!playlist.like ? <button onClick={() => sendLike(playlist.item_id)}>Gostei</button> : null}
-                        {playlist.like ? (
-                          <button onClick={() => sendLike(playlist.item_id)} className="selected">
-                            Gostei
-                          </button>
-                        ) : null}
-                        {!playlist.dislike ? (
-                          <button onClick={() => sendDislike(playlist.item_id)}>ignorar</button>
-                        ) : null}
-                        {playlist.dislike ? (
-                          <button onClick={() => sendDislike(playlist.item_id)} className="selected">
-                            ignorar
-                          </button>
-                        ) : null}
-                      </div>
-                    </div>
-                  </div>
+                  <Card
+                    key={playlistLocal.url}
+                    playlistLocal={playlistLocal}
+                    sendLike={sendLike}
+                    sendDislike={sendDislike}
+                  />
                 );
               })}
             </div>
@@ -342,49 +236,14 @@ export const HelloWorld = (): ReactElement => {
         <div className={`tela-nao-gostei ${activeScreen === 3 ? 'display-block' : 'display-none'}`}>
           <section className="videos">
             <div className="flex-videos">
-              {formatPlaylistDislikes(playList).map((playlist) => {
+              {parseToYoutubeContent(playList).map((playlistLocal) => {
                 return (
-                  <div key={playlist.url} className="item-video">
-                    <div className="video-img">
-                      <a target="_blank" href={playlist.url}>
-                        <img src={playlist.img} alt="" />{' '}
-                      </a>
-                    </div>
-                    <div className="video-conteudo">
-                      <div className="video-conteudo-titulo">
-                        <p>
-                          <a target="_blank" href={playlist.url}>
-                            {playlist.title}
-                          </a>
-                        </p>
-                      </div>
-
-                      <div className="video-conteudo-autor">
-                        <p>
-                          <a target="_blank" href={playlist.url}>
-                            {playlist.author}
-                          </a>
-                        </p>
-                      </div>
-
-                      <div className="video-conteudo-botoes">
-                        {!playlist.like ? <button onClick={() => sendLike(playlist.item_id)}>Gostei</button> : null}
-                        {playlist.like ? (
-                          <button onClick={() => sendLike(playlist.item_id)} className="selected">
-                            Gostei
-                          </button>
-                        ) : null}
-                        {!playlist.dislike ? (
-                          <button onClick={() => sendDislike(playlist.item_id)}>ignorar</button>
-                        ) : null}
-                        {playlist.dislike ? (
-                          <button onClick={() => sendDislike(playlist.item_id)} className="selected">
-                            ignorar
-                          </button>
-                        ) : null}
-                      </div>
-                    </div>
-                  </div>
+                  <Card
+                    key={playlistLocal.url}
+                    playlistLocal={playlistLocal}
+                    sendLike={sendLike}
+                    sendDislike={sendDislike}
+                  />
                 );
               })}
             </div>
