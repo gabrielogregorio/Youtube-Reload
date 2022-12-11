@@ -1,14 +1,15 @@
 import { IMusicWithTransformation } from '@/interfaces/music';
+import { ReactionEnum } from '@/services/MusicService';
+import { ReactElement } from 'react';
 
 type CardProps = {
   playlistLocal: IMusicWithTransformation;
-  sendLike: (item_id: number) => void;
-  sendDislike: (item_id: number) => void;
+  sendReaction: (idContent: string, reaction: ReactionEnum) => void;
   onlyLikeMusic: string[];
   onlyDislikeMusic: string[];
 };
 
-export const Card = ({ playlistLocal, sendLike, sendDislike, onlyDislikeMusic, onlyLikeMusic }: CardProps) => {
+export const Card = ({ playlistLocal, sendReaction, onlyDislikeMusic, onlyLikeMusic }: CardProps): ReactElement => {
   return (
     <div key={playlistLocal.url} className="item-video">
       <div className="video-img">
@@ -33,19 +34,29 @@ export const Card = ({ playlistLocal, sendLike, sendDislike, onlyDislikeMusic, o
         </div>
 
         <div className="video-conteudo-botoes">
-          {!onlyLikeMusic.includes(playlistLocal.item_id) ? (
-            <button onClick={() => sendLike(playlistLocal.item_id)}>Gostei</button>
-          ) : null}
-          {onlyLikeMusic.includes(playlistLocal.item_id) ? (
-            <button onClick={() => sendLike(playlistLocal.item_id)} className="selected">
+          {!onlyLikeMusic.includes(playlistLocal.id) ? (
+            <button type="button" onClick={(): void => sendReaction(playlistLocal.id, ReactionEnum.like)}>
               Gostei
             </button>
           ) : null}
-          {!onlyDislikeMusic.includes(playlistLocal.item_id) ? (
-            <button onClick={() => sendDislike(playlistLocal.item_id)}>ignorar</button>
+          {onlyLikeMusic.includes(playlistLocal.id) ? (
+            <button
+              type="button"
+              onClick={(): void => sendReaction(playlistLocal.id, ReactionEnum.like)}
+              className="selected">
+              Gostei
+            </button>
           ) : null}
-          {onlyDislikeMusic.includes(playlistLocal.item_id) ? (
-            <button onClick={() => sendDislike(playlistLocal.item_id)} className="selected">
+          {!onlyDislikeMusic.includes(playlistLocal.id) ? (
+            <button type="button" onClick={(): void => sendReaction(playlistLocal.id, ReactionEnum.unlike)}>
+              ignorar
+            </button>
+          ) : null}
+          {onlyDislikeMusic.includes(playlistLocal.id) ? (
+            <button
+              type="button"
+              onClick={(): void => sendReaction(playlistLocal.id, ReactionEnum.unlike)}
+              className="selected">
               ignorar
             </button>
           ) : null}

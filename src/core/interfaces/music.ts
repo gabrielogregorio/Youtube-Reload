@@ -1,10 +1,7 @@
 export interface IMusic {
   ano: number;
   author: string;
-  dislike: false;
   id: string;
-  item_id: number;
-  like: boolean;
   title: string;
 }
 
@@ -16,9 +13,6 @@ interface ITransformedType {
 export interface IMusicWithTransformation extends ITransformedType {
   ano: number;
   author: string;
-  dislike: false;
   id: string;
-  item_id: number;
-  like: boolean;
   title: string;
 }

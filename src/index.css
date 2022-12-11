@@ -203,23 +203,6 @@ header nav button::after {
 }
 /* Fim Botão gerar Playlist */
 
-/* Inicio dos vídeos */
-section.videos {
-  width: 100%;
-  margin: 0 auto;
-  max-width: 700px;
-}
-
-section.videos .flex-videos {
-  display: flex;
-  flex-direction: column;
-}
-
-.flex-videos .item-video {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-}
-
 .item-video .video-img a img {
   height: 180px;
   width: auto;
@@ -322,10 +305,6 @@ section.videos .flex-videos {
 
   .filtro-item .filtro-grid-3 {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .flex-videos .item-video {
-    grid-template-columns: 1fr;
   }
 
   .item-video .video-img a img {
