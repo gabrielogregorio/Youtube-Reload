@@ -11,8 +11,7 @@ export const NavbarItem = ({ children, onClick, isActive }: NavbarItemProps): Re
     <button
       type="button"
       onClick={onClick}
-      className={`border-b-[3px]
-        bg-transparent decoration-none text-dark p-[20px] pb-[5px] mb-[15px] cursor-pointer text-[0.9rem]
+      className={`border-b-[3px] bg-transparent decoration-none text-dark p-[20px] pb-[5px] mb-[15px] cursor-pointer text-[0.9rem]
         ${isActive ? 'border-red' : 'border-transparent'}`}>
       {children}
     </button>

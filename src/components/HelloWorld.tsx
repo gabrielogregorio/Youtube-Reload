@@ -70,31 +70,36 @@ export const HelloWorld = (): ReactElement => {
           <Navbar updateScreen={updateScreen} activeScreen={activeScreen} />
         </header>
 
-        <section className="description">
-          <h2>Gere playlist com músicas que você nunca ouviu, sem nenhum algoritmo de IA.</h2>
-          <button type="button" onClick={(): void => clearPreferences()}>
+        <section className="w-full">
+          <h2 className="max-w-[620px] w-full m-auto text-center py-[40px] px-[2%] text-[1.2rem]">
+            Gere playlist com músicas que você nunca ouviu, sem nenhum algoritmo de IA.
+          </h2>
+          <button
+            className="m-auto display-block py-[10px] text-base text-[#ff0d0d] underline bg-transparent cursor-pointer"
+            type="button"
+            onClick={(): void => clearPreferences()}>
             Limpar Preferências
           </button>
         </section>
 
         <div className={`animate-fadeIn ${activeScreen === 1 ? 'display-block' : 'hidden'} `}>
-          <div className="grid-filtros">
-            <div className="filtro-item">
-              <h3>Filtrar épocas</h3>
-              <div className="filtro-grid-1">
-                <div className="filtro-item-grid">
-                  <input onClick={(): void => {}} type="checkbox" />
-                  <label className="container">Excluir 2019</label>
+          <div className="w-full mx-auto grid grid-cols-2 max-w-[1280px] px-[2%]">
+            <div className="w-full grid grid-cols-3">
+              <h3 className=" text-[1.2rem] py-[10px]">Filtrar épocas</h3>
+              <div className="w-full">
+                <div className=" flex items-center">
+                  <input className="my-[3px]" onClick={(): void => {}} type="checkbox" />
+                  <label className="ml-[5px] text-[0.9rem]">Excluir 2019</label>
                 </div>
 
-                <div className="filtro-item-grid">
-                  <input onClick={(): void => {}} type="checkbox" />
-                  <label className="container">Excluir 2020</label>
+                <div className=" flex items-center">
+                  <input className="my-[3px]" onClick={(): void => {}} type="checkbox" />
+                  <label className="ml-[5px] text-[0.9rem]">Excluir 2020</label>
                 </div>
 
-                <div className="filtro-item-grid">
-                  <input onClick={(): void => {}} type="checkbox" />
-                  <label className="container">Excluir 2021</label>
+                <div className=" flex items-center">
+                  <input className="my-[3px]" onClick={(): void => {}} type="checkbox" />
+                  <label className="ml-[5px] text-[0.9rem]">Excluir 2021</label>
                 </div>
               </div>
             </div>
@@ -121,9 +126,7 @@ export const HelloWorld = (): ReactElement => {
 
           <section className="w-full flex justify-center items-center py-[40px]">
             <button
-              className="display-block m-auto text-white bg-[#05d2ff]
-            px-[10px] py-[20px] cursor-pointer duration-[0.2s] text-[1.2rem]hover:bg-[#009abd]
-            "
+              className="display-block m-auto text-white bg-[#05d2ff] px-[10px] py-[20px] cursor-pointer duration-[0.2s] text-[1.2rem] hover:bg-[#009abd]"
               type="button"
               onClick={(): void => generateRandomPlaylist()}>
               Gerar Playlist

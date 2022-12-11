@@ -12,23 +12,23 @@ type CardProps = {
 
 export const Card = ({ playlistLocal, sendReaction, onlyDislikeMusic, onlyLikeMusic }: CardProps): ReactElement => {
   return (
-    <div key={playlistLocal.url} className="item-video">
-      <div className="video-img">
+    <div key={playlistLocal.url}>
+      <div>
         <a target="_blank" href={playlistLocal.url} rel="noreferrer">
-          <img src={playlistLocal.img} alt="" />{' '}
+          <img src={playlistLocal.img} alt="" className="object-cover w-full h-[200px] md:h-[180px] md:w-auto" />{' '}
         </a>
       </div>
-      <div className="video-conteudo">
-        <div className="video-conteudo-titulo">
+      <div className="flex flex-col py-[15px] px-[20px]">
+        <div>
           <p>
-            <a target="_blank" href={playlistLocal.url} rel="noreferrer">
+            <a target="_blank" href={playlistLocal.url} rel="noreferrer" className="text-[0.9rem]">
               {playlistLocal.title}
             </a>
           </p>
         </div>
-        <div className="video-conteudo-autor">
+        <div className="flex-1">
           <p>
-            <a target="_blank" href={playlistLocal.url} rel="noreferrer">
+            <a target="_blank" href={playlistLocal.url} rel="noreferrer" className="text-[0.9rem]">
               {playlistLocal.author}
             </a>
           </p>
