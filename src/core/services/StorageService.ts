@@ -9,13 +9,14 @@ export class StorageService {
 
   static getItemAndParse<T = unknown>(key: string): T | undefined {
     try {
-      const item = localStorage.getItem(key);
+      const item: string | null = localStorage.getItem(key);
 
       if (item === null) {
         throw new Error('item is undefined');
       }
       return JSON.parse(item);
-    } catch (error) {
+    } catch (error: unknown) {
+      // eslint-disable-next-line no-console
       console.error('error on get and parse item in localstorage', error);
       return undefined;
     }

@@ -1,8 +1,15 @@
+import { CategoryEnum } from 'src/data.reload';
+
 export interface IMusic {
-  ano: number;
+  year: number;
   author: string;
   id: string;
   title: string;
+  durationInSeconds: number;
+  category: CategoryEnum;
+  views: string;
+  comments: string;
+  likes: string;
 }
 
 interface ITransformedType {
@@ -10,9 +17,4 @@ interface ITransformedType {
   url: string;
 }
 
-export interface IMusicWithTransformation extends ITransformedType {
-  ano: number;
-  author: string;
-  id: string;
-  title: string;
-}
+export interface IMusicWithTransformation extends ITransformedType {}
