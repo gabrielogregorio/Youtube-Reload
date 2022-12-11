@@ -1,20 +1,21 @@
 import { NavbarItem } from '@/layout/navbar/navbarItem';
+import { ReactElement } from 'react';
 
 type NavbarProps = {
   updateScreen: (index: any) => void;
   activeScreen: number;
 };
 
-export const Navbar = ({ updateScreen, activeScreen }: NavbarProps) => {
+export const Navbar = ({ updateScreen, activeScreen }: NavbarProps): ReactElement => {
   return (
-    <nav>
-      <NavbarItem isActive={activeScreen === 1} onClick={() => updateScreen(1)}>
+    <nav className="w-full flex items-center justify-center">
+      <NavbarItem isActive={activeScreen === 1} onClick={(): void => updateScreen(1)}>
         Inicio
       </NavbarItem>
-      <NavbarItem isActive={activeScreen === 2} onClick={() => updateScreen(2)}>
+      <NavbarItem isActive={activeScreen === 2} onClick={(): void => updateScreen(2)}>
         Favoritos
       </NavbarItem>
-      <NavbarItem isActive={activeScreen === 3} onClick={() => updateScreen(3)}>
+      <NavbarItem isActive={activeScreen === 3} onClick={(): void => updateScreen(3)}>
         Não gostei
       </NavbarItem>
     </nav>

@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./index.html', './src/**/*.{jsx,tsx}'],
   darkMode: 'class',
   theme: {
     extend: {
@@ -13,7 +13,19 @@ module.exports = {
       colors: {
         white: '#ffffff',
         dark: '#1B2430',
+        red: '#ff0d0d',
+        blue: '#05d2ff',
       },
+
+      animation: {
+        fadeIn: 'fadeIn .3s ease-in-out',
+      },
+      keyframes: () => ({
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
+      }),
     },
   },
   plugins: [],

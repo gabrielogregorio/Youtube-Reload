@@ -63,9 +63,9 @@ export const HelloWorld = (): ReactElement => {
   return (
     <div>
       <main>
-        <header>
-          <h1>
-            Youtube<span>Reload</span>
+        <header className="w-full">
+          <h1 className="px-[25px] py-[2%] w-full text-center text-[#ff0d0d] text-[1.5rem]">
+            Youtube<span className="text-[#0085ff] text-[1.5rem]">Reload</span>
           </h1>
           <Navbar updateScreen={updateScreen} activeScreen={activeScreen} />
         </header>
@@ -77,7 +77,7 @@ export const HelloWorld = (): ReactElement => {
           </button>
         </section>
 
-        <div className={`tela-principal ${activeScreen === 1 ? 'display-block' : 'display-hidden'} `}>
+        <div className={`animate-fadeIn ${activeScreen === 1 ? 'display-block' : 'hidden'} `}>
           <div className="grid-filtros">
             <div className="filtro-item">
               <h3>Filtrar épocas</h3>
@@ -119,14 +119,19 @@ export const HelloWorld = (): ReactElement => {
             </div>
           </section>
 
-          <section className="gerar-playlist">
-            <button type="button" onClick={(): void => generateRandomPlaylist()}>
+          <section className="w-full flex justify-center items-center py-[40px]">
+            <button
+              className="display-block m-auto text-white bg-[#05d2ff]
+            px-[10px] py-[20px] cursor-pointer duration-[0.2s] text-[1.2rem]hover:bg-[#009abd]
+            "
+              type="button"
+              onClick={(): void => generateRandomPlaylist()}>
               Gerar Playlist
             </button>
           </section>
         </div>
 
-        <div className={`tela-favoritos ${activeScreen === 2 ? 'display-block' : 'display-none'} `}>
+        <div className={`animate-fadeIn ${activeScreen === 2 ? 'display-block' : 'hidden'} `}>
           <section className="mx-auto xl:max-w-[700px] lg:max-w-[1000px] w-ful">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {parseToYoutubeContent(dataMusic.filter((item: IMusic) => onlyLikeMusic.includes(item.id))).map(
@@ -146,7 +151,7 @@ export const HelloWorld = (): ReactElement => {
           </section>
         </div>
 
-        <div className={`tela-nao-gostei ${activeScreen === 3 ? 'display-block' : 'display-none'}`}>
+        <div className={`animate-fadeIn ${activeScreen === 3 ? 'display-block' : 'hidden'}`}>
           <section className="mx-auto xl:max-w-[700px] lg:max-w-[1000px] w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {parseToYoutubeContent(dataMusic.filter((item: IMusic) => onlyDislikeMusic.includes(item.id))).map(

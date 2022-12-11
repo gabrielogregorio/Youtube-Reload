@@ -1,5 +1,6 @@
 import { IMusicWithTransformation } from '@/interfaces/music';
 import { ReactionEnum } from '@/services/MusicService';
+import { ReactButton } from '@/widgets/card/reactButton';
 import { ReactElement } from 'react';
 
 type CardProps = {
@@ -33,33 +34,20 @@ export const Card = ({ playlistLocal, sendReaction, onlyDislikeMusic, onlyLikeMu
           </p>
         </div>
 
-        <div className="video-conteudo-botoes">
-          {!onlyLikeMusic.includes(playlistLocal.id) ? (
-            <button type="button" onClick={(): void => sendReaction(playlistLocal.id, ReactionEnum.like)}>
-              Gostei
-            </button>
-          ) : null}
-          {onlyLikeMusic.includes(playlistLocal.id) ? (
-            <button
-              type="button"
-              onClick={(): void => sendReaction(playlistLocal.id, ReactionEnum.like)}
-              className="selected">
-              Gostei
-            </button>
-          ) : null}
-          {!onlyDislikeMusic.includes(playlistLocal.id) ? (
-            <button type="button" onClick={(): void => sendReaction(playlistLocal.id, ReactionEnum.unlike)}>
-              ignorar
-            </button>
-          ) : null}
-          {onlyDislikeMusic.includes(playlistLocal.id) ? (
-            <button
-              type="button"
-              onClick={(): void => sendReaction(playlistLocal.id, ReactionEnum.unlike)}
-              className="selected">
-              ignorar
-            </button>
-          ) : null}
+        <div className="flex justify-between">
+          <ReactButton
+            variant="blue"
+            sendReaction={(): void => sendReaction(playlistLocal.id, ReactionEnum.like)}
+            isSelected={onlyLikeMusic.includes(playlistLocal.id)}>
+            Gostei
+          </ReactButton>
+
+          <ReactButton
+            variant="red"
+            sendReaction={(): void => sendReaction(playlistLocal.id, ReactionEnum.unlike)}
+            isSelected={onlyDislikeMusic.includes(playlistLocal.id)}>
+            ignorar
+          </ReactButton>
         </div>
       </div>
     </div>

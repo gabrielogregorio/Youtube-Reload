@@ -4,27 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: 'Mukta', sans-serif;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #bbb;
-  border-radius: 15px;
-  border: 3px solid transparent;
-} */
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -45,7 +24,6 @@
   /* Reset CSS */
   margin: 0;
   padding: 0;
-  border: 0;
   box-sizing: border-box;
 
   /* Padrões para usar no código */
@@ -56,63 +34,10 @@
   font-size: 1.2rem;
 }
 
-a {
-  text-decoration: none;
-}
-
 body {
   min-height: 100vh;
   overflow-y: scroll;
 }
-
-/* Header */
-header {
-  width: 100%;
-}
-
-header h1 {
-  padding: 25px 2%;
-  width: 100%;
-  text-align: center;
-  color: #ff0d0d;
-  font-size: var(--font-size-24);
-}
-
-header h1 span {
-  color: #0085ff;
-  font-size: var(--font-size-24);
-}
-
-header nav {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-header nav button {
-  background-color: transparent;
-  text-decoration: none;
-  color: black;
-  padding: 20px;
-  cursor: pointer;
-  font-size: var(--font-size-12);
-}
-
-header nav button.nav-active::after {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 3px;
-  background: #ff0d0d;
-}
-
-header nav button::after {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 3px;
-}
-/* Fim */
 
 /*Descrição do site*/
 .description {
@@ -180,29 +105,6 @@ header nav button::after {
   margin: 3px 0;
 }
 
-/* Fim dos Filtros */
-/* Botão gerar Playlist */
-.gerar-playlist {
-  width: 100%;
-  padding: 40px 0;
-}
-
-.gerar-playlist button {
-  display: block;
-  margin: 0 auto;
-  color: white;
-  background-color: #05d2ff;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: 0.2s;
-  font-size: var(--font-size-18);
-}
-
-.gerar-playlist button:hover {
-  background-color: #009abd;
-}
-/* Fim Botão gerar Playlist */
-
 .item-video .video-img a img {
   height: 180px;
   width: auto;
@@ -227,102 +129,7 @@ header nav button::after {
   font-size: var(--font-size-12);
 }
 
-.video-conteudo-botoes button {
-  padding: 10px 15px;
-  font-size: var(--font-size-12);
-}
-
-.video-conteudo-botoes button:nth-child(1) {
-  border: 2px solid #05d2ff;
-  background-color: transparent;
-  color: #05d2ff;
-  margin-right: 20px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.video-conteudo-botoes button:nth-child(1):hover {
-  background: #05d2ff;
-  color: white;
-}
-.video-conteudo-botoes button:nth-child(1).selected {
-  background: #05d2ff;
-  color: white;
-}
-
-.video-conteudo-botoes button:nth-child(2) {
-  border: 2px solid #ff0d0d;
-  background-color: transparent;
-  color: #ff0d0d;
-  margin-left: 20px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.video-conteudo-botoes button:nth-child(2):hover {
-  background: #ff0d0d;
-  color: white;
-}
-
-.video-conteudo-botoes button:nth-child(2).selected {
-  background: #ff0d0d;
-  color: white;
-}
-
-/* Fim dos vídeos */
-.tela-principal {
-  display: none;
-  animation: opacityColor 0.2s ease-in-out;
-}
-
-.tela-favoritos {
-  display: none;
-  animation: opacityColor 0.2s ease-in-out;
-}
-
-.tela-nao-gostei {
-  display: none;
-  animation: opacityColor 0.2s ease-in-out;
-}
-
-.display-block {
-  display: block;
-}
-
-@keyframes opacityColor {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .grid-filtros {
-    grid-template-columns: 1fr;
-  }
-
-  .filtro-item .filtro-grid-3 {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .item-video .video-img a img {
-    width: 100%;
+/* width: 100%;
     padding: 0 2%;
-    height: 200px;
-  }
-
-  .filtro-item-grid input {
-    zoom: 2;
-  }
-
-  .filtro-item-grid {
-    padding: 10px 0;
-  }
-
-  .video-conteudo-botoes {
-    display: flex;
-    justify-content: space-between;
-  }
-}
+    height: 200px; */
+/* zoom: 2; */
