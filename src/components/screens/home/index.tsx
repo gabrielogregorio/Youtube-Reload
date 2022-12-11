@@ -15,26 +15,58 @@ export const Home = (): ReactElement => {
   const [randomPlaylist, setRandomPlaylist] = useState<IMusic[]>([]);
   const { onlyDislikeMusic, onlyLikeMusic, updateReactions } = useReactions();
   const [activeScreen, setActiveScreen] = useState<ScreenEnum>(ScreenEnum.home);
+  const [causeUpdateFixMeAfterTest, setCauseUpdateFixMeAfterTest] = useState<boolean>(true);
+
+  const getMusicAvailableWithFilters = ({
+    ignoreLikes,
+    ignoreUnlikes,
+    onlyLikes,
+    onlyUnlikes,
+    random,
+  }: {
+    ignoreLikes: boolean;
+    ignoreUnlikes: boolean;
+    onlyLikes: boolean;
+    onlyUnlikes: boolean;
+    random: boolean;
+  }): IMusicWithTransformation[] => {
+    let listItems: IMusic[] = dataMusic;
+    if (random) {
+      listItems = randomPlaylist;
+    }
+
+    if (onlyLikes) {
+      listItems = listItems.filter((item: IMusic) => onlyLikeMusic.includes(item.id));
+    }
+
+    if (onlyUnlikes) {
+      listItems = listItems.filter((item: IMusic) => onlyDislikeMusic.includes(item.id));
+    }
+
+    if (ignoreLikes) {
+      listItems = listItems.filter((item: IMusic) => onlyLikeMusic.includes(item.id) === false);
+    }
+    if (ignoreUnlikes) {
+      listItems = listItems.filter((item: IMusic) => onlyDislikeMusic.includes(item.id) === false);
+    }
+
+    return parseToYoutubeContent(listItems);
+  };
+
+  const musicAvailable: IMusicWithTransformation[] = getMusicAvailableWithFilters({
+    onlyLikes: activeScreen === ScreenEnum.likes,
+    onlyUnlikes: activeScreen === ScreenEnum.unlikes,
+    random: activeScreen === ScreenEnum.home,
+    ignoreLikes: false,
+    ignoreUnlikes: false,
+  });
 
   const updateScreen = (screen: ScreenEnum): void => {
     setActiveScreen(screen);
   };
-
-  const getContentAfterApplyFilter = (): IMusic[] => {
-    const filtered: IMusic[] = [];
-
-    dataMusic.forEach((item: IMusic) => {
-      if (onlyLikeMusic.includes(item.id) === false && onlyDislikeMusic.includes(item.id) === false) {
-        filtered.push(item);
-      }
-    });
-
-    return filtered;
-  };
-
   const generateRandomPlaylist = (): void => {
-    setRandomPlaylist(getContentAfterApplyFilter().sort((): number => generateRandomPositiveZeroOrNegative()));
-
+    setRandomPlaylist(dataMusic.sort((): number => generateRandomPositiveZeroOrNegative()));
+    setCauseUpdateFixMeAfterTest((prev: boolean) => !prev);
     setTimeout((): void => {
       window.scrollBy({ top: 100, left: 0, behavior: 'smooth' });
     }, TIME_IN_MS_TO_MOVEMENT_PAGE_AFTER_GENERATE_PLAYLIST);
@@ -48,6 +80,7 @@ export const Home = (): ReactElement => {
   return (
     <div className="mt-[60px]">
       <main>
+        <div className="hidden">{causeUpdateFixMeAfterTest}</div>
         <header className="w-full">
           <h1 className="py-[25px] px-[2%] w-full text-center text-red text-[1.5rem]">
             Youtube<span className="text-blue-dark text-[1.5rem]">Reload</span>
@@ -95,10 +128,12 @@ export const Home = (): ReactElement => {
               </div>
             </div>
           </div>
+        </div>
 
+        <div className="animate-fadeIn">
           <section className="mx-auto md:max-w-[700px] lg:max-w-[1000px] w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {parseToYoutubeContent(randomPlaylist).map((playlistLocal: IMusicWithTransformation) => {
+              {musicAvailable.map((playlistLocal: IMusicWithTransformation) => {
                 return (
                   <Card
                     onlyLikeMusic={onlyLikeMusic}
@@ -111,7 +146,9 @@ export const Home = (): ReactElement => {
               })}
             </div>
           </section>
+        </div>
 
+        {activeScreen === ScreenEnum.home ? (
           <section className="w-full flex justify-center items-center py-[40px]">
             <button
               className="display-block m-auto text-white bg-[#05d2ff] px-[10px] py-[20px] cursor-pointer duration-[0.2s] text-[1.2rem] hover:bg-[#009abd]"
@@ -120,47 +157,7 @@ export const Home = (): ReactElement => {
               Gerar Playlist
             </button>
           </section>
-        </div>
-
-        <div className={`animate-fadeIn ${activeScreen === ScreenEnum.likes ? 'display-block' : 'hidden'} `}>
-          <section className="mx-auto md:max-w-[700px] lg:max-w-[1000px] w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {parseToYoutubeContent(dataMusic.filter((item: IMusic) => onlyLikeMusic.includes(item.id))).map(
-                (playlistLocal: IMusicWithTransformation) => {
-                  return (
-                    <Card
-                      onlyLikeMusic={onlyLikeMusic}
-                      onlyDislikeMusic={onlyDislikeMusic}
-                      key={playlistLocal.url}
-                      playlistLocal={playlistLocal}
-                      sendReaction={sendReaction}
-                    />
-                  );
-                },
-              )}
-            </div>
-          </section>
-        </div>
-
-        <div className={`animate-fadeIn ${activeScreen === ScreenEnum.unlikes ? 'display-block' : 'hidden'}`}>
-          <section className="mx-auto md:max-w-[700px] lg:max-w-[1000px] w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {parseToYoutubeContent(dataMusic.filter((item: IMusic) => onlyDislikeMusic.includes(item.id))).map(
-                (playlistLocal: IMusicWithTransformation) => {
-                  return (
-                    <Card
-                      onlyLikeMusic={onlyLikeMusic}
-                      onlyDislikeMusic={onlyDislikeMusic}
-                      key={playlistLocal.url}
-                      playlistLocal={playlistLocal}
-                      sendReaction={sendReaction}
-                    />
-                  );
-                },
-              )}
-            </div>
-          </section>
-        </div>
+        ) : null}
       </main>
     </div>
   );

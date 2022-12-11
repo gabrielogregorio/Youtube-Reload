@@ -74,7 +74,7 @@
         "templates": false,
         "identifiers": true,
         "lang": "en_US",
-        "skipWords": ["youtube", "enum"],
+        "skipWords": ["youtube", "enum", "unlikes"],
         "minLength": 3
       }
     ],
