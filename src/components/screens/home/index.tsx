@@ -56,7 +56,7 @@ export const Home = (): ReactElement => {
   const musicAvailable: IMusicWithTransformation[] = getMusicAvailableWithFilters({
     onlyLikes: activeScreen === ScreenEnum.likes,
     onlyUnlikes: activeScreen === ScreenEnum.unlikes,
-    random: activeScreen === ScreenEnum.home,
+    random: false, // activeScreen === ScreenEnum.home,
     ignoreLikes: false,
     ignoreUnlikes: false,
   });
