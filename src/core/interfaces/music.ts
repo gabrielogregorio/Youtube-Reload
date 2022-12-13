@@ -12,7 +12,7 @@ export interface IMusic {
   likes: string;
 }
 
-interface ITransformedType {
+interface ITransformedType extends IMusic {
   img: string;
   url: string;
 }

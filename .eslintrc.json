@@ -102,5 +102,13 @@
       }
     ],
     "import/prefer-default-export": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*\\.js", "*\\.spec.ts", "*\\.spec.tsx", "*\\.test.ts", "*\\.test.ts"],
+      "rules": {
+        "no-magic-numbers": ["off"]
+      }
+    }
+  ]
 }

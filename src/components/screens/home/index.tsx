@@ -1,4 +1,3 @@
-import { Navbar } from '@/components/layout/navbar';
 import { IMusic, IMusicWithTransformation } from '@/interfaces/music';
 import { Card } from '@/widgets/card';
 import { ReactElement, useState } from 'react';
@@ -7,6 +6,9 @@ import { MusicService, ReactionEnum } from '@/services/MusicService';
 import { generateRandomPositiveZeroOrNegative } from '@/helpers/generators';
 import { ScreenEnum } from '@/interfaces/screens';
 import { useReactions } from '@/hooks/useReactions';
+import { Header } from '@/layout/header';
+import { ClearPreferences } from '@/widgets/clearPreferences';
+import { Filters } from '@/widgets/filters';
 import { dataMusic } from '../../../data.reload';
 
 const TIME_IN_MS_TO_MOVEMENT_PAGE_AFTER_GENERATE_PLAYLIST: number = 200;
@@ -56,7 +58,7 @@ export const Home = (): ReactElement => {
   const musicAvailable: IMusicWithTransformation[] = getMusicAvailableWithFilters({
     onlyLikes: activeScreen === ScreenEnum.likes,
     onlyUnlikes: activeScreen === ScreenEnum.unlikes,
-    random: false, // activeScreen === ScreenEnum.home,
+    random: activeScreen === ScreenEnum.home,
     ignoreLikes: false,
     ignoreUnlikes: false,
   });
@@ -81,54 +83,17 @@ export const Home = (): ReactElement => {
     <div className="mt-[60px]">
       <main>
         <div className="hidden">{causeUpdateFixMeAfterTest}</div>
-        <header className="w-full">
-          <h1 className="py-[25px] px-[2%] w-full text-center text-red text-[1.5rem]">
-            Youtube<span className="text-blue-dark text-[1.5rem]">Reload</span>
-          </h1>
-          <Navbar updateScreen={updateScreen} activeScreen={activeScreen} />
-        </header>
+        <Header updateScreen={updateScreen} activeScreen={activeScreen} />
 
         <section className="w-full">
           <h2 className="max-w-[620px] w-full m-auto text-center py-[40px] px-[2%] text-[1.2rem]">
             Gere playlist com músicas que você nunca ouviu, sem nenhum algoritmo de IA.
           </h2>
-          <button
-            className="w-full text-center py-[10px] text-base text-red underline bg-transparent cursor-pointer"
-            type="button"
-            onClick={(): void => MusicService.clearAll()}>
-            Limpar Preferências
-          </button>
+
+          <ClearPreferences />
         </section>
 
-        <div className={`animate-fadeIn ${activeScreen === ScreenEnum.home ? 'display-block' : 'hidden'} `}>
-          <div className="w-full mx-auto grid grid-cols-2 max-w-[1280px] px-[2%]">
-            <div className="w-full ">
-              <h3 className=" text-[1.2rem] py-[10px]">Filtrar épocas</h3>
-              <div className="w-full">
-                <div className=" flex items-center">
-                  <label className="ml-[5px] text-[0.9rem] flex items-center" htmlFor="filter-2019">
-                    <input className="my-[3px]" id="filter-2019" onClick={(): void => {}} type="checkbox" />
-                    Excluir 2019
-                  </label>
-                </div>
-
-                <div className=" flex items-center">
-                  <label className="ml-[5px] text-[0.9rem] flex items-center" htmlFor="filter-2020">
-                    <input className="my-[3px]" id="filter-2020" onClick={(): void => {}} type="checkbox" />
-                    Excluir 2020
-                  </label>
-                </div>
-
-                <div className=" flex items-center">
-                  <label className="ml-[5px] text-[0.9rem] flex items-center" htmlFor="filter-2021">
-                    <input className="my-[3px]" id="filter-2021" onClick={(): void => {}} type="checkbox" />
-                    Excluir 2021
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {activeScreen === ScreenEnum.home ? <Filters /> : null}
 
         <div className="animate-fadeIn">
           <section className="mx-auto md:max-w-[700px] lg:max-w-[1000px] w-full">
