@@ -16,16 +16,22 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        pnpm-version: [6.0.2]
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: use pnpm ${{ matrix.pnpm-version }}
         uses: pnpm/action-setup@v2
         with:
-          version: 6.0.2
-      - name: Install dependencies and test
+          version: ${{ matrix.pnpm-version }}
+
+      - name: install dependencies and test
         run: pnpm i --frozen-lockfile
-      - run: pnpm run test:coverage
+
+      - name: running tests and generate coverage
+        run: pnpm run test:coverage
+
       - name: up coverage to codacy
         run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r ./coverage/lcov.info

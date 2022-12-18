@@ -12,16 +12,22 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        pnpm-version: [6.0.2]
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Use pnpm.js ${{ matrix.pnpm-version }}
         uses: pnpm/action-setup@v2
         with:
-          version: 6.0.2
+          version: ${{ matrix.pnpm-version }}
 
-      - name: Install dependencies and check
+      - name: install dependencies and check
         run: pnpm install --frozen-lockfile
-      - run: pnpm run check
-      - run: pnpm run lint
+
+      - name: check typescript
+        run: pnpm run check
+
+      - name: check eslint
+        run: pnpm run lint

@@ -4,6 +4,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
   root: '.',
+  base: '/youtube-reload',
   build: {
     outDir: 'build',
   },
