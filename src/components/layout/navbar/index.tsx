@@ -13,6 +13,11 @@ export const Navbar = ({ updateScreen, activeScreen }: NavbarProps): ReactElemen
       <NavbarItem isActive={activeScreen === ScreenEnum.home} onClick={(): void => updateScreen(ScreenEnum.home)}>
         Inicio
       </NavbarItem>
+
+      {/* <NavbarItem isActive={activeScreen === ScreenEnum.all} onClick={(): void => updateScreen(ScreenEnum.all)}>
+        Todas
+      </NavbarItem> */}
+
       <NavbarItem isActive={activeScreen === ScreenEnum.likes} onClick={(): void => updateScreen(ScreenEnum.likes)}>
         Favoritos
       </NavbarItem>

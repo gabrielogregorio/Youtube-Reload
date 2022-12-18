@@ -11,11 +11,19 @@ module.exports = {
         body: ['"Open Sans"'],
       },
       colors: {
-        white: '#ffffff',
-        dark: '#1B2430',
-        red: '#ff0d0d',
-        'blue-dark': '#0085ff',
-        blue: '#05d2ff',
+        'white-dark': '#ebebeb',
+        white: '#fbfbfe',
+
+        'dark-dark': '#1f2126',
+        dark: '#2d3036',
+        'dark-light': '#46484d',
+
+        red: '#ff5959',
+        'red-light': '#ff7373',
+
+        'blue-light': '#5eb2ff',
+        blue: '#49a7fc',
+        'blue-dark': '#2f81cc',
       },
 
       animation: {
