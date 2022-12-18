@@ -1,0 +1,16 @@
+import { ReactElement } from 'react';
+
+type generatePlaylistProps = {
+  generateRandomPlaylist: () => void;
+};
+
+export const GeneratePlaylist = ({ generateRandomPlaylist }: generatePlaylistProps): ReactElement => {
+  return (
+    <button
+      className="display-block m-auto text-white bg-blue px-8 py-4 rounded-xl cursor-pointer duration-[0.2s] text-[1.2rem] hover:bg-blue-dark"
+      type="button"
+      onClick={(): void => generateRandomPlaylist()}>
+      Gerar Playlist
+    </button>
+  );
+};

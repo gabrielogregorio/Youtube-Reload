@@ -32,8 +32,8 @@ Um dos meus primeiros projetos usando VueJs, estou migrando para o github pages,
 Use os comandos abaixo
 
 ```bash    
-npm install
-npm run serve
+pnpm i
+pnpm run dev
 ```
 
 Acesse http://localhost:8080/

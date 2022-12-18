@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noErrorTruncation": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/layout/*": ["src/components/layout/*"],
+      "@/widgets/*": ["src/components/widgets/*"],
+      "@/components/*": ["src/components/*"],
+      "@/helpers/*": ["src/core/helpers/*"],
+      "@/hooks/*": ["src/core/hooks/*"],
+      "@/constants/*": ["src/core/constants/*"],
+      "@/interfaces/*": ["src/core/interfaces/*"],
+      "@/services/*": ["src/core/services/*"]
+    },
+    "noEmit": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "rootDir": "src",
+    "outDir": "build"
+  },
+  "include": ["next-env.d.ts", "./src/**/*.ts", "./src/**/*.tsx"],
+  "exclude": ["node_modules"]
+}
