@@ -1,10 +1,16 @@
 {
   "name": "youtube-reload",
   "version": "2.0.0",
-  "homepage": "/",
+  "homepage": "https://gabrielogregorio.github.io/youtube-reload",
   "private": false,
   "main": "build/index.js",
+  "engines": {
+    "pnpm" : ">=6.0.0 <8.0.0",
+    "node": ">=16.x <18.0.0"
+  },
   "scripts": {
+    "deploy2": "pnpm run clear && pnpm run lint && pnpm run check && pnpm run format && pnpm run test:coverage && pnpm run build && gh-pages -d build",
+    "deploy": "gh-pages -d build",
     "dev": "vite",
     "build": "vite build",
     "test": "vitest",
@@ -69,6 +75,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-sonarjs": "^0.17.0",
     "eslint-plugin-spellcheck": "^0.0.20",
+    "gh-pages": "^4.0.0",
     "husky": "^8.0.2",
     "jsdom": "^20.0.3",
     "lint-staged": "^13.1.0",

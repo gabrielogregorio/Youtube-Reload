@@ -1,22 +1,33 @@
-<div align="center">
-  <img height="30" alt="vuejs" src="https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D">
-  <img height="30" alt="Javascript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-  <img height="30" alt="css3" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
-  <img height="30" alt="html5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-</div>
-
-<h3 align="center">Youtube Reload</h3>
+<h1 align="center">🎵 Youtube Reload 🎵</h1>
 <p align="center">
   Gere playlists com músicas que você nunca ouviu.
   <br>
-  <a href="https://gabrielogregorio.github.io/youtube-reload/"><strong>Ver demonstrativo »</strong></a>
+  <a href="https://gabrielogregorio.github.io/youtube-reload/"><strong>Ver projeto »</strong></a>
   <br>
   <br>
 </p>
 
-<h3>Informações gerais</h3>
+<div align="center">
+  <img height="30" alt="vite" src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E">
+  <img height="30" alt="reactjs" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
+<img height="30" alt="typescript" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"><img height="30" alt="tailwind" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"><img height="30" alt="eslint" src="https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white"><img height="30" alt="prettier" src="https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3Ee">
+</div>
 
-Um dos meus primeiros projetos usando VueJs, estou migrando para o github pages, então não espere boas práticas.
+<d align="center">
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/69e0d9c3e5b247a6930b7c8d91d6e507)](https://www.codacy.com/gh/gabrielogregorio/youtube-reload/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gabrielogregorio/youtube-reload&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/69e0d9c3e5b247a6930b7c8d91d6e507)](https://www.codacy.com/gh/gabrielogregorio/youtube-reload/dashboard?utm_source=github.com&utm_medium=referral&utm_content=gabrielogregorio/youtube-reload&utm_campaign=Badge_Coverage)
+
+</d>
+
+
+
+
+<h3>Introdução</h3>
+
+~~Um dos meus primeiros projetos usando VueJs, estou migrando para o github pages, então não espere boas práticas.~~
+
+Versão atualizada deste projeto para Vite com React, typescript e eslint 'estralando'.
 
 ![Tela inicial](1.png)
 ![Playlist Gerada](2.png)
@@ -36,5 +47,5 @@ pnpm i
 pnpm run dev
 ```
 
-Acesse http://localhost:8080/
+Acesse http://localhost:5173/
 
