@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import { IMusic } from '@/interfaces/music';
+import type { IMusic } from '@/contracts/musics';
 
 export enum CategoryEnum {
   'reload' = 'reload',
@@ -1399,5 +1399,27 @@ export const dataMusic: IMusic[] = [
     likes: '113k',
     comments: '1.9k',
     durationInSeconds: 3.23,
+  },
+  {
+    artist: 'Tom Odell',
+    title: 'Another Love',
+    id: 'MwpMEbgC7DA',
+    year: 2013,
+    category: CategoryEnum.reload,
+    views: '593m',
+    likes: '5.6m',
+    comments: '105k',
+    durationInSeconds: 4.47,
+  },
+  {
+    artist: 'George Harrison',
+    title: 'My Sweet Lord',
+    id: '04v-SdKeEpE',
+    year: 1970,
+    category: CategoryEnum.reload,
+    views: '43m',
+    likes: '379k',
+    comments: '12k',
+    durationInSeconds: 7.12,
   },
 ];

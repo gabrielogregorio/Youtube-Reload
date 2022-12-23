@@ -1,4 +1,4 @@
-import { CategoryEnum } from 'src/data.reload';
+import type { CategoryEnum } from '@/data/data.reload';
 
 export interface IMusic {
   year: number;

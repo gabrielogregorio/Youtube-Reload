@@ -1,4 +1,4 @@
-import { IMusic, IMusicWithTransformation } from '@/interfaces/music';
+import type { IMusic, IMusicWithTransformation } from '@/contracts/musics';
 
 export const parseToYoutubeContent = (playList: IMusic[]): IMusicWithTransformation[] => {
   return playList.map((play: IMusic) => ({

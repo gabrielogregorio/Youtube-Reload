@@ -18,14 +18,27 @@
     "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
-      "@/layout/*": ["src/components/layout/*"],
+      "@/layouts/*": ["src/components/layouts/*"],
+      "@/screens/*": ["src/components/screens/*"],
+      "@/templates/*": ["src/components/templates/*"],
       "@/widgets/*": ["src/components/widgets/*"],
-      "@/components/*": ["src/components/*"],
-      "@/helpers/*": ["src/core/helpers/*"],
-      "@/hooks/*": ["src/core/hooks/*"],
+
+      "@/adapters/*": ["src/core/adapters/*"],
+      "@/configs/*": ["src/core/configs/*"],
+      "@/connections/*": ["src/core/connections/*"],
       "@/constants/*": ["src/core/constants/*"],
-      "@/interfaces/*": ["src/core/interfaces/*"],
-      "@/services/*": ["src/core/services/*"]
+      "@/contracts/*": ["src/core/contracts/*"],
+      "@/data/*": ["src/core/data/*"],
+      "@/errors/*": ["src/core/errors/*"],
+      "@/guard/*": ["src/core/guard/*"],
+      "@/hooks/*": ["src/core/hooks/*"],
+      "@/libs/*": ["src/core/libs/*"],
+      "@/locales/*": ["src/core/locales/*"],
+      "@/services/*": ["src/core/services/*"],
+      "@/utils/*": ["src/core/utils/*"],
+
+      "@/mocks/*": ["src/mocks/*"],
+      "@/pages/*": ["src/pages/*"]
     },
     "noEmit": true,
     "jsx": "preserve",

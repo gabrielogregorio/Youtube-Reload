@@ -1,5 +1,5 @@
-import { ScreenEnum } from '@/interfaces/screens';
-import { NavbarItem } from '@/layout/navbar/navbarItem';
+import { ScreenEnum } from '@/contracts/homeScreens';
+import { NavbarItem } from '@/layouts/navbar/navbarItem';
 import { ReactElement } from 'react';
 
 type NavbarProps = {

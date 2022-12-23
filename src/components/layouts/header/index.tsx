@@ -1,6 +1,6 @@
-import { ScreenEnum } from '@/interfaces/screens';
-import { Logo } from '@/layout/logo';
-import { Navbar } from '@/layout/navbar';
+import { ScreenEnum } from '@/contracts/homeScreens';
+import { Logo } from '@/layouts/logo';
+import { Navbar } from '@/layouts/navbar';
 import { ReactElement } from 'react';
 
 type HeaderProps = {

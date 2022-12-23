@@ -24,6 +24,7 @@ specifiers:
   eslint-import-resolver-typescript: ^3.5.2
   eslint-plugin-import: '>=2.25.3 <3.0.0'
   eslint-plugin-jsx-a11y: ^6.5.1
+  eslint-plugin-no-null: ^1.0.2
   eslint-plugin-prettier: ^4.2.1
   eslint-plugin-react: ^7.31.11
   eslint-plugin-react-hooks: ^4.6.0
@@ -74,6 +75,7 @@ devDependencies:
   eslint-import-resolver-typescript: 3.5.2_lt3hqehuojhfcbzgzqfngbtmrq
   eslint-plugin-import: 2.26.0_hmezkefo75s2prddlqllgjxqc4
   eslint-plugin-jsx-a11y: 6.6.1_eslint@8.29.0
+  eslint-plugin-no-null: 1.0.2_eslint@8.29.0
   eslint-plugin-prettier: 4.2.1_5dgjrgoi64tgrv3zzn3walur3u
   eslint-plugin-react: 7.31.11_eslint@8.29.0
   eslint-plugin-react-hooks: 4.6.0_eslint@8.29.0
@@ -2493,6 +2495,15 @@ packages:
       language-tags: 1.0.6
       minimatch: 3.1.2
       semver: 6.3.0
+    dev: true
+
+  /eslint-plugin-no-null/1.0.2_eslint@8.29.0:
+    resolution: {integrity: sha512-uRDiz88zCO/2rzGfgG15DBjNsgwWtWiSo4Ezy7zzajUgpnFIqd1TjepKeRmJZHEfBGu58o2a8S0D7vglvvhkVA==}
+    engines: {node: '>=5.0.0'}
+    peerDependencies:
+      eslint: '>=3.0.0'
+    dependencies:
+      eslint: 8.29.0
     dev: true
 
   /eslint-plugin-prettier/4.2.1_5dgjrgoi64tgrv3zzn3walur3u:
