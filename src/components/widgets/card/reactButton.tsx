@@ -16,9 +16,9 @@ type defaultColorType = {
 export const ReactButton = ({ isSelected, children, variant, sendReaction }: ReactButtonProps): ReactElement => {
   const variants: { [key in ReactButtonProps['variant']]: defaultColorType } = {
     blue: {
-      select: 'bg-blue-light text-white',
-      unSelect: 'text-blue-light bg-dark-dark',
-      normal: 'hover:scale-95 hover:text-white hover:bg-blue-light border-blue-light',
+      select: 'bg-blue text-white',
+      unSelect: 'text-blue bg-dark-dark',
+      normal: 'hover:scale-95 hover:text-white hover:bg-blue border-blue',
     },
     red: {
       select: 'bg-red-light text-white',

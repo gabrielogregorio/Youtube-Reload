@@ -14,6 +14,7 @@ import { GeneratePlaylist } from '@/widgets/generatePlaylists';
 import { BiRefresh } from 'react-icons/bi';
 import { BsBookmarkCheckFill } from 'react-icons/bs';
 import { AiOutlineArrowUp } from 'react-icons/ai';
+// import { FaThList } from 'react-icons/fa';
 import { dataMusic } from '../../../data.reload';
 
 export const Home = (): ReactElement => {
@@ -22,6 +23,7 @@ export const Home = (): ReactElement => {
   const [activeScreen, setActiveScreen] = useState<ScreenEnum>(ScreenEnum.home);
   const [causeUpdateFixMeAfterTest, setCauseUpdateFixMeAfterTest] = useState<boolean>(true);
 
+  // const [gridType, setGridType] = useState<boolean>(true);
   const getMusicAvailableWithFilters = ({
     ignoreLikes,
     ignoreUnlikes,
@@ -96,7 +98,7 @@ export const Home = (): ReactElement => {
 
         {/* <div className="flex items-center justify-center mb-6">
           <details className="">
-            <summary className="select-none text-base flex items-center justify-center cursor-pointer transition-all duration-150 rounded-tl-xl rounded-tr-xl px-3 py-2 hover:scale-110">
+            <summary className="select-none text-base flex items-center justify-center cursor-pointer transition-all duration-150 rounded-tl-xl rounded-tr-xl px-3 py-2 hover:scale-110 shadow-xl ">
               <span className="mr-3">Filtros</span>
               <span>
                 <FiFilter />
@@ -105,6 +107,28 @@ export const Home = (): ReactElement => {
             <Filters />
           </details>
         </div> */}
+
+        {/* <section className="flex items-center justify-center my-8">
+          <div className="grid grid-cols-2 gap-3 shadow-md px-4 py-2 transition-all duration-150 hover:scale-110">
+            <button
+              type="button"
+              onClick={() => setGridType(true)}
+              className={`${
+                gridType ? 'bg-dark-dark' : ''
+              } rounded-md p-2 transition-all duration-150 hover:scale-110`}>
+              <FaThList className={`${gridType ? '' : ''} text-base`} />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setGridType(false)}
+              className={`${
+                gridType ? '' : 'bg-dark-dark'
+              } rounded-md p-2 transition-all duration-150 hover:scale-110`}>
+              <BsFillGrid3X3GapFill className={`${gridType ? '' : ''} text-base`} />
+            </button>
+          </div>
+        </section> */}
 
         <div className="animate-fadeIn">
           <section className="mx-auto md:max-w-[700px] lg:max-w-[1000px] w-full">
@@ -173,7 +197,7 @@ export const Home = (): ReactElement => {
               }}
               type="button"
               title="gerar nova playlist"
-              className="bg-blue text-white p-3 rounded-full transition-all duration-150 shadow-xl hover:bg-blue-dark md:hover:scale-110">
+              className="bg-blue-dark text-white p-3 rounded-full transition-all duration-150 shadow-xl hover:bg-blue-darker md:hover:scale-110">
               <BiRefresh className="text-2xl" />
             </button>
           </div>
