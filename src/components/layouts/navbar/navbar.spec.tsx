@@ -1,5 +1,5 @@
+import { ScreenEnum } from '@/contracts/homeScreens';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { ScreenEnum } from '@/interfaces/screens';
 import { Mock, vi } from 'vitest';
 import { Navbar } from '.';
 

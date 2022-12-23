@@ -1,17 +1,17 @@
 export class StorageService {
-  static setItem(key: string, value: string): void {
+  public static setItem(key: string, value: string): void {
     localStorage.setItem(key, value);
   }
 
-  static getItem(key: string): string | null {
+  public static getItem(key: string): string | null {
     return localStorage.getItem(key);
   }
 
-  static getItemAndParse<T = unknown>(key: string): T | undefined {
+  public static getItemAndParse<T = unknown>(key: string): T | undefined {
     try {
-      const item: string | null = localStorage.getItem(key);
+      const item: string | undefined = localStorage.getItem(key) || undefined;
 
-      if (item === null) {
+      if (item === undefined) {
         throw new Error('item is undefined');
       }
       return JSON.parse(item);

@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import { IMusic } from '@/interfaces/music';
+import type { IMusic } from '@/contracts/musics';
 
 export enum CategoryEnum {
   'reload' = 'reload',
@@ -1413,7 +1413,7 @@ export const dataMusic: IMusic[] = [
   },
   {
     artist: 'George Harrison',
-    title: 'George Harrison - My Sweet Lord',
+    title: 'My Sweet Lord',
     id: '04v-SdKeEpE',
     year: 1970,
     category: CategoryEnum.reload,

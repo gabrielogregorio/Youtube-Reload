@@ -1,4 +1,4 @@
-import { IMusicWithTransformation } from '@/interfaces/music';
+import { IMusicWithTransformation } from '@/contracts/musics';
 import { ReactionEnum } from '@/services/MusicService';
 import { ReactButton } from '@/widgets/card/reactButton';
 import { ReactElement } from 'react';
