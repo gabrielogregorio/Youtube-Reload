@@ -47,8 +47,8 @@ export const Card = ({ playlistLocal, sendReaction, onlyDislikeMusic, onlyLikeMu
                 target="_blank"
                 href={playlistLocal.url}
                 rel="noreferrer"
-                className="text-[0.9rem] font-medium text-white-dark">
-                {playlistLocal.author}
+                className="text-[0.7rem] font-medium text-white-dark">
+                {playlistLocal.artist}
               </a>
             </p>
           </div>
