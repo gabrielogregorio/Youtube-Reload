@@ -18,14 +18,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "@typescript-eslint",
-    "react",
-    "spellcheck",
-    "sonarjs",
-    "import"
-    // "no-null"
-  ],
+  "plugins": ["@typescript-eslint", "react", "spellcheck", "sonarjs", "import", "no-null"],
   "settings": {
     "import/resolver": {
       "typescript": {}
@@ -71,9 +64,9 @@
     "@typescript-eslint/no-unsafe-call": "error",
     "@typescript-eslint/explicit-member-accessibility": "error",
     "@typescript-eslint/no-non-null-assertion": "error",
-    // "@typescript-eslint/prefer-readonly": ["error"],
-    // "@typescript-eslint/prefer-readonly-parameter-types": ["error"],
-    // "no-null/no-null": ["error"],
+    "@typescript-eslint/prefer-readonly": ["error"],
+    "@typescript-eslint/prefer-readonly-parameter-types": ["error"],
+    "no-null/no-null": ["error"],
     "@typescript-eslint/no-confusing-non-null-assertion": "error",
     "@typescript-eslint/no-floating-promises": ["error"],
     "@typescript-eslint/naming-convention": [

@@ -1,4 +1,4 @@
-export const parseFunction = (value: string): number | null => {
+export const parseFunction = (value: string): number | undefined => {
   const valueToUse: string = value.toLowerCase() || '';
 
   if (valueToUse.endsWith('b')) {
@@ -16,7 +16,7 @@ export const parseFunction = (value: string): number | null => {
     return Number(valueToUse);
   }
 
-  return null;
+  return undefined;
 };
 
 describe('Curl Request', () => {
@@ -53,8 +53,8 @@ describe('Curl Request', () => {
   });
 
   it('should convert unit???', () => {
-    expect(parseFunction('')).toEqual(null);
-    expect(parseFunction('ABC')).toEqual(null);
-    expect(parseFunction('213S')).toEqual(null);
+    expect(parseFunction('')).toEqual(undefined);
+    expect(parseFunction('ABC')).toEqual(undefined);
+    expect(parseFunction('213S')).toEqual(undefined);
   });
 });

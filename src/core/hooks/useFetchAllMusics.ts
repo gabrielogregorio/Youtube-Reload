@@ -5,13 +5,13 @@ import { useEffect, useState } from 'react';
 interface IUseFetchAllMusicsOutput {
   isLoading: boolean;
   error: string | undefined;
-  data: IMusic[] | undefined;
+  data: Readonly<IMusic[]> | undefined;
 }
 
 export const useFetchAllMusics = (): IUseFetchAllMusicsOutput => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | undefined>(undefined);
-  const [data, setData] = useState<IMusic[] | undefined>(undefined);
+  const [data, setData] = useState<Readonly<IMusic[]> | undefined>(undefined);
 
   useEffect(() => {
     setIsLoading(false);
@@ -19,7 +19,7 @@ export const useFetchAllMusics = (): IUseFetchAllMusicsOutput => {
     setData(undefined);
 
     FetchMusicService.fetch()
-      .then((res: IMusic[]) => {
+      .then((res: Readonly<IMusic[]>) => {
         setData(res);
       })
       .catch(() => {

@@ -1,21 +1,21 @@
 import type { CategoryEnum } from '@/data/data.reload';
 
 export interface IMusic {
-  year: number;
-  artist: string;
-  id: string;
-  title: string;
-  durationInSeconds: number;
-  category: CategoryEnum;
-  views: string;
-  minuteToSkipIntroduction?: number;
-  comments: string;
-  likes: string;
+  readonly year: number;
+  readonly artist: string;
+  readonly id: string;
+  readonly title: string;
+  readonly durationInSeconds: number;
+  readonly category: CategoryEnum;
+  readonly views: string;
+  readonly minuteToSkipIntroduction?: number;
+  readonly comments: string;
+  readonly likes: string;
 }
 
 interface ITransformedType extends IMusic {
-  img: string;
-  url: string;
+  readonly img: string;
+  readonly url: string;
 }
 
 export interface IMusicWithTransformation extends ITransformedType {}

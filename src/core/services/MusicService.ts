@@ -9,8 +9,8 @@ export enum ReactionEnum {
 }
 
 export interface IReactions {
-  id: string;
-  reaction: ReactionEnum;
+  readonly id: string;
+  readonly reaction: ReactionEnum;
 }
 
 export const initializeAndGetReactions = (): IReactions[] => {
@@ -46,13 +46,23 @@ export class MusicService {
 
     const reactIsEqualOldReaction: boolean = reactionToUpdate.reaction === reaction;
     if (reactIsEqualOldReaction) {
-      reactionToUpdate.reaction = ReactionEnum.none;
-      StorageService.setItem(STORAGE_REACTIONS, JSON.stringify(reactions));
+      StorageService.setItem(
+        STORAGE_REACTIONS,
+        JSON.stringify({
+          ...reactions,
+          reaction: ReactionEnum.none,
+        }),
+      );
       return;
     }
 
-    reactionToUpdate.reaction = reaction;
-    StorageService.setItem(STORAGE_REACTIONS, JSON.stringify(reactions));
+    StorageService.setItem(
+      STORAGE_REACTIONS,
+      JSON.stringify({
+        ...reactions,
+        reaction,
+      }),
+    );
   }
 
   public static clearAll(): void {

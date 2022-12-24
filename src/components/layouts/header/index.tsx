@@ -8,7 +8,7 @@ interface IHeaderProps {
   activeScreen: ScreenEnum;
 }
 
-export const Header = ({ updateScreen, activeScreen }: IHeaderProps): ReactElement => {
+export const Header = ({ updateScreen, activeScreen }: Readonly<IHeaderProps>): ReactElement => {
   return (
     <header className="w-full">
       <Logo />
