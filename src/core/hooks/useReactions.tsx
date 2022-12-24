@@ -1,19 +1,20 @@
-import { IReactions, MusicService, ReactionEnum } from '@/services/MusicService';
+import type { IReactions } from '@/services/MusicService';
+import { MusicService, ReactionEnum } from '@/services/MusicService';
 import { useState } from 'react';
 
-type useReactionsResponse = {
+interface IUseReactionsResponse {
   onlyLikeMusic: string[];
   onlyDislikeMusic: string[];
-  updateReactions: (reaction: IReactions[]) => void;
-};
+  updateReactions: (reaction: Readonly<IReactions[]>) => void;
+}
 
-export const useReactions = (): useReactionsResponse => {
-  const [reactions, setReactions] = useState<IReactions[]>(MusicService.getReactions());
+export const useReactions = (): IUseReactionsResponse => {
+  const [reactions, setReactions] = useState<Readonly<IReactions[]>>(MusicService.getReactions());
 
   const onlyLikeMusic: string[] = [];
   const onlyDislikeMusic: string[] = [];
 
-  reactions.forEach((reaction: IReactions) => {
+  reactions.forEach((reaction: Readonly<IReactions>) => {
     if (reaction.reaction === ReactionEnum.like) {
       onlyLikeMusic.push(reaction.id);
     } else if (reaction.reaction === ReactionEnum.unlike) {
@@ -24,6 +25,6 @@ export const useReactions = (): useReactionsResponse => {
   return {
     onlyLikeMusic,
     onlyDislikeMusic,
-    updateReactions: (reaction: IReactions[]): void => setReactions(reaction),
+    updateReactions: (reaction: Readonly<IReactions[]>): void => setReactions(reaction),
   };
 };

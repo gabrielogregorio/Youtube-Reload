@@ -1,20 +1,20 @@
-import { ReactElement, ReactNode } from 'react';
+import type { ReactElement } from 'react';
 
-type ReactButtonProps = {
-  isSelected: boolean;
-  children: ReactNode;
-  variant: 'blue' | 'red';
-  sendReaction: () => void;
-};
+interface IReactButtonProps {
+  readonly isSelected: boolean;
+  readonly text: string;
+  readonly variant: 'blue' | 'red';
+  readonly sendReaction: () => void;
+}
 
-type defaultColorType = {
-  select: string;
-  unSelect: string;
-  normal: string;
-};
+interface IDefaultColorType {
+  readonly select: string;
+  readonly unSelect: string;
+  readonly normal: string;
+}
 
-export const ReactButton = ({ isSelected, children, variant, sendReaction }: ReactButtonProps): ReactElement => {
-  const variants: { [key in ReactButtonProps['variant']]: defaultColorType } = {
+export const ReactButton = ({ isSelected, text, variant, sendReaction }: Readonly<IReactButtonProps>): ReactElement => {
+  const variants: { [key in IReactButtonProps['variant']]: IDefaultColorType } = {
     blue: {
       select: 'bg-blue text-white',
       unSelect: 'text-blue bg-dark-dark',
@@ -27,7 +27,7 @@ export const ReactButton = ({ isSelected, children, variant, sendReaction }: Rea
     },
   };
 
-  const styleVariant: defaultColorType = variants[variant];
+  const styleVariant: IDefaultColorType = variants[variant];
   return (
     <button
       type="button"
@@ -35,7 +35,7 @@ export const ReactButton = ({ isSelected, children, variant, sendReaction }: Rea
       className={`text-[0.9rem] py-[10px] px-[15px] cursor-pointer bg-transparent transition-all duration-150 border-2 rounded-xl ${
         styleVariant.normal
       } ${isSelected ? styleVariant.select : styleVariant.unSelect}`}>
-      {children}
+      {text}
     </button>
   );
 };

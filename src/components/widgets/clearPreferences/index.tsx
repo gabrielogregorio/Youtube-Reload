@@ -1,5 +1,5 @@
 import { MusicService } from '@/services/MusicService';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import { BsFillTrashFill } from 'react-icons/bs';
 
 export const ClearPreferences = (): ReactElement => {

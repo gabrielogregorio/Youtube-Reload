@@ -11,13 +11,14 @@
   "extends": ["plugin:react/recommended", "airbnb", "plugin:prettier/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "project": "./tsconfig.json",
     "ecmaFeatures": {
       "jsx": true
     },
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "spellcheck", "sonarjs", "import", "@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "react", "spellcheck", "sonarjs", "import", "no-null"],
   "settings": {
     "import/resolver": {
       "typescript": {}
@@ -47,6 +48,27 @@
     "no-unreachable": "error",
     "no-magic-numbers": ["error", { "ignore": [-1, 0, 1] }],
     "@typescript-eslint/no-redeclare": "error",
+    "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/ban-types": "error",
+    "@typescript-eslint/consistent-type-assertions": "error",
+    "@typescript-eslint/consistent-type-definitions": "error",
+    "@typescript-eslint/no-unsafe-return": "error",
+    "@typescript-eslint/no-useless-empty-export": "error",
+    "@typescript-eslint/ban-tslint-comment": "error",
+    "@typescript-eslint/no-unsafe-argument": "error",
+    "@typescript-eslint/no-var-requires": "error",
+    "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
+    "@typescript-eslint/no-unnecessary-condition": "error",
+    "@typescript-eslint/consistent-type-exports": "error",
+    "@typescript-eslint/no-unsafe-assignment": "error",
+    "@typescript-eslint/no-unsafe-call": "error",
+    "@typescript-eslint/explicit-member-accessibility": "error",
+    "@typescript-eslint/no-non-null-assertion": "error",
+    "@typescript-eslint/prefer-readonly": ["error"],
+    "@typescript-eslint/prefer-readonly-parameter-types": ["error"],
+    "no-null/no-null": ["error"],
+    "@typescript-eslint/no-confusing-non-null-assertion": "error",
+    "@typescript-eslint/no-floating-promises": ["error"],
     "@typescript-eslint/naming-convention": [
       "error",
       {
@@ -74,7 +96,7 @@
         "templates": false,
         "identifiers": true,
         "lang": "en_US",
-        "skipWords": ["youtube", "enum", "unlikes", "checkbox", "fieldset"],
+        "skipWords": ["youtube", "enum", "unlikes", "checkbox", "fieldset", "readonly"],
         "minLength": 3
       }
     ],

@@ -1,6 +1,11 @@
-import { ReactElement, ReactNode } from 'react';
+import type { ReactElement } from 'react';
 
-const Checkbox = ({ label, id }: { label: string; id: string }): ReactElement => {
+interface ICheckboxProps {
+  label: string;
+  id: string;
+}
+
+const Checkbox = ({ label, id }: Readonly<ICheckboxProps>): ReactElement => {
   return (
     <label className="inline-flex items-center cursor-pointer text-base" htmlFor={id}>
       <input
@@ -14,7 +19,12 @@ const Checkbox = ({ label, id }: { label: string; id: string }): ReactElement =>
   );
 };
 
-const FieldsetFilter = ({ title, children }: { title: string; children: ReactNode }): ReactElement => {
+interface IFieldsetFilterProps {
+  readonly title: string;
+  readonly children: Readonly<ReactElement>;
+}
+
+const FieldsetFilter = ({ title, children }: Readonly<IFieldsetFilterProps>): ReactElement => {
   return (
     <fieldset className="mx-3">
       <legend>
@@ -31,9 +41,11 @@ export const Filters = (): ReactElement => {
       <div className="flex justify-center">
         <form action="" method="post">
           <FieldsetFilter title="Métricas">
-            <Checkbox label="Mostrar Views" id="filter-2019" />
-            <Checkbox label="Mostrar Likes" id="filter-aaa" />
-            <Checkbox id="filter-2bbbbb" label="Mostrar Comentários" />
+            <>
+              <Checkbox label="Mostrar Views" id="filter-2019" />
+              <Checkbox label="Mostrar Likes" id="filter-aaa" />
+              <Checkbox id="filter-2bbbbb" label="Mostrar Comentários" />
+            </>
           </FieldsetFilter>
 
           <FieldsetFilter title="Técnicos">
@@ -41,8 +53,10 @@ export const Filters = (): ReactElement => {
           </FieldsetFilter>
 
           <FieldsetFilter title="Sobre">
-            <Checkbox id="filter-20eee" label="Mostrar Categoria" />
-            <Checkbox id="filter-20fff" label="Mostrar Autores" />
+            <>
+              <Checkbox id="filter-20eee" label="Mostrar Categoria" />
+              <Checkbox id="filter-20fff" label="Mostrar Autores" />
+            </>
           </FieldsetFilter>
         </form>
       </div>

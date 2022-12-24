@@ -1,10 +1,10 @@
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
-type generatePlaylistProps = {
+interface IGeneratePlaylistProps {
   generateRandomPlaylist: () => void;
-};
+}
 
-export const GeneratePlaylist = ({ generateRandomPlaylist }: generatePlaylistProps): ReactElement => {
+export const GeneratePlaylist = ({ generateRandomPlaylist }: Readonly<IGeneratePlaylistProps>): ReactElement => {
   return (
     <button
       className="display-block m-auto text-white bg-blue-dark px-8 py-4 rounded-xl cursor-pointer duration-[0.2s] text-[1.2rem] hover:bg-blue-darker"

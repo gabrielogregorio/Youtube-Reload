@@ -1,14 +1,14 @@
-import { ScreenEnum } from '@/contracts/homeScreens';
+import type { ScreenEnum } from '@/contracts/homeScreens';
 import { Logo } from '@/layouts/logo';
 import { Navbar } from '@/layouts/navbar';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
-type HeaderProps = {
+interface IHeaderProps {
   updateScreen: (index: ScreenEnum) => void;
   activeScreen: ScreenEnum;
-};
+}
 
-export const Header = ({ updateScreen, activeScreen }: HeaderProps): ReactElement => {
+export const Header = ({ updateScreen, activeScreen }: Readonly<IHeaderProps>): ReactElement => {
   return (
     <header className="w-full">
       <Logo />

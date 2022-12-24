@@ -1,10 +1,10 @@
-import type { ReactElement, ReactNode } from 'react';
+import type { ReactElement } from 'react';
 
 interface ITemplateDefaultProps {
-  children: ReactNode;
+  readonly children: Readonly<ReactElement>;
 }
 
-export const TemplateDefault = ({ children }: ITemplateDefaultProps): ReactElement => {
+export const TemplateDefault = ({ children }: Readonly<ITemplateDefaultProps>): ReactElement => {
   return (
     <div className="mt-[60px] mb-96" id="base">
       <main>{children}</main>

@@ -1,16 +1,21 @@
-import { IMusicWithTransformation } from '@/contracts/musics';
+import type { IMusicWithTransformation } from '@/contracts/musics';
 import { ReactionEnum } from '@/services/MusicService';
 import { ReactButton } from '@/widgets/card/reactButton';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
-type CardProps = {
-  playlistLocal: IMusicWithTransformation;
-  sendReaction: (idContent: string, reaction: ReactionEnum) => void;
-  onlyLikeMusic: string[];
-  onlyDislikeMusic: string[];
-};
+interface ICardProps {
+  readonly playlistLocal: Readonly<IMusicWithTransformation>;
+  readonly sendReaction: (idContent: string, reaction: ReactionEnum) => void;
+  readonly onlyLikeMusic: Readonly<string[]>;
+  readonly onlyDislikeMusic: Readonly<string[]>;
+}
 
-export const Card = ({ playlistLocal, sendReaction, onlyDislikeMusic, onlyLikeMusic }: CardProps): ReactElement => {
+export const Card = ({
+  playlistLocal,
+  sendReaction,
+  onlyDislikeMusic,
+  onlyLikeMusic,
+}: Readonly<ICardProps>): ReactElement => {
   return (
     <div
       key={playlistLocal.url}
@@ -57,16 +62,16 @@ export const Card = ({ playlistLocal, sendReaction, onlyDislikeMusic, onlyLikeMu
           <ReactButton
             variant="red"
             sendReaction={(): void => sendReaction(playlistLocal.id, ReactionEnum.like)}
-            isSelected={onlyLikeMusic.includes(playlistLocal.id)}>
-            Gostei
-          </ReactButton>
+            isSelected={onlyLikeMusic.includes(playlistLocal.id)}
+            text="Gostei"
+          />
 
           <ReactButton
             variant="blue"
             sendReaction={(): void => sendReaction(playlistLocal.id, ReactionEnum.unlike)}
-            isSelected={onlyDislikeMusic.includes(playlistLocal.id)}>
-            ignorar
-          </ReactButton>
+            isSelected={onlyDislikeMusic.includes(playlistLocal.id)}
+            text="ignorar"
+          />
         </div>
       </div>
     </div>

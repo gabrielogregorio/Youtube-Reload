@@ -9,8 +9,8 @@ export enum ReactionEnum {
 }
 
 export interface IReactions {
-  id: string;
-  reaction: ReactionEnum;
+  readonly id: string;
+  readonly reaction: ReactionEnum;
 }
 
 export const initializeAndGetReactions = (): IReactions[] => {
@@ -25,11 +25,11 @@ export const initializeAndGetReactions = (): IReactions[] => {
 };
 
 export class MusicService {
-  static getReactions(): IReactions[] {
+  public static getReactions(): IReactions[] {
     return initializeAndGetReactions();
   }
 
-  static sendReactions(idContent: string, reaction: ReactionEnum): void {
+  public static sendReactions(idContent: string, reaction: ReactionEnum): void {
     const reactions: IReactions[] = initializeAndGetReactions();
     const reactionToUpdate: IReactions | undefined = reactions.find(
       (reactionLocal: IReactions) => reactionLocal.id === idContent,
@@ -46,16 +46,26 @@ export class MusicService {
 
     const reactIsEqualOldReaction: boolean = reactionToUpdate.reaction === reaction;
     if (reactIsEqualOldReaction) {
-      reactionToUpdate.reaction = ReactionEnum.none;
-      StorageService.setItem(STORAGE_REACTIONS, JSON.stringify(reactions));
+      StorageService.setItem(
+        STORAGE_REACTIONS,
+        JSON.stringify({
+          ...reactions,
+          reaction: ReactionEnum.none,
+        }),
+      );
       return;
     }
 
-    reactionToUpdate.reaction = reaction;
-    StorageService.setItem(STORAGE_REACTIONS, JSON.stringify(reactions));
+    StorageService.setItem(
+      STORAGE_REACTIONS,
+      JSON.stringify({
+        ...reactions,
+        reaction,
+      }),
+    );
   }
 
-  static clearAll(): void {
+  public static clearAll(): void {
     localStorage.removeItem(STORAGE_REACTIONS);
     document.location.reload();
   }
