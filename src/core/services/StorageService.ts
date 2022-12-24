@@ -14,7 +14,7 @@ export class StorageService {
       if (item === undefined) {
         throw new Error('item is undefined');
       }
-      return JSON.parse(item);
+      return JSON.parse(item) as T;
     } catch (error: unknown) {
       // eslint-disable-next-line no-console
       console.error('error on get and parse item in localstorage', error);

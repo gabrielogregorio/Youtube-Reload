@@ -1,13 +1,14 @@
-import { IReactions, MusicService, ReactionEnum } from '@/services/MusicService';
+import type { IReactions } from '@/services/MusicService';
+import { MusicService, ReactionEnum } from '@/services/MusicService';
 import { useState } from 'react';
 
-type useReactionsResponse = {
+interface IUseReactionsResponse {
   onlyLikeMusic: string[];
   onlyDislikeMusic: string[];
   updateReactions: (reaction: IReactions[]) => void;
-};
+}
 
-export const useReactions = (): useReactionsResponse => {
+export const useReactions = (): IUseReactionsResponse => {
   const [reactions, setReactions] = useState<IReactions[]>(MusicService.getReactions());
 
   const onlyLikeMusic: string[] = [];

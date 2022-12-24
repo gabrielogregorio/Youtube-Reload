@@ -1,13 +1,13 @@
 import { ScreenEnum } from '@/contracts/homeScreens';
 import { NavbarItem } from '@/layouts/navbar/navbarItem';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
-type NavbarProps = {
+interface INavbarProps {
   updateScreen: (index: ScreenEnum) => void;
   activeScreen: ScreenEnum;
-};
+}
 
-export const Navbar = ({ updateScreen, activeScreen }: NavbarProps): ReactElement => {
+export const Navbar = ({ updateScreen, activeScreen }: INavbarProps): ReactElement => {
   return (
     <nav className="w-full flex items-center justify-center">
       <NavbarItem isActive={activeScreen === ScreenEnum.home} onClick={(): void => updateScreen(ScreenEnum.home)}>

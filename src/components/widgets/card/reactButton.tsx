@@ -1,20 +1,20 @@
-import { ReactElement, ReactNode } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 
-type ReactButtonProps = {
+interface IReactButtonProps {
   isSelected: boolean;
   children: ReactNode;
   variant: 'blue' | 'red';
   sendReaction: () => void;
-};
+}
 
-type defaultColorType = {
+interface IDefaultColorType {
   select: string;
   unSelect: string;
   normal: string;
-};
+}
 
-export const ReactButton = ({ isSelected, children, variant, sendReaction }: ReactButtonProps): ReactElement => {
-  const variants: { [key in ReactButtonProps['variant']]: defaultColorType } = {
+export const ReactButton = ({ isSelected, children, variant, sendReaction }: IReactButtonProps): ReactElement => {
+  const variants: { [key in IReactButtonProps['variant']]: IDefaultColorType } = {
     blue: {
       select: 'bg-blue text-white',
       unSelect: 'text-blue bg-dark-dark',
@@ -27,7 +27,7 @@ export const ReactButton = ({ isSelected, children, variant, sendReaction }: Rea
     },
   };
 
-  const styleVariant: defaultColorType = variants[variant];
+  const styleVariant: IDefaultColorType = variants[variant];
   return (
     <button
       type="button"

@@ -19,7 +19,7 @@
     "preview": "vite preview",
     "clear": "rm -rf build coverage",
     "check": "tsc -p .",
-    "lint": "eslint -c ./.eslintrc.json --ext '.ts' 'src/**'",
+    "lint": "eslint -c ./.eslintrc.json --ext '.tsx,.ts' 'src/**' --fix",
     "prepare": "husky install",
     "format": "prettier src/* --write"
   },

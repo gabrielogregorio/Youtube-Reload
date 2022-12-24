@@ -1,16 +1,16 @@
-import { IMusicWithTransformation } from '@/contracts/musics';
+import type { IMusicWithTransformation } from '@/contracts/musics';
 import { ReactionEnum } from '@/services/MusicService';
 import { ReactButton } from '@/widgets/card/reactButton';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
-type CardProps = {
+interface ICardProps {
   playlistLocal: IMusicWithTransformation;
   sendReaction: (idContent: string, reaction: ReactionEnum) => void;
   onlyLikeMusic: string[];
   onlyDislikeMusic: string[];
-};
+}
 
-export const Card = ({ playlistLocal, sendReaction, onlyDislikeMusic, onlyLikeMusic }: CardProps): ReactElement => {
+export const Card = ({ playlistLocal, sendReaction, onlyDislikeMusic, onlyLikeMusic }: ICardProps): ReactElement => {
   return (
     <div
       key={playlistLocal.url}

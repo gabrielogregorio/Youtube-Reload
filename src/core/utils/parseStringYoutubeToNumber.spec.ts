@@ -1,5 +1,5 @@
 export const parseFunction = (value: string): number | null => {
-  const valueToUse: string = value?.toLowerCase() || '';
+  const valueToUse: string = value.toLowerCase() || '';
 
   if (valueToUse.endsWith('b')) {
     return Number(valueToUse.slice(0, valueToUse.length - 1)) * 1000000000;

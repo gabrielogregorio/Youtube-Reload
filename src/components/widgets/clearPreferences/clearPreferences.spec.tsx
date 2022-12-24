@@ -1,6 +1,7 @@
 import { MusicService } from '@/services/MusicService';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { SpyInstance, vi } from 'vitest';
+import type { SpyInstance } from 'vitest';
+import { vi } from 'vitest';
 import { ClearPreferences } from '.';
 
 describe('<ClearPreferences />', () => {

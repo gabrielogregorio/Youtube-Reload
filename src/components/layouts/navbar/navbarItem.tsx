@@ -1,12 +1,12 @@
-import { ReactElement, ReactNode } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 
-type NavbarItemProps = {
+interface INavbarItemProps {
   children: ReactNode;
   isActive: boolean;
   onClick: () => void;
-};
+}
 
-export const NavbarItem = ({ children, onClick, isActive }: NavbarItemProps): ReactElement => {
+export const NavbarItem = ({ children, onClick, isActive }: INavbarItemProps): ReactElement => {
   const styleOnActive: string = isActive ? 'border-red' : 'border-transparent';
 
   return (

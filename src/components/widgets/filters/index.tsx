@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 
 const Checkbox = ({ label, id }: { label: string; id: string }): ReactElement => {
   return (
