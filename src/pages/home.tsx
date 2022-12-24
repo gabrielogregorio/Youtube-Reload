@@ -8,9 +8,6 @@ import { ClearPreferences } from '@/widgets/clearPreferences';
 // import { Filters } from '@/widgets/filters';
 import { GeneratePlaylist } from '@/widgets/generatePlaylists';
 // import { FiFilter } from 'react-icons/fi';
-import { BiRefresh } from 'react-icons/bi';
-import { BsBookmarkCheckFill } from 'react-icons/bs';
-import { AiOutlineArrowUp } from 'react-icons/ai';
 import type { IMusic, IMusicWithTransformation } from '@/contracts/musics';
 import { ScreenEnum } from '@/contracts/homeScreens';
 import { parseToYoutubeContent } from '@/utils/parseToYoutubeContent';
@@ -18,6 +15,7 @@ import { useFetchAllMusics } from '@/hooks/useFetchAllMusics';
 import { TemplateDefault } from '@/templates/default';
 import { Header } from '@/layouts/header';
 import { generateRandomPositiveZeroOrNegative } from '@/utils/generators';
+import { LateralButtons } from '@/widgets/lateralButtons';
 
 interface IGetMusicAvailableWithFilters {
   ignoreLikes: boolean;
@@ -31,7 +29,6 @@ export const HomePage = (): ReactElement => {
   const [randomPlaylist, setRandomPlaylist] = useState<IMusic[]>([]);
   const { onlyDislikeMusic, onlyLikeMusic, updateReactions } = useReactions();
   const [activeScreen, setActiveScreen] = useState<ScreenEnum>(ScreenEnum.home);
-  const [causeUpdateFixMeAfterTest, setCauseUpdateFixMeAfterTest] = useState<boolean>(true);
   const { data } = useFetchAllMusics();
 
   const getMusicAvailableWithFilters = ({
@@ -89,7 +86,6 @@ export const HomePage = (): ReactElement => {
       .slice(0, maxItemsPlaylist);
 
     setRandomPlaylist(dataSorted);
-    setCauseUpdateFixMeAfterTest((prev: boolean) => !prev);
   };
   const sendReaction = (idContent: string, reaction: ReactionEnum): void => {
     MusicService.sendReactions(idContent, reaction);
@@ -99,7 +95,6 @@ export const HomePage = (): ReactElement => {
   return (
     <TemplateDefault>
       <>
-        <div className="hidden">{causeUpdateFixMeAfterTest}</div>
         <Header updateScreen={updateScreen} activeScreen={activeScreen} />
 
         <section className="w-full mb-6">
@@ -172,52 +167,7 @@ export const HomePage = (): ReactElement => {
 
         <div className="h-16" />
 
-        <section>
-          <div className="fixed bottom-[10rem] right-6">
-            <button
-              onClick={(): void => {
-                window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                });
-              }}
-              type="button"
-              title="Ir para cima"
-              className="bg-dark-light text-white p-3 rounded-full transition-all duration-150 shadow-xl hover:bg-dark-light md:hover:scale-110">
-              <AiOutlineArrowUp className="text-2xl" />
-            </button>
-          </div>
-
-          <div className="fixed bottom-[6rem] right-6">
-            <button
-              onClick={(): void => {
-                window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                });
-
-                updateScreen(ScreenEnum.likes);
-              }}
-              type="button"
-              title="ir para favoritos"
-              className="bg-red text-white p-3 rounded-full transition-all duration-150 shadow-xl hover:bg-red md:hover:scale-110">
-              <BsBookmarkCheckFill className="text-2xl" />
-            </button>
-          </div>
-
-          <div className="fixed bottom-[2rem] right-6">
-            <button
-              onClick={(): void => {
-                updateScreen(ScreenEnum.home);
-                generateRandomPlaylist();
-              }}
-              type="button"
-              title="gerar nova playlist"
-              className="bg-blue-dark text-white p-3 rounded-full transition-all duration-150 shadow-xl hover:bg-blue-darker md:hover:scale-110">
-              <BiRefresh className="text-2xl" />
-            </button>
-          </div>
-        </section>
+        <LateralButtons updateScreen={updateScreen} generateRandomPlaylist={generateRandomPlaylist} />
       </>
     </TemplateDefault>
   );

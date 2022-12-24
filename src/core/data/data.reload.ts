@@ -4,6 +4,7 @@ import type { IMusic } from '@/contracts/musics';
 export enum CategoryEnum {
   'reload' = 'reload',
   'available' = 'available',
+  'error' = 'error',
 }
 
 export const dataMusic: IMusic[] = [

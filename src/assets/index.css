@@ -8,11 +8,16 @@
   font-weight: 1 999;
 }
 
+@font-face {
+  font-family: 'RubikVinyl';
+  src: url('./fonts/Rubik_Vinyl/RubikVinyl-Regular.ttf') format('ttf');
+  font-weight: 400;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Outfit', sans-serif;
   font-weight: 500;
   line-height: 1.5;
   color: #fbfbfe;
