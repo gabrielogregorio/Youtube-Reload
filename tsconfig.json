@@ -18,6 +18,7 @@
     "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
+      "@/base/*": ["src/components/base/*"],
       "@/layouts/*": ["src/components/layouts/*"],
       "@/screens/*": ["src/components/screens/*"],
       "@/templates/*": ["src/components/templates/*"],

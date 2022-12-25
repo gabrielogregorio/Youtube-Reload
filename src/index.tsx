@@ -3,14 +3,25 @@ import ReactDOM from 'react-dom/client';
 import './assets/index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HomePage } from '@/pages/home';
+import { AllPage } from '@/pages/all';
+import { Provider } from 'react-redux';
+import { store } from '@/connections/store';
+import { ScreenEnum } from '@/contracts/homeScreens';
+import { LikesPage } from '@/pages/likes';
+import { UnlikesPage } from '@/pages/unlikes';
 
 const root: ReactDOM.Root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/youtube-reload" element={<HomePage />} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path={ScreenEnum.home} element={<HomePage />} />
+          <Route path={ScreenEnum.all} element={<AllPage />} />
+          <Route path={ScreenEnum.likes} element={<LikesPage />} />
+          <Route path={ScreenEnum.unlikes} element={<UnlikesPage />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
 );

@@ -1,12 +1,13 @@
 /* eslint-disable max-lines */
-import type { IMusic } from '@/contracts/musics';
+import type { IMusicApi } from '@/contracts/musics';
 
 export enum CategoryEnum {
   'reload' = 'reload',
   'available' = 'available',
+  'error' = 'error',
 }
 
-export const dataMusic: IMusic[] = [
+export const dataMusic: IMusicApi[] = [
   {
     artist: 'Regina Spektor',
     title: 'Us',
@@ -234,7 +235,7 @@ export const dataMusic: IMusic[] = [
     year: 1997,
     category: CategoryEnum.reload,
     views: '1.1b',
-    likes: '6.8k',
+    likes: '6.8m',
     comments: '370k',
     durationInSeconds: 3.21,
   },
@@ -575,7 +576,7 @@ export const dataMusic: IMusic[] = [
     year: 2015,
     category: CategoryEnum.reload,
     views: '1.3b',
-    likes: '10k',
+    likes: '10m',
     comments: '312k',
     durationInSeconds: 3.45,
   },
@@ -695,7 +696,7 @@ export const dataMusic: IMusic[] = [
     id: 'fUYaosyR4bE',
     year: 2009,
     category: CategoryEnum.reload,
-    views: '1M',
+    views: '105M',
     likes: '600k',
     comments: '29k',
     durationInSeconds: 3.5,
@@ -785,7 +786,7 @@ export const dataMusic: IMusic[] = [
     category: CategoryEnum.reload,
     views: '1.2M',
     likes: '21k',
-    comments: '',
+    comments: '69',
     durationInSeconds: 2.52,
   },
   {
@@ -1164,7 +1165,7 @@ export const dataMusic: IMusic[] = [
     year: 2003,
     category: CategoryEnum.reload,
     views: '658m',
-    likes: '3.1',
+    likes: '3.1m',
     comments: '65k',
     durationInSeconds: 3.56,
   },

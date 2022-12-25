@@ -1,21 +1,45 @@
 import type { CategoryEnum } from '@/data/data.reload';
 
+export interface IMusicApi {
+  year: number;
+  artist: string;
+  id: string;
+  title: string;
+  durationInSeconds: number;
+  category: CategoryEnum;
+  views: string;
+  minuteToSkipIntroduction?: number;
+  comments: string;
+  likes: string;
+}
+
 export interface IMusic {
-  readonly year: number;
-  readonly artist: string;
-  readonly id: string;
-  readonly title: string;
-  readonly durationInSeconds: number;
-  readonly category: CategoryEnum;
-  readonly views: string;
-  readonly minuteToSkipIntroduction?: number;
-  readonly comments: string;
-  readonly likes: string;
+  year: number;
+  artist: string;
+  id: string;
+  title: string;
+  durationInSeconds: number;
+  category: CategoryEnum;
+  minuteToSkipIntroduction?: number;
+
+  viewsAsString: string;
+  views: number;
+
+  commentsAsString: string;
+  comments: number;
+
+  likesAsString: string;
+  likes: number;
+
+  approval: number;
+  approvalComments: number;
+
+  searchStringNormalized: string;
 }
 
 interface ITransformedType extends IMusic {
-  readonly img: string;
-  readonly url: string;
+  img: string;
+  url: string;
 }
 
 export interface IMusicWithTransformation extends ITransformedType {}

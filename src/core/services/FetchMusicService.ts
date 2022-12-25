@@ -1,8 +1,15 @@
-import type { IMusic } from '@/contracts/musics';
-import { dataMusic } from '@/data/data.reload';
+import { MusicGetAllAdapter } from '@/adapters/music/getAll';
+import type { IMusic, IMusicApi } from '@/contracts/musics';
+import { ApiReload } from '@/services/api/Reload';
 
 export class FetchMusicService {
   public static async fetch(): Promise<IMusic[]> {
-    return dataMusic;
+    return ApiReload.search('/musics', MusicGetAllAdapter.prepare({ id: 13 }))
+      .then((res: IMusicApi[]) => {
+        return MusicGetAllAdapter.convert(res);
+      })
+      .catch((error: unknown) => {
+        throw error;
+      });
   }
 }

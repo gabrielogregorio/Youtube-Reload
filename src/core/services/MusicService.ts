@@ -1,6 +1,6 @@
 import { StorageService } from '@/services/StorageService';
 
-const STORAGE_REACTIONS: string = 'reactions';
+const STORAGE_REACTIONS: string = 'reactions2';
 
 export enum ReactionEnum {
   'like' = 'like',
@@ -9,60 +9,28 @@ export enum ReactionEnum {
 }
 
 export interface IReactions {
-  readonly id: string;
-  readonly reaction: ReactionEnum;
+  id: string;
+  reaction: ReactionEnum;
 }
 
-export const initializeAndGetReactions = (): IReactions[] => {
-  const likes: IReactions[] | undefined = StorageService.getItemAndParse<IReactions[]>(STORAGE_REACTIONS);
-  const initializedReactions: IReactions[] = [];
+export interface IReactionsOptions {
+  [key: string]: IReactions;
+}
+
+export const initializeAndGetReactions = (): IReactionsOptions => {
+  const likes: IReactionsOptions | undefined = StorageService.getItemAndParse<IReactionsOptions>(STORAGE_REACTIONS);
 
   if (likes) {
     return likes;
   }
+  const initializedReactions: IReactionsOptions = {};
   StorageService.setItem(STORAGE_REACTIONS, JSON.stringify(initializedReactions));
   return initializedReactions;
 };
 
 export class MusicService {
-  public static getReactions(): IReactions[] {
+  public static getReactions(): IReactionsOptions {
     return initializeAndGetReactions();
-  }
-
-  public static sendReactions(idContent: string, reaction: ReactionEnum): void {
-    const reactions: IReactions[] = initializeAndGetReactions();
-    const reactionToUpdate: IReactions | undefined = reactions.find(
-      (reactionLocal: IReactions) => reactionLocal.id === idContent,
-    );
-
-    if (reactionToUpdate === undefined) {
-      reactions.push({
-        id: idContent,
-        reaction,
-      });
-      StorageService.setItem(STORAGE_REACTIONS, JSON.stringify(reactions));
-      return;
-    }
-
-    const reactIsEqualOldReaction: boolean = reactionToUpdate.reaction === reaction;
-    if (reactIsEqualOldReaction) {
-      StorageService.setItem(
-        STORAGE_REACTIONS,
-        JSON.stringify({
-          ...reactions,
-          reaction: ReactionEnum.none,
-        }),
-      );
-      return;
-    }
-
-    StorageService.setItem(
-      STORAGE_REACTIONS,
-      JSON.stringify({
-        ...reactions,
-        reaction,
-      }),
-    );
   }
 
   public static clearAll(): void {

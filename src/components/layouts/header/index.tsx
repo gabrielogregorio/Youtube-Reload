@@ -4,15 +4,14 @@ import { Navbar } from '@/layouts/navbar';
 import type { ReactElement } from 'react';
 
 interface IHeaderProps {
-  updateScreen: (index: ScreenEnum) => void;
   activeScreen: ScreenEnum;
 }
 
-export const Header = ({ updateScreen, activeScreen }: Readonly<IHeaderProps>): ReactElement => {
+export const Header = ({ activeScreen }: IHeaderProps): ReactElement => {
   return (
     <header className="w-full">
       <Logo />
-      <Navbar updateScreen={updateScreen} activeScreen={activeScreen} />
+      <Navbar activeScreen={activeScreen} />
     </header>
   );
 };

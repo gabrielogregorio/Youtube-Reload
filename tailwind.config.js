@@ -4,11 +4,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Helvetica', 'Arial', 'sans-serif'],
+        sans: ['Outfit', 'Arial', 'Helvetica', 'Roboto', 'sans-serif'],
+        cursive: ['RubikVinyl', 'sans-serif'],
         serif: ['Mukta'],
         mono: ['"Fira Code"', 'ui-monospace'],
         display: ['Oswald'],
-        body: ['"Open Sans"'],
       },
       colors: {
         'white-dark': '#ebebeb',
