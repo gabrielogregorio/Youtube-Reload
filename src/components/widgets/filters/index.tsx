@@ -5,7 +5,7 @@ interface ICheckboxProps {
   id: string;
 }
 
-const Checkbox = ({ label, id }: Readonly<ICheckboxProps>): ReactElement => {
+const Checkbox = ({ label, id }: ICheckboxProps): ReactElement => {
   return (
     <label className="inline-flex items-center cursor-pointer text-base" htmlFor={id}>
       <input
@@ -20,11 +20,11 @@ const Checkbox = ({ label, id }: Readonly<ICheckboxProps>): ReactElement => {
 };
 
 interface IFieldsetFilterProps {
-  readonly title: string;
-  readonly children: Readonly<ReactElement>;
+  title: string;
+  children: ReactElement;
 }
 
-const FieldsetFilter = ({ title, children }: Readonly<IFieldsetFilterProps>): ReactElement => {
+const FieldsetFilter = ({ title, children }: IFieldsetFilterProps): ReactElement => {
   return (
     <fieldset className="mx-3">
       <legend>

@@ -1,19 +1,19 @@
 import type { ReactElement } from 'react';
 
 interface IReactButtonProps {
-  readonly isSelected: boolean;
-  readonly text: string;
-  readonly variant: 'blue' | 'red';
-  readonly sendReaction: () => void;
+  isSelected: boolean;
+  text: string;
+  variant: 'blue' | 'red';
+  sendReaction: () => void;
 }
 
 interface IDefaultColorType {
-  readonly select: string;
-  readonly unSelect: string;
-  readonly normal: string;
+  select: string;
+  unSelect: string;
+  normal: string;
 }
 
-export const ReactButton = ({ isSelected, text, variant, sendReaction }: Readonly<IReactButtonProps>): ReactElement => {
+export const ReactButton = ({ isSelected, text, variant, sendReaction }: IReactButtonProps): ReactElement => {
   const variants: { [key in IReactButtonProps['variant']]: IDefaultColorType } = {
     blue: {
       select: 'bg-blue text-white',

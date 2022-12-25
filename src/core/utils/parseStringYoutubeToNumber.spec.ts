@@ -1,23 +1,4 @@
-export const parseFunction = (value: string): number | undefined => {
-  const valueToUse: string = value.toLowerCase() || '';
-
-  if (valueToUse.endsWith('b')) {
-    return Number(valueToUse.slice(0, valueToUse.length - 1)) * 1000000000;
-  }
-  if (valueToUse.endsWith('m')) {
-    return Number(valueToUse.slice(0, valueToUse.length - 1)) * 1000000;
-  }
-
-  if (valueToUse.endsWith('k')) {
-    return Number(valueToUse.slice(0, valueToUse.length - 1)) * 1000;
-  }
-
-  if (Number(valueToUse)) {
-    return Number(valueToUse);
-  }
-
-  return undefined;
-};
+import { parseFunction } from '@/utils/parseFunction';
 
 describe('Curl Request', () => {
   it('should convert bilion', () => {

@@ -1,7 +1,6 @@
 import type { ReactElement } from 'react';
 import { useEffect } from 'react';
 import { ClearPreferences } from '@/widgets/clearPreferences';
-import { GeneratePlaylist } from '@/widgets/generatePlaylists';
 import { ScreenEnum } from '@/contracts/homeScreens';
 import { TemplateDefault } from '@/templates/default';
 import { Header } from '@/layouts/header';
@@ -9,12 +8,9 @@ import { LateralButtons } from '@/widgets/lateralButtons';
 import { useMusicApplyFilters } from '@/hooks/useMusicApplyFilters';
 import { Cards } from '@/widgets/cards';
 
-export const HomePage = (): ReactElement => {
+export const FavoritesPage = (): ReactElement => {
   const { filtered, applyFilters, data } = useMusicApplyFilters({
-    random: true,
-    limit: 8,
-    ignoreLikes: true,
-    ignoreUnlikes: true,
+    onlyLikes: true,
   });
 
   useEffect(() => {
@@ -24,7 +20,7 @@ export const HomePage = (): ReactElement => {
   return (
     <TemplateDefault>
       <>
-        <Header activeScreen={ScreenEnum.home} />
+        <Header activeScreen={ScreenEnum.likes} />
 
         <section className="w-full mb-6">
           <h2 className="max-w-[620px] w-full m-auto text-center py-[40px] px-[2%] text-base md:text-[1.2rem]">
@@ -39,10 +35,6 @@ export const HomePage = (): ReactElement => {
             <Cards cards={filtered} />
           </section>
         </div>
-
-        <section className="w-full flex justify-center items-center py-[40px]">
-          <GeneratePlaylist generateRandomPlaylist={applyFilters} />
-        </section>
 
         <div className="h-16" />
 

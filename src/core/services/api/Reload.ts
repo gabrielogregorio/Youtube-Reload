@@ -1,8 +1,8 @@
-import type { IMusic } from '@/contracts/musics';
+import type { IMusicApi } from '@/contracts/musics';
 import { dataMusic } from '@/data/data.reload';
 
 export class ApiReload {
-  public static async search(url: string, params: unknown): Promise<IMusic[]> {
+  public static async search(url: string, params: unknown): Promise<IMusicApi[]> {
     // eslint-disable-next-line no-console
     console.log(url, params);
     return dataMusic;

@@ -13,20 +13,14 @@ const variantLateralButtonStyle: { [key in LateralButtonEnum]: string } = {
 };
 
 interface ILateralButtonProps {
-  readonly title: string;
-  readonly icon: Readonly<ReactElement>;
-  readonly action: () => void;
-  readonly variant: LateralButtonEnum;
-  readonly bottomPosition: string;
+  title: string;
+  icon: ReactElement;
+  action: () => void;
+  variant: LateralButtonEnum;
+  bottomPosition: string;
 }
 
-export const LateralButton = ({
-  title,
-  icon,
-  action,
-  variant,
-  bottomPosition,
-}: Readonly<ILateralButtonProps>): ReactElement => {
+export const LateralButton = ({ title, icon, action, variant, bottomPosition }: ILateralButtonProps): ReactElement => {
   const styleVariant: string = variantLateralButtonStyle[variant] || '';
 
   return (

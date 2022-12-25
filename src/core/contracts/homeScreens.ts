@@ -1,6 +1,6 @@
 export enum ScreenEnum {
-  'home' = 'home',
-  'all' = 'all',
-  'likes' = 'likes',
-  'unlikes' = 'unlikes',
+  'home' = '/youtube-reload',
+  'all' = '/youtube-reload/all',
+  'likes' = '/youtube-reload/likes',
+  'unlikes' = '/youtube-reload/unlikes',
 }

@@ -1,4 +1,3 @@
-import { ScreenEnum } from '@/contracts/homeScreens';
 import { moveToTop } from '@/utils/scroll';
 import { LateralButton, LateralButtonEnum } from '@/widgets/lateralButtons/buttons';
 import type { ReactElement } from 'react';
@@ -7,11 +6,10 @@ import { BiRefresh } from 'react-icons/bi';
 import { BsBookmarkCheckFill } from 'react-icons/bs';
 
 interface ILateralButtonsProps {
-  readonly updateScreen: (newScreen: ScreenEnum) => void;
-  readonly generateRandomPlaylist: () => void;
+  generateRandomPlaylist: () => void;
 }
 
-export const LateralButtons = ({ updateScreen, generateRandomPlaylist }: ILateralButtonsProps): ReactElement => {
+export const LateralButtons = ({ generateRandomPlaylist }: ILateralButtonsProps): ReactElement => {
   return (
     <section>
       <LateralButton
@@ -25,7 +23,7 @@ export const LateralButtons = ({ updateScreen, generateRandomPlaylist }: ILatera
       <LateralButton
         action={(): void => {
           moveToTop();
-          updateScreen(ScreenEnum.likes);
+          // updateScreen(ScreenEnum.likes);
         }}
         title="ir para favoritos"
         bottomPosition="bottom-[6rem]"
@@ -35,7 +33,7 @@ export const LateralButtons = ({ updateScreen, generateRandomPlaylist }: ILatera
 
       <LateralButton
         action={(): void => {
-          updateScreen(ScreenEnum.home);
+          // Router (ScreenEnum.home);
           generateRandomPlaylist();
         }}
         title="gerar nova playlist"
