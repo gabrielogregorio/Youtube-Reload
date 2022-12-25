@@ -59,22 +59,23 @@ export class MusicGetAllAdapter {
         title,
         durationInSeconds: Number(item?.durationInSeconds) || 0,
         category,
+        percentViewsLikesComments: calculatePercentage(),
 
-        views,
-        viewsAsString: String(item?.views || '').toString(),
-
-        minuteToSkipIntroduction: item?.minuteToSkipIntroduction,
-        comments,
-        commentsAsString: String(item?.comments || '').toString(),
-
-        likes,
-        likesAsString: String(item?.likes || '').toString(),
-
-        approval: calculatePercentage(),
-
-        approvalComments: Number(((comments * CEM_PERCENT) / likes).toFixed(QUANTITY_FACTORS)),
-
+        percentLikesComments: Number(((comments * CEM_PERCENT) / likes).toFixed(QUANTITY_FACTORS)),
         searchStringNormalized: createStringToSearch(`${year} ${artist} ${title}`),
+        minuteToSkipIntroduction: item?.minuteToSkipIntroduction,
+        views: {
+          total: views,
+          tag: String(item?.views || '').toString(),
+        },
+        comments: {
+          total: comments,
+          tag: String(item?.comments || '').toString(),
+        },
+        likes: {
+          total: likes,
+          tag: String(item?.likes || '').toString(),
+        },
       });
     });
 

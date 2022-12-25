@@ -10,6 +10,7 @@ import { SubTitleAndClear } from '@/widgets/SubTitleAndClear';
 
 export const LikesPage = (): ReactElement => {
   const { filtered, applyFilters, data } = useMusicApplyFilters({
+    random: true,
     onlyLikes: true,
   });
 

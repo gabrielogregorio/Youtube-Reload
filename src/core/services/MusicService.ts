@@ -1,6 +1,4 @@
-import { StorageService } from '@/services/StorageService';
-
-const STORAGE_REACTIONS: string = 'reactions2';
+import { StorageService, STORAGE_REACTIONS } from '@/services/StorageService';
 
 export enum ReactionEnum {
   'like' = 'like',

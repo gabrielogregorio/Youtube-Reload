@@ -2,12 +2,10 @@ import { useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/connections/store/useRedux';
 import type { IReactionsOptions } from '@/services/MusicService';
 import { MusicService, ReactionEnum } from '@/services/MusicService';
-import { StorageService } from '@/services/StorageService';
+import { StorageService, STORAGE_REACTIONS } from '@/services/StorageService';
 import { saveReaction } from '@/connections/features/reactions/slices';
 import { reactionsSelector } from '@/connections/features/reactions/selectors';
 import type { AppDispatch } from '@/connections/store';
-
-const STORAGE_REACTIONS: string = 'reactions2';
 
 interface IUseReactions {
   sendReaction: (idContent: string, reaction: ReactionEnum) => void;
