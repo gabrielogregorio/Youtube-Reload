@@ -13,7 +13,24 @@ export interface IMusicApi {
   likes: string;
 }
 
-export interface IMusic {
+export interface IMusicTags {
+  views: {
+    total: number;
+    tag: string;
+  };
+
+  comments: {
+    total: number;
+    tag: string;
+  };
+
+  likes: {
+    total: number;
+    tag: string;
+  };
+}
+
+export interface IMusic extends IMusicTags {
   year: number;
   artist: string;
   id: string;
@@ -21,19 +38,8 @@ export interface IMusic {
   durationInSeconds: number;
   category: CategoryEnum;
   minuteToSkipIntroduction?: number;
-
-  viewsAsString: string;
-  views: number;
-
-  commentsAsString: string;
-  comments: number;
-
-  likesAsString: string;
-  likes: number;
-
-  approval: number;
-  approvalComments: number;
-
+  percentViewsLikesComments: number;
+  percentLikesComments: number;
   searchStringNormalized: string;
 }
 

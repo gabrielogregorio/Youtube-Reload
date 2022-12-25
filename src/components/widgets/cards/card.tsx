@@ -64,29 +64,29 @@ export const Card = ({ playlistLocal, sendReaction, reaction, showExtra }: ICard
             <div className="text-sm flex justify-start items-center gap-2">
               <div className="flex items-center justify-start">
                 <AiOutlineEye className="text-[.7rem] mr-1" />
-                <div className="text-sm font-mono uppercase">{playlistLocal.viewsAsString}</div>
+                <div className="text-sm font-mono uppercase">{playlistLocal.views.tag}</div>
               </div>
 
               <div className="flex items-center justify-start">
                 <BiLike className="text-[.7rem] mr-1" />
-                <div className="text-sm font-mono uppercase">{playlistLocal.likesAsString}</div>
+                <div className="text-sm font-mono uppercase">{playlistLocal.likes.tag}</div>
               </div>
 
               <div className="flex items-center justify-start">
                 <BiCommentDetail className="text-[.7rem] mr-1" />
-                <div className="text-sm font-mono uppercase">{playlistLocal.commentsAsString}</div>
+                <div className="text-sm font-mono uppercase">{playlistLocal.comments.tag}</div>
               </div>
             </div>
 
             <div className="text-sm flex justify-start items-center gap-2">
               <div className="flex items-center justify-start">
                 <FaPercent className="text-[.7rem] mr-1" />
-                <div className="text-sm font-mono uppercase">{playlistLocal.approvalComments}</div>
+                <div className="text-sm font-mono uppercase">{playlistLocal.percentViewsLikesComments}</div>
               </div>
 
               <div className="flex items-center justify-start">
                 <FaDivide className="text-[.7rem] mr-1" />
-                <div className="text-sm font-mono uppercase underline">{playlistLocal.approval}</div>
+                <div className="text-sm font-mono uppercase underline">{playlistLocal.percentLikesComments}</div>
               </div>
             </div>
           </div>

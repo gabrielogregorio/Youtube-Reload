@@ -35,7 +35,7 @@ export const InputSearch = <T extends FieldValues>({
         id={name}
         name={name}
         ref={ref}
-        className="bg-transparent border-blue border rounded-lg focus:outline-none focus:border-red px-3 py-2 text-base placeholder:text-sm"
+        className="bg-transparent border-blue border rounded-lg focus:outline-none focus:border-red px-3 py-2 text-[0.7rem] placeholder:text-sm"
       />
     </label>
   );

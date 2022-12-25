@@ -1,4 +1,4 @@
-import type { IMusic, IMusicWithTransformation } from '@/contracts/musics';
+import type { IMusic, IMusicTags, IMusicWithTransformation } from '@/contracts/musics';
 import { useFetchAllMusics } from '@/hooks/useFetchAllMusics';
 import { useReactions } from '@/hooks/useReactions';
 import { ReactionEnum } from '@/services/MusicService';
@@ -13,6 +13,12 @@ const generateRandomPlaylist = (filtered: IMusic[]): IMusic[] => {
   return dataSorted;
 };
 
+interface IHasApplyStartAndEnd {
+  apply: boolean;
+  start: number;
+  end: number;
+}
+
 interface IUseMusicApplyFiltersInput {
   random?: boolean;
   offset?: number;
@@ -24,38 +30,14 @@ interface IUseMusicApplyFiltersInput {
   ignoreUnlikes?: boolean;
 
   textSearch?: string;
-  period?: {
-    apply: boolean;
-    startYear: number;
-    endYear: number;
-  };
-  likes?: {
-    apply: boolean;
-    start: number;
-    end: number;
-  };
-  comments?: {
-    apply: boolean;
-    start: number;
-    end: number;
-  };
-  views?: {
-    apply: boolean;
-    start: number;
-    end: number;
-  };
+  period?: IHasApplyStartAndEnd;
+  likes?: IHasApplyStartAndEnd;
+  comments?: IHasApplyStartAndEnd;
+  views?: IHasApplyStartAndEnd;
 
-  percent?: {
-    apply: boolean;
-    start: number;
-    end: number;
-  };
+  percent?: IHasApplyStartAndEnd;
 
-  approvalComments?: {
-    apply: boolean;
-    start: number;
-    end: number;
-  };
+  approvalComments?: IHasApplyStartAndEnd;
 }
 
 interface IUseMusicApplyFiltersOutput {
@@ -63,6 +45,42 @@ interface IUseMusicApplyFiltersOutput {
   applyFilters: () => void;
   data: IMusic[] | undefined;
 }
+
+const applyOffsetAndLimit = (offset: number, limit: number, filtered: IMusic[]): IMusic[] => {
+  return filtered.slice(offset, limit);
+};
+
+const applyTextFilter = (filtered: IMusic[], textSearch: string): IMusic[] => {
+  if (textSearch === '') {
+    return filtered;
+  }
+  const stringSearchNormalized: string = createStringToSearch(textSearch);
+  return filtered.filter((item: IMusic) => item.searchStringNormalized.includes(stringSearchNormalized));
+};
+
+const filterByNumber = (key: keyof IMusic, based: IHasApplyStartAndEnd, filtered: IMusic[]): IMusic[] => {
+  if (!based.apply) {
+    return filtered;
+  }
+  return filtered.filter(({ [key]: count }: IMusic) => {
+    if (count === undefined) {
+      return false;
+    }
+    return count >= based.start && count <= based.end;
+  });
+};
+
+const filterByTotalTag = (key: keyof IMusicTags, based: IHasApplyStartAndEnd, filtered: IMusic[]): IMusic[] => {
+  if (!based.apply) {
+    return filtered;
+  }
+  return filtered.filter(({ [key]: count }: IMusic) => {
+    if (!count.total) {
+      return false;
+    }
+    return count.total >= based.start && count.total <= based.end;
+  });
+};
 
 const LIMIT_FILTER: number = 500;
 
@@ -77,8 +95,8 @@ export const useMusicApplyFilters = ({
   textSearch = '',
   period = {
     apply: false,
-    startYear: 0,
-    endYear: 0,
+    start: 0,
+    end: 0,
   },
   likes = {
     apply: false,
@@ -115,7 +133,7 @@ export const useMusicApplyFilters = ({
       return;
     }
 
-    let filtered: IMusic[] = data;
+    let filtered: IMusic[] = [...data];
 
     if (random) {
       filtered = generateRandomPlaylist(filtered);
@@ -132,52 +150,22 @@ export const useMusicApplyFilters = ({
     if (onlyUnlikes) {
       filtered = filtered.filter((item: IMusic) => reactions?.[item.id]?.reaction === ReactionEnum.unlike);
     }
+
     if (ignoreUnlikes) {
       filtered = filtered.filter((item: IMusic) => reactions?.[item.id]?.reaction !== ReactionEnum.unlike);
     }
 
-    if (period.apply) {
-      filtered = filtered.filter(({ year: yearCount }: IMusic) => {
-        return yearCount >= period.startYear && yearCount <= period.endYear;
-      });
-    }
+    filtered = filterByTotalTag('likes', likes, filtered);
+    filtered = filterByTotalTag('comments', comments, filtered);
+    filtered = filterByTotalTag('views', views, filtered);
 
-    if (likes.apply) {
-      filtered = filtered.filter(({ likes: likesCounts }: IMusic) => {
-        return likesCounts >= likes.start && likesCounts <= likes.end;
-      });
-    }
+    filtered = filterByNumber('year', period, filtered);
+    filtered = filterByNumber('percentViewsLikesComments', percent, filtered);
+    filtered = filterByNumber('percentLikesComments', approvalComments, filtered);
 
-    if (comments.apply) {
-      filtered = filtered.filter(({ comments: commentsCounts }: IMusic) => {
-        return commentsCounts >= comments.start && commentsCounts <= comments.end;
-      });
-    }
+    filtered = applyTextFilter(filtered, textSearch);
 
-    if (views.apply) {
-      filtered = filtered.filter(({ views: ViewsComment }: IMusic) => {
-        return ViewsComment >= views.start && ViewsComment <= views.end;
-      });
-    }
-
-    if (percent.apply) {
-      filtered = filtered.filter(({ approval: PercentItems }: IMusic) => {
-        return PercentItems >= percent.start && PercentItems <= percent.end;
-      });
-    }
-
-    if (approvalComments.apply) {
-      filtered = filtered.filter(({ approvalComments: ApprovalComments }: IMusic) => {
-        return ApprovalComments >= approvalComments.start && ApprovalComments <= approvalComments.end;
-      });
-    }
-
-    if (textSearch) {
-      const stringSearchNormalized: string = createStringToSearch(textSearch);
-      filtered = filtered.filter((item: IMusic) => item.searchStringNormalized.includes(stringSearchNormalized));
-    }
-
-    filtered = filtered.slice(offset, limit);
+    filtered = applyOffsetAndLimit(offset, limit, filtered);
 
     setFilter(filtered);
   };

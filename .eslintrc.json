@@ -94,7 +94,7 @@
         "templates": false,
         "identifiers": true,
         "lang": "en_US",
-        "skipWords": ["youtube", "enum", "unlikes", "checkbox", "fieldset", "readonly"],
+        "skipWords": ["youtube", "enum", "unlikes", "checkbox", "fieldset", "readonly", "href"],
         "minLength": 3
       }
     ],
