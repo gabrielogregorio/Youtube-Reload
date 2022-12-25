@@ -13,7 +13,7 @@ export const TemplateDefault = ({ children }: ITemplateDefaultProps): ReactEleme
   //   setNotifyIsOpen((prev: boolean) => !prev);
   // };
   return (
-    <div className="mt-[60px]" id="base">
+    <div className="mt-[60px] relative" id="base">
       {/* <div className="relative w-full flex items-center justify-end">
         <div>
           <button

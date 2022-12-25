@@ -10,10 +10,11 @@ interface ICardProps {
   playlistLocal: IMusicWithTransformation;
   sendReaction: (idContent: string, reaction: ReactionEnum) => void;
   reaction: ReactionEnum;
+  openPlayer: (playlistLocal: IMusicWithTransformation) => void;
   showExtra: boolean;
 }
 
-export const Card = ({ playlistLocal, sendReaction, reaction, showExtra }: ICardProps): ReactElement => {
+export const Card = ({ playlistLocal, sendReaction, openPlayer, reaction, showExtra }: ICardProps): ReactElement => {
   return (
     <div
       key={playlistLocal.url}
@@ -33,14 +34,13 @@ export const Card = ({ playlistLocal, sendReaction, reaction, showExtra }: ICard
         <div className="flex-1 flex flex-col">
           <div>
             <p className="overflow-hidden text-ellipsis">
-              <a
-                target="_blank"
-                href={playlistLocal.url}
+              <button
+                type="button"
+                onClick={(): void => openPlayer(playlistLocal)}
                 title={playlistLocal.title}
-                rel="noreferrer"
-                className="text-[0.9rem] font-bold">
+                className="text-[0.9rem] text-left font-bold border-b-2 border-dark-dark hover:border-b-blue  text-white hover:text-blue px-1.5 transition-all duration-150">
                 {playlistLocal.title}
-              </a>
+              </button>
             </p>
           </div>
 
