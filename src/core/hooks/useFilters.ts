@@ -1,5 +1,5 @@
-import type { IDataViewType } from '@/mocks/filters';
-import { dataCommentLikeViews, dataPercentApproval, dataPercentCommentsLikes, dataPercentYear } from '@/mocks/filters';
+import type { IDataViewType } from '@/data/filters';
+import { dataCommentLikeViews, dataPercentApproval, dataPercentCommentsLikes, dataPercentYear } from '@/data/filters';
 import { parseFunction } from '@/utils/parseFunction';
 import type { Control, UseFormReset } from 'react-hook-form';
 import { useForm } from 'react-hook-form';

@@ -17,7 +17,7 @@ import { Cards } from '@/widgets/cards';
 import { LabelRange } from '@/base/range/labelRange';
 import type { IFiltersFields } from '@/hooks/useFilters';
 import { useFilters } from '@/hooks/useFilters';
-import { dataCommentLikeViews, dataPercentApproval, dataPercentCommentsLikes, dataPercentYear } from '@/mocks/filters';
+import { dataCommentLikeViews, dataPercentApproval, dataPercentCommentsLikes, dataPercentYear } from '@/data/filters';
 
 export const AllPage = (): ReactElement => {
   const {
