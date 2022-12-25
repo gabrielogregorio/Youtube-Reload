@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/typedef */
 import { useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/connections/store/useRedux';
 import type { IReactionsOptions } from '@/services/MusicService';
@@ -6,6 +5,7 @@ import { MusicService, ReactionEnum } from '@/services/MusicService';
 import { StorageService } from '@/services/StorageService';
 import { saveReaction } from '@/connections/features/reactions/slices';
 import { reactionsSelector } from '@/connections/features/reactions/selectors';
+import type { AppDispatch } from '@/connections/store';
 
 const STORAGE_REACTIONS: string = 'reactions2';
 
@@ -16,7 +16,7 @@ interface IUseReactions {
 }
 
 export const useReactions = (): IUseReactions => {
-  const dispatch = useAppDispatch();
+  const dispatch: AppDispatch = useAppDispatch();
   const { reactions } = useAppSelector(reactionsSelector);
 
   const saveInitialState = (reactionsXXX: IReactionsOptions = MusicService.getReactions()): void => {

@@ -1,4 +1,3 @@
-/* eslint-disable no-magic-numbers */
 import type { ReactElement } from 'react';
 import type { Control, FieldValues, Path } from 'react-hook-form';
 import { useController } from 'react-hook-form';
@@ -12,13 +11,14 @@ interface IInputYear<T extends FieldValues> {
   placeholder: string;
 }
 
+const DEFAULT_MAX_YEAR: number = 9999999;
 export const InputYear = <T extends FieldValues>({
   control,
   label,
   name,
   placeholder,
   minimum = 0,
-  maximum = 9999999,
+  maximum = DEFAULT_MAX_YEAR,
 }: IInputYear<T>): ReactElement => {
   const {
     field: { value, onChange, onBlur, ref },

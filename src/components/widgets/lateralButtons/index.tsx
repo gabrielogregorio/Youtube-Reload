@@ -1,3 +1,4 @@
+import { ScreenEnum } from '@/contracts/homeScreens';
 import { moveToTop } from '@/utils/scroll';
 import { LateralButton, LateralButtonEnum } from '@/widgets/lateralButtons/buttons';
 import type { ReactElement } from 'react';
@@ -5,11 +6,18 @@ import { AiOutlineArrowUp } from 'react-icons/ai';
 import { BiRefresh } from 'react-icons/bi';
 import { BsBookmarkCheckFill } from 'react-icons/bs';
 
+import type { NavigateFunction } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 interface ILateralButtonsProps {
   generateRandomPlaylist: () => void;
 }
 
+const HEIGHT_IN_PX_TO_IGNORE_HEADER: number = 500;
+
 export const LateralButtons = ({ generateRandomPlaylist }: ILateralButtonsProps): ReactElement => {
+  const navigate: NavigateFunction = useNavigate();
+
   return (
     <section>
       <LateralButton
@@ -23,7 +31,7 @@ export const LateralButtons = ({ generateRandomPlaylist }: ILateralButtonsProps)
       <LateralButton
         action={(): void => {
           moveToTop();
-          // updateScreen(ScreenEnum.likes);
+          navigate(ScreenEnum.likes);
         }}
         title="ir para favoritos"
         bottomPosition="bottom-[6rem]"
@@ -33,8 +41,9 @@ export const LateralButtons = ({ generateRandomPlaylist }: ILateralButtonsProps)
 
       <LateralButton
         action={(): void => {
-          // Router (ScreenEnum.home);
+          navigate(ScreenEnum.home);
           generateRandomPlaylist();
+          moveToTop(HEIGHT_IN_PX_TO_IGNORE_HEADER);
         }}
         title="gerar nova playlist"
         bottomPosition="bottom-[2rem]"

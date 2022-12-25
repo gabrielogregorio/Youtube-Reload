@@ -1,4 +1,3 @@
-/* eslint-disable no-magic-numbers */
 import type { IMusic, IMusicWithTransformation } from '@/contracts/musics';
 import { useFetchAllMusics } from '@/hooks/useFetchAllMusics';
 import { useReactions } from '@/hooks/useReactions';
@@ -65,10 +64,12 @@ interface IUseMusicApplyFiltersOutput {
   data: IMusic[] | undefined;
 }
 
+const LIMIT_FILTER: number = 500;
+
 export const useMusicApplyFilters = ({
   random = false,
   offset = 0,
-  limit = 500,
+  limit = LIMIT_FILTER,
   onlyLikes = false,
   onlyUnlikes = false,
   ignoreLikes = false,

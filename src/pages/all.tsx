@@ -326,13 +326,7 @@ export const AllPage = (): ReactElement => {
           </button>
         </div>
 
-        <div className="animate-fadeIn h-screen mt-20">
-          <section className="mx-auto md:max-w-[700px] lg:max-w-[1000px] w-full">
-            <Cards cards={filtered} showExtra />
-          </section>
-        </div>
-
-        <div className="h-16" />
+        <Cards cards={filtered} showExtra />
 
         <LateralButtons generateRandomPlaylist={applyFilters} />
       </>

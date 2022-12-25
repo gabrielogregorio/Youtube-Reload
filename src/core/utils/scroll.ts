@@ -1,6 +1,6 @@
-export const moveToTop = (): void => {
+export const moveToTop = (ignoreUp: number = 0): void => {
   window.scrollTo({
-    top: 0,
+    top: ignoreUp,
     behavior: 'smooth',
   });
 };

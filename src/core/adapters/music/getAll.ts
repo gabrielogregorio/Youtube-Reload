@@ -1,4 +1,3 @@
-/* eslint-disable no-magic-numbers */
 import type { IMusic, IMusicApi } from '@/contracts/musics';
 import { CategoryEnum } from '@/data/data.reload';
 import { createStringToSearch } from '@/utils/normalizers';
@@ -17,6 +16,7 @@ const stringIsCategoryEnum = (some: string): some is CategoryEnum => {
 };
 
 const CEM_PERCENT: number = 100;
+const QUANTITY_FACTORS: number = 2;
 
 export class MusicGetAllAdapter {
   public static prepare(body: IPrepare): IPrepareOutput {
@@ -42,7 +42,7 @@ export class MusicGetAllAdapter {
           const percentLikes: number = (likes * CEM_PERCENT) / views;
           const percentComments: number = (comments * CEM_PERCENT) / views;
 
-          return Number((percentLikes + percentComments / 2).toFixed(2));
+          return Number((percentLikes + percentComments / QUANTITY_FACTORS).toFixed(QUANTITY_FACTORS));
         } catch (error: unknown) {
           return 0;
         }
@@ -72,7 +72,7 @@ export class MusicGetAllAdapter {
 
         approval: calculatePercentage(),
 
-        approvalComments: Number(((comments * CEM_PERCENT) / likes).toFixed(2)),
+        approvalComments: Number(((comments * CEM_PERCENT) / likes).toFixed(QUANTITY_FACTORS)),
 
         searchStringNormalized: createStringToSearch(`${year} ${artist} ${title}`),
       });

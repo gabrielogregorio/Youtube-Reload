@@ -6,9 +6,9 @@ import { HomePage } from '@/pages/home';
 import { AllPage } from '@/pages/all';
 import { Provider } from 'react-redux';
 import { store } from '@/connections/store';
-import { FavoritesPage } from '@/pages/favorites';
-import { UnlikesPage } from '@/pages/inlikes';
 import { ScreenEnum } from '@/contracts/homeScreens';
+import { LikesPage } from '@/pages/likes';
+import { UnlikesPage } from '@/pages/unlikes';
 
 const root: ReactDOM.Root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -18,7 +18,7 @@ root.render(
         <Routes>
           <Route path={ScreenEnum.home} element={<HomePage />} />
           <Route path={ScreenEnum.all} element={<AllPage />} />
-          <Route path={ScreenEnum.likes} element={<FavoritesPage />} />
+          <Route path={ScreenEnum.likes} element={<LikesPage />} />
           <Route path={ScreenEnum.unlikes} element={<UnlikesPage />} />
         </Routes>
       </BrowserRouter>
