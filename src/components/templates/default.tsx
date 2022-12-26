@@ -28,6 +28,7 @@ export const TemplateDefault = ({ children, activeScreen }: ITemplateDefaultProp
   };
 
   const showIcons: boolean = notify.length !== data?.length;
+  const newNotify: number = (data?.length || 0) - notify.length || 0;
 
   return (
     <div className="relative mt-[120px]" id="base">
@@ -49,7 +50,11 @@ export const TemplateDefault = ({ children, activeScreen }: ITemplateDefaultProp
             
             `}>
             {notifyIsOpen ? <AiFillBell /> : <AiOutlineBell />}
-            {showIcons ? <div className="p-1 bg-red rounded-full absolute top-0.5 right-0" /> : undefined}
+            {showIcons ? (
+              <div className="w-3 h-3 bg-red rounded-full flex items-center justify-center absolute top-0 right-0 text-[0.4rem]">
+                {newNotify}
+              </div>
+            ) : undefined}
           </button>
 
           {notifyIsOpen ? (
@@ -64,8 +69,7 @@ export const TemplateDefault = ({ children, activeScreen }: ITemplateDefaultProp
                       <div className="h-10 text-2xl flex items-center justify-center aspect-square mr-2">
                         {item.emoji}
                       </div>
-
-                      <div>
+                      <div className="flex-1">
                         <div className="text-sm hover:text-blue">{item.title}</div>
                         <div className="text-[0.7rem] text-gray-400">{item.date}</div>
                       </div>

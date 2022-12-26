@@ -1,5 +1,7 @@
 /* eslint-disable no-magic-numbers */
 
+import { fillIfNecessary } from '@/utils/normalizers';
+
 export enum MonthsNormalizedEnum {
   'January' = 1,
   'February' = 2,
@@ -14,11 +16,46 @@ export enum MonthsNormalizedEnum {
   'November' = 11,
   'December' = 12,
 }
+const BRAZILIAN_TIMEZONE: string = '-03:00';
 
-export const getMonthFrom1To12 = (): MonthsNormalizedEnum => {
-  return new Date().getMonth() + 1;
-};
+export class DateReload {
+  public static getMonthFrom1To12(): MonthsNormalizedEnum {
+    return new Date().getMonth() + 1;
+  }
 
-export const getDay = (): number => {
-  return new Date().getDate();
-};
+  public static getDay(): number {
+    return new Date().getDate();
+  }
+
+  public static createDateAsSaoPauloTimeZoneAndReturnGmt({
+    year,
+    month1to12,
+    day,
+    hours1to24,
+    minutes,
+    seconds,
+  }: {
+    year: number;
+    month1to12: number;
+    day: number;
+    hours1to24: number;
+    minutes: number;
+    seconds: number;
+  }): string {
+    const date: Date = new Date(
+      `${year}-${fillIfNecessary(month1to12)}-${fillIfNecessary(day)}T${fillIfNecessary(hours1to24)}:${fillIfNecessary(
+        minutes,
+      )}:${fillIfNecessary(seconds)}.000${BRAZILIAN_TIMEZONE}`,
+    );
+
+    return date.toUTCString();
+  }
+
+  public static convertGmtToTimezoneSaoPauloAndPtBrStyle(dateGmt: string): string {
+    return new Date(dateGmt).toLocaleString('pt-BR', {
+      timeZone: 'America/Sao_Paulo',
+      dateStyle: 'full',
+      // timeStyle: 'short',
+    });
+  }
+}

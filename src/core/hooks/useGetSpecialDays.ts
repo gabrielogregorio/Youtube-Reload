@@ -1,7 +1,10 @@
+import type { IRandomPhrase } from '@/data/randomPhrase';
+import { randomPhrase } from '@/data/randomPhrase';
 import type { ISpecialDate } from '@/data/specialDates';
 import { specialDates } from '@/data/specialDates';
 import type { MonthsNormalizedEnum } from '@/utils/date';
-import { getMonthFrom1To12, getDay } from '@/utils/date';
+import { DateReload } from '@/utils/date';
+import { generateRandomPositiveZeroOrNegative } from '@/utils/generators';
 import { useEffect, useState } from 'react';
 
 const defaultSpecialDay: ISpecialDate = {
@@ -24,13 +27,23 @@ export const useGetSpecialDays = (): {
   const [quantitySpecialDays, setQuantitySpecialDays] = useState<number>(0);
 
   useEffect(() => {
-    const actualMonth: MonthsNormalizedEnum = getMonthFrom1To12();
-    const actualDay: number = getDay();
+    const actualMonth: MonthsNormalizedEnum = DateReload.getMonthFrom1To12();
+    const actualDay: number = DateReload.getDay();
     const listSpecialDates: ISpecialDate[] = specialDates[actualMonth].filter((specialDay: ISpecialDate) => {
       return specialDay.days.includes(actualDay);
     });
 
+    const phrases: IRandomPhrase = [...randomPhrase].sort((): number => generateRandomPositiveZeroOrNegative())[0];
+    listSpecialDates.push({
+      title: phrases.author,
+      description: phrases.description,
+      emoji1: '🍀',
+      emoji2: '',
+      days: [],
+    });
+
     listSpecialDates.push(defaultSpecialDay);
+
     setNowSpecialDays(listSpecialDates);
     setQuantitySpecialDays(listSpecialDates.length);
   }, []);

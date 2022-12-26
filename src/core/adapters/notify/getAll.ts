@@ -1,4 +1,5 @@
 import type { INotify, INotifyApi } from '@/contracts/notify';
+import { DateReload } from '@/utils/date';
 
 export class NotifyGetAllAdapter {
   public static convert(response?: INotifyApi[]): INotify[] {
@@ -8,10 +9,12 @@ export class NotifyGetAllAdapter {
       notify.push({
         id: item?.id || 0,
         title: item?.title || '',
-        date: item?.date || '',
+        date: DateReload.convertGmtToTimezoneSaoPauloAndPtBrStyle(item?.date || ''),
         emoji: item?.emoji || '',
       });
     });
+
+    notify.reverse();
 
     return notify;
   }

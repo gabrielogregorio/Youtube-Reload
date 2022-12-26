@@ -94,7 +94,19 @@
         "templates": false,
         "identifiers": true,
         "lang": "en_US",
-        "skipWords": ["youtube", "enum", "unlikes", "checkbox", "fieldset", "readonly", "href", "emojis"],
+        "skipWords": [
+          "youtube",
+          "enum",
+          "unlikes",
+          "checkbox",
+          "fieldset",
+          "readonly",
+          "href",
+          "emojis",
+          "Sao",
+          "Paulo",
+          "Gmt"
+        ],
         "minLength": 3
       }
     ],

@@ -43,7 +43,14 @@ export const useFetchAllNotify = (): IUseFetchAllNotifyOutput => {
   }, []);
 
   const handleUpdateNotify = (item: number[]): void => {
-    setNotify(NotifyService.updateNotify(item));
+    const newNotifies: number[] = NotifyService.updateNotify(item);
+    setNotify(newNotifies);
+
+    const TIME_IN_MS_TO_REMOVE_ALERT_NEW_NOTIFY: number = 5000;
+
+    setTimeout(() => {
+      setStartNotify(newNotifies);
+    }, TIME_IN_MS_TO_REMOVE_ALERT_NEW_NOTIFY);
   };
 
   return {

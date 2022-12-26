@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import type { IMusicApi } from '@/contracts/musics';
-import type { INotify } from '@/contracts/notify';
+import type { INotifyApi } from '@/contracts/notify';
 import { dataMusic } from '@/data/data.reload';
 import { mockNotify } from '@/data/notify';
 
@@ -10,7 +10,7 @@ export class ApiReload {
     return dataMusic;
   }
 
-  public static async searchNotify(): Promise<INotify[]> {
+  public static async searchNotify(): Promise<INotifyApi[]> {
     return mockNotify;
   }
 
