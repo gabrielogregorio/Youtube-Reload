@@ -24,9 +24,9 @@ export const HomePage = (): ReactElement => {
   }, [data?.length]);
 
   return (
-    <TemplateDefault>
+    <TemplateDefault activeScreen={ScreenEnum.home}>
       <>
-        <Header activeScreen={ScreenEnum.home} />
+        <Header />
 
         <SubTitleAndClear />
 

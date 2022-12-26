@@ -24,7 +24,7 @@ export const InputSearch = <T extends FieldValues>({
 
   return (
     <label htmlFor={name}>
-      <span className="text-sm">{label}</span>
+      <span className="text-sm select-none">{label}</span>
       <br />
       <input
         placeholder={placeholder}

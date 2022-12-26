@@ -19,6 +19,6 @@ export const getMonthFrom1To12 = (): MonthsNormalizedEnum => {
   return new Date().getMonth() + 1;
 };
 
-export const getUtcDay = (): number => {
-  return new Date().getUTCDate();
+export const getDay = (): number => {
+  return new Date().getDate();
 };

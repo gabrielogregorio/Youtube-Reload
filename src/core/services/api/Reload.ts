@@ -1,11 +1,17 @@
+/* eslint-disable no-console */
 import type { IMusicApi } from '@/contracts/musics';
+import type { INotify } from '@/contracts/notify';
 import { dataMusic } from '@/data/data.reload';
+import { mockNotify } from '@/data/notify';
 
 export class ApiReload {
   public static async search(url: string, params: unknown): Promise<IMusicApi[]> {
-    // eslint-disable-next-line no-console
     console.log(url, params);
     return dataMusic;
+  }
+
+  public static async searchNotify(): Promise<INotify[]> {
+    return mockNotify;
   }
 
   public static async updateOrCreate(): Promise<undefined> {

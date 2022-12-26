@@ -19,9 +19,9 @@ export const UnlikesPage = (): ReactElement => {
   }, [data?.length]);
 
   return (
-    <TemplateDefault>
+    <TemplateDefault activeScreen={ScreenEnum.unlikes}>
       <>
-        <Header activeScreen={ScreenEnum.unlikes} />
+        <Header />
 
         <SubTitleAndClear />
 

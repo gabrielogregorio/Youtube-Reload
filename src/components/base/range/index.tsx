@@ -36,7 +36,7 @@ export const Range = <T extends FieldValues>({ control, label, name, data }: IRa
   return (
     <div className="border-2 border-dark px-2 py-1">
       <label htmlFor={name}>
-        <span className="text-sm">{label}</span>
+        <span className="text-sm select-none">{label}</span>
 
         <div>
           {data.map((item: IDataItems) => {
@@ -46,7 +46,7 @@ export const Range = <T extends FieldValues>({ control, label, name, data }: IRa
                 type="button"
                 key={item.value.toString()}
                 onClick={(): void => handleUpdateMinOrMax(Number(item.value) || 0)}
-                className={`text-[0.5rem] p-1 rounded-md border border-dark hover:bg-red transition-all duration-150 ${styleInsideMaxAndMin}`}>
+                className={`text-[0.5rem] p-1 rounded-md border border-dark hover:bg-red transition-all duration-150 select-none ${styleInsideMaxAndMin}`}>
                 {item.label}
               </button>
             );
