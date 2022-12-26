@@ -10,9 +10,16 @@ export const Logo = (): ReactElement => {
       <div className="w-full flex items-center justify-center">
         <h1
           title="logo do youtube reload"
-          className="py-[25px] px-[2%] text-center text-red text-[1.5rem] transition-all duration-150 hover:scale-110 cursor-grab font-extrabold">
+          className="py-[25px] px-[2%] text-center text-red text-[1.5rem] transition-all duration-150 hover:scale-110 cursor-grab font-extrabold select-none">
           Youtube{` `}
-          <span className="text-blue-dark text-[1.5rem] font-extrabold font-cursive">Reload {specialDays?.emoji2}</span>
+          <span className="text-blue-dark text-[1.5rem] font-extrabold font-cursive">
+            Reload
+            {specialDays?.emoji2 ? (
+              <span className="ml-2 animate-fadeIn">{specialDays.emoji2}</span>
+            ) : (
+              <span>{` `}</span>
+            )}
+          </span>
         </h1>
       </div>
 
@@ -20,7 +27,7 @@ export const Logo = (): ReactElement => {
         <div className="flex items-center justify-center ">
           <div className="max-w-md w-full">
             <div
-              className="text-sm flex border  border-dark-dark shadow-md rounded-md w-full hover:scale-105 transition-all duration-150 h-16"
+              className="text-sm flex border border-dark-dark shadow-md rounded-md w-full hover:scale-105 transition-all duration-150 min-h-[6rem] animate-fadeIn"
               title="Data comemorativa">
               {showNavigateButtons ? (
                 <button
@@ -31,7 +38,7 @@ export const Logo = (): ReactElement => {
                 </button>
               ) : undefined}
 
-              <div className="flex-1 flex w-full mx-2 px-3 py-3 cursor-pointer">
+              <div className="flex-1 flex-col md:flex-row flex items-center w-full mx-2 px-3 py-3 cursor-pointer">
                 <div className="text-2xl select-none">{specialDays.emoji1}</div>
 
                 <div className="flex-1 flex flex-col justify-center ml-3">

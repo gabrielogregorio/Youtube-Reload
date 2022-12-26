@@ -25,7 +25,8 @@ export const Card = ({ playlistLocal, sendReaction, openPlayer, reaction, showEx
             <img
               src={playlistLocal.img}
               alt=""
-              className="relative object-cover h-full w-full hover:saturate-150 transition-all duration-150"
+              draggable={false}
+              className="relative object-cover h-full w-full hover:saturate-150 transition-all duration-150 select-none"
             />{' '}
           </div>
         </a>

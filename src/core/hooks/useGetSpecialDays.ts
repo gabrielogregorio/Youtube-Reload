@@ -1,8 +1,16 @@
 import type { ISpecialDate } from '@/data/specialDates';
 import { specialDates } from '@/data/specialDates';
 import type { MonthsNormalizedEnum } from '@/utils/date';
-import { getMonthFrom1To12, getUtcDay } from '@/utils/date';
+import { getMonthFrom1To12, getDay } from '@/utils/date';
 import { useEffect, useState } from 'react';
+
+const defaultSpecialDay: ISpecialDate = {
+  title: 'Bem vindo',
+  description: 'Aqui você pode conhecer músicas perdidas (ou não)',
+  days: [],
+  emoji1: '🕵',
+  emoji2: '',
+};
 
 export const useGetSpecialDays = (): {
   specialDays: ISpecialDate | undefined;
@@ -17,11 +25,12 @@ export const useGetSpecialDays = (): {
 
   useEffect(() => {
     const actualMonth: MonthsNormalizedEnum = getMonthFrom1To12();
-    const actualDay: number = getUtcDay();
+    const actualDay: number = getDay();
     const listSpecialDates: ISpecialDate[] = specialDates[actualMonth].filter((specialDay: ISpecialDate) => {
       return specialDay.days.includes(actualDay);
     });
 
+    listSpecialDates.push(defaultSpecialDay);
     setNowSpecialDays(listSpecialDates);
     setQuantitySpecialDays(listSpecialDates.length);
   }, []);

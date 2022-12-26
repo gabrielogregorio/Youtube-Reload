@@ -19,9 +19,9 @@ export const LikesPage = (): ReactElement => {
   }, [data?.length]);
 
   return (
-    <TemplateDefault>
+    <TemplateDefault activeScreen={ScreenEnum.likes}>
       <>
-        <Header activeScreen={ScreenEnum.likes} />
+        <Header />
 
         <SubTitleAndClear />
 

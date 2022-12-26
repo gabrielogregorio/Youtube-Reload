@@ -13,7 +13,7 @@ interface ILateralButtonsProps {
   generateRandomPlaylist: () => void;
 }
 
-const HEIGHT_IN_PX_TO_IGNORE_HEADER: number = 550;
+const HEIGHT_IN_PX_TO_IGNORE_HEADER: number = 350;
 
 export const LateralButtons = ({ generateRandomPlaylist }: ILateralButtonsProps): ReactElement => {
   const navigate: NavigateFunction = useNavigate();

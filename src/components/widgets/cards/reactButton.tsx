@@ -32,7 +32,7 @@ export const ReactButton = ({ isSelected, text, variant, sendReaction }: IReactB
     <button
       type="button"
       onClick={(): void => sendReaction()}
-      className={`text-[0.9rem] py-[10px] px-[15px] cursor-pointer bg-transparent transition-all duration-150 border-2 rounded-xl ${
+      className={`text-[0.9rem] py-[10px] px-[15px] cursor-pointer bg-transparent transition-all duration-150 border-2 rounded-xl select-none ${
         styleVariant.normal
       } ${isSelected ? styleVariant.select : styleVariant.unSelect}`}>
       {text}

@@ -18,7 +18,9 @@ import { LabelRange } from '@/base/range/labelRange';
 import type { IFiltersFields } from '@/hooks/useFilters';
 import { useFilters } from '@/hooks/useFilters';
 import { dataCommentLikeViews, dataPercentApproval, dataPercentCommentsLikes, dataPercentYear } from '@/data/filters';
+import { BsCalendarDay } from 'react-icons/bs';
 
+const LIMIT_SHOW_ITEMS: number = 12;
 export const AllPage = (): ReactElement => {
   const {
     resetValues,
@@ -42,7 +44,7 @@ export const AllPage = (): ReactElement => {
   const { filtered, applyFilters, data } = useMusicApplyFilters({
     random: false,
     offset: 0,
-    limit: 500,
+    limit: LIMIT_SHOW_ITEMS,
     onlyLikes: false,
     ignoreLikes: false,
     ignoreUnlikes: false,
@@ -105,11 +107,11 @@ export const AllPage = (): ReactElement => {
   };
 
   return (
-    <TemplateDefault>
+    <TemplateDefault activeScreen={ScreenEnum.all}>
       <>
-        <Header activeScreen={ScreenEnum.all} />
+        <Header />
 
-        <div className="bg-dark-dark flex flex-col items-center justify-center py-8">
+        <div className="bg-dark border border-dark-dark rounded-md shadow-md flex flex-col items-center justify-center py-8 mt-8">
           <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4">
             <Range<IFiltersFields>
               data={dataCommentLikeViews}
@@ -154,7 +156,7 @@ export const AllPage = (): ReactElement => {
               data={dataPercentYear}
               control={control}
               name="year"
-              label={<LabelRange icon={<FaDivide className="text-[0.7rem] mr-2" />} text="year period" />}
+              label={<LabelRange icon={<BsCalendarDay className="text-[0.7rem] mr-2" />} text="year period" />}
             />
           </div>
 
@@ -169,12 +171,20 @@ export const AllPage = (): ReactElement => {
 
           <button
             type="button"
-            className="bg-red px-3 py-2 text-white text-[0.7rem] flex items-center justify-center rounded-md hover:scale-105 transition-all duration-150"
+            className="bg-red px-3 py-2 text-white text-[0.7rem] flex items-center justify-center rounded-md hover:scale-105 transition-all duration-150 select-none"
             onClick={(): void => handleReset()}>
             <span className="mr-2">reset</span>
             <BiReset className="text-white text-[1rem]" />
           </button>
         </div>
+
+        <section className="flex items-center justify-center mt-6">
+          <div
+            className="px-4 py-3 shadow-md rounded-md bg-dark border-dark-dark hover:bg-dark-dark border text-sm hover:scale-105 transition-all duration-150 cursor-pointer"
+            role="alert">
+            É exibido no máximo {LIMIT_SHOW_ITEMS} items a fim de facilitar o processamento
+          </div>
+        </section>
 
         <Cards cards={filtered} showExtra />
 
