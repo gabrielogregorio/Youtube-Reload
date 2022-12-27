@@ -1,5 +1,6 @@
 import type { IMusic } from '@/contracts/musics';
-import { FetchMusicService } from '@/services/FetchMusicService';
+import { FetchReactionsService } from '@/services/FetchMusicService';
+
 import { useEffect, useState } from 'react';
 
 interface IUseFetchAllMusicsOutput {
@@ -18,7 +19,7 @@ export const useFetchAllMusics = (): IUseFetchAllMusicsOutput => {
     setError(undefined);
     setData(undefined);
 
-    FetchMusicService.fetch()
+    FetchReactionsService.fetch()
       .then((res: IMusic[]) => {
         setData(res);
       })

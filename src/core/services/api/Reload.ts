@@ -5,8 +5,8 @@ import { dataMusic } from '@/data/data.reload';
 import { mockNotify } from '@/data/notify';
 
 export class ApiReload {
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   public static async search(url: string, params: unknown): Promise<IMusicApi[]> {
-    console.log(url, params);
     return dataMusic;
   }
 

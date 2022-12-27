@@ -1,7 +1,6 @@
 import { emojis } from '@/data/profile';
+import { StorageAccessNameEnum, StorageService } from '@/services/StorageService';
 import { generateRandomPositiveZeroOrNegative } from '@/utils/generators';
-
-const profileStorage: string = 'profile';
 
 export class ProfileService {
   private static generateRandomProfileEmoji(): string {
@@ -9,13 +8,13 @@ export class ProfileService {
   }
 
   private static updateEmoji(emoji: string): string {
-    localStorage.setItem(profileStorage, emoji);
+    StorageService.setItem(StorageAccessNameEnum.Profile, emoji);
 
     return emoji;
   }
 
   public static getUserOrInitialize(): string {
-    const itemReturned: string | undefined = localStorage.getItem(profileStorage) || undefined;
+    const itemReturned: string | undefined = StorageService.getItem(StorageAccessNameEnum.Profile);
     if (itemReturned) {
       return itemReturned;
     }

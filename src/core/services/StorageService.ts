@@ -1,12 +1,24 @@
-export const STORAGE_REACTIONS: string = 'reactions3';
+export enum StorageAccessNameEnum {
+  'Reactions' = 'reactions',
+  'Profile' = 'profile',
+  'Notify' = 'notify',
+}
 
 export class StorageService {
-  public static setItem(key: string, value: string): void {
+  public static setItem(key: StorageAccessNameEnum, value: string): void {
     localStorage.setItem(key, value);
   }
 
-  public static getItem(key: string): string | null {
-    return localStorage.getItem(key);
+  public static getItem(key: StorageAccessNameEnum): string | undefined {
+    return localStorage.getItem(key) || undefined;
+  }
+
+  public static removeItem(key: StorageAccessNameEnum): void {
+    localStorage.removeItem(key);
+  }
+
+  public static clear(): void {
+    localStorage.clear();
   }
 
   public static getItemAndParse<T = unknown>(key: string): T | undefined {
@@ -14,12 +26,10 @@ export class StorageService {
       const item: string | undefined = localStorage.getItem(key) || undefined;
 
       if (item === undefined) {
-        throw new Error('item is undefined');
+        return undefined;
       }
       return JSON.parse(item) as T;
     } catch (error: unknown) {
-      // eslint-disable-next-line no-console
-      console.error('error on get and parse item in localstorage', error);
       return undefined;
     }
   }

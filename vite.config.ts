@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
+import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
   root: '.',
@@ -15,6 +16,7 @@ export default defineConfig({
       '@/screens': resolve(__dirname, './src/components/screens'),
       '@/templates': resolve(__dirname, './src/components/templates'),
       '@/widgets': resolve(__dirname, './src/components/widgets'),
+      '@/screen': resolve(__dirname, './src/components/screen'),
 
       '@/adapters': resolve(__dirname, './src/core/adapters'),
       '@/configs': resolve(__dirname, './src/core/configs'),
@@ -45,5 +47,14 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./tests/setup.ts'],
   },
-  plugins: [react()],
+  plugins: [
+    react(),
+    VitePWA({
+      registerType: 'autoUpdate',
+
+      // devOptions: {
+      //   enabled: true,
+      // },
+    }),
+  ],
 });

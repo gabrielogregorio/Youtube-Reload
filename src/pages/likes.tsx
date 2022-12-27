@@ -6,7 +6,6 @@ import { Header } from '@/layouts/header';
 import { LateralButtons } from '@/widgets/lateralButtons';
 import { useMusicApplyFilters } from '@/hooks/useMusicApplyFilters';
 import { Cards } from '@/widgets/cards';
-import { SubTitleAndClear } from '@/widgets/SubTitleAndClear';
 
 export const LikesPage = (): ReactElement => {
   const { filtered, applyFilters, data } = useMusicApplyFilters({
@@ -22,8 +21,6 @@ export const LikesPage = (): ReactElement => {
     <TemplateDefault activeScreen={ScreenEnum.likes}>
       <>
         <Header />
-
-        <SubTitleAndClear />
 
         <Cards cards={filtered} />
 

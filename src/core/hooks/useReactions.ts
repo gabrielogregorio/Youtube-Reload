@@ -1,11 +1,10 @@
 import { useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/connections/store/useRedux';
-import type { IReactionsOptions } from '@/services/MusicService';
-import { MusicService, ReactionEnum } from '@/services/MusicService';
-import { StorageService, STORAGE_REACTIONS } from '@/services/StorageService';
 import { saveReaction } from '@/connections/features/reactions/slices';
 import { reactionsSelector } from '@/connections/features/reactions/selectors';
 import type { AppDispatch } from '@/connections/store';
+import type { IReactionsOptions } from '@/services/ReactionsService';
+import { ReactionsService, ReactionEnum } from '@/services/ReactionsService';
 
 interface IUseReactions {
   sendReaction: (idContent: string, reaction: ReactionEnum) => void;
@@ -17,10 +16,10 @@ export const useReactions = (): IUseReactions => {
   const dispatch: AppDispatch = useAppDispatch();
   const { reactions } = useAppSelector(reactionsSelector);
 
-  const saveInitialState = (reactionsXXX: IReactionsOptions = MusicService.getReactions()): void => {
-    dispatch(saveReaction(reactionsXXX));
+  const saveInitialState = (reactionsLocal: IReactionsOptions = ReactionsService.getReactions()): void => {
+    dispatch(saveReaction(reactionsLocal));
 
-    StorageService.setItem(STORAGE_REACTIONS, JSON.stringify(reactionsXXX));
+    ReactionsService.updateReactions(reactionsLocal);
   };
 
   useEffect(() => {
@@ -33,7 +32,7 @@ export const useReactions = (): IUseReactions => {
 
       if (newReaction === undefined) {
         saveInitialState({
-          [idContent]: { id: idContent, reaction },
+          [idContent]: { reaction },
         });
         return;
       }
@@ -43,7 +42,6 @@ export const useReactions = (): IUseReactions => {
         newReaction = {
           ...newReaction,
           [idContent]: {
-            id: idContent,
             reaction,
           },
         };
@@ -79,7 +77,7 @@ export const useReactions = (): IUseReactions => {
   );
 
   const clearReactions = (): void => {
-    MusicService.clearAll();
+    ReactionsService.clearAll();
   };
 
   return {

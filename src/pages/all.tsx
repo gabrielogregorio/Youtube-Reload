@@ -180,7 +180,7 @@ export const AllPage = (): ReactElement => {
 
         <section className="flex items-center justify-center mt-6">
           <div
-            className="px-4 py-3 shadow-md rounded-md bg-dark border-dark-dark hover:bg-dark-dark border text-sm hover:scale-105 transition-all duration-150 cursor-pointer"
+            className="px-4 py-3 shadow-md rounded-md bg-dark border-dark-dark hover:bg-dark-dark border text-md hover:scale-105 transition-all duration-150 cursor-pointer"
             role="alert">
             É exibido no máximo {LIMIT_SHOW_ITEMS} items a fim de facilitar o processamento
           </div>

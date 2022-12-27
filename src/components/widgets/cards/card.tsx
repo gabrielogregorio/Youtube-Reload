@@ -1,10 +1,10 @@
 import type { IMusicWithTransformation } from '@/contracts/musics';
-import { ReactionEnum } from '@/services/MusicService';
 import { ReactButton } from '@/widgets/cards/reactButton';
 import type { ReactElement } from 'react';
 import { AiOutlineEye } from 'react-icons/ai';
 import { FaDivide, FaPercent } from 'react-icons/fa';
 import { BiCommentDetail, BiLike } from 'react-icons/bi';
+import { ReactionEnum } from '@/services/ReactionsService';
 
 interface ICardProps {
   playlistLocal: IMusicWithTransformation;
@@ -24,7 +24,7 @@ export const Card = ({ playlistLocal, sendReaction, openPlayer, reaction, showEx
           <div className="h-[300px] md:h-[180px] md:w-full rounded-xl overflow-hidden relative">
             <img
               src={playlistLocal.img}
-              alt=""
+              alt={playlistLocal.title}
               draggable={false}
               className="relative object-cover h-full w-full hover:saturate-150 transition-all duration-150 select-none"
             />{' '}
@@ -39,7 +39,7 @@ export const Card = ({ playlistLocal, sendReaction, openPlayer, reaction, showEx
                 type="button"
                 onClick={(): void => openPlayer(playlistLocal)}
                 title={playlistLocal.title}
-                className="text-[0.9rem] text-left font-bold border-b-2 border-dark-dark hover:border-b-blue  text-white hover:text-blue px-1.5 transition-all duration-150">
+                className="text-[0.9rem] text-left font-bold border-b-2 border-dark-dark hover:border-b-blue  text-white hover:text-blue pr-1.5 transition-all duration-150">
                 {playlistLocal.title}
               </button>
             </p>

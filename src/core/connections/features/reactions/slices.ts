@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/typedef */
 import { createSlice } from '@reduxjs/toolkit';
-import type { IReactionsOptions } from '@/services/MusicService';
+import type { IReactionsOptions } from '@/services/ReactionsService';
 
 export interface IReactionsFeature {
   reactions: IReactionsOptions | undefined;

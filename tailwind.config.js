@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Outfit', 'Arial', 'Helvetica', 'Roboto', 'sans-serif'],
+        sans: ['Helvetica', 'Roboto', 'Arial', 'sans-serif'],
         cursive: ['RubikVinyl', 'sans-serif'],
         serif: ['Mukta'],
         mono: ['"Fira Code"', 'ui-monospace'],
@@ -27,6 +27,7 @@ module.exports = {
         blue: '#49a7fc',
         'blue-dark': '#2f81ff',
         'blue-darker': '#185fcc',
+        'blue-darkest': '#134187',
       },
 
       animation: {
