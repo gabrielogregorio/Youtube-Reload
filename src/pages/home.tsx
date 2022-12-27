@@ -7,7 +7,6 @@ import { Header } from '@/layouts/header';
 import { LateralButtons } from '@/widgets/lateralButtons';
 import { useMusicApplyFilters } from '@/hooks/useMusicApplyFilters';
 import { Cards } from '@/widgets/cards';
-import { SubTitleAndClear } from '@/widgets/SubTitleAndClear';
 
 const LIMIT_ITEMS: number = 16;
 
@@ -27,8 +26,6 @@ export const HomePage = (): ReactElement => {
     <TemplateDefault activeScreen={ScreenEnum.home}>
       <>
         <Header />
-
-        <SubTitleAndClear />
 
         <Cards cards={filtered} />
 

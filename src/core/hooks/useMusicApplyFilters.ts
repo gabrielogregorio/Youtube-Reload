@@ -1,7 +1,7 @@
 import type { IMusic, IMusicTags, IMusicWithTransformation } from '@/contracts/musics';
 import { useFetchAllMusics } from '@/hooks/useFetchAllMusics';
 import { useReactions } from '@/hooks/useReactions';
-import { ReactionEnum } from '@/services/MusicService';
+import { ReactionEnum } from '@/services/ReactionsService';
 import { generateRandomPositiveZeroOrNegative } from '@/utils/generators';
 import { createStringToSearch } from '@/utils/normalizers';
 import { parseToYoutubeContent } from '@/utils/parseToYoutubeContent';

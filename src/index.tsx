@@ -9,6 +9,7 @@ import { store } from '@/connections/store';
 import { ScreenEnum } from '@/contracts/homeScreens';
 import { LikesPage } from '@/pages/likes';
 import { UnlikesPage } from '@/pages/unlikes';
+import { ConfigsPage } from '@/pages/configs';
 
 const root: ReactDOM.Root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -20,6 +21,7 @@ root.render(
           <Route path={ScreenEnum.all} element={<AllPage />} />
           <Route path={ScreenEnum.likes} element={<LikesPage />} />
           <Route path={ScreenEnum.unlikes} element={<UnlikesPage />} />
+          <Route path={ScreenEnum.configs} element={<ConfigsPage />} />
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -23,6 +23,7 @@
       "@/screens/*": ["src/components/screens/*"],
       "@/templates/*": ["src/components/templates/*"],
       "@/widgets/*": ["src/components/widgets/*"],
+      "@/screen/*": ["src/components/screen/*"],
 
       "@/adapters/*": ["src/core/adapters/*"],
       "@/configs/*": ["src/core/configs/*"],

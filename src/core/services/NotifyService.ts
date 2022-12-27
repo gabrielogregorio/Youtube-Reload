@@ -1,22 +1,20 @@
-const profileStorage: string = 'notify';
+import { StorageAccessNameEnum, StorageService } from '@/services/StorageService';
 
 export class NotifyService {
-  private static updateNotifyInLocalStorage(emoji: number[]): number[] {
-    localStorage.setItem(profileStorage, JSON.stringify(emoji));
+  private static updateNotifyInStorage(emoji: number[]): number[] {
+    StorageService.setItem(StorageAccessNameEnum.Notify, JSON.stringify(emoji));
 
     return emoji;
   }
 
   public static getOrInitialize(): number[] {
-    const itemReturned: string | undefined = localStorage.getItem(profileStorage) || undefined;
-    try {
-      return JSON.parse(itemReturned || '[]') as number[];
-    } catch (error: unknown) {
-      //
+    const itemReturned: number[] | undefined = StorageService.getItemAndParse<number[]>(StorageAccessNameEnum.Notify);
+    if (itemReturned) {
+      return itemReturned;
     }
 
     const generateEmoji: number[] = [];
-    this.updateNotifyInLocalStorage(generateEmoji);
+    this.updateNotifyInStorage(generateEmoji);
 
     return generateEmoji;
   }
@@ -24,6 +22,6 @@ export class NotifyService {
   public static updateNotify(idView: number[]): number[] {
     const items: number[] = this.getOrInitialize();
 
-    return this.updateNotifyInLocalStorage([...new Set([...items, ...idView])]);
+    return this.updateNotifyInStorage([...new Set([...items, ...idView])]);
   }
 }
