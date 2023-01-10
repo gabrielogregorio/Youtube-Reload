@@ -3,8 +3,8 @@ const ONE_B: number = 1000000000;
 const ONE_M: number = 1000000;
 const ONE_K: number = 1000;
 
-export const parseFunction = (value: string): number | undefined => {
-  const valueToUse: string = value.toLowerCase() || '';
+export const parseFunction = (value?: string): number | undefined => {
+  const valueToUse: string = value?.toLowerCase() || '';
 
   if (valueToUse.endsWith('t')) {
     return Number(valueToUse.slice(0, valueToUse.length - 1)) * ONE_T;
@@ -23,8 +23,8 @@ export const parseFunction = (value: string): number | undefined => {
   }
 
   if (Number(valueToUse)) {
-    return Number(valueToUse);
+    return Number(valueToUse) || 1;
   }
 
-  return undefined;
+  return 1;
 };

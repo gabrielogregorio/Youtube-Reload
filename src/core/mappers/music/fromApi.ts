@@ -63,9 +63,9 @@ export class MusicFromApiMapper {
 
     const category: CategoryEnum = stringIsCategoryEnum(categoryTest) ? categoryTest : CategoryEnum.error;
 
-    const views: number = parseFunction(item?.views || '') || 0;
-    const comments: number = parseFunction(item?.comments || '') || 0;
-    const likes: number = parseFunction(item?.likes || '') || 0;
+    const views: number = parseFunction(item?.views || '') || 1;
+    const comments: number = parseFunction(item?.comments || '') || 1;
+    const likes: number = parseFunction(item?.likes || '') || 1;
 
     const calculatePercentage = (): number => {
       try {
