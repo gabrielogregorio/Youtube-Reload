@@ -1,6 +1,5 @@
 /* eslint-disable no-null/no-null */
 import type { ScreenEnum } from '@/contracts/homeScreens';
-import type { INotify } from '@/contracts/notify';
 import { useFetchAllNotify } from '@/hooks/useFetchAllNotify';
 import { useGetProfile } from '@/hooks/useGetProfile';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
@@ -8,6 +7,7 @@ import { Navbar } from '@/layouts/navbar';
 import type { ReactElement, RefObject } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { AiFillBell, AiOutlineBell } from 'react-icons/ai';
+import type { NotifyFromApiMapper } from '@/mappers/notify/fromApi';
 
 interface ITemplateDefaultProps {
   children: ReactElement;
@@ -30,7 +30,7 @@ export const TemplateDefault = ({ children, activeScreen }: ITemplateDefaultProp
   const handleOpenNotify = (): void => {
     setNotifyIsOpen((prev: boolean) => !prev);
     const listNewItems: number[] =
-      data?.map((item: INotify) => {
+      data?.map((item: NotifyFromApiMapper) => {
         return item.id || 0;
       }) || [];
 
@@ -76,7 +76,7 @@ export const TemplateDefault = ({ children, activeScreen }: ITemplateDefaultProp
               <div className="border-b border-gray-500" />
 
               <div className="overflow-y-scroll flex-1 scrollbar-inverse w-full">
-                {data?.map((item: INotify) => {
+                {data?.map((item: NotifyFromApiMapper) => {
                   return (
                     <div className="hover:bg-dark cursor-pointer flex items-center justify-center py-2 px-2 transition-all duration-150 select-none">
                       <div className="h-10 text-2xl flex items-center justify-center aspect-square mr-2">

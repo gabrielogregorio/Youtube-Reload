@@ -25,7 +25,7 @@
       "@/widgets/*": ["src/components/widgets/*"],
       "@/screen/*": ["src/components/screen/*"],
 
-      "@/adapters/*": ["src/core/adapters/*"],
+      "@/mappers/*": ["src/core/mappers/*"],
       "@/configs/*": ["src/core/configs/*"],
       "@/connections/*": ["src/core/connections/*"],
       "@/constants/*": ["src/core/constants/*"],

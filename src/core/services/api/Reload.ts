@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-import type { IMusicApi } from '@/contracts/musics';
-import type { INotifyApi } from '@/contracts/notify';
 import { dataMusic } from '@/data/data.reload';
 import { mockNotify } from '@/data/notify';
+import type { INotifyApi } from '@/mappers/notify/fromApi';
+import type { IMusicApi } from 'src/core/mappers/music/fromApi';
 
 export class ApiReload {
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars

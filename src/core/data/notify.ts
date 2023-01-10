@@ -1,7 +1,7 @@
-import type { INotifyApi } from '@/contracts/notify';
+import type { NotifyFromApiMapper } from '@/mappers/notify/fromApi';
 import { DateReload } from '@/utils/date';
 
-export const mockNotify: INotifyApi[] = [
+export const mockNotify: NotifyFromApiMapper[] = [
   {
     id: 1,
     title: 'Cria atalhos na aba lateral',

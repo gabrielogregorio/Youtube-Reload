@@ -1,14 +1,14 @@
-import type { IMusic, IMusicTags, IMusicWithTransformation } from '@/contracts/musics';
 import { useFetchAllMusics } from '@/hooks/useFetchAllMusics';
 import { useReactions } from '@/hooks/useReactions';
+import type { IMusicWithTransformation, MusicFromApiMapper } from '@/mappers/music/fromApi';
 import { ReactionEnum } from '@/services/ReactionsService';
 import { generateRandomPositiveZeroOrNegative } from '@/utils/generators';
 import { createStringToSearch } from '@/utils/normalizers';
 import { parseToYoutubeContent } from '@/utils/parseToYoutubeContent';
 import { useState } from 'react';
 
-const generateRandomPlaylist = (filtered: IMusic[]): IMusic[] => {
-  const dataSorted: IMusic[] = [...filtered].sort((): number => generateRandomPositiveZeroOrNegative());
+const generateRandomPlaylist = (filtered: MusicFromApiMapper[]): MusicFromApiMapper[] => {
+  const dataSorted: MusicFromApiMapper[] = [...filtered].sort((): number => generateRandomPositiveZeroOrNegative());
 
   return dataSorted;
 };
@@ -43,26 +43,30 @@ interface IUseMusicApplyFiltersInput {
 interface IUseMusicApplyFiltersOutput {
   filtered: IMusicWithTransformation[];
   applyFilters: () => void;
-  data: IMusic[] | undefined;
+  data: MusicFromApiMapper[] | undefined;
 }
 
-const applyOffsetAndLimit = (offset: number, limit: number, filtered: IMusic[]): IMusic[] => {
+const applyOffsetAndLimit = (offset: number, limit: number, filtered: MusicFromApiMapper[]): MusicFromApiMapper[] => {
   return filtered.slice(offset, limit);
 };
 
-const applyTextFilter = (filtered: IMusic[], textSearch: string): IMusic[] => {
+const applyTextFilter = (filtered: MusicFromApiMapper[], textSearch: string): MusicFromApiMapper[] => {
   if (textSearch === '') {
     return filtered;
   }
   const stringSearchNormalized: string = createStringToSearch(textSearch);
-  return filtered.filter((item: IMusic) => item.searchStringNormalized.includes(stringSearchNormalized));
+  return filtered.filter((item: MusicFromApiMapper) => item.searchStringNormalized.includes(stringSearchNormalized));
 };
 
-const filterByNumber = (key: keyof IMusic, based: IHasApplyStartAndEnd, filtered: IMusic[]): IMusic[] => {
+const filterByNumber = (
+  key: keyof MusicFromApiMapper,
+  based: IHasApplyStartAndEnd,
+  filtered: MusicFromApiMapper[],
+): MusicFromApiMapper[] => {
   if (!based.apply) {
     return filtered;
   }
-  return filtered.filter(({ [key]: count }: IMusic) => {
+  return filtered.filter(({ [key]: count }: MusicFromApiMapper) => {
     if (count === undefined) {
       return false;
     }
@@ -70,11 +74,15 @@ const filterByNumber = (key: keyof IMusic, based: IHasApplyStartAndEnd, filtered
   });
 };
 
-const filterByTotalTag = (key: keyof IMusicTags, based: IHasApplyStartAndEnd, filtered: IMusic[]): IMusic[] => {
+const filterByTotalTag = (
+  key: 'views' | 'comments' | 'likes',
+  based: IHasApplyStartAndEnd,
+  filtered: MusicFromApiMapper[],
+): MusicFromApiMapper[] => {
   if (!based.apply) {
     return filtered;
   }
-  return filtered.filter(({ [key]: count }: IMusic) => {
+  return filtered.filter(({ [key]: count }: MusicFromApiMapper) => {
     if (!count.total) {
       return false;
     }
@@ -126,33 +134,33 @@ export const useMusicApplyFilters = ({
 }: IUseMusicApplyFiltersInput): IUseMusicApplyFiltersOutput => {
   const { data } = useFetchAllMusics();
   const { reactions } = useReactions();
-  const [filter, setFilter] = useState<IMusic[]>([]);
+  const [filter, setFilter] = useState<MusicFromApiMapper[]>([]);
 
   const applyFilters = (): void => {
     if (data === undefined) {
       return;
     }
 
-    let filtered: IMusic[] = [...data];
+    let filtered: MusicFromApiMapper[] = [...data];
 
     if (random) {
       filtered = generateRandomPlaylist(filtered);
     }
 
     if (onlyLikes) {
-      filtered = filtered.filter((item: IMusic) => reactions?.[item.id]?.reaction === ReactionEnum.like);
+      filtered = filtered.filter((item: MusicFromApiMapper) => reactions?.[item.id]?.reaction === ReactionEnum.like);
     }
 
     if (ignoreLikes) {
-      filtered = filtered.filter((item: IMusic) => reactions?.[item.id]?.reaction !== ReactionEnum.like);
+      filtered = filtered.filter((item: MusicFromApiMapper) => reactions?.[item.id]?.reaction !== ReactionEnum.like);
     }
 
     if (onlyUnlikes) {
-      filtered = filtered.filter((item: IMusic) => reactions?.[item.id]?.reaction === ReactionEnum.unlike);
+      filtered = filtered.filter((item: MusicFromApiMapper) => reactions?.[item.id]?.reaction === ReactionEnum.unlike);
     }
 
     if (ignoreUnlikes) {
-      filtered = filtered.filter((item: IMusic) => reactions?.[item.id]?.reaction !== ReactionEnum.unlike);
+      filtered = filtered.filter((item: MusicFromApiMapper) => reactions?.[item.id]?.reaction !== ReactionEnum.unlike);
     }
 
     filtered = filterByTotalTag('likes', likes, filtered);

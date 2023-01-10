@@ -1,5 +1,5 @@
-import type { IMusicWithTransformation } from '@/contracts/musics';
 import { useReactions } from '@/hooks/useReactions';
+import type { IMusicWithTransformation } from '@/mappers/music/fromApi';
 import { ReactionEnum } from '@/services/ReactionsService';
 import { Card } from '@/widgets/cards/card';
 import type { MouseEvent, ReactElement } from 'react';

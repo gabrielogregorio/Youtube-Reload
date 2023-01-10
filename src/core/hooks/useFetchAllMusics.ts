@@ -1,4 +1,4 @@
-import type { IMusic } from '@/contracts/musics';
+import type { MusicFromApiMapper } from '@/mappers/music/fromApi';
 import { FetchReactionsService } from '@/services/FetchMusicService';
 
 import { useEffect, useState } from 'react';
@@ -6,13 +6,13 @@ import { useEffect, useState } from 'react';
 interface IUseFetchAllMusicsOutput {
   isLoading: boolean;
   error: string | undefined;
-  data: IMusic[] | undefined;
+  data: MusicFromApiMapper[] | undefined;
 }
 
 export const useFetchAllMusics = (): IUseFetchAllMusicsOutput => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | undefined>(undefined);
-  const [data, setData] = useState<IMusic[] | undefined>(undefined);
+  const [data, setData] = useState<MusicFromApiMapper[] | undefined>(undefined);
 
   useEffect(() => {
     setIsLoading(false);
@@ -20,7 +20,7 @@ export const useFetchAllMusics = (): IUseFetchAllMusicsOutput => {
     setData(undefined);
 
     FetchReactionsService.fetch()
-      .then((res: IMusic[]) => {
+      .then((res: MusicFromApiMapper[]) => {
         setData(res);
       })
       .catch(() => {
