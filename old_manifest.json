@@ -5,7 +5,7 @@
   "theme_color": "#2d3036",
   "background_color": "#2d3036",
   "orientation": "portrait",
-  "start_url": "/youtube-reload/registerSW.js",
+  "start_url": "/youtube-reload/",
   "scope": "/youtube-reload/",
   "display": "standalone",
   "icons": [
