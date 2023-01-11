@@ -9,7 +9,6 @@
     "node": ">=16.x <18.0.0"
   },
   "scripts": {
-    "deploy2": "pnpm run clear && pnpm run lint && pnpm run check && pnpm run format && pnpm run test:coverage && pnpm run build && gh-pages -d build",
     "deploy": "gh-pages -d build",
     "dev": "vite --host",
     "build": "vite build",
@@ -62,12 +61,12 @@
     "@vitest/ui": "^0.25.7",
     "autoprefixer": "^10.4.13",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.29.0",
+    "eslint": "^8.30.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.5.2",
-    "eslint-plugin-import": ">=2.25.3 <3.0.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-no-null": "^1.0.2",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",

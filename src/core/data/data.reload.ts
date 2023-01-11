@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import type { IMusicApi } from '@/contracts/musics';
+import type { IMusicApi } from 'src/core/mappers/music/fromApi';
 
 export enum CategoryEnum {
   'reload' = 'reload',
@@ -8,6 +8,28 @@ export enum CategoryEnum {
 }
 
 export const dataMusic: IMusicApi[] = [
+  {
+    artist: 'Karametade',
+    title: 'Morango do Nordeste',
+    id: '8-2ejxovclc',
+    year: 2000,
+    category: CategoryEnum.reload,
+    views: '17M',
+    likes: '143k',
+    comments: '713',
+    durationInSeconds: 3.59,
+  },
+  {
+    artist: 'Metro',
+    title: 'Tudo Pode Mudar',
+    id: 'rVS-O5wdNuQ',
+    year: 1985,
+    category: CategoryEnum.reload,
+    views: '34k',
+    likes: '665',
+    comments: '',
+    durationInSeconds: 3.32,
+  },
   {
     artist: 'Regina Spektor',
     title: 'Us',

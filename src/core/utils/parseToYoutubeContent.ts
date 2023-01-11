@@ -1,7 +1,7 @@
-import type { IMusic, IMusicWithTransformation } from '@/contracts/musics';
+import type { IMusicWithTransformation, MusicFromApiMapper } from '@/mappers/music/fromApi';
 
-export const parseToYoutubeContent = (playList: IMusic[]): IMusicWithTransformation[] => {
-  return playList.map((play: IMusic) => ({
+export const parseToYoutubeContent = (playList: MusicFromApiMapper[]): IMusicWithTransformation[] => {
+  return playList.map((play: MusicFromApiMapper) => ({
     ...play,
     img: `https://img.youtube.com/vi/${play.id}/hqdefault.jpg`,
     url: `https://www.youtube.com/watch?v=${play.id}`,

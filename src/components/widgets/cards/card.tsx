@@ -1,10 +1,10 @@
-import type { IMusicWithTransformation } from '@/contracts/musics';
 import { ReactButton } from '@/widgets/cards/reactButton';
 import type { ReactElement } from 'react';
 import { AiOutlineEye } from 'react-icons/ai';
 import { FaDivide, FaPercent } from 'react-icons/fa';
 import { BiCommentDetail, BiLike } from 'react-icons/bi';
 import { ReactionEnum } from '@/services/ReactionsService';
+import type { IMusicWithTransformation } from '@/mappers/music/fromApi';
 
 interface ICardProps {
   playlistLocal: IMusicWithTransformation;

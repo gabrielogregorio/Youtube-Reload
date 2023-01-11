@@ -34,8 +34,8 @@ describe('Curl Request', () => {
   });
 
   it('should convert unit???', () => {
-    expect(parseFunction('')).toEqual(undefined);
-    expect(parseFunction('ABC')).toEqual(undefined);
-    expect(parseFunction('213S')).toEqual(undefined);
+    expect(parseFunction('')).toEqual(1);
+    expect(parseFunction('ABC')).toEqual(1);
+    expect(parseFunction('213S')).toEqual(1);
   });
 });

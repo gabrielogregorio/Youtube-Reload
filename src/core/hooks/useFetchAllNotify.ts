@@ -1,4 +1,4 @@
-import type { INotify } from '@/contracts/notify';
+import type { NotifyFromApiMapper } from '@/mappers/notify/fromApi';
 import { FetchNotifyService } from '@/services/FetchNotifyService';
 import { NotifyService } from '@/services/NotifyService';
 import { useEffect, useState } from 'react';
@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 interface IUseFetchAllNotifyOutput {
   isLoading: boolean;
   error: string | undefined;
-  data: INotify[] | undefined;
+  data: NotifyFromApiMapper[] | undefined;
   notify: number[];
   startNotify: number[];
   handleUpdateNotify: (item: number[]) => void;
@@ -15,7 +15,7 @@ interface IUseFetchAllNotifyOutput {
 export const useFetchAllNotify = (): IUseFetchAllNotifyOutput => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | undefined>(undefined);
-  const [data, setData] = useState<INotify[] | undefined>(undefined);
+  const [data, setData] = useState<NotifyFromApiMapper[] | undefined>(undefined);
   const [notify, setNotify] = useState<number[]>([]);
   const [startNotify, setStartNotify] = useState<number[]>([]);
 
@@ -25,7 +25,7 @@ export const useFetchAllNotify = (): IUseFetchAllNotifyOutput => {
     setData(undefined);
 
     FetchNotifyService.fetch()
-      .then((res: INotify[]) => {
+      .then((res: NotifyFromApiMapper[]) => {
         setData(res);
       })
       .catch(() => {
