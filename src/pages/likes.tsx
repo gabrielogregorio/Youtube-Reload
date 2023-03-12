@@ -1,8 +1,5 @@
 import type { ReactElement } from 'react';
 import { useEffect } from 'react';
-import { ScreenEnum } from '@/contracts/homeScreens';
-import { TemplateDefault } from '@/templates/default';
-import { Header } from '@/layouts/header';
 import { LateralButtons } from '@/widgets/lateralButtons';
 import { useMusicApplyFilters } from '@/hooks/useMusicApplyFilters';
 import { Cards } from '@/widgets/cards';
@@ -18,14 +15,10 @@ export const LikesPage = (): ReactElement => {
   }, [data?.length]);
 
   return (
-    <TemplateDefault activeScreen={ScreenEnum.likes}>
-      <>
-        <Header />
+    <div>
+      <Cards cards={filtered} />
 
-        <Cards cards={filtered} />
-
-        <LateralButtons generateRandomPlaylist={applyFilters} />
-      </>
-    </TemplateDefault>
+      <LateralButtons generateRandomPlaylist={applyFilters} />
+    </div>
   );
 };

@@ -1,3 +1,5 @@
+import { LARGE_VALUE } from '@/utils/parseFunction';
+
 export interface IDataViewType {
   value: number;
   label: string;
@@ -17,6 +19,7 @@ export const dataCommentLikeViews: IDataViewType[] = [
   { value: 10, label: '500M' },
   { value: 11, label: '1B' },
   { value: 12, label: '1T' },
+  { value: LARGE_VALUE, label: 'all' },
 ];
 
 export const dataPercentApproval: IDataViewType[] = [
@@ -32,6 +35,7 @@ export const dataPercentApproval: IDataViewType[] = [
   { value: 9, label: '2.5' },
   { value: 10, label: '3' },
   { value: 11, label: '100' },
+  { value: LARGE_VALUE, label: 'all' },
 ];
 
 export const dataPercentCommentsLikes: IDataViewType[] = [
@@ -47,10 +51,11 @@ export const dataPercentCommentsLikes: IDataViewType[] = [
   { value: 9, label: '25' },
   { value: 10, label: '30' },
   { value: 11, label: '100' },
+  { value: LARGE_VALUE, label: 'all' },
 ];
 
 export const dataPercentYear: IDataViewType[] = [
-  { value: 0, label: '1800' },
+  { value: 0, label: '0' },
   { value: 1, label: '1850' },
   { value: 2, label: '1900' },
   { value: 3, label: '1950' },
@@ -68,4 +73,5 @@ export const dataPercentYear: IDataViewType[] = [
   { value: 15, label: '2015' },
   { value: 16, label: '2020' },
   { value: 17, label: '2050' },
+  { value: LARGE_VALUE, label: 'all' },
 ];

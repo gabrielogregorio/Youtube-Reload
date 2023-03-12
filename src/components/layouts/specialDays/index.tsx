@@ -5,6 +5,7 @@ import { MdOutlineNavigateNext } from 'react-icons/md';
 export const SpecialDays = (): ReactElement => {
   const { specialDays, quantitySpecialDays, nextSpecialDay, prevSpecialDay } = useGetSpecialDays();
   const showNavigateButtons: boolean = quantitySpecialDays > 1;
+
   return (
     <div>
       {specialDays ? (

@@ -1,6 +1,6 @@
 import type { IDataViewType } from '@/data/filters';
 import { dataCommentLikeViews, dataPercentApproval, dataPercentCommentsLikes, dataPercentYear } from '@/data/filters';
-import { parseFunction } from '@/utils/parseFunction';
+import { LARGE_VALUE, parseFunction } from '@/utils/parseFunction';
 import type { Control, UseFormReset } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 
@@ -26,27 +26,27 @@ export interface IFiltersFields {
 const resetValues: Partial<IFiltersFields> = {
   views: {
     min: 0,
-    max: 12,
+    max: LARGE_VALUE,
   },
   comments: {
     min: 0,
-    max: 12,
+    max: LARGE_VALUE,
   },
   likes: {
     min: 0,
-    max: 12,
+    max: LARGE_VALUE,
   },
   percent: {
     min: 0,
-    max: 11,
+    max: LARGE_VALUE,
   },
   approval: {
     min: 0,
-    max: 11,
+    max: LARGE_VALUE,
   },
   year: {
     min: 0,
-    max: 17,
+    max: LARGE_VALUE,
   },
   textSearch: '',
 };

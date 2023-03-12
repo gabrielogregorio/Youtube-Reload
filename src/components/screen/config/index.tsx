@@ -2,12 +2,11 @@ import type { ReactElement } from 'react';
 import { Select } from '@/base/select/Select';
 import { StorageService } from '@/services/StorageService';
 import { BsFillTrashFill } from 'react-icons/bs';
-import type { NavigateFunction } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import { ScreenEnum } from '@/contracts/homeScreens';
+import { useScreenSelected } from '@/hooks/useScreenSelected';
 
 export const ConfigScreen = (): ReactElement => {
-  const navigate: NavigateFunction = useNavigate();
+  const { updateScreen } = useScreenSelected();
 
   return (
     <div className="animate-fadeIn min-h-screen mt-20">
@@ -32,7 +31,7 @@ export const ConfigScreen = (): ReactElement => {
                   type="button"
                   onClick={(): void => {
                     StorageService.clear();
-                    navigate(ScreenEnum.configs);
+                    updateScreen(ScreenEnum.configs);
                   }}>
                   <div className="flex items-center justify-center">
                     <span className=" text-red underline select-none">Limpar Preferências</span>

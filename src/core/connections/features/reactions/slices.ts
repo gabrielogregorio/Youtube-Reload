@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/typedef */
 import { createSlice } from '@reduxjs/toolkit';
 import type { IReactionsOptions } from '@/services/ReactionsService';
 
