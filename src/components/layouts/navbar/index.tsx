@@ -14,35 +14,35 @@ export const Navbar = ({ activeScreen }: INavbarProps): ReactElement => {
     <nav className="w-full flex items-center justify-center">
       <NavbarItem
         isActive={activeScreen === ScreenEnum.home}
-        href={ScreenEnum.home}
+        nameScreen={ScreenEnum.home}
         text="Home"
         icon={<AiFillHome className="text-[0.9rem]" />}
       />
 
       <NavbarItem
         isActive={activeScreen === ScreenEnum.likes}
-        href={ScreenEnum.likes}
+        nameScreen={ScreenEnum.likes}
         text="Likes"
         icon={<AiFillLike className="text-[0.9rem]" />}
       />
 
       <NavbarItem
         isActive={activeScreen === ScreenEnum.unlikes}
-        href={ScreenEnum.unlikes}
+        nameScreen={ScreenEnum.unlikes}
         text="Unlikes"
         icon={<AiFillDislike className="text-[0.9rem]" />}
       />
 
       <NavbarItem
         isActive={activeScreen === ScreenEnum.all}
-        href={ScreenEnum.all}
+        nameScreen={ScreenEnum.all}
         text="All"
         icon={<FaFilter className="text-[0.9rem]" />}
       />
 
       <NavbarItem
         isActive={activeScreen === ScreenEnum.configs}
-        href={ScreenEnum.configs}
+        nameScreen={ScreenEnum.configs}
         text="Configs"
         icon={<BsGearFill className="text-[0.9rem]" />}
       />

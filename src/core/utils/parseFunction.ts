@@ -3,8 +3,17 @@ const ONE_B: number = 1000000000;
 const ONE_M: number = 1000000;
 const ONE_K: number = 1000;
 
+export const LARGE_VALUE = 99999999999;
+
 export const parseFunction = (value?: string): number | undefined => {
   const valueToUse: string = value?.toLowerCase() || '';
+  if (value === 'all') {
+    return LARGE_VALUE;
+  }
+
+  if (value === '0') {
+    return 0;
+  }
 
   if (valueToUse.endsWith('t')) {
     return Number(valueToUse.slice(0, valueToUse.length - 1)) * ONE_T;

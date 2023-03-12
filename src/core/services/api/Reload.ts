@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { dataMusic } from '@/data/data.reload';
 import { mockNotify } from '@/data/notify';
 import type { INotifyApi } from '@/mappers/notify/fromApi';

@@ -5,7 +5,7 @@
   "private": false,
   "main": "build/index.js",
   "engines": {
-    "pnpm": ">=6.0.0 <8.0.0",
+    "pnpm": ">=6.0.0",
     "node": ">=16.x <18.0.0"
   },
   "scripts": {

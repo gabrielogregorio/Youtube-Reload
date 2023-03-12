@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/typedef */
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import features from '@/connections/features/index';
 

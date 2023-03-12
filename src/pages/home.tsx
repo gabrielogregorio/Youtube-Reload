@@ -1,21 +1,18 @@
 import type { ReactElement } from 'react';
 import { useEffect } from 'react';
 import { GeneratePlaylist } from '@/widgets/generatePlaylists';
-import { ScreenEnum } from '@/contracts/homeScreens';
-import { TemplateDefault } from '@/templates/default';
-import { Header } from '@/layouts/header';
 import { LateralButtons } from '@/widgets/lateralButtons';
 import { useMusicApplyFilters } from '@/hooks/useMusicApplyFilters';
 import { Cards } from '@/widgets/cards';
 
-const LIMIT_ITEMS: number = 16;
+const LIMIT_ITEMS: number = 25;
 
 export const HomePage = (): ReactElement => {
   const { filtered, applyFilters, data } = useMusicApplyFilters({
     random: true,
     limit: LIMIT_ITEMS,
-    ignoreLikes: true,
-    ignoreUnlikes: true,
+    ignoreLikes: false,
+    ignoreUnlikes: false,
   });
 
   useEffect(() => {
@@ -23,18 +20,14 @@ export const HomePage = (): ReactElement => {
   }, [data?.length]);
 
   return (
-    <TemplateDefault activeScreen={ScreenEnum.home}>
-      <>
-        <Header />
+    <div>
+      <Cards cards={filtered} />
 
-        <Cards cards={filtered} />
+      <section className="w-full flex justify-center items-center mt-16">
+        <GeneratePlaylist generateRandomPlaylist={applyFilters} />
+      </section>
 
-        <section className="w-full flex justify-center items-center mt-16">
-          <GeneratePlaylist generateRandomPlaylist={applyFilters} />
-        </section>
-
-        <LateralButtons generateRandomPlaylist={applyFilters} />
-      </>
-    </TemplateDefault>
+      <LateralButtons generateRandomPlaylist={applyFilters} />
+    </div>
   );
 };
