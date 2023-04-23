@@ -3,10 +3,12 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { VitePWA } from 'vite-plugin-pwa';
 
+import { VITE_BASE_URL } from './env'
+
 export default defineConfig({
   root: '.',
   // @ts-ignore
-  base: process.env.VITE_BASE_URL || '/youtube-reload/dev',
+  base: VITE_BASE_URL || '/youtube-reload/dev',
   build: {
     outDir: 'build',
   },

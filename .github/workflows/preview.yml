@@ -38,10 +38,9 @@ jobs:
         run: pnpm i --frozen-lockfile
 
       - name: build App
-        run: pnpm run build
-        env:
-          VITE_BASE_URL: "/youtube-reload/${{ steps.branch_directory.outputs.build_directory }}"
-          VITE_ENVIRONMENT: "PREVIEW"
+        run: |
+          echo "module.exports = { VITE_BASE_URL: '/youtube-reload/${{ steps.branch_directory.outputs.build_directory }}', VITE_ENVIRONMENT: 'PREVIEW' }" > env.js
+          pnpm run build
           
       - name: set branch name and build directory
         id: branch_directory
