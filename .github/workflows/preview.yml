@@ -30,8 +30,8 @@ jobs:
       - name: install dependencies
         run: pnpm i --frozen-lockfile
 
-      - name: Build App
-        run: pnpm run build:preview
+      - name: build App
+        run: VITE_BASE_URL="/youtube-reload/${{ steps.branch_directory.outputs.build_directory }}" pnpm run build:preview
 
       - name: set branch name and build directory
         id: branch_directory
@@ -46,6 +46,6 @@ jobs:
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/gabrielogregorio/youtube-reload.git
           mkdir -p ${{ steps.branch_directory.outputs.build_directory }}
           cp -r build/* ${{ steps.branch_directory.outputs.build_directory }}
-          npx gh-pages -d dist -u "github-actions-bot <support+actions@github.com>"
+          npx gh-pages -d dist --add -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
