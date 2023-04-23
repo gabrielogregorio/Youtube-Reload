@@ -15,13 +15,19 @@ jobs:
 
     strategy:
       matrix:
-        pnpm-version: [6.0.2]
+        node-version: [16.x]
+        pnpm-version: [8.3.1]
 
     steps:
       - name: checkout
         uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: use pnpm ${{ matrix.pnpm-version }}
         uses: pnpm/action-setup@v2
@@ -32,8 +38,11 @@ jobs:
         run: pnpm i --frozen-lockfile
 
       - name: build App
-        run: cross-env VITE_BASE_URL="/youtube-reload/${{ steps.branch_directory.outputs.build_directory }}" VITE_ENVIRONMENT="PREVIEW" pnpm run build
-
+        run: pnpm run build
+        env:
+          VITE_BASE_URL: "/youtube-reload/${{ steps.branch_directory.outputs.build_directory }}"
+          VITE_ENVIRONMENT: "PREVIEW"
+          
       - name: set branch name and build directory
         id: branch_directory
         run: |
