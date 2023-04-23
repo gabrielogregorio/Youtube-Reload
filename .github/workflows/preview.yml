@@ -48,7 +48,7 @@ jobs:
 
       - name: build App
         run: |
-          echo "module.exports = { VITE_BASE_URL: '/youtube-reload/${{ steps.branch_directory.outputs.build_directory_without_base }}', VITE_ENVIRONMENT: 'PREVIEW' }" > env.js
+          echo "export const envs = { VITE_BASE_URL: '/youtube-reload/${{ steps.branch_directory.outputs.build_directory_without_base }}', VITE_ENVIRONMENT: 'PREVIEW' };" > src/core/env.ts
           pnpm run build
 
       - name: deploy with gh-pages
@@ -59,3 +59,11 @@ jobs:
           npx gh-pages -d dist --add -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: comment on PR
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            🚀 Deploy feito com sucesso em https://github.com/gabrielogregorio/youtube-reload/${{ steps.branch_directory.outputs.build_directory_without_base }}

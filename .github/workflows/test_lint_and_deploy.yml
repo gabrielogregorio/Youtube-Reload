@@ -70,7 +70,7 @@ jobs:
 
     strategy:
       matrix:
-        pnpm-version: [6.0.2]
+        pnpm-version: [8.3.1]
 
     steps:
       - name: checkout
@@ -100,11 +100,18 @@ jobs:
 
     strategy:
       matrix:
+        node-version: [16.x]
         pnpm-version: [8.3.1]
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
 
       - name: use pnpm.js ${{ matrix.pnpm-version }}
         uses: pnpm/action-setup@v2

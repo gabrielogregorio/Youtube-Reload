@@ -9,7 +9,7 @@ import { ConfigsPage } from '@/pages/configs';
 import { TemplateDefault } from '@/templates/default';
 import { Header } from '@/layouts/header';
 import { useScreenSelected } from '@/hooks/useScreenSelected';
-import { VITE_ENVIRONMENT } from '@/constants/envs';
+import { envs } from '../core/env';
 
 const screens: { [screen in ScreenEnum]: ReactElement } = {
   [ScreenEnum.home]: <HomePage />,
@@ -25,8 +25,10 @@ export const BaseScreens = (): ReactElement => {
   return (
     <TemplateDefault activeScreen={screenSelected}>
       <>
-        {VITE_ENVIRONMENT === 'PREVIEW' ? (
-          <div className="text-[2rem] font-[800] fixed top-1 left-4 z-[190] text-white/75">ENV {VITE_ENVIRONMENT}</div>
+        {envs.VITE_ENVIRONMENT === 'PREVIEW' ? (
+          <div className="text-[2rem] font-[800] fixed top-1 left-4 z-[190] text-white/75">
+            ENV {envs.VITE_ENVIRONMENT}
+          </div>
         ) : undefined}
         <Header />
 
