@@ -25,10 +25,8 @@ export const BaseScreens = (): ReactElement => {
   return (
     <TemplateDefault activeScreen={screenSelected}>
       <>
-        {envs.VITE_ENVIRONMENT === 'PREVIEW' ? (
-          <div className="text-[2rem] font-[800] fixed top-1 left-4 z-[190] text-white/75">
-            ENV {envs.VITE_ENVIRONMENT}
-          </div>
+        {envs.VITE_ENVIRONMENT ? (
+          <div className="text-[2rem] font-[800] fixed top-1 left-4 z-[190] text-white/75">{envs.VITE_ENVIRONMENT}</div>
         ) : undefined}
         <Header />
 

@@ -48,7 +48,7 @@ jobs:
 
       - name: build App
         run: |
-          echo "export const envs = { VITE_BASE_URL: '/youtube-reload/${{ steps.branch_directory.outputs.build_directory_without_base }}', VITE_ENVIRONMENT: 'PREVIEW' };" > src/core/env.ts
+          echo "export const envs = { VITE_BASE_URL: '/youtube-reload/${{ steps.branch_directory.outputs.build_directory_without_base }}', VITE_ENVIRONMENT: '${{ steps.branch_directory.outputs.build_directory_without_base }}' };" > src/core/env.ts
           pnpm run build
 
       - name: deploy with gh-pages
@@ -66,4 +66,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            🚀 Deploy feito com sucesso em https://github.com/gabrielogregorio/youtube-reload/${{ steps.branch_directory.outputs.build_directory_without_base }}
+            🚀 Deploy deverá ser feito em https://gabrielogregorio.github.io/youtube-reload/${{ steps.branch_directory.outputs.build_directory_without_base }}
