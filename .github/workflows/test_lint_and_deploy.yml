@@ -1,4 +1,4 @@
-name: testing, linting
+name: testing, linting and deploy if merge
 
 on:
   push:
@@ -92,3 +92,34 @@ jobs:
 
       - name: check eslint
         run: pnpm run lint
+
+  deploy:
+    needs: [test_and_up_coverage, linting]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    strategy:
+      matrix:
+        pnpm-version: [6.0.2]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: use pnpm.js ${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
+
+      - name: Install dependencies and test
+        run: pnpm i --frozen-lockfile
+
+      - name: Build App
+        run: pnpm run build
+
+      - name: Deploy with gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/gabrielogregorio/youtube-reload.git
+          npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
