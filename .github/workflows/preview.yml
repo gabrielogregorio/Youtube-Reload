@@ -37,11 +37,6 @@ jobs:
       - name: install dependencies
         run: pnpm i --frozen-lockfile
 
-      - name: build App
-        run: |
-          echo "module.exports = { VITE_BASE_URL: '/youtube-reload/${{ steps.branch_directory.outputs.build_directory }}', VITE_ENVIRONMENT: 'PREVIEW' }" > env.js
-          pnpm run build
-          
       - name: set branch name and build directory
         id: branch_directory
         run: |
@@ -49,6 +44,11 @@ jobs:
           echo "Branch name: $BRANCH_NAME"
           echo "Build directory: dist/$BRANCH_NAME"
           echo "::set-output name=build_directory::dist/$BRANCH_NAME"
+
+      - name: build App
+        run: |
+          echo "module.exports = { VITE_BASE_URL: '/youtube-reload/${{ steps.branch_directory.outputs.build_directory }}', VITE_ENVIRONMENT: 'PREVIEW' }" > env.js
+          pnpm run build
 
       - name: deploy with gh-pages
         run: |
