@@ -31,7 +31,7 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-  test-and-up-coverage:
+  test_and_up_coverage:
     needs: install
     environment: codacy_env
     runs-on: ubuntu-latest
