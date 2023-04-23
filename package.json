@@ -11,9 +11,7 @@
   "scripts": {
     "deploy": "gh-pages -d build",
     "dev": "vite --host",
-    "build": "VITE_ENV_FILE=.env.dev vite build",
-    "build:prod": "VITE_ENV_FILE=.env.prod vite build",
-    "build:preview": "VITE_ENV_FILE=.env.preview vite build",
+    "build": "vite build",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage --watch=false",

@@ -115,11 +115,11 @@ jobs:
         run: pnpm i --frozen-lockfile
 
       - name: Build App
-        run: pnpm run build:prod
+        run: pnpm run build
 
       - name: Deploy with gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/gabrielogregorio/youtube-reload.git
-          npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
+          npx gh-pages -d build --add -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
