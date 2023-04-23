@@ -44,10 +44,11 @@ jobs:
           echo "Branch name: $BRANCH_NAME"
           echo "Build directory: dist/$BRANCH_NAME"
           echo "::set-output name=build_directory::dist/$BRANCH_NAME"
+          echo "::set-output name=build_directory_without_base::$BRANCH_NAME"
 
       - name: build App
         run: |
-          echo "module.exports = { VITE_BASE_URL: '/youtube-reload/${{ steps.branch_directory.outputs.build_directory }}', VITE_ENVIRONMENT: 'PREVIEW' }" > env.js
+          echo "module.exports = { VITE_BASE_URL: '/youtube-reload/${{ steps.branch_directory.outputs.build_directory_without_base }}', VITE_ENVIRONMENT: 'PREVIEW' }" > env.js
           pnpm run build
 
       - name: deploy with gh-pages
