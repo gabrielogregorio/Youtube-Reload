@@ -20,9 +20,6 @@
 
 </d>
 
-
-
-
 <h3>Introdução</h3>
 
 ~~Um dos meus primeiros projetos usando VueJs, estou migrando para o github pages, então não espere boas práticas.~~
