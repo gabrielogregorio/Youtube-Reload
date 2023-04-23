@@ -1,0 +1,51 @@
+name: deploy preview
+
+on:
+  pull_request:
+    branch:
+      - main
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        pnpm-version: [6.0.2]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: use pnpm ${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
+
+      - name: install dependencies
+        run: pnpm i --frozen-lockfile
+
+      - name: Build App
+        run: pnpm run build:preview
+
+      - name: set branch name and build directory
+        id: branch_directory
+        run: |
+          BRANCH_NAME=${GITHUB_HEAD_REF##*/}
+          echo "Branch name: $BRANCH_NAME"
+          echo "Build directory: build/$BRANCH_NAME"
+          echo "::set-output name=build_directory::build/$BRANCH_NAME"
+
+      - name: deploy with gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/gabrielogregorio/youtube-reload.git
+          mkdir -p ${{ steps.branch_directory.outputs.build_directory }}
+          cp -r build/* ${{ steps.branch_directory.outputs.build_directory }}
+          npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
