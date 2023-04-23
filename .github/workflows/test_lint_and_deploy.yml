@@ -97,7 +97,7 @@ jobs:
     needs: [test_and_up_coverage, linting]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    
+
     strategy:
       matrix:
         pnpm-version: [6.0.2]
@@ -115,7 +115,7 @@ jobs:
         run: pnpm i --frozen-lockfile
 
       - name: Build App
-        run: pnpm run build
+        run: pnpm run build:prod
 
       - name: Deploy with gh-pages
         run: |
