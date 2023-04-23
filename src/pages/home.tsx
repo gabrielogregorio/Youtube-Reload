@@ -21,7 +21,7 @@ export const HomePage = (): ReactElement => {
 
   return (
     <div>
-      AQUI, NOVA MUDANCA
+      NOVO AJUSTE DE PRODUTOS!
       <Cards cards={filtered} />
       <section className="w-full flex justify-center items-center mt-16">
         <GeneratePlaylist generateRandomPlaylist={applyFilters} />
