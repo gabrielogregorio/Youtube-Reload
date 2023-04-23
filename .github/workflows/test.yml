@@ -1,4 +1,4 @@
-name: Unit tests
+name: testing, linting
 
 on:
   push:
@@ -7,7 +7,32 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  install:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pnpm-version: [6.0.2]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: use pnpm ${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
+
+      - name: install dependencies
+        run: pnpm i --frozen-lockfile
+
+      - name: cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+  test-and-up-coverage:
+    needs: install
     environment: codacy_env
     runs-on: ubuntu-latest
 
@@ -27,11 +52,43 @@ jobs:
         with:
           version: ${{ matrix.pnpm-version }}
 
-      - name: install dependencies and test
-        run: pnpm i --frozen-lockfile
+      - name: restore node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: running tests and generate coverage
         run: pnpm run test:coverage
 
       - name: up coverage to codacy
         run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r ./coverage/lcov.info
+
+  linting:
+    needs: install
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        pnpm-version: [6.0.2]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: use pnpm.js ${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
+
+      - name: restore node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: check typescript
+        run: pnpm run check
+
+      - name: check eslint
+        run: pnpm run lint
