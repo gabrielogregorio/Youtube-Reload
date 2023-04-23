@@ -4,6 +4,7 @@ on:
   pull_request:
     branch:
       - main
+      - dev
     types:
       - opened
       - synchronize
@@ -14,13 +15,19 @@ jobs:
 
     strategy:
       matrix:
-        pnpm-version: [6.0.2]
+        node-version: [16.x]
+        pnpm-version: [8.3.1]
 
     steps:
       - name: checkout
         uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: use pnpm ${{ matrix.pnpm-version }}
         uses: pnpm/action-setup@v2
@@ -30,9 +37,6 @@ jobs:
       - name: install dependencies
         run: pnpm i --frozen-lockfile
 
-      - name: build App
-        run: VITE_BASE_URL="/youtube-reload/${{ steps.branch_directory.outputs.build_directory }}" pnpm run build:preview
-
       - name: set branch name and build directory
         id: branch_directory
         run: |
@@ -40,6 +44,12 @@ jobs:
           echo "Branch name: $BRANCH_NAME"
           echo "Build directory: dist/$BRANCH_NAME"
           echo "::set-output name=build_directory::dist/$BRANCH_NAME"
+          echo "::set-output name=build_directory_without_base::$BRANCH_NAME"
+
+      - name: build App
+        run: |
+          echo "export const envs = { VITE_BASE_URL: '/youtube-reload/${{ steps.branch_directory.outputs.build_directory_without_base }}', VITE_ENVIRONMENT: '${{ steps.branch_directory.outputs.build_directory_without_base }}' };" > src/core/env.ts
+          pnpm run build
 
       - name: deploy with gh-pages
         run: |
@@ -49,3 +59,11 @@ jobs:
           npx gh-pages -d dist --add -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: comment on PR
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            🚀 Deploy deverá ser feito em https://gabrielogregorio.github.io/youtube-reload/${{ steps.branch_directory.outputs.build_directory_without_base }}

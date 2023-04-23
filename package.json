@@ -1,19 +1,17 @@
 {
   "name": "youtube-reload",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "homepage": "https://gabrielogregorio.github.io/youtube-reload",
   "private": false,
   "main": "build/index.js",
   "engines": {
-    "pnpm": ">=6.0.0",
-    "node": ">=16.x <18.0.0"
+    "pnpm": ">=8.0.0",
+    "node": ">=16.x"
   },
   "scripts": {
     "deploy": "gh-pages -d build",
     "dev": "vite --host",
-    "build": "VITE_ENV_FILE=.env.dev vite build",
-    "build:prod": "VITE_ENV_FILE=.env.prod vite build",
-    "build:preview": "VITE_ENV_FILE=.env.preview vite build",
+    "build": "vite build",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage --watch=false",
@@ -27,6 +25,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "react": "^18.2.0",
+    "cross-env": "^7.0.3",
     "react-dom": "^18.2.0",
     "react-hook-form": "7.22.5",
     "react-icons": "^4.7.1",

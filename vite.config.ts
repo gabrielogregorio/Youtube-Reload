@@ -2,11 +2,14 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { VitePWA } from 'vite-plugin-pwa';
+import { envs } from './src/core/env'
+
+const baseUrl = envs.VITE_BASE_URL || '/youtube-reload';
 
 export default defineConfig({
   root: '.',
   // @ts-ignore
-  base: process.env.VITE_BASE_URL || '/youtube-reload',
+  base:baseUrl,
   build: {
     outDir: 'build',
   },
@@ -52,7 +55,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      base: '/youtube-reload/',
+      base:baseUrl,
       includeAssets: ['favicon.ico', 'icon.png', 'icon-512x512.png'],
       manifest: {
         name: 'Youtube Reload',
@@ -61,28 +64,28 @@ export default defineConfig({
         theme_color: '#2d3036',
         background_color: '#2d3036',
         orientation: 'portrait',
-        start_url: '/youtube-reload/registerSW.js',
-        scope: '/youtube-reload/',
+        start_url: baseUrl + '/registerSW.js',
+        scope: baseUrl,
         display: 'standalone',
         icons: [
           {
-            src: '/youtube-reload/icons/icon-192.png',
+            src: baseUrl + '/icons/icon-192.png',
             type: 'image/png',
             sizes: '192x192',
           },
           {
-            src: '/youtube-reload/icons/icon-512.png',
+            src: baseUrl + '/icons/icon-512.png',
             type: 'image/png',
             sizes: '512x512',
           },
           {
-            src: '/youtube-reload/icons/icon-maskable-192.png',
+            src: baseUrl + '/icons/icon-maskable-192.png',
             type: 'image/png',
             sizes: '192x192',
             purpose: 'maskable',
           },
           {
-            src: '/youtube-reload/icons/icon-maskable-512.png',
+            src: baseUrl + '/icons/icon-maskable-512.png',
             type: 'image/png',
             sizes: '512x512',
             purpose: 'maskable',
