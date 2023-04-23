@@ -38,14 +38,14 @@ jobs:
         run: |
           BRANCH_NAME=${GITHUB_HEAD_REF##*/}
           echo "Branch name: $BRANCH_NAME"
-          echo "Build directory: build/$BRANCH_NAME"
-          echo "::set-output name=build_directory::build/$BRANCH_NAME"
+          echo "Build directory: dist/$BRANCH_NAME"
+          echo "::set-output name=build_directory::dist/$BRANCH_NAME"
 
       - name: deploy with gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/gabrielogregorio/youtube-reload.git
           mkdir -p ${{ steps.branch_directory.outputs.build_directory }}
           cp -r build/* ${{ steps.branch_directory.outputs.build_directory }}
-          npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
+          npx gh-pages -d dist -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
