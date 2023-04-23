@@ -13,7 +13,7 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path={ScreenEnum.home} element={<BaseScreens />} />
+          <Route path="*" element={<BaseScreens />} />
         </Routes>
       </BrowserRouter>
     </Provider>
