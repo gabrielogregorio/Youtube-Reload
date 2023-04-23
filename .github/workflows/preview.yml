@@ -32,7 +32,7 @@ jobs:
         run: pnpm i --frozen-lockfile
 
       - name: build App
-        run: VITE_BASE_URL="/youtube-reload/${{ steps.branch_directory.outputs.build_directory }}" VITE_ENVIRONMENT="PREVIEW" pnpm run build
+        run: cross-env VITE_BASE_URL="/youtube-reload/${{ steps.branch_directory.outputs.build_directory }}" VITE_ENVIRONMENT="PREVIEW" pnpm run build
 
       - name: set branch name and build directory
         id: branch_directory

@@ -6,7 +6,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 export default defineConfig({
   root: '.',
   // @ts-ignore
-  base: process.env.VITE_BASE_URL || '/youtube-reload',
+  base: process.env.VITE_BASE_URL || '/youtube-reload/dev',
   build: {
     outDir: 'build',
   },
