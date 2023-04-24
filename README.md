@@ -1,6 +1,6 @@
 <h1 align="center">🎵 Youtube Reload 🎵</h1>
 <p align="center">
-  Gere playlists com músicas que você nunca ouviu.
+  Gere playlists com músicas que você nunca ouviu. Nova versão
   <br>
   <a href="https://gabrielogregorio.github.io/youtube-reload/"><strong>Ver projeto »</strong></a>
   <br>
@@ -36,10 +36,10 @@ Versão atualizada deste projeto para Vite com React, typescript e eslint 'estra
 ![GitHub language count](https://img.shields.io/github/languages/count/gabrielogregorio/youtube-reload)
 ![GitHub repo size](https://img.shields.io/github/repo-size/gabrielogregorio/youtube-reload)
 
-### Como Iniciar           
+### Como Iniciar
 Use os comandos abaixo
 
-```bash    
+```bash
 pnpm i
 pnpm run dev
 ```
