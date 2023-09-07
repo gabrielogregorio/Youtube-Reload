@@ -1,0 +1,44 @@
+name: assign and label pr
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  assign_and_label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+      
+      - name: get pr commits
+        id: pr_commits
+        run: |
+          pr_commits=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          "${{ github.event.pull_request.commits_url }}")
+          echo "::set-output name=pr_commits::$pr_commits"
+
+      - name: assign user and add labels
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const commitsResponse = await github.rest.pulls.listCommits({ owner: context.repo.owner, repo: context.repo.repo, pull_number: context.issue.number });
+            const commitMessages = commitsResponse.map(commit => commit.commit.message.toLowerCase());
+
+            const { owner, repo, number } = context.issue;
+            const prAuthor = context.payload.pull_request.user.login;
+
+            await github.rest.issues.addAssignees({ owner, repo, issue_number: number, assignees: [prAuthor] });
+
+            const labelsToAdd = [];
+
+            for (const message of commitMessages) {
+              if (message.includes("fix")) { labelsToAdd.push("bug"); }
+              if (message.includes("feat")) { labelsToAdd.push("feature"); }
+            }
+
+            if (labelsToAdd.length > 0) {
+              await github.rest.issues.addLabels({ owner, repo, issue_number: number, labels: labelsToAdd });
+            }
