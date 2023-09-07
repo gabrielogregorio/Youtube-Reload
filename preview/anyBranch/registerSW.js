@@ -1,1 +1,1 @@
-if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/youtube-reload/anyBranchsw.js', { scope: '/youtube-reload/anyBranch' })})}
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/youtube-reload/anyBranch/preview/anyBranchsw.js', { scope: '/youtube-reload/anyBranch/preview/anyBranch' })})}
