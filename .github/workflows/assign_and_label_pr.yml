@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: checkout repository
         uses: actions/checkout@v2
-      
+
       - name: get pr commits
         id: pr_commits
         run: |
@@ -25,6 +25,7 @@ jobs:
         with:
           script: |
             const commitsResponse = await github.rest.pulls.listCommits({ owner: context.repo.owner, repo: context.repo.repo, pull_number: context.issue.number });
+            console.log(commitsResponse, 'aaa')
             const commitMessages = commitsResponse.map(commit => commit.commit.message.toLowerCase());
 
             const { owner, repo, number } = context.issue;
