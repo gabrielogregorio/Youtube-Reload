@@ -4,7 +4,6 @@ import './assets/index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from '@/connections/store';
-// import { ScreenEnum } from '@/contracts/homeScreens';
 import { BaseScreens } from '@/pages/base';
 
 const root: ReactDOM.Root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
