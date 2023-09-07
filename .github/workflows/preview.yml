@@ -10,7 +10,7 @@ on:
       - synchronize
 
 jobs:
-  deploy:
+  preview:
     runs-on: ubuntu-latest
 
     strategy:
@@ -40,7 +40,7 @@ jobs:
         with:
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: 'github-actions[bot]'
-          body-includes: bot=preview
+          body-includes: to preview branch
 
       - name: check if bot comment exists
         id: check-bot-comment
@@ -144,3 +144,15 @@ jobs:
           reactions: |
             hooray
             rocket
+
+  report-failure:
+    if: failure()
+    needs: [preview]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report failure
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: ❌ An error occurred during the preview execution. Please check the logs for details.
