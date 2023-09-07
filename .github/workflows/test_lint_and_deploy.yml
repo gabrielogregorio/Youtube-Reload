@@ -112,7 +112,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-
       - name: use pnpm.js ${{ matrix.pnpm-version }}
         uses: pnpm/action-setup@v2
         with:
@@ -127,6 +126,10 @@ jobs:
       - name: Deploy with gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/gabrielogregorio/youtube-reload.git
+
+          echo "copy index to 404 page"
+          cp build/index.html build/404.html
+
           npx gh-pages -d build --add -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
