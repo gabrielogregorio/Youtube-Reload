@@ -31,8 +31,7 @@ jobs:
         run: |
           BASE_VERSION=$(node -p "require('./base/package.json').version")
           PR_VERSION=$(node -p "require('./pr/package.json').version")
-          echo "Base version: $BASE_VERSION"
-          echo "PR version: $PR_VERSION"
+ 
           echo "BASE_VERSION=$BASE_VERSION" >> $GITHUB_ENV
           echo "PR_VERSION=$PR_VERSION" >> $GITHUB_ENV
 
