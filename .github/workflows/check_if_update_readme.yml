@@ -22,11 +22,6 @@ jobs:
           
           pr_template=$(cat .github/pull-request-template.md)
 
-          echo "pr_template = $pr_template"
-          echo "pr_body = $pr_body"
-          echo "pr_title = $pr_title"
-          
-
           if [[ "$pr_title" == "$default_title" ]]; then
             echo "error: pr title is not updated."
             exit 1
@@ -39,11 +34,12 @@ jobs:
             echo "error: pr body is the same as the template."
             exit 1
           fi
+  
       - name: create comment
         if: ${{ failure() }}
         uses: actions/github-script@v5
         with:
           script: |
             const { owner, repo, number } = context.issue;
-            const body = `Salve man 🧑‍💻\n\nAtualiza o PR ai please, pode ser meu bom?`;
+            const body = `Oi 🧑‍💻\n\nAtualiza o PR ai beleza?`;
             await github.rest.issues.createComment({ owner, repo, issue_number: number, body });

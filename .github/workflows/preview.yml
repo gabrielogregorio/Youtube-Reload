@@ -24,17 +24,17 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Setup Node.js ${{ matrix.node-version }}
+      - name: checkout Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: use pnpm ${{ matrix.pnpm-version }}
+      - name: checkout pnpm ${{ matrix.pnpm-version }}
         uses: pnpm/action-setup@v2
         with:
           version: ${{ matrix.pnpm-version }}
 
-      - name: find bot comment
+      - name: find old bot comments
         uses: peter-evans/find-comment@v2
         id: find-old-bot-comment
         with:
@@ -96,17 +96,17 @@ jobs:
             - 🔨 Building app...
 
       - name: set branch name and build directory
-        id: branch_directory
+        id: set_environments
         run: |
           BRANCH_NAME=${GITHUB_HEAD_REF##*/}
           echo "Branch name: $BRANCH_NAME"
           echo "Build directory: preview/$BRANCH_NAME"
           echo "::set-output name=build_directory::preview/$BRANCH_NAME"
-          echo "::set-output name=build_directory_without_base::$BRANCH_NAME"
+          echo "::set-output name=branch_name::$BRANCH_NAME"
 
       - name: build App
         run: |
-          echo "export const envs = { VITE_BASE_URL: '/youtube-reload/${{ steps.branch_directory.outputs.build_directory }}/', VITE_ENVIRONMENT: '${{ steps.branch_directory.outputs.build_directory_without_base }}' };" > src/core/env.ts
+          echo "export const envs = { VITE_BASE_URL: '/youtube-reload/${{ steps.set_environments.outputs.build_directory }}/', VITE_ENVIRONMENT: '${{ steps.set_environments.outputs.branch_name }}' };" > src/core/env.ts
           pnpm run build
 
       - name: comment on PR, doing deploy
@@ -121,9 +121,17 @@ jobs:
       - name: deploy with gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/gabrielogregorio/youtube-reload.git
-          mkdir -p preview/${{ steps.branch_directory.outputs.build_directory }}
-          cp -r build/* preview/${{ steps.branch_directory.outputs.build_directory }}
+
+          echo "create preview branch"
+          mkdir -p preview/${{ steps.set_environments.outputs.build_directory }}
+
+          echo "copy index to 404 page"
           cp build/index.html build/404.html
+
+          echo "move build to preview"
+          cp -r build/* preview/${{ steps.set_environments.outputs.build_directory }}
+
+          echo "deploy do gh pages"
           npx gh-pages -d preview --add -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -140,7 +148,7 @@ jobs:
           comment-id: ${{ steps.get-new-or-old-comment-id.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            - 🚀 The deploy will be done in https://gabrielogregorio.github.io/youtube-reload/preview/${{ steps.branch_directory.outputs.build_directory_without_base }}?nocache=${{ steps.currenttime.outputs.current_time }}
+            - 🚀 The deploy will be done in https://gabrielogregorio.github.io/youtube-reload/${{ steps.set_environments.outputs.branch_name }}?nocache=${{ steps.currenttime.outputs.current_time }}
           reactions: |
             hooray
             rocket
