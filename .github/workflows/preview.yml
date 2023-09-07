@@ -106,7 +106,7 @@ jobs:
 
       - name: build App
         run: |
-          echo "export const envs = { VITE_BASE_URL: '/youtube-reload/${{ steps.branch_directory.outputs.build_directory_without_base }}', VITE_ENVIRONMENT: '${{ steps.branch_directory.outputs.build_directory_without_base }}' };" > src/core/env.ts
+          echo "export const envs = { VITE_BASE_URL: '/youtube-reload/${{ steps.branch_directory.outputs.build_directory }}/', VITE_ENVIRONMENT: '${{ steps.branch_directory.outputs.build_directory_without_base }}' };" > src/core/env.ts
           pnpm run build
 
       - name: comment on PR, doing deploy
