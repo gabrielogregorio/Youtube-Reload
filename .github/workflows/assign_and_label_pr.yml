@@ -24,6 +24,7 @@ jobs:
         uses: actions/github-script@v5
         with:
           script: |
+            console.log('start scripting...')
             const commitsResponse = await github.rest.pulls.listCommits({ owner: context.repo.owner, repo: context.repo.repo, pull_number: context.issue.number });
             const commitMessages = commitsResponse.data.map(commit => commit.commit.message.toLowerCase());
 
@@ -31,6 +32,8 @@ jobs:
             const prAuthor = context.payload.pull_request.user.login;
 
             await github.rest.issues.addAssignees({ owner, repo, issue_number: number, assignees: [prAuthor] });
+
+            console.log('handle asign labels...')
 
             const labelsToAdd = [];
 
@@ -45,7 +48,7 @@ jobs:
               await github.rest.issues.addLabels({ owner, repo, issue_number: number, labels: labelsToAdd });
             }
 
-
+            console.log('handle adds resolve...')
 
             const getActualPrBody = async () => {
               return github.rest.pulls.get({
@@ -55,12 +58,12 @@ jobs:
               });
             }
 
-            let updatedBody = await getActualPrBody().data.body;
+            let updatedBody = (await getActualPrBody()).data.body;
 
             const verifyIfNeedAddsResolve = (updatedBodyLocal) => {
               for (const message of commitMessages) {
                 const match = message.match(/resolve #(\d+)/i);
-                if (match && !updatedBodyLocal.includes(match[0])) { // Evita adicionar o mesmo "resolve" várias vezes
+                if (match && !updatedBodyLocal.includes(match[0])) {
                   updatedBodyLocal += `\n\n${match[0]}`;
                 }
               }
@@ -70,7 +73,7 @@ jobs:
 
             const newUpdatedBody = verifyIfNeedAddsResolve(updatedBody)
 
-            const updatesActualPr = () => {
+            const updatesActualPr = async () => {
               await github.rest.pulls.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
@@ -79,4 +82,4 @@ jobs:
               });
             }
 
-            updatesActualPr()
+            await updatesActualPr()
