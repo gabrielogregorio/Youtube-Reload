@@ -34,8 +34,66 @@ jobs:
         with:
           version: ${{ matrix.pnpm-version }}
 
+      - name: find bot comment
+        uses: peter-evans/find-comment@v2
+        id: find-old-bot-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: bot=preview
+
+      - name: check if bot comment exists
+        id: check-bot-comment
+        run: |
+          echo "::set-output name=comment-exists::${{ steps.find-old-bot-comment.outputs.comment-id != '' }}"
+
+      - name: create first bot comment if not exists
+        id: create-first-bot-comment
+        uses: peter-evans/create-or-update-comment@v3
+        if: steps.check-bot-comment.outputs.comment-exists == 'false'
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: 'Starting bot'
+
+      - name: get comment id, existing or new
+        id: get-new-or-old-comment-id
+        run: |
+          echo "::set-output name=comment-id::${{ steps.find-old-bot-comment.outputs.comment-id != '' && steps.find-old-bot-comment.outputs.comment-id || steps.create-first-bot-comment.outputs.comment-id }}"
+
+      - name: comment on pr, deploy to preview
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.get-new-or-old-comment-id.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ### Deploy to preview branch
+            ----------
+            This action deploys the current branch to github pages, returning the deploy URL to be tested.
+            > Even with the deployment finished, you will have to wait a little longer until github pages finish uploading the files
+          edit-mode: replace
+
+      - name: comment on PR, install packages
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.get-new-or-old-comment-id.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            - ⭐ Install packages...
+
       - name: install dependencies
         run: pnpm i --frozen-lockfile
+
+      - name: comment on PR, building app
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.get-new-or-old-comment-id.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            - 🔨 Building app...
 
       - name: set branch name and build directory
         id: branch_directory
@@ -51,6 +109,15 @@ jobs:
           echo "export const envs = { VITE_BASE_URL: '/youtube-reload/${{ steps.branch_directory.outputs.build_directory_without_base }}', VITE_ENVIRONMENT: '${{ steps.branch_directory.outputs.build_directory_without_base }}' };" > src/core/env.ts
           pnpm run build
 
+      - name: comment on PR, doing deploy
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.get-new-or-old-comment-id.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            - 🧑‍💻 Start deploy...
+
       - name: deploy with gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/gabrielogregorio/youtube-reload.git
@@ -61,10 +128,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Get current time
+        id: currentTime
+        run: echo "::set-output name=current_time::$(date +'%d-%m-%Y-%H.%M:%S')"
+        shell: bash
+
       - name: comment on PR
-        uses: peter-evans/create-or-update-comment@v1
+        uses: peter-evans/create-or-update-comment@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.get-new-or-old-comment-id.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            🚀 Deploy deverá ser feito em https://gabrielogregorio.github.io/youtube-reload/${{ steps.branch_directory.outputs.build_directory_without_base }}
+            - 🚀 The deploy will be done in https://gabrielogregorio.github.io/youtube-reload/dev?nocache=${{ steps.currenttime.outputs.current_time }}
+          reactions: |
+            hooray
+            rocket
