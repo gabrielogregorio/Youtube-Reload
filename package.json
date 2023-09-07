@@ -1,6 +1,6 @@
 {
   "name": "youtube-reload",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "homepage": "https://gabrielogregorio.github.io/youtube-reload",
   "private": false,
   "main": "build/index.js",
@@ -23,7 +23,7 @@
     "format": "prettier src/* --write"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.1",
+     "@reduxjs/toolkit": "^1.9.1",
     "react": "^18.2.0",
     "cross-env": "^7.0.3",
     "react-dom": "^18.2.0",
@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "eslint-plugin-canonical-vocabulary": "^1.2.0",
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
     "@testing-library/dom": "^8.19.0",

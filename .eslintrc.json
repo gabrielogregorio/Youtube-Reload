@@ -18,13 +18,35 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "react", "spellcheck", "sonarjs", "import", "no-null"],
+  "plugins": ["@typescript-eslint", "react", "spellcheck", "sonarjs", "import", "no-null", "canonical-vocabulary"],
   "settings": {
     "import/resolver": {
       "typescript": {}
     }
   },
   "rules": {
+    "canonical-vocabulary/canonical-vocabulary": [
+      "error",
+      [
+        {
+          "words": ["Reboot", "Recharge"],
+          "fixTo": "reload",
+          "message": "🚨 Not use <word>, use <fixTo>. 😉"
+        },
+        {
+          "words": ["Enjoy", "Admire", "gostei", "Appreciate", "Approve", "Prefer"],
+          "fixTo": "like"
+        },
+        {
+          "words": ["NãoGostei", "naoGostei", "Disapprove", "Hate", "Detest", "Loathe", "Despise", "Reject", "Resent"],
+          "fixTo": "Unlike"
+        },
+        {
+          "words": ["Tracklist", "Mixtape", "Setlist", "Compilation", "Queue", "SongList", "Album", "ListaDeMusicas"],
+          "fixTo": "playlist"
+        }
+      ]
+    ],
     "react/jsx-filename-extension": [0],
     "import/extensions": "off",
     "no-shadow": "off",
