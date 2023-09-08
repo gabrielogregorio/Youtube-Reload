@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/youtube-reload/preview/novo_ambiente/sw.js', { scope: '/youtube-reload/preview/novo_ambiente/' })})}
