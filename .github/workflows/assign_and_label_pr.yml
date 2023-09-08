@@ -42,6 +42,7 @@ jobs:
               if (message.includes("feat")) { labelsToAdd.push("feature"); }
               if (message.includes("docs")) { labelsToAdd.push("documentation"); }
               if (message.includes("refactor")) { labelsToAdd.push("enhancement"); }
+              if (message.includes("chore")) { labelsToAdd.push("help wanted"); }
             }
 
             if (labelsToAdd.length > 0) {
@@ -68,7 +69,7 @@ jobs:
               let newContent = ''
               for (const message of commitMessages) {
                 if (!updatedBodyLocal.includes(message)) {
-                  newContent += `\n- ${message}`;
+                  newContent += `- ${message}\n`;
                 }
               }
 
