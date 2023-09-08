@@ -84,7 +84,7 @@ jobs:
                 return updatedBodyLocal
               }
 
-              newContent = newContent + '[...autoGenerate]'              
+              newContent = newContent + '[...autoGenerate]'
               return updatedBodyLocal.replace('[...autoGenerate]', newContent)
             }
 
@@ -108,7 +108,7 @@ jobs:
             const currentTitle = context.payload.pull_request.title;
             const newTitle = `Release ${version} - ${currentTitle}`;
 
-            if(currentTitle === 'Dev') {
+            if(currentTitle !== 'Release') {
               await github.rest.pulls.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
