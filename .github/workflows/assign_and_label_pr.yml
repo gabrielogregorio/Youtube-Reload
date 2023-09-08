@@ -20,6 +20,13 @@ jobs:
           "${{ github.event.pull_request.commits_url }}")
           echo "::set-output name=pr_commits::$pr_commits"
 
+      - name: get current version
+        id: get-version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "Current version: $VERSION"
+          echo "TAG_VERSION=v$VERSION" >> $GITHUB_ENV
+
       - name: assign user and add labels
         uses: actions/github-script@v5
         with:
@@ -73,7 +80,11 @@ jobs:
                 }
               }
 
-              newContent = newContent + '\n[...autoGenerate]'              
+              if(newContent === '') {
+                return updatedBodyLocal
+              }
+
+              newContent = newContent + '[...autoGenerate]'              
               return updatedBodyLocal.replace('[...autoGenerate]', newContent)
             }
 
@@ -89,3 +100,19 @@ jobs:
             }
 
             await updatesActualPr()
+
+            // update pr title
+
+            const version = process.env.TAG_VERSION;
+
+            const currentTitle = context.payload.pull_request.title;
+            const newTitle = `Release ${version} - ${currentTitle}`;
+
+            if(currentTitle === 'Dev') {
+              await github.rest.pulls.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+                title: newTitle
+              });
+            }
