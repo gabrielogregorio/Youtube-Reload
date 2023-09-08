@@ -1,4 +1,4 @@
-name: check if package version update
+name: check if package version are updated
 
 on:
   pull_request:
@@ -31,7 +31,7 @@ jobs:
         run: |
           BASE_VERSION=$(node -p "require('./base/package.json').version")
           PR_VERSION=$(node -p "require('./pr/package.json').version")
- 
+
           echo "BASE_VERSION=$BASE_VERSION" >> $GITHUB_ENV
           echo "PR_VERSION=$PR_VERSION" >> $GITHUB_ENV
 

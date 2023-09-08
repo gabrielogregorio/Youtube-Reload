@@ -2,14 +2,13 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { VitePWA } from 'vite-plugin-pwa';
-import { envs } from './src/core/env'
+import { envs } from './src/core/env';
 
 const baseUrl = envs.VITE_BASE_URL || '/youtube-reload';
 
 export default defineConfig({
   root: '.',
-  // @ts-ignore
-  base:baseUrl,
+  base: baseUrl,
   build: {
     outDir: 'build',
   },
@@ -55,7 +54,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      base:baseUrl,
+      base: baseUrl,
       includeAssets: ['favicon.ico', 'icon.png', 'icon-512x512.png'],
       manifest: {
         name: 'Youtube Reload',

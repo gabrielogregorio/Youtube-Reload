@@ -1,10 +1,10 @@
-name: testing, linting and deploy if merge
+name: testing, linting and deploy
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
   pull_request:
-    branches: [main]
+    branches: [main, dev]
 
 jobs:
   install:
@@ -31,13 +31,9 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-  test_and_up_coverage:
+  unit_tests:
     needs: install
-    environment: codacy_env
     runs-on: ubuntu-latest
-
-    env:
-      CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
 
     strategy:
       matrix:
@@ -60,6 +56,27 @@ jobs:
 
       - name: running tests and generate coverage
         run: pnpm run test:coverage
+
+  up_coverage_to_codacy:
+    needs: unit_tests
+    environment: codacy_env
+    runs-on: ubuntu-latest
+
+    env:
+      CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+
+    strategy:
+      matrix:
+        pnpm-version: [8.3.1]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: use pnpm ${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
 
       - name: up coverage to codacy
         run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r ./coverage/lcov.info
@@ -87,14 +104,89 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-      - name: check typescript
-        run: pnpm run check
-
       - name: check eslint
-        run: pnpm run lint
+        run: pnpm run eslint:lint
+
+  lint_tsc:
+    needs: install
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        pnpm-version: [8.3.1]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: use pnpm.js ${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
+
+      - name: restore node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: check typescript
+        run: pnpm run tsc:lint
+
+  format:
+    needs: install
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        pnpm-version: [8.3.1]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: use pnpm.js ${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
+
+      - name: restore node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: verify if prettier is formated
+        run: pnpm run prettier:check
+
+  audit:
+    needs: install
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        pnpm-version: [8.3.1]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: use pnpm.js ${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
+
+      - name: restore node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: audit packages
+        run: pnpm run audit
 
   deploy:
-    needs: [test_and_up_coverage, linting]
+    needs: [unit_tests, linting, lint_tsc, format, audit]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
@@ -133,3 +225,45 @@ jobs:
           npx gh-pages -d build --add -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  create-release-and-tag:
+    needs: [deploy]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          ref: main
+
+      - name: set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+
+      - name: get current version
+        id: get-version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "Current version: $VERSION"
+          echo "TAG_VERSION=v$VERSION" >> $GITHUB_ENV
+
+      - name: update release with PR content
+        id: update-pr-content
+        run: |
+          PR_CONTENT="${{ github.event.pull_request.title }}: ${{ github.event.pull_request.body }}"
+          echo "PR_CONTENT<<EOF" >> $GITHUB_ENV
+          echo "$PR_CONTENT" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: create release and tag
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.TAG_VERSION }}
+          release_name: Release ${{ env.TAG_VERSION }}
+          body: |
+            ${{ env.PR_CONTENT }}
+          draft: false
+          prerelease: false

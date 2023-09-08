@@ -1,10 +1,11 @@
-name: assign and filled label pr
+name: auto complete fields and validate pr
 
 on:
   pull_request:
     types:
       - opened
       - synchronize
+      - edited
 
 jobs:
   assign_and_label:
@@ -40,8 +41,7 @@ jobs:
 
             await github.rest.issues.addAssignees({ owner, repo, issue_number: number, assignees: [prAuthor] });
 
-            console.log('handle asign labels...')
-
+            // add labels in pr
             const labelsToAdd = [];
 
             for (const message of commitMessages) {
@@ -56,17 +56,13 @@ jobs:
               await github.rest.issues.addLabels({ owner, repo, issue_number: number, labels: labelsToAdd });
             }
 
-            console.log('handle adds resolve...')
 
-            const getActualPrBody = async () => {
-              return github.rest.pulls.get({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: context.issue.number
-              });
-            }
-
-            let updatedBody = (await getActualPrBody()).data.body;
+            // added commits on pull request
+            let updatedBody = (await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            })).data.body;
 
             const verifyIfNeedAddsResolve = (updatedBodyLocal) => {
               if(!updatedBodyLocal.includes('[...autoGenerate]')) {
@@ -90,19 +86,16 @@ jobs:
 
             const newUpdatedBody = verifyIfNeedAddsResolve(updatedBody)
 
-            const updatesActualPr = async () => {
-              await github.rest.pulls.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: context.issue.number,
-                body: newUpdatedBody
-              });
-            }
+            // update body on pull request
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              body: newUpdatedBody
+            });
 
-            await updatesActualPr()
 
             // update pr title
-
             const version = process.env.TAG_VERSION;
 
             const currentTitle = context.payload.pull_request.title;
@@ -116,3 +109,36 @@ jobs:
                 title: newTitle
               });
             }
+
+  validate_pr_title_and_body:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+
+      - name: check pr title and body
+        run: |
+          pr_title="${{ github.event.pull_request.title }}"
+          pr_body="${{ github.event.pull_request.body }}"
+          default_title="Update README.md"
+
+          pr_template=$(cat .github/pull-request-template.md)
+          if [[ "$pr_title" == "$default_title" ]]; then
+            echo "error: pr title is not updated."
+            exit 1
+          fi
+          pr_body_cleaned=$(echo "$pr_body" | tr -d '[:space:]')
+          pr_template_cleaned=$(echo "$pr_template" | tr -d '[:space:]')
+          if [[ "$pr_body_cleaned" == "$pr_template_cleaned" ]]; then
+            echo "error: pr body is the same as the template."
+            exit 1
+          fi
+
+      - name: create comment
+        if: ${{ failure() }}
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const { owner, repo, number } = context.issue;
+            const body = `Oi 🧑‍💻\n\nAtualiza o PR ai beleza?`;
+            await github.rest.issues.createComment({ owner, repo, issue_number: number, body });
