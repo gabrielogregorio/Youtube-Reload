@@ -61,14 +61,19 @@ jobs:
             let updatedBody = (await getActualPrBody()).data.body;
 
             const verifyIfNeedAddsResolve = (updatedBodyLocal) => {
+              if(!updatedBodyLocal.includes('[...autoGenerate]')) {
+                return updatedBodyLocal
+              }
+
+              let newContent = ''
               for (const message of commitMessages) {
-                const match = message.match(/resolve #(\d+)/i);
-                if (match && !updatedBodyLocal.includes(match[0])) {
-                  updatedBodyLocal += `\n\n${match[0]}`;
+                if (!updatedBodyLocal.includes(message)) {
+                  newContent += `\n- ${message}`;
                 }
               }
 
-              return updatedBodyLocal
+              newContent = newContent + '\n[...autoGenerate]'              
+              return updatedBodyLocal.replace('[...autoGenerate]', newContent)
             }
 
             const newUpdatedBody = verifyIfNeedAddsResolve(updatedBody)
