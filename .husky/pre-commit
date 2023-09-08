@@ -27,6 +27,9 @@ echo "${Cyan}=========================================================\n${NOCOLO
 echo "${Yellow}.....................INSTALL PACKAGES....................${NOCOLOR}\n"
 pnpm install
 
+echo "\n${Yellow}...............UNIT TEST AND COVERAGE....................${NOCOLOR}"
+pnpm run test:coverage
+
 echo "\n${Yellow}......................AUDIT PACKAGES.....................${NOCOLOR}\n"
 pnpm audit
 
@@ -44,9 +47,6 @@ pnpm run eslint:lint
 
 echo "\n${Yellow}.....................BUILDING APP........................${NOCOLOR}"
 pnpm run build
-
-echo "\n${Yellow}...............UNIT TEST AND COVERAGE....................${NOCOLOR}"
-pnpm run test:coverage
 
 echo "\n${Cyan}=========================================================${NOCOLOR}"
 echo "${Cyan}                END PRE-COMMIT                           ${NOCOLOR}"
