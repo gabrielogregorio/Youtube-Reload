@@ -63,8 +63,8 @@ export const Filters = () => {
 
       <div />
 
-      <div className="">
-        <div className="">
+      <div>
+        <div>
           <label htmlFor="search" className="w-full px-4">
             <div>
               <input

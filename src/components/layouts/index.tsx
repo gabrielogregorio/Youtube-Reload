@@ -23,11 +23,9 @@ export const MainLayout = ({ children }: ITemplateDefaultProps) => {
 
         <Notify />
 
-        <Profile />
-
-        <div className="mr-6" />
+        <Profile className="mr-6" />
       </div>
-      <main className="">{children}</main>
+      <main>{children}</main>
       <div className="h-48" />
     </div>
   );

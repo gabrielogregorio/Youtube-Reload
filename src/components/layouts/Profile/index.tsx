@@ -1,7 +1,12 @@
 import { LogService } from '@/services/log/LogService';
+import { tailwindMerge } from '@/libs/tailwindMerge';
 import { useGetProfile } from './useGetProfile';
 
-export const Profile = () => {
+interface IProps {
+  className?: string;
+}
+
+export const Profile = ({ className = undefined }: IProps) => {
   const { emoji, handleUpdateEmoji } = useGetProfile();
 
   const handleUpdateEmojiProfile = () => {
@@ -10,7 +15,7 @@ export const Profile = () => {
   };
 
   return (
-    <div className="ml-2 w-14 h-full flex items-center justify-center">
+    <div className={tailwindMerge('ml-2 w-14 h-full flex items-center justify-center', className)}>
       <button
         title="Trocar de emoji"
         aria-label="Trocar foto de perfil"

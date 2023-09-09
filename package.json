@@ -24,7 +24,7 @@
     "prettier:check": "prettier *.{ts,js,md,tsx,jsx} --check",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "check":"pnpm run prettier:format & pnpm run eslint:lint & pnpm run tsc:lint & pnpm run test:coverage"
+    "check": "pnpm run prettier:format & pnpm run eslint:lint & pnpm run tsc:lint & pnpm run test:coverage"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
@@ -36,7 +36,8 @@
     "react-hook-form": "7.22.5",
     "react-icons": "^4.7.1",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.4.5"
+    "react-router-dom": "^6.4.5",
+    "tailwind-merge": "^1.14.0"
   },
   "browserslist": {
     "production": [
