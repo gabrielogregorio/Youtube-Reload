@@ -43,8 +43,8 @@ jobs:
 
       - name: deploy with gh-pages
         run: |
-          mkdir -p storybook/${{ steps.set_environments.outputs.branch_name }}
-          cp -r storybook-static/* storybook/${{ steps.set_environments.outputs.branch_name }}
+          mkdir -p 'storybook/storybook/${{ steps.set_environments.outputs.branch_name }}/'
+          cp -r storybook-static/* 'storybook/storybook/${{ steps.set_environments.outputs.branch_name }}/'
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/gabrielogregorio/youtube-reload.git
           npx gh-pages -d storybook --add -u "github-actions-bot <support+actions@github.com>"
 
