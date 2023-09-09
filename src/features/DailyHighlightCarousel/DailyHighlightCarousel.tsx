@@ -20,7 +20,7 @@ export const DailyHighlightCarousel = () => {
             <button
               type="button"
               aria-label="Ver evento anterior"
-              onClick={prevDailyHighlight}
+              onClick={() => prevDailyHighlight()}
               className="flex items-center justify-center cursor-pointer hover:bg-dark-dark px-2 transition-all duration-150 ">
               <MdOutlineNavigateNext className=" text-2xl rotate-180" />
             </button>
@@ -31,7 +31,6 @@ export const DailyHighlightCarousel = () => {
 
             <div className="flex-1 flex flex-col justify-center ml-3">
               <div className="select-none text-sm font-bold">{dailyHighlight.title}</div>
-
               {dailyHighlight.description ? (
                 <div className="select-none text-sm">{dailyHighlight.description}</div>
               ) : undefined}
@@ -42,7 +41,7 @@ export const DailyHighlightCarousel = () => {
             <button
               type="button"
               aria-label="Ver proximo evento"
-              onClick={nextDailyHighlight}
+              onClick={() => nextDailyHighlight()}
               className="flex items-center justify-center cursor-pointer hover:bg-dark-dark px-2 transition-all duration-150 ">
               <MdOutlineNavigateNext className=" text-2xl" />
             </button>

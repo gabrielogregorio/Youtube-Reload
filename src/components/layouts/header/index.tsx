@@ -1,4 +1,4 @@
-import { DailyHighlightCarousel } from '@/features/DailyHighlightCarousel';
+import { DailyHighlightCarousel } from '@/features/DailyHighlightCarousel/DailyHighlightCarousel';
 import { Logo } from '@/layouts/logo';
 
 export const Header = () => {
