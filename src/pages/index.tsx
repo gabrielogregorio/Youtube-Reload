@@ -4,7 +4,7 @@ import { AllPage } from '@/screens/all';
 import { ScreenEnum } from '@/contracts/homeScreens';
 import { Header } from '@/layouts/header';
 import { useScreenSelected } from '@/hooks/useScreenSelected';
-import { useAuth } from '@/hooks/useAuth';
+import { useAuthConfigure } from '@/hooks/useAuthConfigure';
 import { ConfigsPage } from '@/screens/configs';
 import { UnLikesPage } from '@/screens/unlikes';
 import { LikesPage } from '@/screens/likes';
@@ -22,7 +22,7 @@ const screens: { [screen in ScreenEnum]: ReactElement } = {
 export const MainContainer = () => {
   const { screenSelected } = useScreenSelected();
 
-  useAuth(); // use configure auth
+  useAuthConfigure();
 
   const currentScreen = screens[screenSelected];
 

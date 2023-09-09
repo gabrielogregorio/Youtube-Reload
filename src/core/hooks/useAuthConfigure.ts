@@ -2,7 +2,7 @@ import { StorageAccessNameEnum, StorageService } from '@/services/StorageService
 import { LogService } from '@/services/log/LogService';
 import { useEffect } from 'react';
 
-export const useAuth = () => {
+export const useAuthConfigure = () => {
   useEffect(() => {
     const userId = StorageService.getItem(StorageAccessNameEnum.UserId);
     if (userId) {
@@ -12,7 +12,6 @@ export const useAuth = () => {
 
     const newUserId = new Date().getTime().toString();
     StorageService.setItem(StorageAccessNameEnum.UserId, newUserId);
-
     LogService.setUser({ userId: newUserId });
   }, []);
 };
