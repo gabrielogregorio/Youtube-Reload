@@ -5,7 +5,7 @@ on:
     types:
       - opened
       - synchronize
-      - edited
+      # - edited
 
 jobs:
   assign_and_label:
@@ -98,10 +98,10 @@ jobs:
             const currentPackageVersion = process.env.TAG_VERSION;
             const currentTitle = context.payload.pull_request.title;
 
-            let newTitle = `Release v${currentPackageVersion} - ${currentTitle}`
+            let newTitle = `Release ${currentPackageVersion} - ${currentTitle}`
 
-            if(currentTitle.includes('Release')) {
-              newTitle = currentTitle.replace(/Release v[\d*\\.]/, `Release v${currentPackageVersion}`)
+            if(currentTitle.includes('Release v')) {
+              newTitle = currentTitle.replace(/Release v[\d*\\.]/, `Release ${currentPackageVersion}`)
             }
 
             await github.rest.pulls.update({
