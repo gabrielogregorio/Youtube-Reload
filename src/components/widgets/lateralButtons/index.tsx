@@ -1,5 +1,5 @@
 import { ScreenEnum } from '@/contracts/homeScreens';
-import { useScreenSelected } from '@/hooks/useScreenSelected';
+import { useCurrentScreen } from '@/hooks/useCurrentScreen';
 import { LogService } from '@/services/log/LogService';
 import { HEIGHT_IN_PX_TO_IGNORE_HEADER, moveToTop } from '@/utils/scroll';
 import { LateralButton, LateralButtonEnum } from '@/widgets/lateralButtons/buttons';
@@ -12,7 +12,7 @@ interface ILateralButtonsProps {
 }
 
 export const LateralButtons = ({ generateRandomPlaylist }: ILateralButtonsProps) => {
-  const { updateScreen } = useScreenSelected();
+  const { updateCurrentScreen } = useCurrentScreen();
 
   return (
     <section>
@@ -31,7 +31,7 @@ export const LateralButtons = ({ generateRandomPlaylist }: ILateralButtonsProps)
         action={() => {
           LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'open likes' });
           moveToTop();
-          updateScreen(ScreenEnum.likes);
+          updateCurrentScreen(ScreenEnum.likes);
         }}
         title="ir para favoritos"
         bottomPosition="bottom-[6rem]"
@@ -42,7 +42,7 @@ export const LateralButtons = ({ generateRandomPlaylist }: ILateralButtonsProps)
       <LateralButton
         action={() => {
           LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'generate new playlist' });
-          updateScreen(ScreenEnum.home);
+          updateCurrentScreen(ScreenEnum.home);
           generateRandomPlaylist();
           moveToTop(HEIGHT_IN_PX_TO_IGNORE_HEADER);
         }}

@@ -3,7 +3,7 @@ import React from 'react';
 import { AllPage } from '@/screens/all';
 import { ScreenEnum } from '@/contracts/homeScreens';
 import { Header } from '@/layouts/header';
-import { useScreenSelected } from '@/hooks/useScreenSelected';
+import { useCurrentScreen } from '@/hooks/useCurrentScreen';
 import { useAuthConfigure } from '@/hooks/useAuthConfigure';
 import { ConfigsPage } from '@/screens/configs';
 import { UnLikesPage } from '@/screens/unlikes';
@@ -20,18 +20,16 @@ const screens: { [screen in ScreenEnum]: ReactElement } = {
 };
 
 export const MainContainer = () => {
-  const { screenSelected } = useScreenSelected();
+  const { currentScreen } = useCurrentScreen();
 
   useAuthConfigure();
-
-  const currentScreen = screens[screenSelected];
 
   return (
     <MainLayout>
       <>
         <Header />
 
-        {currentScreen}
+        {screens[currentScreen]}
       </>
     </MainLayout>
   );

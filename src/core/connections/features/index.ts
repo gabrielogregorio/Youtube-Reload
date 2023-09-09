@@ -1,7 +1,7 @@
 import reactions from './reactions/slices';
-import screenSelected from './screenSelected/slices';
+import currentScreen from './currentScreen/slices';
 
 export default {
   reactionsFeature: reactions.reducer,
-  screenSelectedFeature: screenSelected.reducer,
+  currentScreenFeature: currentScreen.reducer,
 };

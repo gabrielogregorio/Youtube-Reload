@@ -6,7 +6,7 @@ import type { ReactElement, RefObject } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { AiFillBell, AiOutlineBell } from 'react-icons/ai';
 import { LogService } from '@/services/log/LogService';
-import { useScreenSelected } from '@/hooks/useScreenSelected';
+import { useCurrentScreen } from '@/hooks/useCurrentScreen';
 
 interface ITemplateDefaultProps {
   children: ReactElement;
@@ -19,7 +19,7 @@ export const MainLayout = ({ children }: ITemplateDefaultProps) => {
   const refComponent: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
   const { clickedOutside } = useOutsideClick(refComponent);
 
-  const { screenSelected } = useScreenSelected();
+  const { currentScreen } = useCurrentScreen();
 
   useEffect(() => {
     if (clickedOutside) {
@@ -48,7 +48,7 @@ export const MainLayout = ({ children }: ITemplateDefaultProps) => {
 
         <div className="ml-2 w-14 h-full hidden md:block" />
 
-        <Navbar activeScreen={screenSelected} />
+        <Navbar activeScreen={currentScreen} />
 
         <div className="ml-2 w-14 h-full flex items-center justify-center relative z-50">
           <button

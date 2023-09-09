@@ -2,10 +2,10 @@ import { Select } from '@/base/select/Select';
 import { StorageService } from '@/services/StorageService';
 import { BsFillTrashFill } from 'react-icons/bs';
 import { ScreenEnum } from '@/contracts/homeScreens';
-import { useScreenSelected } from '@/hooks/useScreenSelected';
+import { useCurrentScreen } from '@/hooks/useCurrentScreen';
 
 export const ConfigScreen = () => {
-  const { updateScreen } = useScreenSelected();
+  const { updateCurrentScreen } = useCurrentScreen();
 
   return (
     <div className="animate-fadeIn min-h-screen mt-20">
@@ -30,7 +30,7 @@ export const ConfigScreen = () => {
                   type="button"
                   onClick={() => {
                     StorageService.clear();
-                    updateScreen(ScreenEnum.configs);
+                    updateCurrentScreen(ScreenEnum.configs);
                   }}>
                   <div className="flex items-center justify-center">
                     <span className=" text-red underline select-none">Limpar Preferências</span>
