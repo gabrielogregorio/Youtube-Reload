@@ -25,15 +25,18 @@ jobs:
         run: |
           VERSION=$(node -p "require('./package.json').version")
           echo "Current version: $VERSION"
-          echo "TAG_VERSION=v$VERSION" >> $GITHUB_ENV
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      - name: update release with PR content
+      - name: update release with PR content and set tag version
         id: update-pr-content
         run: |
-          PR_CONTENT="${{ github.event.pull_request.title }}: ${{ github.event.pull_request.body }}"
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_CONTENT="${PR_TITLE}: ${{ github.event.pull_request.body }}"
+          TAG_VERSION="${PR_TITLE}-v${{ env.VERSION }}"
           echo "PR_CONTENT<<EOF" >> $GITHUB_ENV
           echo "$PR_CONTENT" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
+          echo "TAG_VERSION=$TAG_VERSION" >> $GITHUB_ENV
 
       - name: create release and tag
         uses: actions/create-release@v1

@@ -1,4 +1,4 @@
-name: deploy to gh pages
+name: deploy storybook
 
 on:
   pull_request:
@@ -100,7 +100,7 @@ jobs:
 
       - name: build storybook
         run: pnpm run build-storybook
-
+  
       - name: comment on PR, doing deploy
         uses: peter-evans/create-or-update-comment@v3
         with:
