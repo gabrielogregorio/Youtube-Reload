@@ -11,6 +11,7 @@ export const useAuth = (): void => {
     }
 
     const newUserId = new Date().getTime().toString();
+    StorageService.setItem(StorageAccessNameEnum.UserId, newUserId);
 
     LogService.setUser({ userId: newUserId });
   }, []);
