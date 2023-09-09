@@ -100,7 +100,7 @@ jobs:
 
       - name: build storybook
         run: pnpm run build-storybook
-  
+
       - name: comment on PR, doing deploy
         uses: peter-evans/create-or-update-comment@v3
         with:
@@ -147,4 +147,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
-          body: ❌ An error occurred during the preview execution. Please check the logs for details.
+          body: ❌ An error occurred during deploy storybook execution. Please check the logs for details.
