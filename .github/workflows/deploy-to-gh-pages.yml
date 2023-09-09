@@ -1,0 +1,52 @@
+name: deploy to gh pages
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        pnpm-version: [8.3.1]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: use node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: use pnpm.js ${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
+
+      - name: install dependencies and test
+        run: pnpm i
+
+      - name: build storybook
+        run: pnpm run build-storybook
+
+      - name: set branch name and build directory
+        id: set_environments
+        run: |
+          BRANCH_NAME=${GITHUB_HEAD_REF##*/}
+          echo "::set-output name=branch_name::$BRANCH_NAME"
+
+      - name: deploy with gh-pages
+        run: |
+          mkdir -p storybook/${{ steps.set_environments.outputs.branch_name }}
+          cp -r storybook-static/* storybook/${{ steps.set_environments.outputs.branch_name }}
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/gabrielogregorio/youtube-reload.git
+          npx gh-pages -d storybook --add -u "github-actions-bot <support+actions@github.com>"
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

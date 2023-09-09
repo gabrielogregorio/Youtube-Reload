@@ -46,7 +46,7 @@ echo "\n${Yellow}...................ESLINT CHECKING.......................${NOCO
 pnpm run eslint:lint
 
 echo "\n${Yellow}.....................BUILDING APP........................${NOCOLOR}"
-pnpm run build
+pnpm run build & pnpm run build-storybook
 
 echo "\n${Cyan}=========================================================${NOCOLOR}"
 echo "${Cyan}                END PRE-COMMIT                           ${NOCOLOR}"
