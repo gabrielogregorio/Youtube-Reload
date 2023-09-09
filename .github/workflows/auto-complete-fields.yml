@@ -100,7 +100,7 @@ jobs:
 
             let newTitle = `Release v${currentPackageVersion} - ${currentTitle}`
 
-            if(!currentTitle.includes('Release')) {
+            if(currentTitle.includes('Release')) {
               newTitle = currentTitle.replace(/Release v[\d*\\.]/, `Release v${currentPackageVersion}`)
             }
 
