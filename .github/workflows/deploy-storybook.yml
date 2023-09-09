@@ -117,7 +117,7 @@ jobs:
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/gabrielogregorio/youtube-reload.git
           npx gh-pages -d storybook --add -u "github-actions-bot <support+actions@github.com>"
 
-            env:
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get current time
