@@ -1,5 +1,6 @@
 import { ScreenEnum } from '@/contracts/homeScreens';
 import { useScreenSelected } from '@/hooks/useScreenSelected';
+import { LogService } from '@/services/log/LogService';
 import { HEIGHT_IN_PX_TO_IGNORE_HEADER, moveToTop } from '@/utils/scroll';
 import { LateralButton, LateralButtonEnum } from '@/widgets/lateralButtons/buttons';
 import type { ReactElement } from 'react';
@@ -17,7 +18,10 @@ export const LateralButtons = ({ generateRandomPlaylist }: ILateralButtonsProps)
   return (
     <section>
       <LateralButton
-        action={(): void => moveToTop()}
+        action={(): void => {
+          LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'move to top' });
+          moveToTop();
+        }}
         title="Ir para cima"
         bottomPosition="bottom-[10rem]"
         variant={LateralButtonEnum.Dark}
@@ -26,6 +30,7 @@ export const LateralButtons = ({ generateRandomPlaylist }: ILateralButtonsProps)
 
       <LateralButton
         action={(): void => {
+          LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'open likes' });
           moveToTop();
           updateScreen(ScreenEnum.likes);
         }}
@@ -37,6 +42,7 @@ export const LateralButtons = ({ generateRandomPlaylist }: ILateralButtonsProps)
 
       <LateralButton
         action={(): void => {
+          LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'generate new playlist' });
           updateScreen(ScreenEnum.home);
           generateRandomPlaylist();
           moveToTop(HEIGHT_IN_PX_TO_IGNORE_HEADER);
