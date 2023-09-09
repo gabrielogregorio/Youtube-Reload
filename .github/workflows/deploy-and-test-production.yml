@@ -196,7 +196,7 @@ jobs:
 
   deploy:
     environment: sentry
-    needs: [unit_tests_and_up_coverage, linting, lint_tsc, format, audit]
+    needs: [unit_tests_and_up_coverage, e2e_tests, linting, lint_tsc, format, audit]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
