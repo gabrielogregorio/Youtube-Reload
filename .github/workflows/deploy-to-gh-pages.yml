@@ -18,9 +18,6 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-
-      - name: checkout
-        uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
 
@@ -34,17 +31,84 @@ jobs:
         with:
           version: ${{ matrix.pnpm-version }}
 
+      - name: find old bot comments
+        uses: peter-evans/find-comment@v2
+        id: find-old-bot-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: storybook
+
+      - name: check if bot comment exists
+        id: check-bot-comment
+        run: |
+          echo "::set-output name=comment-exists::${{ steps.find-old-bot-comment.outputs.comment-id != '' }}"
+
+      - name: create first bot comment if not exists
+        id: create-first-bot-comment
+        uses: peter-evans/create-or-update-comment@v3
+        if: steps.check-bot-comment.outputs.comment-exists == 'false'
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: 'Starting bot'
+
+      - name: get comment id, existing or new
+        id: get-new-or-old-comment-id
+        run: |
+          echo "::set-output name=comment-id::${{ steps.find-old-bot-comment.outputs.comment-id != '' && steps.find-old-bot-comment.outputs.comment-id || steps.create-first-bot-comment.outputs.comment-id }}"
+
+      - name: comment on pr, deploy to preview
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.get-new-or-old-comment-id.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ### Deploy storybook
+          edit-mode: replace
+
+      - name: comment on PR, install packages
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.get-new-or-old-comment-id.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            - ⭐ Install packages...
+
       - name: install dependencies and test
         run: pnpm i
 
-      - name: build storybook
-        run: pnpm run build-storybook
+      - name: comment on PR, building app
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.get-new-or-old-comment-id.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            - 🔨 Building app...
 
       - name: set branch name and build directory
         id: set_environments
         run: |
           BRANCH_NAME=${GITHUB_HEAD_REF##*/}
+          echo "Branch name: $BRANCH_NAME"
+          echo "Build directory: preview/$BRANCH_NAME"
+          echo "::set-output name=build_directory::preview/$BRANCH_NAME"
           echo "::set-output name=branch_name::$BRANCH_NAME"
+
+      - name: build storybook
+        run: pnpm run build-storybook
+
+      - name: comment on PR, doing deploy
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.get-new-or-old-comment-id.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            - 🧑‍💻 Start deploy...
 
       - name: deploy with gh-pages
         run: |
@@ -55,3 +119,32 @@ jobs:
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get current time
+        id: currentTime
+        run: echo "::set-output name=current_time::$(date +'%d-%m-%Y-%H.%M:%S')"
+        shell: bash
+
+      - name: comment on PR
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.get-new-or-old-comment-id.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            - 🚀 The deploy will be done in https://gabrielogregorio.github.io/youtube-reload/storybook/${{ steps.set_environments.outputs.branch_name }}?nocache=${{ steps.currenttime.outputs.current_time }}
+          reactions: |
+            hooray
+            rocket
+
+  report-failure:
+    if: failure()
+    needs: [deploy]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report failure
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: ❌ An error occurred during the preview execution. Please check the logs for details.
