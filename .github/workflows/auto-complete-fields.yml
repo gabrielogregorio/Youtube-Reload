@@ -48,7 +48,7 @@ jobs:
               if (message.includes("fix")) { labelsToAdd.push("bug"); }
               if (message.includes("feat")) { labelsToAdd.push("feature"); }
               if (message.includes("docs")) { labelsToAdd.push("documentation"); }
-              if (message.includes("refactor")) { labelsToAdd.push("enhancement"); }
+              if (message.includes("refactor")) { labelsToAdd.push("refactor"); }
               if (message.includes("chore")) { labelsToAdd.push("help wanted"); }
             }
 
@@ -58,7 +58,7 @@ jobs:
 
 
             // added commits on pull request
-            let updatedBody = (await github.rest.pulls.get({
+            let prBody = (await github.rest.pulls.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.issue.number
@@ -69,43 +69,44 @@ jobs:
                 return updatedBodyLocal
               }
 
-              let newContent = ''
+              let commitMessagesAreString = ''
               for (const message of commitMessages) {
                 if (!updatedBodyLocal.includes(message)) {
-                  newContent += `- ${message}\n`;
+                  commitMessagesAreString += `- ${message}\n`;
                 }
               }
 
-              if(newContent === '') {
+              const noMessageAdded = commitMessagesAreString === ''
+              if(noMessageAdded) {
                 return updatedBodyLocal
               }
 
-              newContent = newContent + '[...autoGenerate]'
-              return updatedBodyLocal.replace('[...autoGenerate]', newContent)
+              commitMessagesAreString = commitMessagesAreString + '[...autoGenerate]'
+              return updatedBodyLocal.replace('[...autoGenerate]', commitMessagesAreString)
             }
 
-            const newUpdatedBody = verifyIfNeedAddsResolve(updatedBody)
+            const newPrBody = verifyIfNeedAddsResolve(prBody)
 
-            // update body on pull request
             await github.rest.pulls.update({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.issue.number,
-              body: newUpdatedBody
+              body: newPrBody
             });
 
-
             // update pr title
-            const version = process.env.TAG_VERSION;
-
+            const currentPackageVersion = process.env.TAG_VERSION;
             const currentTitle = context.payload.pull_request.title;
-            const newTitle = `Release ${version} - ${currentTitle}`;
+
+            let newTitle = `Release v${currentPackageVersion} - ${currentTitle}`
 
             if(!currentTitle.includes('Release')) {
-              await github.rest.pulls.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: context.issue.number,
-                title: newTitle
-              });
+              newTitle = currentTitle.replace(/Release v[\d*\\.]/, `Release v${currentPackageVersion}`)
             }
+
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              title: newTitle
+            });
