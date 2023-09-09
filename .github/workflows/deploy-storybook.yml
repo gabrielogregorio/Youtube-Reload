@@ -1,13 +1,13 @@
 name: deploy to gh pages
 
 on:
-  push:
-    branches:
+  pull_request:
+    branch:
       - main
       - dev
 
 jobs:
-  deploy:
+  preview:
     runs-on: ubuntu-latest
 
     strategy:
@@ -21,12 +21,12 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: use node.js ${{ matrix.node-version }}
+      - name: checkout Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: use pnpm.js ${{ matrix.pnpm-version }}
+      - name: checkout pnpm ${{ matrix.pnpm-version }}
         uses: pnpm/action-setup@v2
         with:
           version: ${{ matrix.pnpm-version }}
@@ -37,7 +37,7 @@ jobs:
         with:
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: 'github-actions[bot]'
-          body-includes: storybook
+          body-includes: Deploy storybook
 
       - name: check if bot comment exists
         id: check-bot-comment
@@ -77,8 +77,8 @@ jobs:
           body: |
             - ⭐ Install packages...
 
-      - name: install dependencies and test
-        run: pnpm i
+      - name: install dependencies
+        run: pnpm i --frozen-lockfile
 
       - name: comment on PR, building app
         uses: peter-evans/create-or-update-comment@v3
@@ -117,7 +117,7 @@ jobs:
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/gabrielogregorio/youtube-reload.git
           npx gh-pages -d storybook --add -u "github-actions-bot <support+actions@github.com>"
 
-        env:
+            env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get current time
@@ -139,7 +139,7 @@ jobs:
 
   report-failure:
     if: failure()
-    needs: [deploy]
+    needs: [preview]
     runs-on: ubuntu-latest
     steps:
       - name: Report failure
