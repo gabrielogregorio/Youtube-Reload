@@ -1,7 +1,10 @@
 import type { RefObject } from 'react';
 import { useEffect, useState } from 'react';
 
-export const useOutsideClick = (ref: RefObject<HTMLDivElement>): { clickedOutside: boolean } => {
+export const useOutsideClick = (
+  ref: RefObject<HTMLDivElement>,
+  onOutsideClick: () => void = () => {},
+): { clickedOutside: boolean } => {
   const [clickedOutside, setClickedOutside] = useState<boolean>(false);
 
   useEffect(() => {
@@ -11,6 +14,9 @@ export const useOutsideClick = (ref: RefObject<HTMLDivElement>): { clickedOutsid
       const referencesContainTarget = (): boolean => !ref.current?.contains(event.target);
       const clickedOutsideReference: boolean = (ref.current && referencesContainTarget()) || false;
 
+      if (clickedOutsideReference) {
+        onOutsideClick();
+      }
       setClickedOutside(clickedOutsideReference);
     };
 

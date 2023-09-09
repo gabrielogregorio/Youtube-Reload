@@ -3,30 +3,20 @@ import { FetchNotifyService } from '@/services/FetchNotifyService';
 import { NotifyService } from '@/services/NotifyService';
 import { useEffect, useState } from 'react';
 
-interface IUseFetchAllNotifyOutput {
-  isLoading: boolean;
-  error: string | undefined;
-  data: NotifyFromApiMapper[] | undefined;
-  notify: number[];
-  startNotify: number[];
-  handleUpdateNotify: (item: number[]) => void;
-}
-
-export const useFetchAllNotify = (): IUseFetchAllNotifyOutput => {
+export const useFetchAllNotify = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | undefined>(undefined);
-  const [data, setData] = useState<NotifyFromApiMapper[] | undefined>(undefined);
-  const [notify, setNotify] = useState<number[]>([]);
-  const [startNotify, setStartNotify] = useState<number[]>([]);
+  const [notifications, setNotifications] = useState<NotifyFromApiMapper[]>([]);
+  const [viewedNotificationIds, setViewedNotificationIds] = useState<number[]>([]);
 
   useEffect(() => {
     setIsLoading(false);
     setError(undefined);
-    setData(undefined);
+    setNotifications([]);
 
     FetchNotifyService.fetch()
       .then((res: NotifyFromApiMapper[]) => {
-        setData(res);
+        setNotifications(res);
       })
       .catch(() => {
         setError('Error on Load Data');
@@ -38,27 +28,19 @@ export const useFetchAllNotify = (): IUseFetchAllNotifyOutput => {
 
   useEffect(() => {
     const items = NotifyService.getOrInitialize();
-    setStartNotify(items);
-    setNotify(items);
+    setViewedNotificationIds(items);
   }, []);
 
-  const handleUpdateNotify = (item: number[]): void => {
+  const updateViewedNotifications = (item: number[]): void => {
     const newNotifies = NotifyService.updateNotify(item);
-    setNotify(newNotifies);
-
-    const TIME_IN_MS_TO_REMOVE_ALERT_NEW_NOTIFY: number = 5000;
-
-    setTimeout(() => {
-      setStartNotify(newNotifies);
-    }, TIME_IN_MS_TO_REMOVE_ALERT_NEW_NOTIFY);
+    setViewedNotificationIds(newNotifies);
   };
 
   return {
     isLoading,
     error,
-    data,
-    notify,
-    startNotify,
-    handleUpdateNotify,
+    notifications,
+    viewedNotificationIds,
+    updateViewedNotifications,
   };
 };

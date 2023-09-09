@@ -1,36 +1,29 @@
 import { useFetchAllNotify } from '@/hooks/useFetchAllNotify';
-import { useOutsideClick } from '@/hooks/useOutsideClick';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { AiFillBell, AiOutlineBell } from 'react-icons/ai';
 import { LogService } from '@/services/log/LogService';
+import { tailwindMerge } from '@/libs/tailwindMerge';
+import { NotifyItems } from '@/layouts/Notify/NotifyItems';
+
+const TIME_TO_MARK_VIEWED_NOTIFICATIONS_IN_MS = 3000;
 
 export const Notify = () => {
   const [notifyIsOpen, setNotifyIsOpen] = useState(false);
-  const refComponent = useRef<HTMLDivElement>(null);
+  const { notifications, viewedNotificationIds, updateViewedNotifications } = useFetchAllNotify();
 
-  const { clickedOutside } = useOutsideClick(refComponent);
-
-  const { data, startNotify, notify, handleUpdateNotify } = useFetchAllNotify();
-
-  useEffect(() => {
-    if (clickedOutside) {
-      setNotifyIsOpen(false);
-    }
-  }, [clickedOutside]);
-
-  const handleOpenNotify = () => {
+  const handleClickBell = () => {
+    LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'open notify' });
     setNotifyIsOpen((prev) => !prev);
-    const listNewItems =
-      data?.map((item) => {
-        return item.id || 0;
-      }) || [];
 
-    handleUpdateNotify(listNewItems);
+    const idsAllNotifications = notifications.map((notification) => notification.id);
+
+    setTimeout(() => {
+      updateViewedNotifications(idsAllNotifications);
+    }, TIME_TO_MARK_VIEWED_NOTIFICATIONS_IN_MS);
   };
 
-  const showIcons = notify.length !== data?.length;
-  const newNotify = (data?.length || 0) - notify.length || 0;
-
+  const newNotificationCount = notifications.length - viewedNotificationIds.length;
+  const styleBellOnNotifyIsOpen = notifyIsOpen ? 'bg-dark-light' : '';
   return (
     <div
       className="ml-2 w-14 h-full flex items-center justify-center relative z-50"
@@ -39,54 +32,26 @@ export const Notify = () => {
       <button
         type="button"
         aria-label="Abrir notificações"
-        onClick={() => {
-          LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'open notify' });
-          handleOpenNotify();
-        }}
-        className={`hidden md:flex items-center justify-center h-6 w-6 hover:h-8 hover:w-8 rounded-full text-xl cursor-pointer select-none hover:bg-dark-light transition-all duration-150 relative ${
-          notifyIsOpen ? 'bg-dark-light' : ''
-        }
-            
-            `}>
+        onClick={handleClickBell}
+        className={tailwindMerge(
+          'hidden md:flex items-center justify-center h-6 w-6 hover:h-8 hover:w-8 rounded-full text-xl cursor-pointer select-none hover:bg-dark-light transition-all duration-150 relative',
+          styleBellOnNotifyIsOpen,
+        )}>
         {notifyIsOpen ? <AiFillBell /> : <AiOutlineBell />}
 
-        {/* REFACTOR THIS */}
-
-        {showIcons ? (
+        {newNotificationCount ? (
           <div className="w-3 h-3 bg-red rounded-full flex items-center justify-center absolute top-0 right-0 text-[0.7rem]">
-            {newNotify}
+            {newNotificationCount}
           </div>
         ) : undefined}
       </button>
 
-      {notifyIsOpen ? (
-        <div
-          className="absolute right-10 top-3 z-50 hidden md:flex flex-col rounded-md h-96 px-3 py-3 w-96 bg-dark-dark shadow-md"
-          ref={refComponent}>
-          <div className="text-base mb-1 select-none">Notificações</div>
-          <div className="border-b border-gray-500" />
-
-          <div className="overflow-y-scroll flex-1 scrollbar-inverse w-full">
-            {data?.map((item) => {
-              return (
-                <div className="hover:bg-dark cursor-pointer flex items-center justify-center py-2 px-2 transition-all duration-150 select-none">
-                  <div className="h-10 text-2xl flex items-center justify-center aspect-square mr-2">{item.emoji}</div>
-                  <div className="flex-1">
-                    <div className="text-sm hover:text-blue">{item.title}</div>
-                    <div className="text-[0.7rem] text-gray-400">{item.date}</div>
-                  </div>
-
-                  {!startNotify.includes(item.id) ? (
-                    <div className="flex items-center justify-center ml-2">
-                      <div className="p-1 bg-red rounded-full" />
-                    </div>
-                  ) : undefined}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      ) : undefined}
+      <NotifyItems
+        closeNotify={() => setNotifyIsOpen(false)}
+        notifyIsOpen={notifyIsOpen}
+        notifications={notifications}
+        viewedNotificationIds={viewedNotificationIds}
+      />
     </div>
   );
 };
