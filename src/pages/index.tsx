@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import React from 'react';
-import { AllPage } from 'src/screens/all';
+import { AllPage } from '@/screens/all';
 import { ScreenEnum } from '@/contracts/homeScreens';
 import { Header } from '@/layouts/header';
 import { useScreenSelected } from '@/hooks/useScreenSelected';
