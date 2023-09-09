@@ -1,5 +1,3 @@
-/* eslint-disable no-null/no-null */
-import type { ScreenEnum } from '@/contracts/homeScreens';
 import { useFetchAllNotify } from '@/hooks/useFetchAllNotify';
 import { useGetProfile } from '@/hooks/useGetProfile';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
@@ -7,20 +5,21 @@ import { Navbar } from '@/layouts/navbar';
 import type { ReactElement, RefObject } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { AiFillBell, AiOutlineBell } from 'react-icons/ai';
-import type { NotifyFromApiMapper } from '@/mappers/notify/fromApi';
 import { LogService } from '@/services/log/LogService';
+import { useScreenSelected } from '@/hooks/useScreenSelected';
 
 interface ITemplateDefaultProps {
   children: ReactElement;
-  activeScreen: ScreenEnum;
 }
 
-export const TemplateDefault = ({ children, activeScreen }: ITemplateDefaultProps): ReactElement => {
-  const [notifyIsOpen, setNotifyIsOpen] = useState<boolean>(false);
+export const MainLayout = ({ children }: ITemplateDefaultProps) => {
+  const [notifyIsOpen, setNotifyIsOpen] = useState(false);
   const { data, startNotify, notify, handleUpdateNotify } = useFetchAllNotify();
   const { emoji, handleUpdateEmoji } = useGetProfile();
   const refComponent: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
   const { clickedOutside } = useOutsideClick(refComponent);
+
+  const { screenSelected } = useScreenSelected();
 
   useEffect(() => {
     if (clickedOutside) {
@@ -28,18 +27,18 @@ export const TemplateDefault = ({ children, activeScreen }: ITemplateDefaultProp
     }
   }, [clickedOutside]);
 
-  const handleOpenNotify = (): void => {
-    setNotifyIsOpen((prev: boolean) => !prev);
-    const listNewItems: number[] =
-      data?.map((item: NotifyFromApiMapper) => {
+  const handleOpenNotify = () => {
+    setNotifyIsOpen((prev) => !prev);
+    const listNewItems =
+      data?.map((item) => {
         return item.id || 0;
       }) || [];
 
     handleUpdateNotify(listNewItems);
   };
 
-  const showIcons: boolean = notify.length !== data?.length;
-  const newNotify: number = (data?.length || 0) - notify.length || 0;
+  const showIcons = notify.length !== data?.length;
+  const newNotify = (data?.length || 0) - notify.length || 0;
 
   return (
     <div className="relative mt-[120px]" id="base">
@@ -49,13 +48,13 @@ export const TemplateDefault = ({ children, activeScreen }: ITemplateDefaultProp
 
         <div className="ml-2 w-14 h-full hidden md:block" />
 
-        <Navbar activeScreen={activeScreen} />
+        <Navbar activeScreen={screenSelected} />
 
         <div className="ml-2 w-14 h-full flex items-center justify-center relative z-50">
           <button
             type="button"
             aria-label="Abrir notificações"
-            onClick={(): void => {
+            onClick={() => {
               LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'open notify' });
               handleOpenNotify();
             }}
@@ -81,7 +80,7 @@ export const TemplateDefault = ({ children, activeScreen }: ITemplateDefaultProp
               <div className="border-b border-gray-500" />
 
               <div className="overflow-y-scroll flex-1 scrollbar-inverse w-full">
-                {data?.map((item: NotifyFromApiMapper) => {
+                {data?.map((item) => {
                   return (
                     <div className="hover:bg-dark cursor-pointer flex items-center justify-center py-2 px-2 transition-all duration-150 select-none">
                       <div className="h-10 text-2xl flex items-center justify-center aspect-square mr-2">
@@ -110,7 +109,7 @@ export const TemplateDefault = ({ children, activeScreen }: ITemplateDefaultProp
             title="Trocar de emoji"
             aria-label="Trocar foto de perfil"
             type="button"
-            onClick={(): void => {
+            onClick={() => {
               LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'update emoji' });
               handleUpdateEmoji();
             }}

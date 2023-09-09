@@ -25,9 +25,9 @@ interface IUseMusicApplyFiltersInput {
   limit?: number;
 
   onlyLikes?: boolean;
-  onlyUnlikes?: boolean;
+  onlyUnLikes?: boolean;
   ignoreLikes?: boolean;
-  ignoreUnlikes?: boolean;
+  ignoreUnLikes?: boolean;
 
   textSearch?: string;
   period?: IHasApplyStartAndEnd;
@@ -97,9 +97,9 @@ export const useMusicApplyFilters = ({
   offset = 0,
   limit = LIMIT_FILTER,
   onlyLikes = false,
-  onlyUnlikes = false,
+  onlyUnLikes = false,
   ignoreLikes = false,
-  ignoreUnlikes = false,
+  ignoreUnLikes = false,
   textSearch = '',
   period = {
     apply: false,
@@ -136,12 +136,12 @@ export const useMusicApplyFilters = ({
   const { reactions } = useReactions();
   const [filter, setFilter] = useState<MusicFromApiMapper[]>([]);
 
-  const applyFilters = (): void => {
+  const applyFilters = () => {
     if (data === undefined) {
       return;
     }
 
-    let filtered: MusicFromApiMapper[] = [...data];
+    let filtered = [...data];
 
     if (random) {
       filtered = generateRandomPlaylist(filtered);
@@ -155,11 +155,11 @@ export const useMusicApplyFilters = ({
       filtered = filtered.filter((item: MusicFromApiMapper) => reactions?.[item.id]?.reaction !== ReactionEnum.like);
     }
 
-    if (onlyUnlikes) {
+    if (onlyUnLikes) {
       filtered = filtered.filter((item: MusicFromApiMapper) => reactions?.[item.id]?.reaction === ReactionEnum.unlike);
     }
 
-    if (ignoreUnlikes) {
+    if (ignoreUnLikes) {
       filtered = filtered.filter((item: MusicFromApiMapper) => reactions?.[item.id]?.reaction !== ReactionEnum.unlike);
     }
 

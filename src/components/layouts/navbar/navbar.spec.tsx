@@ -17,8 +17,8 @@ const mockNavbar: { index: number; screen: ScreenEnum; text: string }[] = [
   },
   {
     index: 3,
-    screen: ScreenEnum.unlikes,
-    text: 'Unlikes',
+    screen: ScreenEnum.unLikes,
+    text: 'UnLikes',
   },
   {
     index: 4,

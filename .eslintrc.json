@@ -123,7 +123,6 @@
     "@typescript-eslint/no-unsafe-call": "error",
     "@typescript-eslint/explicit-member-accessibility": "error",
     "@typescript-eslint/no-non-null-assertion": "error",
-    "no-null/no-null": ["error"],
     "@typescript-eslint/no-confusing-non-null-assertion": "error",
     "@typescript-eslint/no-floating-promises": ["error"],
     "@typescript-eslint/naming-convention": [
@@ -169,13 +168,6 @@
           "Gmt"
         ],
         "minLength": 3
-      }
-    ],
-    "@typescript-eslint/explicit-function-return-type": "error",
-    "import/no-unused-modules": [
-      1,
-      {
-        "unusedExports": true
       }
     ],
     "react/function-component-definition": [

@@ -1,13 +1,12 @@
-import type { ReactElement } from 'react';
 import { useEffect } from 'react';
 import { LateralButtons } from '@/widgets/lateralButtons';
 import { useMusicApplyFilters } from '@/hooks/useMusicApplyFilters';
 import { Cards } from '@/widgets/cards';
 
-export const UnlikesPage = (): ReactElement => {
+export const UnLikesPage = () => {
   const { filtered, applyFilters, data } = useMusicApplyFilters({
     random: true,
-    onlyUnlikes: true,
+    onlyUnLikes: true,
   });
 
   useEffect(() => {

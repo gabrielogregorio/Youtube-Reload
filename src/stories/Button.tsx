@@ -1,4 +1,3 @@
-import type { ReactElement } from 'react';
 import React from 'react';
 import './button.css';
 
@@ -28,13 +27,7 @@ interface IButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor = '',
-  label,
-  ...props
-}: IButtonProps): ReactElement => {
+export const Button = ({ primary = false, size = 'medium', backgroundColor = '', label, ...props }: IButtonProps) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
   return (
     <button

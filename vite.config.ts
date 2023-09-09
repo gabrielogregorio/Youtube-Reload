@@ -18,7 +18,7 @@ export default defineConfig({
     alias: {
       '@/base': resolve(__dirname, './src/components/base'),
       '@/layouts': resolve(__dirname, './src/components/layouts'),
-      '@/screens': resolve(__dirname, './src/components/screens'),
+      '@/screens': resolve(__dirname, './src/screens'),
       '@/templates': resolve(__dirname, './src/components/templates'),
       '@/widgets': resolve(__dirname, './src/components/widgets'),
       '@/screen': resolve(__dirname, './src/components/screen'),

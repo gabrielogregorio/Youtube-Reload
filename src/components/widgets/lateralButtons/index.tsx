@@ -3,7 +3,6 @@ import { useScreenSelected } from '@/hooks/useScreenSelected';
 import { LogService } from '@/services/log/LogService';
 import { HEIGHT_IN_PX_TO_IGNORE_HEADER, moveToTop } from '@/utils/scroll';
 import { LateralButton, LateralButtonEnum } from '@/widgets/lateralButtons/buttons';
-import type { ReactElement } from 'react';
 import { AiOutlineArrowUp } from 'react-icons/ai';
 import { BiRefresh } from 'react-icons/bi';
 import { BsBookmarkCheckFill } from 'react-icons/bs';
@@ -12,13 +11,13 @@ interface ILateralButtonsProps {
   generateRandomPlaylist: () => void;
 }
 
-export const LateralButtons = ({ generateRandomPlaylist }: ILateralButtonsProps): ReactElement => {
+export const LateralButtons = ({ generateRandomPlaylist }: ILateralButtonsProps) => {
   const { updateScreen } = useScreenSelected();
 
   return (
     <section>
       <LateralButton
-        action={(): void => {
+        action={() => {
           LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'move to top' });
           moveToTop();
         }}
@@ -29,7 +28,7 @@ export const LateralButtons = ({ generateRandomPlaylist }: ILateralButtonsProps)
       />
 
       <LateralButton
-        action={(): void => {
+        action={() => {
           LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'open likes' });
           moveToTop();
           updateScreen(ScreenEnum.likes);
@@ -41,7 +40,7 @@ export const LateralButtons = ({ generateRandomPlaylist }: ILateralButtonsProps)
       />
 
       <LateralButton
-        action={(): void => {
+        action={() => {
           LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'generate new playlist' });
           updateScreen(ScreenEnum.home);
           generateRandomPlaylist();

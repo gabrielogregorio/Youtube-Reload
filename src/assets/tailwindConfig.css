@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* FIX THIS STYLES */
+
 @font-face {
   font-family: 'RubikVinyl';
   src: url('./fonts/Rubik_Vinyl/RubikVinyl-Regular.ttf') format('ttf');
@@ -15,7 +17,7 @@
   font-weight: 500;
   line-height: 1.5;
   color: #fbfbfe;
-  font-size: 1.2rem;
+  font-size: 1.2rem; /* REMOVE THIS*/
 }
 
 body {
@@ -32,6 +34,7 @@ input[type='checkbox'] {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* remove comments*/
 details {
   /* border-radius: 4px; */
   /* padding: 0.5em 0.5em 0; */

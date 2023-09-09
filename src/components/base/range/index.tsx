@@ -14,7 +14,7 @@ interface IRange<T extends FieldValues> {
   data: IDataItems[];
 }
 
-export const Range = <T extends FieldValues>({ control, label, name, data }: IRange<T>): ReactElement => {
+export const Range = <T extends FieldValues>({ control, label, name, data }: IRange<T>) => {
   const {
     field: { value, onChange },
   } = useController({
@@ -23,7 +23,7 @@ export const Range = <T extends FieldValues>({ control, label, name, data }: IRa
   });
 
   const handleUpdateMinOrMax = (newValue: number): void => {
-    const COUNT_OPTIONS: number = 2;
+    const COUNT_OPTIONS = 2;
     if (newValue <= (value.min + value.max) / COUNT_OPTIONS) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       onChange({ min: newValue, max: value?.max });
@@ -45,7 +45,7 @@ export const Range = <T extends FieldValues>({ control, label, name, data }: IRa
               <button
                 type="button"
                 key={item.value.toString()}
-                onClick={(): void => handleUpdateMinOrMax(Number(item.value) || 0)}
+                onClick={() => handleUpdateMinOrMax(Number(item.value) || 0)}
                 className={`text-[0.5rem] p-1 rounded-md border border-dark hover:bg-red transition-all duration-150 select-none ${styleInsideMaxAndMin}`}>
                 {item.label}
               </button>

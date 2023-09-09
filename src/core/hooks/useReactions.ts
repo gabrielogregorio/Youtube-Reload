@@ -76,7 +76,7 @@ export const useReactions = (): IUseReactions => {
     [dispatch, reactions],
   );
 
-  const clearReactions = (): void => {
+  const clearReactions = () => {
     ReactionsService.clearAll();
   };
 

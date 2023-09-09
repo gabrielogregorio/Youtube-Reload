@@ -1,12 +1,13 @@
-const ONE_T: number = 1000000000000;
-const ONE_B: number = 1000000000;
-const ONE_M: number = 1000000;
-const ONE_K: number = 1000;
+const ONE_T = 1000000000000;
+const ONE_B = 1000000000;
+const ONE_M = 1000000;
+const ONE_K = 1000;
 
 export const LARGE_VALUE = 99999999999;
 
-export const parseFunction = (value?: string): number | undefined => {
-  const valueToUse: string = value?.toLowerCase() || '';
+export const parseFunction = (value?: string) => {
+  // fixMe
+  const valueToUse = value?.toLowerCase() || '';
   if (value === 'all') {
     return LARGE_VALUE;
   }

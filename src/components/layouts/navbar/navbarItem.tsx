@@ -1,7 +1,7 @@
 import type { ScreenEnum } from '@/contracts/homeScreens';
 import { useScreenSelected } from '@/hooks/useScreenSelected';
 import { LogService } from '@/services/log/LogService';
-import type { ReactElement, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface INavbarItemProps {
   text: string;
@@ -10,14 +10,14 @@ interface INavbarItemProps {
   icon: ReactNode;
 }
 
-export const NavbarItem = ({ text, nameScreen, isActive, icon }: INavbarItemProps): ReactElement => {
-  const styleOnActive: string = isActive ? 'border-red-light text-red-light' : 'border-transparent text-white';
+export const NavbarItem = ({ text, nameScreen, isActive, icon }: INavbarItemProps) => {
+  const styleOnActive = isActive ? 'border-red-light text-red-light' : 'border-transparent text-white';
   const { updateScreen } = useScreenSelected();
 
   return (
     <button
       type="button"
-      onClick={(): void => {
+      onClick={() => {
         LogService.addBreadcrumb({ type: 'click', level: 'info', message: `update screen to ${nameScreen}` });
         updateScreen(nameScreen);
       }}

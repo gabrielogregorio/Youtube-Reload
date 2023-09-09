@@ -37,13 +37,13 @@ export const useFetchAllNotify = (): IUseFetchAllNotifyOutput => {
   }, []);
 
   useEffect(() => {
-    const items: number[] = NotifyService.getOrInitialize();
+    const items = NotifyService.getOrInitialize();
     setStartNotify(items);
     setNotify(items);
   }, []);
 
   const handleUpdateNotify = (item: number[]): void => {
-    const newNotifies: number[] = NotifyService.updateNotify(item);
+    const newNotifies = NotifyService.updateNotify(item);
     setNotify(newNotifies);
 
     const TIME_IN_MS_TO_REMOVE_ALERT_NEW_NOTIFY: number = 5000;

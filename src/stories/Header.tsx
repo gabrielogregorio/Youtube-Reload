@@ -1,4 +1,3 @@
-import type { ReactElement } from 'react';
 import React from 'react';
 
 import { Button } from './Button';
@@ -15,7 +14,7 @@ interface IHeaderProps {
   onCreateAccount: () => void;
 }
 
-export const Header = ({ user = undefined, onLogin, onLogout, onCreateAccount }: IHeaderProps): ReactElement => (
+export const Header = ({ user = undefined, onLogin, onLogout, onCreateAccount }: IHeaderProps) => (
   <header>
     <div className="storybook-header">
       <div>

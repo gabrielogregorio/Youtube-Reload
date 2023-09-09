@@ -2,7 +2,7 @@ import { StorageAccessNameEnum, StorageService } from '@/services/StorageService
 import { LogService } from '@/services/log/LogService';
 import { useEffect } from 'react';
 
-export const useAuth = (): void => {
+export const useAuth = () => {
   useEffect(() => {
     const userId = StorageService.getItem(StorageAccessNameEnum.UserId);
     if (userId) {

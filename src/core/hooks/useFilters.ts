@@ -77,31 +77,31 @@ export const useFilters = (): IUseFiltersOutput => {
     defaultValues: resetValues,
   });
 
-  const formViews: IMinMaxType = watch('views');
-  const formComments: IMinMaxType = watch('comments');
-  const formLikes: IMinMaxType = watch('likes');
-  const formPercents: IMinMaxType = watch('percent');
-  const formApproval: IMinMaxType = watch('approval');
-  const formYear: IMinMaxType = watch('year');
-  const formTextSearch: string = watch('textSearch');
+  const formViews = watch('views');
+  const formComments = watch('comments');
+  const formLikes = watch('likes');
+  const formPercents = watch('percent');
+  const formApproval = watch('approval');
+  const formYear = watch('year');
+  const formTextSearch = watch('textSearch');
 
-  const viewsStart: number = findValueReturnLabel(dataCommentLikeViews, formViews.min);
-  const viewsEnd: number = findValueReturnLabel(dataCommentLikeViews, formViews.max);
+  const viewsStart = findValueReturnLabel(dataCommentLikeViews, formViews.min);
+  const viewsEnd = findValueReturnLabel(dataCommentLikeViews, formViews.max);
 
-  const commentsStart: number = findValueReturnLabel(dataCommentLikeViews, formComments.min);
-  const commentsEnd: number = findValueReturnLabel(dataCommentLikeViews, formComments.max);
+  const commentsStart = findValueReturnLabel(dataCommentLikeViews, formComments.min);
+  const commentsEnd = findValueReturnLabel(dataCommentLikeViews, formComments.max);
 
-  const likesStart: number = findValueReturnLabel(dataCommentLikeViews, formLikes.min);
-  const likesEnd: number = findValueReturnLabel(dataCommentLikeViews, formLikes.max);
+  const likesStart = findValueReturnLabel(dataCommentLikeViews, formLikes.min);
+  const likesEnd = findValueReturnLabel(dataCommentLikeViews, formLikes.max);
 
-  const percentStart: number = findValueReturnLabel(dataPercentApproval, formPercents.min);
-  const percentEnd: number = findValueReturnLabel(dataPercentApproval, formPercents.max);
+  const percentStart = findValueReturnLabel(dataPercentApproval, formPercents.min);
+  const percentEnd = findValueReturnLabel(dataPercentApproval, formPercents.max);
 
-  const approvalStart: number = findValueReturnLabel(dataPercentCommentsLikes, formApproval.min);
-  const approvalEnd: number = findValueReturnLabel(dataPercentCommentsLikes, formApproval.max);
+  const approvalStart = findValueReturnLabel(dataPercentCommentsLikes, formApproval.min);
+  const approvalEnd = findValueReturnLabel(dataPercentCommentsLikes, formApproval.max);
 
-  const dateYearStart: number = findValueReturnLabel(dataPercentYear, formYear.min);
-  const dateYearEnd: number = findValueReturnLabel(dataPercentYear, formYear.max);
+  const dateYearStart = findValueReturnLabel(dataPercentYear, formYear.min);
+  const dateYearEnd = findValueReturnLabel(dataPercentYear, formYear.max);
 
   return {
     resetValues,

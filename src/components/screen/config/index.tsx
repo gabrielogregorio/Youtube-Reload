@@ -1,11 +1,10 @@
-import type { ReactElement } from 'react';
 import { Select } from '@/base/select/Select';
 import { StorageService } from '@/services/StorageService';
 import { BsFillTrashFill } from 'react-icons/bs';
 import { ScreenEnum } from '@/contracts/homeScreens';
 import { useScreenSelected } from '@/hooks/useScreenSelected';
 
-export const ConfigScreen = (): ReactElement => {
+export const ConfigScreen = () => {
   const { updateScreen } = useScreenSelected();
 
   return (
@@ -29,7 +28,7 @@ export const ConfigScreen = (): ReactElement => {
                 <button
                   className="w-full text-center py-[10px]  bg-transparent cursor-pointer transition-all duration-150 hover:scale-95"
                   type="button"
-                  onClick={(): void => {
+                  onClick={() => {
                     StorageService.clear();
                     updateScreen(ScreenEnum.configs);
                   }}>

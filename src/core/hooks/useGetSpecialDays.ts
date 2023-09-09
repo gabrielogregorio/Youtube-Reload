@@ -48,7 +48,7 @@ export const useGetSpecialDays = (): {
     setQuantitySpecialDays(listSpecialDates.length);
   }, []);
 
-  const nextSpecialDay = (): void => {
+  const nextSpecialDay = () => {
     setSpecialDaySelected((prev: number) => {
       if (prev + 1 >= quantitySpecialDays) {
         return 0;
@@ -57,7 +57,7 @@ export const useGetSpecialDays = (): {
     });
   };
 
-  const prevSpecialDay = (): void => {
+  const prevSpecialDay = () => {
     setSpecialDaySelected((prev: number) => {
       if (prev - 1 < 0) {
         return quantitySpecialDays - 1;

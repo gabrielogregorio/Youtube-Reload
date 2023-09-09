@@ -1,10 +1,9 @@
 import { useGetSpecialDays } from '@/hooks/useGetSpecialDays';
-import type { ReactElement } from 'react';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 
-export const SpecialDays = (): ReactElement => {
+export const SpecialDays = () => {
   const { specialDays, quantitySpecialDays, nextSpecialDay, prevSpecialDay } = useGetSpecialDays();
-  const showNavigateButtons: boolean = quantitySpecialDays > 1;
+  const showNavigateButtons = quantitySpecialDays > 1;
 
   return (
     <div>
@@ -18,7 +17,7 @@ export const SpecialDays = (): ReactElement => {
                 <button
                   type="button"
                   aria-label="Ver evento anterior"
-                  onClick={(): void => prevSpecialDay()}
+                  onClick={() => prevSpecialDay()}
                   className="flex items-center justify-center cursor-pointer hover:bg-dark-dark px-2 transition-all duration-150 ">
                   <MdOutlineNavigateNext className=" text-2xl rotate-180" />
                 </button>
@@ -38,7 +37,7 @@ export const SpecialDays = (): ReactElement => {
                 <button
                   type="button"
                   aria-label="Ver proximo evento"
-                  onClick={(): void => nextSpecialDay()}
+                  onClick={() => nextSpecialDay()}
                   className="flex items-center justify-center cursor-pointer hover:bg-dark-dark px-2 transition-all duration-150 ">
                   <MdOutlineNavigateNext className=" text-2xl" />
                 </button>

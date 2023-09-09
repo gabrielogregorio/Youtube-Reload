@@ -23,7 +23,8 @@
     "prettier:format": "prettier *.{ts,js,md,tsx,jsx} --write",
     "prettier:check": "prettier *.{ts,js,md,tsx,jsx} --check",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "check":"pnpm run prettier:format & pnpm run eslint:lint & pnpm run tsc:lint & pnpm run test:coverage"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",

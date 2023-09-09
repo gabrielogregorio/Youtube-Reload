@@ -1,19 +1,14 @@
 import { ProfileService } from '@/services/ProfileService';
 import { useEffect, useState } from 'react';
 
-interface IUseGetProfileOutput {
-  emoji: string;
-  handleUpdateEmoji: () => void;
-}
-
-export const useGetProfile = (): IUseGetProfileOutput => {
+export const useGetProfile = () => {
   const [emoji, setEmoji] = useState<string>('');
 
   useEffect(() => {
     setEmoji(ProfileService.getUserOrInitialize());
   }, []);
 
-  const handleUpdateEmoji = (): void => {
+  const handleUpdateEmoji = () => {
     setEmoji(ProfileService.generateNewEmojiProfile());
   };
 

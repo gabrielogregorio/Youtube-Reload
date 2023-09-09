@@ -1,7 +1,5 @@
 /* eslint-disable max-lines */
-/* eslint-disable max-lines-per-function */
-
-import type { ReactElement } from 'react';
+// resolve this
 import { useState, useEffect } from 'react';
 import { LateralButtons } from '@/widgets/lateralButtons';
 import { useMusicApplyFilters } from '@/hooks/useMusicApplyFilters';
@@ -17,8 +15,8 @@ import { useFilters } from '@/hooks/useFilters';
 import { dataCommentLikeViews, dataPercentApproval, dataPercentCommentsLikes, dataPercentYear } from '@/data/filters';
 import { BsCalendarDay } from 'react-icons/bs';
 
-const INITIAL_LIMIT_SHOW_ITEMS: number = 12;
-export const AllPage = (): ReactElement => {
+const INITIAL_LIMIT_SHOW_ITEMS = 12;
+export const AllPage = () => {
   const [limitItems, setLimitItems] = useState<number>(INITIAL_LIMIT_SHOW_ITEMS);
   const {
     resetValues,
@@ -45,8 +43,8 @@ export const AllPage = (): ReactElement => {
     limit: limitItems,
     onlyLikes: false,
     ignoreLikes: false,
-    ignoreUnlikes: false,
-    onlyUnlikes: false,
+    ignoreUnLikes: false,
+    onlyUnLikes: false,
     textSearch: formTextSearch,
     period: {
       apply: true,
@@ -101,7 +99,7 @@ export const AllPage = (): ReactElement => {
     limitItems,
   ]);
 
-  const handleReset = (): void => {
+  const handleReset = () => {
     reset(resetValues);
   };
 
@@ -166,7 +164,7 @@ export const AllPage = (): ReactElement => {
         <button
           type="button"
           className="bg-red px-3 py-2 text-white text-[0.7rem] flex items-center justify-center rounded-md hover:scale-105 transition-all duration-150 select-none"
-          onClick={(): void => handleReset()}>
+          onClick={() => handleReset()}>
           <span className="mr-2">reset</span>
           <BiReset className="text-white text-[1rem]" />
         </button>

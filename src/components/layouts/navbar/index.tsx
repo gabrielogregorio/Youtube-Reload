@@ -1,6 +1,5 @@
 import { ScreenEnum } from '@/contracts/homeScreens';
 import { NavbarItem } from '@/layouts/navbar/navbarItem';
-import type { ReactElement } from 'react';
 import { AiFillDislike, AiFillHome, AiFillLike } from 'react-icons/ai';
 import { BsGearFill } from 'react-icons/bs';
 import { FaFilter } from 'react-icons/fa';
@@ -9,7 +8,7 @@ interface INavbarProps {
   activeScreen: ScreenEnum;
 }
 
-export const Navbar = ({ activeScreen }: INavbarProps): ReactElement => {
+export const Navbar = ({ activeScreen }: INavbarProps) => {
   return (
     <nav className="w-full flex items-center justify-center">
       <NavbarItem
@@ -27,9 +26,9 @@ export const Navbar = ({ activeScreen }: INavbarProps): ReactElement => {
       />
 
       <NavbarItem
-        isActive={activeScreen === ScreenEnum.unlikes}
-        nameScreen={ScreenEnum.unlikes}
-        text="Unlikes"
+        isActive={activeScreen === ScreenEnum.unLikes}
+        nameScreen={ScreenEnum.unLikes}
+        text="UnLikes"
         icon={<AiFillDislike className="text-[0.9rem]" />}
       />
 

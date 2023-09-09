@@ -20,13 +20,13 @@ interface ILateralButtonProps {
   bottomPosition: string;
 }
 
-export const LateralButton = ({ title, icon, action, variant, bottomPosition }: ILateralButtonProps): ReactElement => {
+export const LateralButton = ({ title, icon, action, variant, bottomPosition }: ILateralButtonProps) => {
   const styleVariant: string = variantLateralButtonStyle[variant] || '';
 
   return (
     <div className={`fixed ${bottomPosition} right-2`}>
       <button
-        onClick={(): void => action()}
+        onClick={() => action()}
         type="button"
         title={title}
         className={`${styleVariant} p-3 rounded-full transition-all duration-150 shadow-xl md:hover:scale-110`}>

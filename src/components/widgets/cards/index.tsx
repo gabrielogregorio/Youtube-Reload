@@ -2,7 +2,7 @@ import { useReactions } from '@/hooks/useReactions';
 import type { IMusicWithTransformation } from '@/mappers/music/fromApi';
 import { ReactionEnum } from '@/services/ReactionsService';
 import { Card } from '@/widgets/cards/card';
-import type { MouseEvent, ReactElement } from 'react';
+import type { MouseEvent } from 'react';
 import { useState } from 'react';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 
@@ -11,7 +11,7 @@ interface ICardsProps {
   showExtra?: boolean;
 }
 
-export const Cards = ({ cards, showExtra = false }: ICardsProps): ReactElement => {
+export const Cards = ({ cards, showExtra = false }: ICardsProps) => {
   const { reactions, sendReaction } = useReactions();
   const [postSelected, setPostSelected] = useState<IMusicWithTransformation | undefined>(undefined);
 
@@ -26,13 +26,13 @@ export const Cards = ({ cards, showExtra = false }: ICardsProps): ReactElement =
           <button
             type="button"
             className="fixed top-0 bottom-0 flex items-center justify-center w-screen h-screen bg-dark z-20 transition-all duration-150 bg-opacity-50"
-            onClick={(): void => setPostSelected(undefined)}>
+            onClick={() => setPostSelected(undefined)}>
             <button
               type="button"
               className="w-[70vw] h-[80vh] bg-dark shadow-md flex flex-col items-center justify-center px-2 py-3 rounded-md"
               onClick={(event: MouseEvent<HTMLButtonElement>): void => event.preventDefault()}>
               <div className="flex items-center justify-end w-full mb-4">
-                <button type="button" onClick={(): void => setPostSelected(undefined)}>
+                <button type="button" onClick={() => setPostSelected(undefined)}>
                   <AiOutlineCloseCircle className="text-xl" />
                 </button>
               </div>

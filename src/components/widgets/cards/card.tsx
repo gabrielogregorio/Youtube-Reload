@@ -1,5 +1,4 @@
 import { ReactButton } from '@/widgets/cards/reactButton';
-import type { ReactElement } from 'react';
 import { AiOutlineEye } from 'react-icons/ai';
 import { FaDivide, FaPercent } from 'react-icons/fa';
 import { BiCommentDetail, BiLike } from 'react-icons/bi';
@@ -14,7 +13,7 @@ interface ICardProps {
   showExtra: boolean;
 }
 
-export const Card = ({ playlistLocal, sendReaction, openPlayer, reaction, showExtra }: ICardProps): ReactElement => {
+export const Card = ({ playlistLocal, sendReaction, openPlayer, reaction, showExtra }: ICardProps) => {
   return (
     <div
       key={playlistLocal.url}
@@ -37,7 +36,7 @@ export const Card = ({ playlistLocal, sendReaction, openPlayer, reaction, showEx
             <p className="overflow-hidden text-ellipsis">
               <button
                 type="button"
-                onClick={(): void => openPlayer(playlistLocal)}
+                onClick={() => openPlayer(playlistLocal)}
                 title={playlistLocal.title}
                 className="text-[0.9rem] text-left font-bold border-b-2 border-dark-dark hover:border-b-blue  text-white hover:text-blue pr-1.5 transition-all duration-150">
                 {playlistLocal.title}
@@ -95,14 +94,14 @@ export const Card = ({ playlistLocal, sendReaction, openPlayer, reaction, showEx
         <div className="flex justify-between mt-2 w-full">
           <ReactButton
             variant="red"
-            sendReaction={(): void => sendReaction(playlistLocal.id, ReactionEnum.like)}
+            sendReaction={() => sendReaction(playlistLocal.id, ReactionEnum.like)}
             isSelected={reaction === ReactionEnum.like}
             text="Gostei"
           />
 
           <ReactButton
             variant="blue"
-            sendReaction={(): void => sendReaction(playlistLocal.id, ReactionEnum.unlike)}
+            sendReaction={() => sendReaction(playlistLocal.id, ReactionEnum.unlike)}
             isSelected={reaction === ReactionEnum.unlike}
             text="ignorar"
           />

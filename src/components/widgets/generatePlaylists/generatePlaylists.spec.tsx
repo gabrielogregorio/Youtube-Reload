@@ -9,7 +9,7 @@ describe('<GeneratePlaylist />', () => {
   });
 
   it('should render a generate playlists', () => {
-    render(<GeneratePlaylist generateRandomPlaylist={(): void => {}} />);
+    render(<GeneratePlaylist generateRandomPlaylist={() => {}} />);
     expect(screen.getByRole('button', { name: 'Gerar Playlist' })).toBeDefined();
   });
 

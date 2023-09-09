@@ -6,7 +6,7 @@ export enum StorageAccessNameEnum {
 }
 
 export class StorageService {
-  public static setItem(key: StorageAccessNameEnum, value: string): void {
+  public static setItem(key: StorageAccessNameEnum, value: string) {
     localStorage.setItem(key, value);
   }
 
@@ -14,11 +14,11 @@ export class StorageService {
     return localStorage.getItem(key) || undefined;
   }
 
-  public static removeItem(key: StorageAccessNameEnum): void {
+  public static removeItem(key: StorageAccessNameEnum) {
     localStorage.removeItem(key);
   }
 
-  public static clear(): void {
+  public static clear() {
     localStorage.clear();
   }
 
