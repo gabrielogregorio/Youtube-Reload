@@ -10,8 +10,7 @@ import { AiOutlineEye } from 'react-icons/ai';
 import { InputSearch } from '@/base/inputSearch';
 import { Cards } from '@/widgets/cards';
 import { LabelRange } from '@/base/range/labelRange';
-import type { IFiltersFields } from '@/hooks/useFilters';
-import { useFilters } from '@/hooks/useFilters';
+import { IFiltersFields, useFilters } from '@/hooks/useFilters';
 import { dataCommentLikeViews, dataPercentApproval, dataPercentCommentsLikes, dataPercentYear } from '@/data/filters';
 import { BsCalendarDay } from 'react-icons/bs';
 

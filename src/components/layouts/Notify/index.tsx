@@ -1,9 +1,9 @@
-import { useFetchAllNotify } from '@/hooks/useFetchAllNotify';
 import { useState } from 'react';
 import { AiFillBell, AiOutlineBell } from 'react-icons/ai';
 import { LogService } from '@/services/log/LogService';
 import { tailwindMerge } from '@/libs/tailwindMerge';
 import { NotifyItems } from '@/layouts/Notify/NotifyItems';
+import { useFetchAllNotify } from '@/layouts/Notify/hooks/useFetchAllNotify';
 
 const TIME_TO_MARK_VIEWED_NOTIFICATIONS_IN_MS = 3000;
 

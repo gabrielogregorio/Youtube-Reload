@@ -1,6 +1,5 @@
-import type { ReactElement } from 'react';
-import type { Control, FieldValues, Path } from 'react-hook-form';
-import { useController } from 'react-hook-form';
+import { ReactElement } from 'react';
+import { Control, FieldValues, Path, useController } from 'react-hook-form';
 
 interface IDataItems {
   value: string | number;

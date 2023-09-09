@@ -1,6 +1,6 @@
 import { LogService } from '@/services/log/LogService';
 import { tailwindMerge } from '@/libs/tailwindMerge';
-import { useGetProfile } from './useGetProfile';
+import { useGetProfile } from './hooks/useGetProfile';
 
 interface IProps {
   className?: string;

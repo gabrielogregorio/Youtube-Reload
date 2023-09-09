@@ -1,5 +1,5 @@
 import { MusicMapper } from '@/mappers/music';
-import type { IMusicApi, MusicFromApiMapper } from '@/mappers/music/fromApi';
+import { IMusicApi, MusicFromApiMapper } from '@/mappers/music/fromApi';
 import { ApiReload } from '@/services/api/Reload';
 
 export class FetchReactionsService {

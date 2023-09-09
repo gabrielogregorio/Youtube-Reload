@@ -1,6 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import type { Mock } from 'vitest';
-import { vi } from 'vitest';
+import { Mock, vi } from 'vitest';
 import { GeneratePlaylist } from '.';
 
 describe('<GeneratePlaylist />', () => {

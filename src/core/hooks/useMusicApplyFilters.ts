@@ -1,6 +1,6 @@
 import { useFetchAllMusics } from '@/hooks/useFetchAllMusics';
 import { useReactions } from '@/hooks/useReactions';
-import type { IMusicWithTransformation, MusicFromApiMapper } from '@/mappers/music/fromApi';
+import { IMusicWithTransformation, MusicFromApiMapper } from '@/mappers/music/fromApi';
 import { ReactionEnum } from '@/services/ReactionsService';
 import { generateRandomPositiveZeroOrNegative } from '@/utils/generators';
 import { createStringToSearch } from '@/utils/normalizers';

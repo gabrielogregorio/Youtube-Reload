@@ -1,4 +1,4 @@
-import type { NotifyFromApiMapper } from '@/mappers/notify/fromApi';
+import { NotifyFromApiMapper } from '@/layouts/Notify/mappers/fromApi';
 import { DateReload } from '@/utils/date';
 
 export const mockNotify: NotifyFromApiMapper[] = [

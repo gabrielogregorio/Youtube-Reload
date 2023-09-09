@@ -1,9 +1,8 @@
 import { useReactions } from '@/hooks/useReactions';
-import type { IMusicWithTransformation } from '@/mappers/music/fromApi';
+import { IMusicWithTransformation } from '@/mappers/music/fromApi';
 import { ReactionEnum } from '@/services/ReactionsService';
 import { Card } from '@/widgets/cards/card';
-import type { MouseEvent } from 'react';
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 
 interface ICardsProps {

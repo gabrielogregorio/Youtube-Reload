@@ -18,12 +18,11 @@ The `@typescript-eslint/explicit-function-return-type` rule was removed from the
      "unusedExports": true
      }
 ],
-```
-
-and remove
-
-```json
 "no-null/no-null": ["error"],
+"@typescript-eslint/consistent-type-exports": "error",
+"@typescript-eslint/consistent-type-imports": "error",
+
+
 ```
 
 ## Consequences

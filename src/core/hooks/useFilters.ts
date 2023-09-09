@@ -1,8 +1,12 @@
-import type { IDataViewType } from '@/data/filters';
-import { dataCommentLikeViews, dataPercentApproval, dataPercentCommentsLikes, dataPercentYear } from '@/data/filters';
+import {
+  IDataViewType,
+  dataCommentLikeViews,
+  dataPercentApproval,
+  dataPercentCommentsLikes,
+  dataPercentYear,
+} from '@/data/filters';
 import { LARGE_VALUE, parseFunction } from '@/utils/parseFunction';
-import type { Control, UseFormReset } from 'react-hook-form';
-import { useForm } from 'react-hook-form';
+import { Control, UseFormReset, useForm } from 'react-hook-form';
 
 interface IMinMaxType {
   max: number;

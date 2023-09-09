@@ -1,4 +1,4 @@
-import { emojis } from '@/data/profile';
+import { emojis } from '@/layouts/Profile/data/profile';
 import { StorageAccessNameEnum, StorageService } from '@/services/StorageService';
 import { generateRandomPositiveZeroOrNegative } from '@/utils/generators';
 

@@ -1,5 +1,4 @@
-import type { Control, FieldValues, Path } from 'react-hook-form';
-import { useController } from 'react-hook-form';
+import { Control, FieldValues, Path, useController } from 'react-hook-form';
 
 interface IInputText<T extends FieldValues> {
   control: Control<T>;

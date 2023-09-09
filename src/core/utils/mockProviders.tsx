@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux';
 import { store } from '@/connections/store';
-import type { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 interface IMockProvidersProps {

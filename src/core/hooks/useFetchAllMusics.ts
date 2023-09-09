@@ -1,4 +1,4 @@
-import type { MusicFromApiMapper } from '@/mappers/music/fromApi';
+import { MusicFromApiMapper } from '@/mappers/music/fromApi';
 import { FetchReactionsService } from '@/services/FetchMusicService';
 
 import { useEffect, useState } from 'react';

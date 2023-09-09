@@ -1,7 +1,7 @@
-import type { NotifyFromApiMapper } from '@/mappers/notify/fromApi';
-import { FetchNotifyService } from '@/services/FetchNotifyService';
-import { NotifyService } from '@/services/NotifyService';
 import { useEffect, useState } from 'react';
+import { NotifyService } from '@/layouts/Notify/services/NotifyService';
+import { FetchNotifyService } from '@/layouts/Notify/services/FetchNotifyService';
+import { NotifyFromApiMapper } from '@/layouts/Notify/mappers/fromApi';
 
 export const useFetchAllNotify = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);

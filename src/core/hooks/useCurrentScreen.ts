@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from '@/connections/store/useRedux';
-import type { ScreenEnum } from '@/contracts/homeScreens';
+import { ScreenEnum } from '@/contracts/homeScreens';
 import { setScreen } from '@/connections/features/currentScreen/slices';
 import { screenSelectedSelector } from '@/connections/features/currentScreen/selectors';
 

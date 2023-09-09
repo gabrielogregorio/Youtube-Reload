@@ -1,8 +1,8 @@
-import type { ScreenEnum } from '@/contracts/homeScreens';
+import { ScreenEnum } from '@/contracts/homeScreens';
 import { useCurrentScreen } from '@/hooks/useCurrentScreen';
 import { tailwindMerge } from '@/libs/tailwindMerge';
 import { LogService } from '@/services/log/LogService';
-import type { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 interface INavbarItemProps {
   text: string;

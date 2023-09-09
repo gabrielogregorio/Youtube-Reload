@@ -1,5 +1,4 @@
-import type { ReactElement } from 'react';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { AllPage } from '@/screens/all';
 import { ScreenEnum } from '@/contracts/homeScreens';
 import { Header } from '@/layouts/header';

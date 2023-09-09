@@ -1,9 +1,6 @@
-import type { IRandomPhrase } from '@/data/randomPhrase';
-import { randomPhrase } from '@/data/randomPhrase';
-import type { ISpecialDate } from '@/data/specialDates';
-import { specialDates } from '@/data/specialDates';
-import type { MonthsNormalizedEnum } from '@/utils/date';
-import { DateReload } from '@/utils/date';
+import { IRandomPhrase, randomPhrase } from '@/layouts/DailyHighlightCarousel/data/randomPhrase';
+import { ISpecialDate, specialDates } from '@/layouts/DailyHighlightCarousel/data/specialDates';
+import { MonthsNormalizedEnum, DateReload } from '@/utils/date';
 import { generateRandomPositiveZeroOrNegative } from '@/utils/generators';
 import { useEffect, useState } from 'react';
 

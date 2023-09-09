@@ -2,9 +2,8 @@ import { useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/connections/store/useRedux';
 import { saveReaction } from '@/connections/features/reactions/slices';
 import { reactionsSelector } from '@/connections/features/reactions/selectors';
-import type { AppDispatch } from '@/connections/store';
-import type { IReactionsOptions } from '@/services/ReactionsService';
-import { ReactionsService, ReactionEnum } from '@/services/ReactionsService';
+import { AppDispatch } from '@/connections/store';
+import { IReactionsOptions, ReactionsService, ReactionEnum } from '@/services/ReactionsService';
 
 interface IUseReactions {
   sendReaction: (idContent: string, reaction: ReactionEnum) => void;

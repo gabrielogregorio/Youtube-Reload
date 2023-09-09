@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { IReactionsOptions } from '@/services/ReactionsService';
+import { IReactionsOptions } from '@/services/ReactionsService';
 
 export interface IReactionsFeature {
   reactions: IReactionsOptions | undefined;

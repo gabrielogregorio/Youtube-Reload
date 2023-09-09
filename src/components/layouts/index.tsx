@@ -1,7 +1,8 @@
 import { Navbar } from '@/layouts/navbar';
-import type { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { Notify } from '@/layouts/Notify';
 import { Profile } from '@/layouts/Profile';
+import { EnvironmentName } from '@/layouts/header/EnvironmentName';
 
 interface ITemplateDefaultProps {
   children: ReactElement;
@@ -10,6 +11,8 @@ interface ITemplateDefaultProps {
 export const MainLayout = ({ children }: ITemplateDefaultProps) => {
   return (
     <div className="relative mt-[120px]">
+      <EnvironmentName />
+
       <header className="fixed top-0 left-0 z-50 w-full flex items-center justify-end bg-dark/50 backdrop-blur-sm shadow-md h-14 ">
         <div className="ml-6 hidden md:block" />
         <div className="ml-2 w-14 h-full hidden md:block" />
