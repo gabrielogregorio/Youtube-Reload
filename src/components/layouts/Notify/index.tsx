@@ -32,7 +32,10 @@ export const Notify = () => {
   const newNotify = (data?.length || 0) - notify.length || 0;
 
   return (
-    <div className="ml-2 w-14 h-full flex items-center justify-center relative z-50">
+    <div
+      className="ml-2 w-14 h-full flex items-center justify-center relative z-50"
+      role="alert"
+      aria-label="Notifications">
       <button
         type="button"
         aria-label="Abrir notificações"

@@ -10,7 +10,7 @@ interface INavbarProps {
 
 export const Navbar = ({ activeScreen }: INavbarProps) => {
   return (
-    <nav className="w-full flex items-center justify-center">
+    <nav className="w-full flex items-center justify-center" role="navigation" aria-label="Main Navigation">
       <NavbarItem
         isActive={activeScreen === ScreenEnum.home}
         nameScreen={ScreenEnum.home}

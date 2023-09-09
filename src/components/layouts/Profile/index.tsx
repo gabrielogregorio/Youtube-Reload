@@ -15,7 +15,10 @@ export const Profile = ({ className = undefined }: IProps) => {
   };
 
   return (
-    <div className={tailwindMerge('ml-2 w-14 h-full flex items-center justify-center', className)}>
+    <div
+      className={tailwindMerge('ml-2 w-14 h-full flex items-center justify-center', className)}
+      aria-label="User profile"
+      role="complementary">
       <button
         title="Trocar de emoji"
         aria-label="Trocar foto de perfil"
