@@ -33,7 +33,7 @@ jobs:
 
   unit_tests_and_up_coverage:
     needs: install
-    environment: codacy_env
+    environment: codacy_env    
     runs-on: ubuntu-latest
 
     env:

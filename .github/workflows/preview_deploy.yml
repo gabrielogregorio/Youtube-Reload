@@ -11,7 +11,12 @@ on:
 
 jobs:
   preview:
+    environment: sentry
     runs-on: ubuntu-latest
+
+    env:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
 
     strategy:
       matrix:
@@ -106,7 +111,7 @@ jobs:
 
       - name: build App
         run: |
-          echo "export const envs = { VITE_BASE_URL: '/youtube-reload/${{ steps.set_environments.outputs.build_directory }}/', VITE_ENVIRONMENT: '${{ steps.set_environments.outputs.branch_name }}' };" > src/core/env.ts
+          echo "export const envs = { VITE_BASE_URL: '/youtube-reload/${{ steps.set_environments.outputs.build_directory }}/', VITE_ENVIRONMENT: '${{ steps.set_environments.outputs.branch_name }}', SENTRY_DSN: '$SENTRY_DSN' };" > src/core/env.ts
           pnpm run build
 
       - name: comment on PR, doing deploy
