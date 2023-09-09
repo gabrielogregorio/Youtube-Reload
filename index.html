@@ -1,48 +1,130 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
   <head>
-    <meta name="language" content="pt-BR" />
-    <meta charset="UTF-8" />
-    <meta name="theme-color" content="#2d3036" />
+    <meta charset="utf-8" />
 
-    <meta name="keywords" content="youtube,reload,musicas,inéditas,antigas,melhores,descobrir" />
-
-    <meta name="application-name" content="Youtube Reload" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Youtube Reload" />
-    <meta name="description" content="Descubra várias músicas inéditas" />
-
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="msapplication-config" content="/icons/browserconfig.xml" />
-    <meta name="msapplication-TileColor" content="#2d3036" />
-    <meta name="msapplication-tap-highlight" content="no" />
-
-    <link rel="shortcut icon" type="image/x-icon" href="/youtube-reload/favicon.ico" />
-    <link rel="apple-touch-icon" href="/youtube-reload/icon.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="/youtube-reload/icons/touch-icon-ipad.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/youtube-reload/icons/touch-icon-iphone-retina.png" />
-    <link rel="apple-touch-icon" sizes="167x167" href="/youtube-reload/icons/touch-icon-ipad-retina.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/youtube-reload/icons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/youtube-reload/icons/favicon-16x16.png" />
-
+    <title>@storybook/cli - Storybook</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Youtube Reload</title>
-    <script type="module" crossorigin src="/youtube-reload/assets/index-897d2491.js"></script>
-    <link rel="stylesheet" href="/youtube-reload/assets/index-144fbed3.css">
-  <link rel="manifest" href="/youtube-reloadmanifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/youtube-reloadregisterSW.js"></script></head>
-  <body style="overflow-y: scroll; background-color: #2d3036" class="scrollbar">
+    
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    
+    <link
+      rel="prefetch"
+      href="./sb-common-assets/nunito-sans-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="prefetch"
+      href="./sb-common-assets/nunito-sans-bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="./sb-common-assets/fonts.css" />
+
+    <link href="./sb-manager/runtime.js" rel="modulepreload" />
+
+    
+    <link href="./sb-addons/links-0/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/essentials-controls-1/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/essentials-actions-2/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/essentials-backgrounds-3/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/essentials-viewport-4/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/essentials-toolbars-5/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/essentials-measure-6/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/essentials-outline-7/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/onboarding-8/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/interactions-9/manager-bundle.js" rel="modulepreload" />
+       
+
     <style>
-      * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
+      #storybook-root[hidden] {
+        display: none !important;
       }
     </style>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+
     
+  </head>
+  <body>
+    <div id="root"></div>
+
+    
+    <script>
+      
+        
+          window['FEATURES'] = {
+  "warnOnLegacyHierarchySeparator": true,
+  "buildStoriesJson": false,
+  "storyStoreV7": true,
+  "argTypeTargetsV7": true,
+  "legacyDecoratorFileOrder": false
+};
+        
+      
+        
+          window['REFS'] = {};
+        
+      
+        
+          window['LOGLEVEL'] = "info";
+        
+      
+        
+          window['DOCS_OPTIONS'] = {
+  "defaultName": "Docs",
+  "autodocs": "tag"
+};
+        
+      
+        
+          window['CONFIG_TYPE'] = "PRODUCTION";
+        
+      
+        
+      
+        
+      
+    </script>
+    
+
+    <script type="module">
+      import './sb-manager/runtime.js';
+
+      
+      import './sb-addons/links-0/manager-bundle.js';
+      
+      import './sb-addons/essentials-controls-1/manager-bundle.js';
+      
+      import './sb-addons/essentials-actions-2/manager-bundle.js';
+      
+      import './sb-addons/essentials-backgrounds-3/manager-bundle.js';
+      
+      import './sb-addons/essentials-viewport-4/manager-bundle.js';
+      
+      import './sb-addons/essentials-toolbars-5/manager-bundle.js';
+      
+      import './sb-addons/essentials-measure-6/manager-bundle.js';
+      
+      import './sb-addons/essentials-outline-7/manager-bundle.js';
+      
+      import './sb-addons/onboarding-8/manager-bundle.js';
+      
+      import './sb-addons/interactions-9/manager-bundle.js';
+      
+    </script>
+
+    <link href="./sb-preview/runtime.js" rel="prefetch" as="script" />
   </body>
 </html>
