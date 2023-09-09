@@ -1,16 +1,14 @@
-import { useGetProfile } from '@/hooks/useGetProfile';
 import { Navbar } from '@/layouts/navbar';
 import type { ReactElement } from 'react';
-import { LogService } from '@/services/log/LogService';
 import { useCurrentScreen } from '@/hooks/useCurrentScreen';
 import { Notify } from '@/layouts/Notify';
+import { Profile } from '@/layouts/Profile';
 
 interface ITemplateDefaultProps {
   children: ReactElement;
 }
 
 export const MainLayout = ({ children }: ITemplateDefaultProps) => {
-  const { emoji, handleUpdateEmoji } = useGetProfile();
   const { currentScreen } = useCurrentScreen();
 
   return (
@@ -25,19 +23,8 @@ export const MainLayout = ({ children }: ITemplateDefaultProps) => {
 
         <Notify />
 
-        <div className="ml-2 w-14 h-full flex items-center justify-center">
-          <button
-            title="Trocar de emoji"
-            aria-label="Trocar foto de perfil"
-            type="button"
-            onClick={() => {
-              LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'update emoji' });
-              handleUpdateEmoji();
-            }}
-            className="flex items-center justify-center h-6 w-6 hover:h-8 hover:w-8 rounded-full text-xl cursor-pointer select-none hover:bg-dark-light transition-all duration-150">
-            {emoji}
-          </button>
-        </div>
+        <Profile />
+
         <div className="mr-6" />
       </div>
       <main className="">{children}</main>
