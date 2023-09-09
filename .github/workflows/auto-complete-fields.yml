@@ -101,7 +101,7 @@ jobs:
             let newTitle = `Release ${currentPackageVersion} - ${currentTitle}`
 
             if(currentTitle.includes('Release v')) {
-              newTitle = currentTitle.replace(/Release v[\d*\\.]/, `Release ${currentPackageVersion}`)
+              newTitle = currentTitle.replace(/Release v[\d*\\.]{1,}/, `Release ${currentPackageVersion}`)
             }
 
             await github.rest.pulls.update({
