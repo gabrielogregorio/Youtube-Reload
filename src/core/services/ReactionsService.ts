@@ -6,12 +6,8 @@ export enum ReactionEnum {
   'none' = 'none',
 }
 
-export interface IReactions {
-  reaction: ReactionEnum;
-}
-
 export interface IReactionsOptions {
-  [key: string]: IReactions;
+  [key: string]: ReactionEnum;
 }
 
 export const initializeAndGetReactions = (): IReactionsOptions => {

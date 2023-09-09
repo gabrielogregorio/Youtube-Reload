@@ -4,14 +4,13 @@ import { Cards } from '@/widgets/cards';
 import { FloatingActionButtons } from '@/features/FloatingActionButtons';
 
 export const LikesPage = () => {
-  const { filtered, applyFilters, data } = useMusicApplyFilters({
+  const { filtered, applyFilters, musics } = useMusicApplyFilters({
     random: true,
-    onlyLikes: true,
   });
 
   useEffect(() => {
     applyFilters();
-  }, [data?.length]);
+  }, [musics?.length]);
 
   return (
     <div>

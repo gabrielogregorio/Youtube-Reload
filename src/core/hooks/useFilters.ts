@@ -6,7 +6,8 @@ import {
   dataPercentYear,
 } from '@/data/filters';
 import { LARGE_VALUE, parseFunction } from '@/utils/parseFunction';
-import { Control, UseFormReset, useForm } from 'react-hook-form';
+import { useMemo } from 'react';
+import { useForm } from 'react-hook-form';
 
 interface IMinMaxType {
   max: number;
@@ -55,26 +56,7 @@ const resetValues: Partial<IFiltersFields> = {
   textSearch: '',
 };
 
-interface IUseFiltersOutput {
-  resetValues: Partial<IFiltersFields>;
-  viewsStart: number;
-  viewsEnd: number;
-  commentsStart: number;
-  commentsEnd: number;
-  likesStart: number;
-  likesEnd: number;
-  percentStart: number;
-  percentEnd: number;
-  approvalStart: number;
-  approvalEnd: number;
-  dateYearStart: number;
-  dateYearEnd: number;
-  control: Control<IFiltersFields>;
-  reset: UseFormReset<IFiltersFields>;
-  formTextSearch: string;
-}
-
-export const useFilters = (): IUseFiltersOutput => {
+export const useFilters = () => {
   const { control, watch, reset } = useForm<IFiltersFields>({
     mode: 'onBlur',
     reValidateMode: 'onSubmit',
@@ -107,22 +89,39 @@ export const useFilters = (): IUseFiltersOutput => {
   const dateYearStart = findValueReturnLabel(dataPercentYear, formYear.min);
   const dateYearEnd = findValueReturnLabel(dataPercentYear, formYear.max);
 
-  return {
-    resetValues,
+  const filterApplied = useMemo(() => {
+    return {
+      viewsStart,
+      viewsEnd,
+      commentsStart,
+      commentsEnd,
+      likesStart,
+      likesEnd,
+      approvalStart,
+      approvalEnd,
+      dateYearStart,
+      dateYearEnd,
+    };
+  }, [
     viewsStart,
     viewsEnd,
     commentsStart,
     commentsEnd,
     likesStart,
     likesEnd,
-    percentStart,
-    percentEnd,
     approvalStart,
     approvalEnd,
     dateYearStart,
     dateYearEnd,
+  ]);
+
+  return {
+    resetValues,
+    filterApplied,
+    percentStart,
+    percentEnd,
+    formTextSearch,
     control,
     reset,
-    formTextSearch,
   };
 };

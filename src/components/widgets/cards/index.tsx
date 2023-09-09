@@ -61,7 +61,7 @@ export const Cards = ({ cards, showExtra = false }: ICardsProps) => {
             return (
               <Card
                 openPlayer={handleOpenPlayer}
-                reaction={reactions?.[card.id]?.reaction || ReactionEnum.none}
+                reaction={reactions?.[card.id] || ReactionEnum.none}
                 key={card.url}
                 showExtra={showExtra}
                 playlistLocal={card}

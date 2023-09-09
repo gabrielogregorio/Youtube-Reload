@@ -1,5 +1,5 @@
 export enum StorageAccessNameEnum {
-  'Reactions' = 'reactions',
+  'Reactions' = 'reactions.v2',
   'Profile' = 'profile',
   'Notify' = 'notify',
   'UserId' = 'UserId',

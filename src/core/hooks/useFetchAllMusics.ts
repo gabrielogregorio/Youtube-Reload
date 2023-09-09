@@ -3,25 +3,19 @@ import { FetchReactionsService } from '@/services/FetchMusicService';
 
 import { useEffect, useState } from 'react';
 
-interface IUseFetchAllMusicsOutput {
-  isLoading: boolean;
-  error: string | undefined;
-  data: MusicFromApiMapper[] | undefined;
-}
-
-export const useFetchAllMusics = (): IUseFetchAllMusicsOutput => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+export const useFetchAllMusics = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
-  const [data, setData] = useState<MusicFromApiMapper[] | undefined>(undefined);
+  const [musics, setMusics] = useState<MusicFromApiMapper[] | undefined>(undefined);
 
   useEffect(() => {
     setIsLoading(false);
     setError(undefined);
-    setData(undefined);
+    setMusics(undefined);
 
     FetchReactionsService.fetch()
       .then((res: MusicFromApiMapper[]) => {
-        setData(res);
+        setMusics(res);
       })
       .catch(() => {
         setError('Error on Load Data');
@@ -34,6 +28,6 @@ export const useFetchAllMusics = (): IUseFetchAllMusicsOutput => {
   return {
     isLoading,
     error,
-    data,
+    musics,
   };
 };

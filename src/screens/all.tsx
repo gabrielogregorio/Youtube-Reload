@@ -1,5 +1,3 @@
-/* eslint-disable max-lines */
-// resolve this
 import { useState, useEffect } from 'react';
 import { useMusicApplyFilters } from '@/hooks/useMusicApplyFilters';
 import { Range } from '@/base/range';
@@ -15,55 +13,33 @@ import { Cards } from '@/widgets/cards';
 import { FloatingActionButtons } from '@/features/FloatingActionButtons';
 
 const INITIAL_LIMIT_SHOW_ITEMS = 12;
-export const AllPage = () => {
-  const [limitItems, setLimitItems] = useState<number>(INITIAL_LIMIT_SHOW_ITEMS);
-  const {
-    resetValues,
-    viewsStart,
-    viewsEnd,
-    commentsStart,
-    commentsEnd,
-    likesStart,
-    likesEnd,
-    percentStart,
-    percentEnd,
-    approvalStart,
-    approvalEnd,
-    dateYearStart,
-    dateYearEnd,
-    control,
-    reset,
-    formTextSearch,
-  } = useFilters();
 
-  const { filtered, applyFilters, data } = useMusicApplyFilters({
-    random: false,
-    offset: 0,
+export const AllPage = () => {
+  const [limitItems, setLimitItems] = useState(INITIAL_LIMIT_SHOW_ITEMS);
+  const { resetValues, percentStart, percentEnd, filterApplied, control, reset, formTextSearch } = useFilters();
+
+  const { filtered, applyFilters, musics } = useMusicApplyFilters({
     limit: limitItems,
-    onlyLikes: false,
-    ignoreLikes: false,
-    ignoreUnLikes: false,
-    onlyUnLikes: false,
     textSearch: formTextSearch,
     period: {
       apply: true,
-      start: dateYearStart,
-      end: dateYearEnd,
+      start: filterApplied.dateYearStart,
+      end: filterApplied.dateYearEnd,
     },
     likes: {
       apply: true,
-      start: likesStart,
-      end: likesEnd,
+      start: filterApplied.likesStart,
+      end: filterApplied.likesEnd,
     },
     comments: {
       apply: true,
-      start: commentsStart,
-      end: commentsEnd,
+      start: filterApplied.commentsStart,
+      end: filterApplied.commentsEnd,
     },
     views: {
       apply: true,
-      start: viewsStart,
-      end: viewsEnd,
+      start: filterApplied.viewsStart,
+      end: filterApplied.viewsEnd,
     },
     percent: {
       apply: true,
@@ -72,31 +48,14 @@ export const AllPage = () => {
     },
     approvalComments: {
       apply: true,
-      start: approvalStart,
-      end: approvalEnd,
+      start: filterApplied.approvalStart,
+      end: filterApplied.approvalEnd,
     },
   });
 
   useEffect(() => {
     applyFilters();
-  }, [
-    data?.length,
-    formTextSearch,
-    resetValues,
-    viewsStart,
-    viewsEnd,
-    commentsStart,
-    commentsEnd,
-    likesStart,
-    likesEnd,
-    percentStart,
-    percentEnd,
-    approvalStart,
-    approvalEnd,
-    dateYearStart,
-    dateYearEnd,
-    limitItems,
-  ]);
+  }, [musics?.length, formTextSearch, resetValues, filterApplied, percentStart, percentEnd, limitItems]);
 
   const handleReset = () => {
     reset(resetValues);

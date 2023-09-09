@@ -7,16 +7,14 @@ import { FloatingActionButtons } from '@/features/FloatingActionButtons';
 const LIMIT_ITEMS = 25;
 
 export const HomePage = () => {
-  const { filtered, applyFilters, data } = useMusicApplyFilters({
+  const { filtered, applyFilters, musics } = useMusicApplyFilters({
     random: true,
     limit: LIMIT_ITEMS,
-    ignoreLikes: false,
-    ignoreUnLikes: false,
   });
 
   useEffect(() => {
     applyFilters();
-  }, [data?.length]);
+  }, [musics?.length]);
 
   return (
     <div>
