@@ -1,6 +1,6 @@
 import { Logo } from '@/layouts/logo';
 import { SpecialDays } from '@/layouts/specialDays';
-import { envs } from 'src/core/env';
+import { envs } from '@/core/env';
 
 export const Header = () => {
   return (
