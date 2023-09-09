@@ -1,17 +1,11 @@
-import { StorageAccessNameEnum, StorageService } from '@/services/StorageService';
+import { UserService } from '@/services/UserService';
 import { LogService } from '@/services/log/LogService';
 import { useEffect } from 'react';
 
 export const useAuthConfigure = () => {
   useEffect(() => {
-    const userId = StorageService.getItem(StorageAccessNameEnum.UserId);
-    if (userId) {
-      LogService.setUser({ userId });
-      return;
-    }
+    const userId = UserService.getUserId() || UserService.createUser();
 
-    const newUserId = new Date().getTime().toString();
-    StorageService.setItem(StorageAccessNameEnum.UserId, newUserId);
-    LogService.setUser({ userId: newUserId });
+    LogService.setUser({ userId });
   }, []);
 };
