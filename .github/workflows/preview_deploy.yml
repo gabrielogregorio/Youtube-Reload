@@ -109,9 +109,15 @@ jobs:
           echo "::set-output name=build_directory::preview/$BRANCH_NAME"
           echo "::set-output name=branch_name::$BRANCH_NAME"
 
+      - name: get current version
+        id: get-version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "::set-output name=version::$VERSION"
+
       - name: build App
         run: |
-          echo "export const envs = { VITE_BASE_URL: '/youtube-reload/${{ steps.set_environments.outputs.build_directory }}/', VITE_ENVIRONMENT: '${{ steps.set_environments.outputs.branch_name }}', SENTRY_DSN: '$SENTRY_DSN' };" > src/core/env.ts
+          echo "export const envs = { VITE_BASE_URL: '/youtube-reload/${{ steps.set_environments.outputs.build_directory }}/', VITE_ENVIRONMENT: '${{ steps.set_environments.outputs.branch_name }}', SENTRY_DSN: '$SENTRY_DSN', 'VERSION': '${{ steps.set_environments.outputs.version }}' };" > src/core/env.ts
           pnpm run build
 
       - name: comment on PR, doing deploy

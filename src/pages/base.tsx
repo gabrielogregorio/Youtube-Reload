@@ -9,6 +9,7 @@ import { ConfigsPage } from '@/pages/configs';
 import { TemplateDefault } from '@/templates/default';
 import { Header } from '@/layouts/header';
 import { useScreenSelected } from '@/hooks/useScreenSelected';
+import { useAuth } from '@/hooks/useAuth';
 import { envs } from '../core/env';
 
 const screens: { [screen in ScreenEnum]: ReactElement } = {
@@ -21,6 +22,7 @@ const screens: { [screen in ScreenEnum]: ReactElement } = {
 
 export const BaseScreens = (): ReactElement => {
   const { screenSelected } = useScreenSelected();
+  useAuth();
 
   return (
     <TemplateDefault activeScreen={screenSelected}>

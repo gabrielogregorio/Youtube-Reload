@@ -3,9 +3,16 @@ import { envs } from '../../env';
 
 Sentry.init({
   dsn: envs.SENTRY_DSN,
-  integrations: [new Sentry.Replay()],
+  integrations: [
+    // new Sentry.BrowserTracing({
+    //   // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
+    //   tracePropagationTargets: ["localhost", /^https:\/\/yourserver\.io\/api/],
+    // }),
+    new Sentry.Replay(),
+  ],
   tracesSampleRate: 0.2,
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
   environment: envs.VITE_ENVIRONMENT,
+  release: `youtube-reload@${envs.VERSION}`,
 });
