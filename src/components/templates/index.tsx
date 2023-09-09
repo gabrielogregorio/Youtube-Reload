@@ -8,7 +8,7 @@ interface ITemplateDefaultProps {
   children: ReactElement;
 }
 
-export const MainLayout = ({ children }: ITemplateDefaultProps) => {
+export const MainTemplate = ({ children }: ITemplateDefaultProps) => {
   return (
     <div className="relative mt-[120px]">
       <EnvironmentName />

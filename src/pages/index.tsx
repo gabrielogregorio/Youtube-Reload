@@ -8,7 +8,7 @@ import { ConfigsPage } from '@/screens/configs';
 import { UnLikesPage } from '@/screens/unlikes';
 import { LikesPage } from '@/screens/likes';
 import { HomePage } from '@/screens/home';
-import { MainLayout } from '@/templates/index';
+import { MainTemplate } from '@/templates/index';
 
 const screens: { [screen in ScreenEnum]: ReactElement } = {
   [ScreenEnum.home]: <HomePage />,
@@ -24,12 +24,12 @@ export const MainContainer = () => {
   useAuthConfigure();
 
   return (
-    <MainLayout>
+    <MainTemplate>
       <>
         <Header />
 
         {screens[currentScreen]}
       </>
-    </MainLayout>
+    </MainTemplate>
   );
 };
