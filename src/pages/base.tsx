@@ -9,6 +9,7 @@ import { ConfigsPage } from '@/pages/configs';
 import { TemplateDefault } from '@/templates/default';
 import { Header } from '@/layouts/header';
 import { useScreenSelected } from '@/hooks/useScreenSelected';
+import { useAuth } from '@/hooks/useAuth';
 import { envs } from '../core/env';
 
 const screens: { [screen in ScreenEnum]: ReactElement } = {
@@ -21,11 +22,12 @@ const screens: { [screen in ScreenEnum]: ReactElement } = {
 
 export const BaseScreens = (): ReactElement => {
   const { screenSelected } = useScreenSelected();
+  useAuth();
 
   return (
     <TemplateDefault activeScreen={screenSelected}>
       <>
-        {envs.VITE_ENVIRONMENT ? (
+        {envs.VITE_ENVIRONMENT && envs.VITE_ENVIRONMENT !== 'production' ? (
           <div className="text-[2rem] font-[800] fixed top-1 left-4 z-[190] text-white/75">{envs.VITE_ENVIRONMENT}</div>
         ) : undefined}
         <Header />

@@ -8,6 +8,7 @@ import type { ReactElement, RefObject } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { AiFillBell, AiOutlineBell } from 'react-icons/ai';
 import type { NotifyFromApiMapper } from '@/mappers/notify/fromApi';
+import { LogService } from '@/services/log/LogService';
 
 interface ITemplateDefaultProps {
   children: ReactElement;
@@ -54,13 +55,17 @@ export const TemplateDefault = ({ children, activeScreen }: ITemplateDefaultProp
           <button
             type="button"
             aria-label="Abrir notificações"
-            onClick={(): void => handleOpenNotify()}
+            onClick={(): void => {
+              LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'open notify' });
+              handleOpenNotify();
+            }}
             className={`hidden md:flex items-center justify-center h-6 w-6 hover:h-8 hover:w-8 rounded-full text-xl cursor-pointer select-none hover:bg-dark-light transition-all duration-150 relative ${
               notifyIsOpen ? 'bg-dark-light' : ''
             }
             
             `}>
             {notifyIsOpen ? <AiFillBell /> : <AiOutlineBell />}
+
             {showIcons ? (
               <div className="w-3 h-3 bg-red rounded-full flex items-center justify-center absolute top-0 right-0 text-[0.7rem]">
                 {newNotify}
@@ -105,7 +110,10 @@ export const TemplateDefault = ({ children, activeScreen }: ITemplateDefaultProp
             title="Trocar de emoji"
             aria-label="Trocar foto de perfil"
             type="button"
-            onClick={(): void => handleUpdateEmoji()}
+            onClick={(): void => {
+              LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'update emoji' });
+              handleUpdateEmoji();
+            }}
             className="flex items-center justify-center h-6 w-6 hover:h-8 hover:w-8 rounded-full text-xl cursor-pointer select-none hover:bg-dark-light transition-all duration-150">
             {emoji}
           </button>

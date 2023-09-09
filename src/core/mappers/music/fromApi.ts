@@ -1,6 +1,7 @@
 import { createStringToSearch } from '@/utils/normalizers';
 import { parseFunction } from '@/utils/parseFunction';
 import { CategoryEnum } from '@/data/data.reload';
+import { LogService } from '@/services/log/LogService';
 
 const CEM_PERCENT: number = 100;
 const QUANTITY_FACTORS: number = 2;
@@ -74,6 +75,8 @@ export class MusicFromApiMapper {
 
         return Number((percentLikes + percentComments / QUANTITY_FACTORS).toFixed(QUANTITY_FACTORS));
       } catch (error: unknown) {
+        LogService.logMessage(`Error on calculate percentage views=${views}, comments=${comments},likes=${likes}`);
+        LogService.logError(error);
         return 0;
       }
     };

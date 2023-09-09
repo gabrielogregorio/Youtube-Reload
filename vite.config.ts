@@ -1,3 +1,4 @@
+import { sentryVitePlugin } from '@sentry/vite-plugin';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
@@ -11,6 +12,7 @@ export default defineConfig({
   base: baseUrl,
   build: {
     outDir: 'build',
+    sourcemap: true,
   },
   resolve: {
     alias: {
@@ -95,6 +97,10 @@ export default defineConfig({
       // devOptions: {
       //   enabled: true,
       // },
+    }),
+    sentryVitePlugin({
+      org: 'gregorio-kg',
+      project: 'youtube-reload',
     }),
   ],
 });

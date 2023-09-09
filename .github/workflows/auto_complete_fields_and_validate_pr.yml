@@ -101,7 +101,7 @@ jobs:
             const currentTitle = context.payload.pull_request.title;
             const newTitle = `Release ${version} - ${currentTitle}`;
 
-            if(currentTitle !== 'Release') {
+            if(!currentTitle.includes('Release')) {
               await github.rest.pulls.update({
                 owner: context.repo.owner,
                 repo: context.repo.repo,

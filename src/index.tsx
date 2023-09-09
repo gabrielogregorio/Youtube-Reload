@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 import { store } from '@/connections/store';
 import { BaseScreens } from '@/pages/base';
 
+import '@/services/log/init';
+
 const root: ReactDOM.Root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>

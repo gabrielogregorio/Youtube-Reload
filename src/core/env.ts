@@ -1,1 +1,6 @@
-export const envs = { VITE_BASE_URL: '', VITE_ENVIRONMENT: '' };
+export const envs = {
+  VITE_BASE_URL: '',
+  VITE_ENVIRONMENT: '',
+  SENTRY_DSN: '',
+  VERSION: '',
+};

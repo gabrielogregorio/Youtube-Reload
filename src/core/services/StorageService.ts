@@ -2,6 +2,7 @@ export enum StorageAccessNameEnum {
   'Reactions' = 'reactions',
   'Profile' = 'profile',
   'Notify' = 'notify',
+  'UserId' = 'UserId',
 }
 
 export class StorageService {

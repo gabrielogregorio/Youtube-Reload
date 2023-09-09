@@ -27,9 +27,9 @@
 
 Versão atualizada deste projeto para Vite com React, typescript e eslint 'estralando'.
 
-![Tela inicial](1.png)
-![Playlist Gerada](2.png)
-![Tela de favoritos](3.png)
+![Tela inicial](docs/1.png)
+![Playlist Gerada](docs/2.png)
+![Tela de favoritos](docs/3.png)
 
 ![GitHub estrelas](https://img.shields.io/github/stars/gabrielogregorio/youtube-reload)
 ![GitHub last commit](https://img.shields.io/github/last-commit/gabrielogregorio/youtube-reload?style=flat-square)

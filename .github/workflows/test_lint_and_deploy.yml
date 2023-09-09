@@ -169,9 +169,14 @@ jobs:
         run: pnpm audit
 
   deploy:
+    environment: sentry
     needs: [unit_tests_and_up_coverage, linting, lint_tsc, format, audit]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    env:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
 
     strategy:
       matrix:
@@ -195,8 +200,17 @@ jobs:
       - name: Install dependencies and test
         run: pnpm i --frozen-lockfile
 
-      - name: Build App
-        run: pnpm run build
+      - name: get current version
+        id: get-version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "::set-output name=version::$VERSION"
+          production
+
+      - name: build App
+        run: |
+          echo "export const envs = { VITE_BASE_URL: '/youtube-reload', VITE_ENVIRONMENT: 'production', SENTRY_DSN: '$SENTRY_DSN', 'VERSION': '${{ steps.get-version.outputs.version }}' };" > src/core/env.ts
+          pnpm run build
 
       - name: Deploy with gh-pages
         run: |
@@ -208,45 +222,3 @@ jobs:
           npx gh-pages -d build --add -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  create-release-and-tag:
-    needs: [deploy]
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2
-        with:
-          ref: main
-
-      - name: set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16.x
-
-      - name: get current version
-        id: get-version
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          echo "Current version: $VERSION"
-          echo "TAG_VERSION=v$VERSION" >> $GITHUB_ENV
-
-      - name: update release with PR content
-        id: update-pr-content
-        run: |
-          PR_CONTENT="${{ github.event.pull_request.title }}: ${{ github.event.pull_request.body }}"
-          echo "PR_CONTENT<<EOF" >> $GITHUB_ENV
-          echo "$PR_CONTENT" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-
-      - name: create release and tag
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ env.TAG_VERSION }}
-          release_name: Release ${{ env.TAG_VERSION }}
-          body: |
-            ${{ env.PR_CONTENT }}
-          draft: false
-          prerelease: false
