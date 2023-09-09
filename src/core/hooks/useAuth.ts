@@ -5,9 +5,13 @@ import { useEffect } from 'react';
 export const useAuth = (): void => {
   useEffect(() => {
     const userId = StorageService.getItem(StorageAccessNameEnum.UserId);
+    if (userId) {
+      LogService.setUser({ userId });
+      return;
+    }
 
-    const payloadUserId = userId ? { userId } : { userId: new Date().getTime().toString() };
+    const newUserId = new Date().getTime().toString();
 
-    LogService.setUser(payloadUserId);
+    LogService.setUser({ userId: newUserId });
   }, []);
 };
