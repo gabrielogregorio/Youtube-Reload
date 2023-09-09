@@ -1,4 +1,4 @@
-import { useGetSpecialDays } from '@/layouts/DailyHighlightCarousel/hooks/useGetSpecialDays';
+import { useGetSpecialDays } from '@/features/DailyHighlightCarousel/hooks/useGetSpecialDays';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 
 export const DailyHighlightCarousel = () => {

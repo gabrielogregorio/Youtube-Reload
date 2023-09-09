@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { GeneratePlaylist } from '@/widgets/generatePlaylists';
-import { LateralButtons } from '@/widgets/lateralButtons';
 import { useMusicApplyFilters } from '@/hooks/useMusicApplyFilters';
+import { GeneratePlaylist } from '@/widgets/generatePlaylists';
 import { Cards } from '@/widgets/cards';
+import { FloatingActionButtons } from '@/features/FloatingActionButtons';
 
 const LIMIT_ITEMS = 25;
 
@@ -26,7 +26,7 @@ export const HomePage = () => {
         <GeneratePlaylist generateRandomPlaylist={applyFilters} />
       </section>
 
-      <LateralButtons generateRandomPlaylist={applyFilters} />
+      <FloatingActionButtons generateRandomPlaylist={applyFilters} />
     </div>
   );
 };

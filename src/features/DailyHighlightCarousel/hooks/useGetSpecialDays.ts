@@ -1,5 +1,5 @@
-import { IRandomPhrase, randomPhrase } from '@/layouts/DailyHighlightCarousel/data/randomPhrase';
-import { ISpecialDate, specialDates } from '@/layouts/DailyHighlightCarousel/data/specialDates';
+import { randomPhrase } from '@/features/DailyHighlightCarousel/data/randomPhrase';
+import { ISpecialDate, specialDates } from '@/features/DailyHighlightCarousel/data/specialDates';
 import { MonthsNormalizedEnum, DateReload } from '@/utils/date';
 import { generateRandomPositiveZeroOrNegative } from '@/utils/generators';
 import { useEffect, useState } from 'react';
@@ -30,7 +30,7 @@ export const useGetSpecialDays = (): {
       return specialDay.days.includes(actualDay);
     });
 
-    const phrases: IRandomPhrase = [...randomPhrase].sort((): number => generateRandomPositiveZeroOrNegative())[0];
+    const phrases = [...randomPhrase].sort((): number => generateRandomPositiveZeroOrNegative())[0];
     listSpecialDates.push({
       title: phrases.author,
       description: phrases.description,

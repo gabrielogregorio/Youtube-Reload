@@ -1,7 +1,7 @@
 import { dataMusic } from '@/data/data.reload';
 import { IMusicApi } from '@/core/mappers/music/fromApi';
-import { mockNotify } from '@/layouts/Notify/data/notify';
-import { INotifyApi } from '@/layouts/Notify/mappers/fromApi';
+import { mockNotify } from '@/features/Notify/data/notify';
+import { INotifyApi } from '@/features/Notify/mappers/fromApi';
 
 export class ApiReload {
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars

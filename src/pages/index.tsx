@@ -8,7 +8,7 @@ import { ConfigsPage } from '@/screens/configs';
 import { UnLikesPage } from '@/screens/unlikes';
 import { LikesPage } from '@/screens/likes';
 import { HomePage } from '@/screens/home';
-import { MainLayout } from '@/layouts/index';
+import { MainLayout } from '@/templates/index';
 
 const screens: { [screen in ScreenEnum]: ReactElement } = {
   [ScreenEnum.home]: <HomePage />,

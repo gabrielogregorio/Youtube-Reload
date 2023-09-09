@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { NotifyService } from '@/layouts/Notify/services/NotifyService';
-import { FetchNotifyService } from '@/layouts/Notify/services/FetchNotifyService';
-import { NotifyFromApiMapper } from '@/layouts/Notify/mappers/fromApi';
+import { NotifyFromApiMapper } from '@/features/Notify/mappers/fromApi';
+import { FetchNotifyService } from '@/features/Notify/services/FetchNotifyService';
+import { NotifyService } from '@/features/Notify/services/NotifyService';
 
 export const useFetchAllNotify = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);

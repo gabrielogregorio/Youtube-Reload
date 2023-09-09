@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { LateralButtons } from '@/widgets/lateralButtons';
 import { useMusicApplyFilters } from '@/hooks/useMusicApplyFilters';
 import { Cards } from '@/widgets/cards';
+import { FloatingActionButtons } from '@/features/FloatingActionButtons';
 
 export const UnLikesPage = () => {
   const { filtered, applyFilters, data } = useMusicApplyFilters({
@@ -17,7 +17,7 @@ export const UnLikesPage = () => {
     <div>
       <Cards cards={filtered} />
 
-      <LateralButtons generateRandomPlaylist={applyFilters} />
+      <FloatingActionButtons generateRandomPlaylist={applyFilters} />
     </div>
   );
 };

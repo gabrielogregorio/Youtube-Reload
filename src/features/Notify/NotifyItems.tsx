@@ -1,5 +1,5 @@
+import { NotifyFromApiMapper } from '@/features/Notify/mappers/fromApi';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
-import { NotifyFromApiMapper } from '@/layouts/Notify/mappers/fromApi';
 import { useRef } from 'react';
 
 interface IProps {

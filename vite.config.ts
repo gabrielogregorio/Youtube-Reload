@@ -38,6 +38,7 @@ export default defineConfig({
       '@/services': resolve(__dirname, './src/core/services'),
       '@/utils': resolve(__dirname, './src/core/utils'),
       '@/core': resolve(__dirname, './src/core'),
+      '@/features': resolve(__dirname, './src/features'),
 
       '@/mocks': resolve(__dirname, './src/mocks'),
       '@/pages': resolve(__dirname, './src/pages'),

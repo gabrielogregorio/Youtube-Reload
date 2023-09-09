@@ -1,6 +1,6 @@
 import { ApiReload } from '@/services/api/Reload';
-import { NotifyMapper } from '@/layouts/Notify/mappers';
-import { INotifyApi, NotifyFromApiMapper } from '@/layouts/Notify/mappers/fromApi';
+import { NotifyMapper } from '@/features/Notify/mappers';
+import { INotifyApi, NotifyFromApiMapper } from '@/features/Notify/mappers/fromApi';
 
 export class FetchNotifyService {
   public static async fetch(): Promise<NotifyFromApiMapper[]> {

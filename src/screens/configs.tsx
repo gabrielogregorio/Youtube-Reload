@@ -1,12 +1,12 @@
-import { LateralButtons } from '@/widgets/lateralButtons';
-import { ConfigScreen } from '../components/screen/config';
+import { FloatingActionButtons } from '@/features/FloatingActionButtons';
+import { ConfigScreen } from '@/screens/config';
 
 export const ConfigsPage = () => {
   return (
     <div>
       <ConfigScreen />
 
-      <LateralButtons generateRandomPlaylist={() => {}} />
+      <FloatingActionButtons generateRandomPlaylist={() => {}} />
     </div>
   );
 };

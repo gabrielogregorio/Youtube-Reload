@@ -1,8 +1,8 @@
 import { Navbar } from '@/layouts/navbar';
 import { ReactElement } from 'react';
-import { Notify } from '@/layouts/Notify';
-import { Profile } from '@/layouts/Profile';
 import { EnvironmentName } from '@/layouts/header/EnvironmentName';
+import { Notify } from 'src/features/Notify';
+import { Profile } from 'src/features/Profile';
 
 interface ITemplateDefaultProps {
   children: ReactElement;

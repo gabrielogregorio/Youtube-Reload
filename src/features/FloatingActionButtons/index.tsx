@@ -2,16 +2,16 @@ import { ScreenEnum } from '@/contracts/homeScreens';
 import { useCurrentScreen } from '@/hooks/useCurrentScreen';
 import { LogService } from '@/services/log/LogService';
 import { HEIGHT_IN_PX_TO_IGNORE_HEADER, moveToTop } from '@/utils/scroll';
-import { LateralButton, LateralButtonEnum } from '@/widgets/lateralButtons/buttons';
 import { AiOutlineArrowUp } from 'react-icons/ai';
 import { BiRefresh } from 'react-icons/bi';
 import { BsBookmarkCheckFill } from 'react-icons/bs';
+import { LateralButton, LateralButtonEnum } from '@/features/FloatingActionButtons/buttons';
 
-interface ILateralButtonsProps {
+interface IFloatingActionButtonsProps {
   generateRandomPlaylist: () => void;
 }
 
-export const LateralButtons = ({ generateRandomPlaylist }: ILateralButtonsProps) => {
+export const FloatingActionButtons = ({ generateRandomPlaylist }: IFloatingActionButtonsProps) => {
   const { updateCurrentScreen } = useCurrentScreen();
 
   return (

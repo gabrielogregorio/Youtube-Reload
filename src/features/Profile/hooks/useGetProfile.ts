@@ -1,4 +1,4 @@
-import { ProfileService } from '@/layouts/Profile/services/ProfileService';
+import { ProfileService } from '@/features/Profile/services/ProfileService';
 import { useEffect, useState } from 'react';
 
 export const useGetProfile = () => {

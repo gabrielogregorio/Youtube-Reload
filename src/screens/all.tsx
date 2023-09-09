@@ -1,18 +1,18 @@
 /* eslint-disable max-lines */
 // resolve this
 import { useState, useEffect } from 'react';
-import { LateralButtons } from '@/widgets/lateralButtons';
 import { useMusicApplyFilters } from '@/hooks/useMusicApplyFilters';
 import { Range } from '@/base/range';
 import { FaDivide, FaPercent } from 'react-icons/fa';
 import { BiCommentDetail, BiLike, BiReset } from 'react-icons/bi';
 import { AiOutlineEye } from 'react-icons/ai';
 import { InputSearch } from '@/base/inputSearch';
-import { Cards } from '@/widgets/cards';
 import { LabelRange } from '@/base/range/labelRange';
 import { IFiltersFields, useFilters } from '@/hooks/useFilters';
 import { dataCommentLikeViews, dataPercentApproval, dataPercentCommentsLikes, dataPercentYear } from '@/data/filters';
 import { BsCalendarDay } from 'react-icons/bs';
+import { Cards } from '@/widgets/cards';
+import { FloatingActionButtons } from '@/features/FloatingActionButtons';
 
 const INITIAL_LIMIT_SHOW_ITEMS = 12;
 export const AllPage = () => {
@@ -194,7 +194,7 @@ export const AllPage = () => {
 
       <Cards cards={filtered} showExtra />
 
-      <LateralButtons generateRandomPlaylist={applyFilters} />
+      <FloatingActionButtons generateRandomPlaylist={applyFilters} />
     </div>
   );
 };
