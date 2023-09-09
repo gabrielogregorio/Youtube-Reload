@@ -31,6 +31,32 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
 
+  e2e_tests:
+    needs: install
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        pnpm-version: [8.3.1]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: use pnpm ${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
+
+      - name: restore node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: running e2e tests
+        run: pnpm run cy:e2e
+
   unit_tests_and_up_coverage:
     needs: install
     environment: codacy_env
