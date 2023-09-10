@@ -21,32 +21,37 @@ export const NotifyItems = ({ closeNotify, notifyIsOpen, notifications, viewedNo
 
   return (
     <div
+      role="dialog"
+      aria-label="Notifications"
       className="absolute right-10 top-3 z-50 hidden md:flex flex-col rounded-md h-96 px-3 py-3 w-96 bg-dark-dark shadow-md"
       ref={refComponent}>
-      <div className="text-base mb-1 select-none">Notificações</div>
+      <h2 className="text-base mb-1 select-none">Notificações</h2>
+
       <div className="border-b border-gray-500" />
 
-      <div className="overflow-y-scroll flex-1 scrollbar-inverse w-full">
+      <ul className="overflow-y-scroll flex-1 scrollbar-inverse w-full">
         {notifications.map((notification) => {
           return (
-            <div className="hover:bg-dark cursor-pointer flex items-center justify-center py-2 px-2 transition-all duration-150 select-none">
+            <li
+              key={notification.id}
+              className="hover:bg-dark cursor-pointer flex items-center justify-center py-2 px-2 transition-all duration-150 select-none">
               <div className="h-10 text-2xl flex items-center justify-center aspect-square mr-2">
                 {notification.emoji}
               </div>
               <div className="flex-1">
-                <div className="text-sm hover:text-blue">{notification.title}</div>
-                <div className="text-[0.7rem] text-gray-400">{notification.date}</div>
+                <h3 className="text-sm hover:text-blue">{notification.title}</h3>
+                <time className="text-[0.7rem] text-gray-400">{notification.date}</time>
               </div>
 
               {!viewedNotificationIds.includes(notification.id) ? (
-                <div className="flex items-center justify-center ml-2">
+                <div className="flex items-center justify-center ml-2" aria-label="Unread notification">
                   <div className="p-1 bg-red rounded-full" />
                 </div>
               ) : undefined}
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </div>
   );
 };

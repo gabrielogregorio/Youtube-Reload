@@ -31,6 +31,7 @@ export const Notify = () => {
       aria-label="Notifications">
       <button
         type="button"
+        id="open-notify"
         aria-label="Abrir notificações"
         onClick={handleClickBell}
         className={tailwindMerge(

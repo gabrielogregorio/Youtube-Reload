@@ -6,6 +6,7 @@ import { FloatingActionButtons } from '@/features/FloatingActionButtons';
 export const LikesPage = () => {
   const { filtered, applyFilters, musics } = useMusicApplyFilters({
     random: true,
+    onlyLikes: true,
   });
 
   useEffect(() => {
