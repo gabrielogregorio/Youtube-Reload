@@ -1,17 +1,17 @@
-import type { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 interface ICheckboxProps {
   label: string;
   id: string;
 }
 
-const Checkbox = ({ label, id }: ICheckboxProps): ReactElement => {
+const Checkbox = ({ label, id }: ICheckboxProps) => {
   return (
     <label className="inline-flex items-center cursor-pointer text-base" htmlFor={id}>
       <input
         className="w-3 h-3 border-0 focus:ring-0 accent-blue-darker focus:accent-red cursor-pointer hover:scale-110 transition-all duration-150"
         id={id}
-        onClick={(): void => {}}
+        onClick={() => {}}
         type="checkbox"
       />
       <span className="ml-2 text-base">{label}</span>
@@ -24,7 +24,7 @@ interface IFieldsetFilterProps {
   children: ReactElement;
 }
 
-const FieldsetFilter = ({ title, children }: IFieldsetFilterProps): ReactElement => {
+const FieldsetFilter = ({ title, children }: IFieldsetFilterProps) => {
   return (
     <fieldset className="mx-3">
       <legend>
@@ -35,7 +35,7 @@ const FieldsetFilter = ({ title, children }: IFieldsetFilterProps): ReactElement
   );
 };
 
-export const Filters = (): ReactElement => {
+export const Filters = () => {
   return (
     <section className="animate-fadeIn px-3 py-2 rounded-xl shadow-lg mb-4 border bg-dark-dark border-dark-dark hover:scale-105 transition-all duration-150">
       <div className="flex justify-center">
@@ -63,8 +63,8 @@ export const Filters = (): ReactElement => {
 
       <div />
 
-      <div className="">
-        <div className="">
+      <div>
+        <div>
           <label htmlFor="search" className="w-full px-4">
             <div>
               <input

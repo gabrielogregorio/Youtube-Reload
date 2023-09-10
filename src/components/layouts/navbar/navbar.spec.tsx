@@ -2,6 +2,7 @@ import { ScreenEnum } from '@/contracts/homeScreens';
 import { render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 import { MockProviders } from '@/utils/mockProviders';
+import * as useCurrentScreen from '@/hooks/useCurrentScreen';
 import { Navbar } from '.';
 
 const mockNavbar: { index: number; screen: ScreenEnum; text: string }[] = [
@@ -17,8 +18,8 @@ const mockNavbar: { index: number; screen: ScreenEnum; text: string }[] = [
   },
   {
     index: 3,
-    screen: ScreenEnum.unlikes,
-    text: 'Unlikes',
+    screen: ScreenEnum.unLikes,
+    text: 'UnLikes',
   },
   {
     index: 4,
@@ -32,6 +33,15 @@ const mockNavbar: { index: number; screen: ScreenEnum; text: string }[] = [
   },
 ];
 
+const spyUseAuth = vi.spyOn(useCurrentScreen, 'useCurrentScreen');
+
+spyUseAuth.mockImplementation(() => {
+  return {
+    currentScreen: ScreenEnum.home,
+    updateCurrentScreen: () => {},
+  };
+});
+
 describe('<Navbar />', () => {
   afterEach(() => {
     vi.restoreAllMocks();
@@ -40,22 +50,19 @@ describe('<Navbar />', () => {
   it('should render navbar', () => {
     render(
       <MockProviders>
-        <Navbar activeScreen={ScreenEnum.home} />
+        <Navbar />
       </MockProviders>,
     );
     expect(screen.getAllByRole('button')).toHaveLength(mockNavbar.length);
   });
 
   it('should render button texts', () => {
-    render(
+    const { container } = render(
       <MockProviders>
-        <Navbar activeScreen={ScreenEnum.home} />
+        <Navbar />
       </MockProviders>,
     );
-    expect(screen.getByRole('button', { name: mockNavbar[0].text })).toBeDefined();
-    expect(screen.getByRole('button', { name: mockNavbar[1].text })).toBeDefined();
-    expect(screen.getByRole('button', { name: mockNavbar[2].text })).toBeDefined();
-    expect(screen.getByRole('button', { name: mockNavbar[3].text })).toBeDefined();
-    expect(screen.getByRole('button', { name: mockNavbar[4].text })).toBeDefined();
+
+    expect(container).toMatchSnapshot();
   });
 });

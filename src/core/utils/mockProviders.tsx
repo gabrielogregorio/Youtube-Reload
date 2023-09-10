@@ -1,9 +1,13 @@
 import { Provider } from 'react-redux';
 import { store } from '@/connections/store';
-import type { ReactElement, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-export const MockProviders = ({ children }: { children: ReactNode }): ReactElement => (
+interface IMockProvidersProps {
+  children: ReactNode;
+}
+
+export const MockProviders = ({ children }: IMockProvidersProps) => (
   <Provider store={store}>
     <BrowserRouter>
       <Routes>

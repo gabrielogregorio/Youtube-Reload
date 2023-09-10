@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FIX THIS STYLES */
+
+@font-face {
+  font-family: 'RubikVinyl';
+  src: url('./fonts/Rubik_Vinyl/RubikVinyl-Regular.ttf') format('ttf');
+  font-weight: 400;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #fbfbfe;
+  font-size: 1.2rem; /* REMOVE THIS*/
+}
+
+body {
+  min-height: 100vh;
+  overflow-y: scroll;
+  background-color: #2d3036;
+}
+
+input[type='checkbox'] {
+  zoom: 1.6;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* remove comments*/
+details {
+  /* border-radius: 4px; */
+  /* padding: 0.5em 0.5em 0; */
+}
+
+summary {
+  font-weight: bold;
+  /* margin: -0.5em -0.5em 0; */
+  /* padding: 0.5em; */
+}
+
+details[open] {
+  /* padding: 0.5em; */
+}
+
+details[open] summary {
+  padding-bottom: 0.5em;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 15px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  border: none;
+  background: #2d3036;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  border: none;
+  background: #1f2126;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  border: none;
+  background: #1f2126;
+}
+
+.scrollbar-inverse::-webkit-scrollbar {
+  width: 5px;
+}
+
+.scrollbar-inverse::-webkit-scrollbar-track {
+  border: none;
+  background: #1f2126;
+}
+
+.scrollbar-inverse::-webkit-scrollbar-thumb {
+  border: none;
+  background: #2d3036;
+}
+
+.scrollbar-inverse::-webkit-scrollbar-thumb:hover {
+  border: none;
+  background: #2d3036;
+}

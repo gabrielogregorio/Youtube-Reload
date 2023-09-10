@@ -1,5 +1,5 @@
 /* eslint-disable max-lines */
-import type { IMusicApi } from 'src/core/mappers/music/fromApi';
+import { IMusicApi } from '@/core/mappers/music/fromApi';
 
 export enum CategoryEnum {
   'reload' = 'reload',

@@ -1,5 +1,3 @@
-import type { ReactElement } from 'react';
-
 interface IReactButtonProps {
   isSelected: boolean;
   text: string;
@@ -13,7 +11,7 @@ interface IDefaultColorType {
   normal: string;
 }
 
-export const ReactButton = ({ isSelected, text, variant, sendReaction }: IReactButtonProps): ReactElement => {
+export const ReactButton = ({ isSelected, text, variant, sendReaction }: IReactButtonProps) => {
   const variants: { [key in IReactButtonProps['variant']]: IDefaultColorType } = {
     blue: {
       select: 'bg-blue text-white',
@@ -31,7 +29,7 @@ export const ReactButton = ({ isSelected, text, variant, sendReaction }: IReactB
   return (
     <button
       type="button"
-      onClick={(): void => sendReaction()}
+      onClick={() => sendReaction()}
       className={`text-[0.9rem] py-[10px] px-[15px] cursor-pointer bg-transparent transition-all duration-150 border-2 rounded-xl select-none ${
         styleVariant.normal
       } ${isSelected ? styleVariant.select : styleVariant.unSelect}`}>

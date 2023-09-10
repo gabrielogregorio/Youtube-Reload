@@ -2,6 +2,6 @@ export enum ScreenEnum {
   'home' = '/youtube-reload',
   'all' = '/youtube-reload/all',
   'likes' = '/youtube-reload/likes',
-  'unlikes' = '/youtube-reload/unlikes',
+  'unLikes' = '/youtube-reload/unLikes',
   'configs' = '/youtube-reload/config',
 }

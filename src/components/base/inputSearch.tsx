@@ -1,6 +1,4 @@
-import type { ReactElement } from 'react';
-import type { Control, FieldValues, Path } from 'react-hook-form';
-import { useController } from 'react-hook-form';
+import { Control, FieldValues, Path, useController } from 'react-hook-form';
 
 interface IInputText<T extends FieldValues> {
   control: Control<T>;
@@ -9,12 +7,7 @@ interface IInputText<T extends FieldValues> {
   placeholder: string;
 }
 
-export const InputSearch = <T extends FieldValues>({
-  control,
-  label,
-  name,
-  placeholder,
-}: IInputText<T>): ReactElement => {
+export const InputSearch = <T extends FieldValues>({ control, label, name, placeholder }: IInputText<T>) => {
   const {
     field: { value, onChange, onBlur, ref },
   } = useController({

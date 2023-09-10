@@ -2,21 +2,13 @@ import { useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/connections/store/useRedux';
 import { saveReaction } from '@/connections/features/reactions/slices';
 import { reactionsSelector } from '@/connections/features/reactions/selectors';
-import type { AppDispatch } from '@/connections/store';
-import type { IReactionsOptions } from '@/services/ReactionsService';
-import { ReactionsService, ReactionEnum } from '@/services/ReactionsService';
+import { IReactionsOptions, ReactionsService, ReactionEnum } from '@/services/ReactionsService';
 
-interface IUseReactions {
-  sendReaction: (idContent: string, reaction: ReactionEnum) => void;
-  clearReactions: () => void;
-  reactions: IReactionsOptions | undefined;
-}
-
-export const useReactions = (): IUseReactions => {
-  const dispatch: AppDispatch = useAppDispatch();
+export const useReactions = () => {
+  const dispatch = useAppDispatch();
   const { reactions } = useAppSelector(reactionsSelector);
 
-  const saveInitialState = (reactionsLocal: IReactionsOptions = ReactionsService.getReactions()): void => {
+  const saveInitialState = (reactionsLocal: IReactionsOptions = ReactionsService.getReactions()) => {
     dispatch(saveReaction(reactionsLocal));
 
     ReactionsService.updateReactions(reactionsLocal);
@@ -28,60 +20,29 @@ export const useReactions = (): IUseReactions => {
 
   const sendReaction: (idContent: string, reaction: ReactionEnum) => void = useCallback(
     (idContent: string, reaction: ReactionEnum): void => {
-      let newReaction: IReactionsOptions | undefined = reactions;
+      const newReaction = reactions;
 
-      if (newReaction === undefined) {
+      if (!newReaction) {
         saveInitialState({
-          [idContent]: { reaction },
+          [idContent]: reaction,
         });
         return;
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      if (newReaction[idContent] === undefined) {
-        newReaction = {
-          ...newReaction,
-          [idContent]: {
-            reaction,
-          },
-        };
-
-        saveInitialState(newReaction);
-        return;
-      }
-
-      const reactIsEqualOldReaction: boolean = newReaction[idContent].reaction === reaction;
-      if (reactIsEqualOldReaction) {
-        newReaction = {
-          ...newReaction,
-          [idContent]: {
-            ...newReaction[idContent],
-            reaction: ReactionEnum.none,
-          },
-        };
-
-        saveInitialState(newReaction);
-      } else {
-        newReaction = {
-          ...newReaction,
-          [idContent]: {
-            ...newReaction[idContent],
-            reaction,
-          },
-        };
-
-        saveInitialState(newReaction);
-      }
+      saveInitialState({
+        ...newReaction,
+        [idContent]: reaction,
+      });
     },
     [dispatch, reactions],
   );
 
-  const clearReactions = (): void => {
+  const clearReactions = () => {
     ReactionsService.clearAll();
   };
 
   return {
-    reactions,
+    reactions: reactions as IReactionsOptions | undefined,
     clearReactions,
     sendReaction,
   };

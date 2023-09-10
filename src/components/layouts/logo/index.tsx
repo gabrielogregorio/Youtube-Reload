@@ -1,6 +1,4 @@
-import type { ReactElement } from 'react';
-
-export const Logo = (): ReactElement => {
+export const Logo = () => {
   return (
     <div>
       <div className="w-full flex items-center justify-center">

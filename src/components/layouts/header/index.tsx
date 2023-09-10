@@ -1,12 +1,11 @@
+import { DailyHighlightCarousel } from '@/features/DailyHighlightCarousel/DailyHighlightCarousel';
 import { Logo } from '@/layouts/logo';
-import { SpecialDays } from '@/layouts/specialDays';
-import type { ReactElement } from 'react';
 
-export const Header = (): ReactElement => {
+export const Header = () => {
   return (
     <header className="w-full">
       <Logo />
-      <SpecialDays />
+      <DailyHighlightCarousel />
     </header>
   );
 };

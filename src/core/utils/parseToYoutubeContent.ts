@@ -1,4 +1,4 @@
-import type { IMusicWithTransformation, MusicFromApiMapper } from '@/mappers/music/fromApi';
+import { IMusicWithTransformation, MusicFromApiMapper } from '@/mappers/music/fromApi';
 
 export const parseToYoutubeContent = (playList: MusicFromApiMapper[]): IMusicWithTransformation[] => {
   return playList.map((play: MusicFromApiMapper) => ({

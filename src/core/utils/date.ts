@@ -16,14 +16,14 @@ export enum MonthsNormalizedEnum {
   'November' = 11,
   'December' = 12,
 }
-const BRAZILIAN_TIMEZONE: string = '-03:00';
+const BRAZILIAN_TIMEZONE = '-03:00';
 
 export class DateReload {
   public static getMonthFrom1To12(): MonthsNormalizedEnum {
     return new Date().getMonth() + 1;
   }
 
-  public static getDay(): number {
+  public static getDay() {
     return new Date().getDate();
   }
 
@@ -41,7 +41,7 @@ export class DateReload {
     hours1to24: number;
     minutes: number;
     seconds: number;
-  }): string {
+  }) {
     const date: Date = new Date(
       `${year}-${fillIfNecessary(month1to12)}-${fillIfNecessary(day)}T${fillIfNecessary(hours1to24)}:${fillIfNecessary(
         minutes,
@@ -51,11 +51,10 @@ export class DateReload {
     return date.toUTCString();
   }
 
-  public static convertGmtToTimezoneSaoPauloAndPtBrStyle(dateGmt: string): string {
+  public static convertGmtToTimezoneSaoPauloAndPtBrStyle(dateGmt: string) {
     return new Date(dateGmt).toLocaleString('pt-BR', {
       timeZone: 'America/Sao_Paulo',
       dateStyle: 'full',
-      // timeStyle: 'short',
     });
   }
 }

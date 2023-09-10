@@ -1,105 +1,27 @@
 import { useFetchAllMusics } from '@/hooks/useFetchAllMusics';
 import { useReactions } from '@/hooks/useReactions';
-import type { IMusicWithTransformation, MusicFromApiMapper } from '@/mappers/music/fromApi';
+import {
+  applyOffsetAndLimit,
+  applyTextFilter,
+  filterByNumber,
+  filterByTotalTag,
+  generateRandomPlaylist,
+} from '@/hooks/utils';
+import { MusicFromApiMapper } from '@/mappers/music/fromApi';
 import { ReactionEnum } from '@/services/ReactionsService';
-import { generateRandomPositiveZeroOrNegative } from '@/utils/generators';
-import { createStringToSearch } from '@/utils/normalizers';
 import { parseToYoutubeContent } from '@/utils/parseToYoutubeContent';
 import { useState } from 'react';
 
-const generateRandomPlaylist = (filtered: MusicFromApiMapper[]): MusicFromApiMapper[] => {
-  const dataSorted: MusicFromApiMapper[] = [...filtered].sort((): number => generateRandomPositiveZeroOrNegative());
-
-  return dataSorted;
-};
-
-interface IHasApplyStartAndEnd {
-  apply: boolean;
-  start: number;
-  end: number;
-}
-
-interface IUseMusicApplyFiltersInput {
-  random?: boolean;
-  offset?: number;
-  limit?: number;
-
-  onlyLikes?: boolean;
-  onlyUnlikes?: boolean;
-  ignoreLikes?: boolean;
-  ignoreUnlikes?: boolean;
-
-  textSearch?: string;
-  period?: IHasApplyStartAndEnd;
-  likes?: IHasApplyStartAndEnd;
-  comments?: IHasApplyStartAndEnd;
-  views?: IHasApplyStartAndEnd;
-
-  percent?: IHasApplyStartAndEnd;
-
-  approvalComments?: IHasApplyStartAndEnd;
-}
-
-interface IUseMusicApplyFiltersOutput {
-  filtered: IMusicWithTransformation[];
-  applyFilters: () => void;
-  data: MusicFromApiMapper[] | undefined;
-}
-
-const applyOffsetAndLimit = (offset: number, limit: number, filtered: MusicFromApiMapper[]): MusicFromApiMapper[] => {
-  return filtered.slice(offset, limit);
-};
-
-const applyTextFilter = (filtered: MusicFromApiMapper[], textSearch: string): MusicFromApiMapper[] => {
-  if (textSearch === '') {
-    return filtered;
-  }
-  const stringSearchNormalized: string = createStringToSearch(textSearch);
-  return filtered.filter((item: MusicFromApiMapper) => item.searchStringNormalized.includes(stringSearchNormalized));
-};
-
-const filterByNumber = (
-  key: keyof MusicFromApiMapper,
-  based: IHasApplyStartAndEnd,
-  filtered: MusicFromApiMapper[],
-): MusicFromApiMapper[] => {
-  if (!based.apply) {
-    return filtered;
-  }
-  return filtered.filter(({ [key]: count }: MusicFromApiMapper) => {
-    if (count === undefined) {
-      return false;
-    }
-    return count >= based.start && count <= based.end;
-  });
-};
-
-const filterByTotalTag = (
-  key: 'views' | 'comments' | 'likes',
-  based: IHasApplyStartAndEnd,
-  filtered: MusicFromApiMapper[],
-): MusicFromApiMapper[] => {
-  if (!based.apply) {
-    return filtered;
-  }
-  return filtered.filter(({ [key]: count }: MusicFromApiMapper) => {
-    if (!count.total) {
-      return false;
-    }
-    return count.total >= based.start && count.total <= based.end;
-  });
-};
-
-const LIMIT_FILTER: number = 500;
+const LIMIT_FILTER = 500;
 
 export const useMusicApplyFilters = ({
   random = false,
   offset = 0,
   limit = LIMIT_FILTER,
   onlyLikes = false,
-  onlyUnlikes = false,
+  onlyUnLikes = false,
   ignoreLikes = false,
-  ignoreUnlikes = false,
+  ignoreUnLikes = false,
   textSearch = '',
   period = {
     apply: false,
@@ -131,36 +53,36 @@ export const useMusicApplyFilters = ({
     start: 0,
     end: 0,
   },
-}: IUseMusicApplyFiltersInput): IUseMusicApplyFiltersOutput => {
-  const { data } = useFetchAllMusics();
+}) => {
+  const { musics } = useFetchAllMusics();
   const { reactions } = useReactions();
   const [filter, setFilter] = useState<MusicFromApiMapper[]>([]);
 
-  const applyFilters = (): void => {
-    if (data === undefined) {
+  const applyFilters = () => {
+    if (!musics) {
       return;
     }
 
-    let filtered: MusicFromApiMapper[] = [...data];
+    let filtered = [...musics];
 
     if (random) {
       filtered = generateRandomPlaylist(filtered);
     }
 
     if (onlyLikes) {
-      filtered = filtered.filter((item: MusicFromApiMapper) => reactions?.[item.id]?.reaction === ReactionEnum.like);
+      filtered = filtered.filter((item) => reactions?.[item.id] === ReactionEnum.like);
     }
 
     if (ignoreLikes) {
-      filtered = filtered.filter((item: MusicFromApiMapper) => reactions?.[item.id]?.reaction !== ReactionEnum.like);
+      filtered = filtered.filter((item) => reactions?.[item.id] !== ReactionEnum.like);
     }
 
-    if (onlyUnlikes) {
-      filtered = filtered.filter((item: MusicFromApiMapper) => reactions?.[item.id]?.reaction === ReactionEnum.unlike);
+    if (onlyUnLikes) {
+      filtered = filtered.filter((item) => reactions?.[item.id] === ReactionEnum.unlike);
     }
 
-    if (ignoreUnlikes) {
-      filtered = filtered.filter((item: MusicFromApiMapper) => reactions?.[item.id]?.reaction !== ReactionEnum.unlike);
+    if (ignoreUnLikes) {
+      filtered = filtered.filter((item) => reactions?.[item.id] !== ReactionEnum.unlike);
     }
 
     filtered = filterByTotalTag('likes', likes, filtered);
@@ -181,6 +103,6 @@ export const useMusicApplyFilters = ({
   return {
     filtered: parseToYoutubeContent(filter),
     applyFilters,
-    data,
+    musics,
   };
 };

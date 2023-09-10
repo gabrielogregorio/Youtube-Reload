@@ -9,6 +9,7 @@ on:
 jobs:
   install:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     strategy:
       matrix:
         pnpm-version: [8.3.1]
@@ -31,8 +32,46 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
 
+  e2e_tests:
+    needs: install
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        pnpm-version: [8.3.1]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: use pnpm ${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
+
+      - name: restore node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Cache Cypress Binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            cypress-${{ runner.os }}-
+
+      - name: Install Cypress Binary
+        run: npx cypress install
+
+      - name: running e2e tests
+        run: pnpm run e2e:headless
+
   unit_tests_and_up_coverage:
     needs: install
+    timeout-minutes: 5
     environment: codacy_env
     runs-on: ubuntu-latest
 
@@ -66,6 +105,7 @@ jobs:
 
   linting:
     needs: install
+    timeout-minutes: 2
     runs-on: ubuntu-latest
 
     strategy:
@@ -92,6 +132,7 @@ jobs:
 
   lint_tsc:
     needs: install
+    timeout-minutes: 2
     runs-on: ubuntu-latest
 
     strategy:
@@ -119,7 +160,7 @@ jobs:
   format:
     needs: install
     runs-on: ubuntu-latest
-
+    timeout-minutes: 2
     strategy:
       matrix:
         pnpm-version: [8.3.1]
@@ -144,6 +185,7 @@ jobs:
 
   audit:
     needs: install
+    timeout-minutes: 2
     runs-on: ubuntu-latest
 
     strategy:
@@ -170,7 +212,8 @@ jobs:
 
   deploy:
     environment: sentry
-    needs: [unit_tests_and_up_coverage, linting, lint_tsc, format, audit]
+    timeout-minutes: 10
+    needs: [unit_tests_and_up_coverage, e2e_tests, linting, lint_tsc, format, audit]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 

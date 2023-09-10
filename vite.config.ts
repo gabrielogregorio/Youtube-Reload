@@ -18,7 +18,7 @@ export default defineConfig({
     alias: {
       '@/base': resolve(__dirname, './src/components/base'),
       '@/layouts': resolve(__dirname, './src/components/layouts'),
-      '@/screens': resolve(__dirname, './src/components/screens'),
+      '@/screens': resolve(__dirname, './src/screens'),
       '@/templates': resolve(__dirname, './src/components/templates'),
       '@/widgets': resolve(__dirname, './src/components/widgets'),
       '@/screen': resolve(__dirname, './src/components/screen'),
@@ -37,6 +37,8 @@ export default defineConfig({
       '@/locales': resolve(__dirname, './src/core/locales'),
       '@/services': resolve(__dirname, './src/core/services'),
       '@/utils': resolve(__dirname, './src/core/utils'),
+      '@/core': resolve(__dirname, './src/core'),
+      '@/features': resolve(__dirname, './src/features'),
 
       '@/mocks': resolve(__dirname, './src/mocks'),
       '@/pages': resolve(__dirname, './src/pages'),
