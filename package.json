@@ -31,8 +31,8 @@
     "start": "vite --port=5556",
     "cy:open":"cypress open",
     "cy:open-e2e": "cypress run --headless --browser chrome",
-    "cy:e2e": "start-server-and-test start http-get://127.0.0.1:5556 cy:open-e2e",
-    "cypress": "start-server-and-test start http-get://127.0.0.1:5556 cy:open"
+    "cy:e2e": "start-server-and-test start http://127.0.0.1:5556 cy:open-e2e",
+    "cypress": "start-server-and-test start http://127.0.0.1:5556 cy:open"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
