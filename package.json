@@ -9,30 +9,27 @@
     "node": ">=16.x"
   },
   "scripts": {
-    "deploy": "gh-pages -d build",
     "dev": "vite --host",
-    "build": "vite build",
     "test": "vitest",
-    "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage --watch=false",
-    "preview": "vite preview",
-    "clear": "rm -rf build coverage",
-    "prepare": "husky install",
+    "check": "pnpm run prettier:format & pnpm run eslint:lint & pnpm run tsc:lint & pnpm run test:coverage",    
+    "e2e:headless": "start-server-and-test _starting_app http://0.0.0.0:5556 _headless",
+    "e2e": "start-server-and-test _starting_app http://0.0.0.0:5556 _open",
     "tsc:lint": "tsc -p .",
     "eslint:lint": "eslint -c ./.eslintrc.json --ext '.tsx,.ts' 'src/**' --fix",
     "prettier:format": "prettier *.{ts,js,md,tsx,jsx} --write",
     "prettier:check": "prettier *.{ts,js,md,tsx,jsx} --check",
+    "build": "vite build",
+    "test:ui": "vitest --ui",
+    "preview": "vite preview",
+    "clear": "rm -rf build coverage",
+    "prepare": "husky install",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "check": "pnpm run prettier:format & pnpm run eslint:lint & pnpm run tsc:lint & pnpm run test:coverage",
-
-
-    "preview:headless": "vite preview --port 5556",
-    "start": "vite --host --port=5556",
-    "cy:open":"cypress open",
-    "cy:open-e2e": "cypress run --headless --browser chrome",
-    "cy:e2e": "start-server-and-test start http://0.0.0.0:5556 cy:open-e2e",
-    "cypress": "start-server-and-test start http://0.0.0.0:5556 cy:open"
+    "deploy": "gh-pages -d build",
+    "_open":"cypress open",
+    "_headless": "cypress run --headless --browser chrome",
+    "_starting_app": "vite --host --port=5556"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
