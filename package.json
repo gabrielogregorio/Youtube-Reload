@@ -27,12 +27,12 @@
     "check": "pnpm run prettier:format & pnpm run eslint:lint & pnpm run tsc:lint & pnpm run test:coverage",
 
 
-    "preview:headless": "vite preview --port 5556 --",
-    "start": "vite --port=5556",
+    "preview:headless": "vite preview --port 5556",
+    "start": "vite --host --port=5556",
     "cy:open":"cypress open",
     "cy:open-e2e": "cypress run --headless --browser chrome",
-    "cy:e2e": "start-server-and-test start http://127.0.0.1:5556 cy:open-e2e",
-    "cypress": "start-server-and-test start http://127.0.0.1:5556 cy:open"
+    "cy:e2e": "start-server-and-test start http://0.0.0.0:5556 cy:open-e2e",
+    "cypress": "start-server-and-test start http://0.0.0.0:5556 cy:open"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
