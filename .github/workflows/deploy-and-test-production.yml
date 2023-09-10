@@ -62,6 +62,9 @@ jobs:
           restore-keys: |
             cypress-${{ runner.os }}-
 
+      - name: Install Cypress Binary
+        run: npx cypress install
+
       - name: running e2e tests
         run: pnpm run cy:e2e
 
