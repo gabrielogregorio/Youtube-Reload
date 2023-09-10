@@ -18,7 +18,7 @@
     "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
-      "@/base/*": ["src/components/base/*"],
+      "@/forms/*": ["src/components/forms/*"],
       "@/layouts/*": ["src/components/layouts/*"],
       "@/templates/*": ["src/components/templates/*"],
       "@/widgets/*": ["src/components/widgets/*"],
@@ -38,6 +38,7 @@
       "@/services/*": ["src/core/services/*"],
       "@/utils/*": ["src/core/utils/*"],
       "@/features/*": ["src/features/*"],
+      "@/modules/*": ["src/modules/*"],
 
       "@/core/*": ["src/core/*"],
 

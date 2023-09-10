@@ -12,7 +12,7 @@
     "dev": "vite --host",
     "test": "vitest",
     "test:coverage": "vitest --coverage --watch=false",
-    "check": "pnpm run prettier:format & pnpm run eslint:lint & pnpm run tsc:lint & pnpm run test:coverage",    
+    "check": "pnpm run prettier:format && pnpm run eslint:lint && pnpm run tsc:lint && pnpm run test:coverage && pnpm run build",
     "e2e:headless": "start-server-and-test _starting_app http://0.0.0.0:5556 _headless",
     "e2e": "start-server-and-test _starting_app http://0.0.0.0:5556 _open",
     "tsc:lint": "tsc -p .",
@@ -27,11 +27,12 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "deploy": "gh-pages -d build",
-    "_open":"cypress open",
+    "_open": "cypress open",
     "_headless": "cypress run --headless --browser chrome",
     "_starting_app": "vite --host --port=5556"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "@reduxjs/toolkit": "^1.9.1",
     "@sentry/react": "^7.68.0",
     "@sentry/vite-plugin": "^2.7.1",

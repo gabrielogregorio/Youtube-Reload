@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { useMusicApplyFilters } from '@/hooks/useMusicApplyFilters';
-import { GeneratePlaylist } from '@/widgets/generatePlaylists';
-import { Cards } from '@/widgets/cards';
+import { GeneratePlaylist } from '@/modules/musicCards/generatePlaylists';
 import { FloatingActionButtons } from '@/features/FloatingActionButtons';
+import { useMusicApplyFilters } from '@/modules/musicCards/hooks/useMusicApplyFilters';
+import { Cards } from '@/modules/musicCards/cards';
 
 const LIMIT_ITEMS = 25;
 

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useMusicApplyFilters } from '@/hooks/useMusicApplyFilters';
-import { Cards } from '@/widgets/cards';
 import { FloatingActionButtons } from '@/features/FloatingActionButtons';
+import { Cards } from '@/modules/musicCards/cards';
+import { useMusicApplyFilters } from '@/modules/musicCards/hooks/useMusicApplyFilters';
 
 export const UnLikesPage = () => {
   const { filtered, applyFilters, musics } = useMusicApplyFilters({

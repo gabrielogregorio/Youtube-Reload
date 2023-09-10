@@ -16,7 +16,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@/base': resolve(__dirname, './src/components/base'),
+      '@/forms': resolve(__dirname, './src/components/base'),
       '@/layouts': resolve(__dirname, './src/components/layouts'),
       '@/screens': resolve(__dirname, './src/screens'),
       '@/templates': resolve(__dirname, './src/components/templates'),
@@ -39,6 +39,7 @@ export default defineConfig({
       '@/utils': resolve(__dirname, './src/core/utils'),
       '@/core': resolve(__dirname, './src/core'),
       '@/features': resolve(__dirname, './src/features'),
+      '@/modules': resolve(__dirname, './src/modules'),
 
       '@/mocks': resolve(__dirname, './src/mocks'),
       '@/pages': resolve(__dirname, './src/pages'),
