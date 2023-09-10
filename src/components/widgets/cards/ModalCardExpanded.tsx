@@ -16,7 +16,7 @@ export const ModalCardExpanded = ({ cardIsOpen, onCloseModal }: IProps) => {
     <div>
       <button
         type="button"
-        className="fixed top-0 bottom-0 flex items-center justify-center w-screen h-screen bg-dark z-20 transition-all duration-150 bg-opacity-50"
+        className="fixed top-0 bottom-0 flex items-center justify-center w-screen h-screen z-20 transition-all duration-150 bg-dark/50 backdrop-blur-xl shadow-md"
         onClick={() => onCloseModal()}>
         <button
           type="button"

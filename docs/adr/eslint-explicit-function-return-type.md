@@ -1,4 +1,4 @@
-# ESLint @typescript-eslint/explicit-function-return-type
+# ESLint rules
 
 Date: September 9, 2023
 
@@ -21,8 +21,6 @@ The `@typescript-eslint/explicit-function-return-type` rule was removed from the
 "no-null/no-null": ["error"],
 "@typescript-eslint/consistent-type-exports": "error",
 "@typescript-eslint/consistent-type-imports": "error",
-
-
 ```
 
 ## Consequences

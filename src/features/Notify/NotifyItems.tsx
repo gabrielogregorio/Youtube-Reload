@@ -23,7 +23,7 @@ export const NotifyItems = ({ closeNotify, notifyIsOpen, notifications, viewedNo
     <div
       role="dialog"
       aria-label="Notifications"
-      className="absolute right-10 top-3 z-50 hidden md:flex flex-col rounded-md h-96 px-3 py-3 w-96 bg-dark-dark shadow-md"
+      className="absolute right-10 top-3 z-50 hidden md:flex flex-col rounded-md h-96 px-3 py-3 w-96 bg-dark-dark backdrop-blur-3xl shadow-2xl"
       ref={refComponent}>
       <h2 className="text-base mb-1 select-none">Notificações</h2>
 
