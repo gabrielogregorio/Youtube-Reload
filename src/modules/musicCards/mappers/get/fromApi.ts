@@ -55,6 +55,7 @@ export class MusicFromApiMapper {
     tag: string;
   };
 
+  // eslint-disable-next-line sonarjs/cognitive-complexity
   public constructor(item?: IMusicApi) {
     const stringIsCategoryEnum = (some: string): some is CategoryEnum => {
       return Object.keys(CategoryEnum).includes(some);

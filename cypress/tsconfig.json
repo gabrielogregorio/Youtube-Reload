@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./cypress/",
+    "isolatedModules": false,
+    "noEmit": true,
+    "types": ["node", "cypress", "cypress-audit", "cypress-real-events"]
+  },
+  "includes": ["../node_modules/cypress", "./**/*.ts", "./"]
+}
