@@ -19,13 +19,7 @@ export const Navbar = () => {
   return (
     <nav className="w-full flex items-center justify-center" role="navigation" aria-label="Main Navigation">
       {navItems.map((item) => (
-        <NavbarItem
-          key={item.screen}
-          isActive={currentScreen === item.screen}
-          nameScreen={item.screen}
-          text={item.text}
-          icon={item.icon}
-        />
+        <NavbarItem key={item.screen} isActive={currentScreen === item.screen} nameScreen={item.screen} text={item.text} icon={item.icon} />
       ))}
     </nav>
   );

@@ -102,18 +102,7 @@ export const useFilters = () => {
       dateYearStart,
       dateYearEnd,
     };
-  }, [
-    viewsStart,
-    viewsEnd,
-    commentsStart,
-    commentsEnd,
-    likesStart,
-    likesEnd,
-    approvalStart,
-    approvalEnd,
-    dateYearStart,
-    dateYearEnd,
-  ]);
+  }, [viewsStart, viewsEnd, commentsStart, commentsEnd, likesStart, likesEnd, approvalStart, approvalEnd, dateYearStart, dateYearEnd]);
 
   return {
     resetValues,

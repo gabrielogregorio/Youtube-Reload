@@ -33,9 +33,7 @@ export const ModalCardExpanded = ({ cardIsOpen, onCloseModal }: IProps) => {
                 className="w-full h-full object-cover"
                 width="560"
                 height="315"
-                src={`https://www.youtube.com/embed/${cardIsOpen.id}?start=${
-                  cardIsOpen.durationInSeconds || 0
-                }&autoplay=1`}
+                src={`https://www.youtube.com/embed/${cardIsOpen.id}?start=${cardIsOpen.durationInSeconds || 0}&autoplay=1`}
                 title={cardIsOpen.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

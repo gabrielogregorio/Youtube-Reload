@@ -8,12 +8,7 @@ import { Range } from '@/forms/range';
 import { Cards } from '@/modules/musicCards/cards';
 import { IFiltersFields, useFilters } from '@/modules/musicCards/hooks/useFilters';
 import { useMusicApplyFilters } from '@/modules/musicCards/hooks/useMusicApplyFilters';
-import {
-  dataCommentLikeViews,
-  dataPercentApproval,
-  dataPercentCommentsLikes,
-  dataPercentYear,
-} from '@/modules/musicCards/data/filters';
+import { dataCommentLikeViews, dataPercentApproval, dataPercentCommentsLikes, dataPercentYear } from '@/modules/musicCards/data/filters';
 import { LabelRange } from '@/forms/range/labelRange';
 import { InputSearch } from '@/forms/inputSearch';
 
@@ -116,12 +111,7 @@ export const AllPage = () => {
         </div>
 
         <div className="mb-4">
-          <InputSearch<IFiltersFields>
-            label="Pesquise nome, autor, ano"
-            control={control}
-            name="textSearch"
-            placeholder="ding dong"
-          />
+          <InputSearch<IFiltersFields> label="Pesquise nome, autor, ano" control={control} name="textSearch" placeholder="ding dong" />
         </div>
 
         <button

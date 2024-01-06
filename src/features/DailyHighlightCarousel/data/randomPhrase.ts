@@ -13,8 +13,7 @@ export const randomPhrase: IRandomPhrase[] = [
 
   {
     author: 'Ayrton Senna',
-    description:
-      'Se você quer ser bem-sucedido precisa de dedicação total, buscar seu último limite e dar o melhor de si mesmo',
+    description: 'Se você quer ser bem-sucedido precisa de dedicação total, buscar seu último limite e dar o melhor de si mesmo',
   },
   {
     author: 'Mary Kay Ash',
@@ -27,8 +26,7 @@ export const randomPhrase: IRandomPhrase[] = [
   },
   {
     author: 'Andrew Carnegie',
-    description:
-      'Nenhum homem será um grande líder se quiser fazer tudo sozinho ou se quiser levar todo o crédito por fazer isso',
+    description: 'Nenhum homem será um grande líder se quiser fazer tudo sozinho ou se quiser levar todo o crédito por fazer isso',
   },
   {
     author: 'Dalai Lama',
@@ -49,8 +47,7 @@ export const randomPhrase: IRandomPhrase[] = [
   },
   {
     author: 'Mahatma Gandhi',
-    description:
-      'Você nunca sabe que resultados virão da sua ação. Mas se você não fizer nada, não existirão resultados',
+    description: 'Você nunca sabe que resultados virão da sua ação. Mas se você não fizer nada, não existirão resultados',
   },
   {
     author: 'Winston Churchill',
@@ -62,8 +59,7 @@ export const randomPhrase: IRandomPhrase[] = [
   },
   {
     author: 'Jeff Bezos',
-    description:
-      'Reclamar não é uma estratégia. É necessário lidarmos com o mundo como ele é e não como gostaríamos que ele fosse',
+    description: 'Reclamar não é uma estratégia. É necessário lidarmos com o mundo como ele é e não como gostaríamos que ele fosse',
   },
   {
     author: 'Michelle Obama',
@@ -72,8 +68,7 @@ export const randomPhrase: IRandomPhrase[] = [
   },
   {
     author: 'Steve Jobs',
-    description:
-      'Você pode encarar um erro como uma besteira a ser esquecida, ou como um resultado que aponta uma nova direção',
+    description: 'Você pode encarar um erro como uma besteira a ser esquecida, ou como um resultado que aponta uma nova direção',
   },
   {
     author: 'Michael Jordan',

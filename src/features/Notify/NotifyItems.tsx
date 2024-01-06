@@ -35,9 +35,7 @@ export const NotifyItems = ({ closeNotify, notifyIsOpen, notifications, viewedNo
             <li
               key={notification.id}
               className="hover:bg-dark cursor-pointer flex items-center justify-center py-2 px-2 transition-all duration-150 select-none">
-              <div className="h-10 text-2xl flex items-center justify-center aspect-square mr-2">
-                {notification.emoji}
-              </div>
+              <div className="h-10 text-2xl flex items-center justify-center aspect-square mr-2">{notification.emoji}</div>
               <div className="flex-1">
                 <h3 className="text-sm hover:text-blue">{notification.title}</h3>
                 <time className="text-[0.7rem] text-gray-400">{notification.date}</time>

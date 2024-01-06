@@ -1,9 +1,6 @@
 import { RefObject, useEffect, useState } from 'react';
 
-export const useOutsideClick = (
-  ref: RefObject<HTMLDivElement>,
-  onOutsideClick: () => void = () => {},
-): { clickedOutside: boolean } => {
+export const useOutsideClick = (ref: RefObject<HTMLDivElement>, onOutsideClick: () => void = () => {}): { clickedOutside: boolean } => {
   const [clickedOutside, setClickedOutside] = useState<boolean>(false);
 
   useEffect(() => {

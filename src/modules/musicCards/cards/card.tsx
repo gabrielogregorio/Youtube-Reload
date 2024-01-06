@@ -22,11 +22,7 @@ export const Card = ({ playlistLocal, sendReaction, openModalExpanded, reaction,
       className="flex flex-col group cursor-pointer bg-dark-dark border-dark-dark border rounded-xl md:hover:scale-105 transition-all duration-300 shadow-xl">
       <article>
         <header>
-          <a
-            target="_blank"
-            href={playlistLocal.url}
-            rel="noreferrer"
-            aria-label={`View ${playlistLocal.title} on YouTube`}>
+          <a target="_blank" href={playlistLocal.url} rel="noreferrer" aria-label={`View ${playlistLocal.title} on YouTube`}>
             <img
               src={playlistLocal.img}
               alt={playlistLocal.title}
@@ -51,9 +47,7 @@ export const Card = ({ playlistLocal, sendReaction, openModalExpanded, reaction,
 
             <div className="flex-1">
               <div>
-                {showExtra ? (
-                  <span className="text-[0.7rem] font-medium">{`${playlistLocal.year.toString()} - `}</span>
-                ) : undefined}
+                {showExtra ? <span className="text-[0.7rem] font-medium">{`${playlistLocal.year.toString()} - `}</span> : undefined}
                 <a
                   target="_blank"
                   href={playlistLocal.url}
@@ -73,19 +67,13 @@ export const Card = ({ playlistLocal, sendReaction, openModalExpanded, reaction,
 
                 <Statistics icon={<BiLike className="text-[.7rem] mr-1" />}>{playlistLocal.likes.tag}</Statistics>
 
-                <Statistics icon={<BiCommentDetail className="text-[.7rem] mr-1" />}>
-                  {playlistLocal.comments.tag}
-                </Statistics>
+                <Statistics icon={<BiCommentDetail className="text-[.7rem] mr-1" />}>{playlistLocal.comments.tag}</Statistics>
               </div>
 
               <div className="text-sm flex justify-start items-center gap-2">
-                <Statistics icon={<FaPercent className="text-[.7rem] mr-1" />}>
-                  {playlistLocal.percentViewsLikesComments}
-                </Statistics>
+                <Statistics icon={<FaPercent className="text-[.7rem] mr-1" />}>{playlistLocal.percentViewsLikesComments}</Statistics>
 
-                <Statistics icon={<FaDivide className="text-[.7rem] mr-1" />}>
-                  {playlistLocal.percentLikesComments}
-                </Statistics>
+                <Statistics icon={<FaDivide className="text-[.7rem] mr-1" />}>{playlistLocal.percentLikesComments}</Statistics>
               </div>
             </section>
           ) : undefined}

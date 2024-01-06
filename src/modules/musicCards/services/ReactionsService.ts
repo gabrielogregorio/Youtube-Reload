@@ -11,9 +11,7 @@ export interface IReactionsOptions {
 }
 
 export const initializeAndGetReactions = (): IReactionsOptions => {
-  const likes: IReactionsOptions | undefined = StorageService.getItemAndParse<IReactionsOptions>(
-    StorageAccessNameEnum.Reactions,
-  );
+  const likes: IReactionsOptions | undefined = StorageService.getItemAndParse<IReactionsOptions>(StorageAccessNameEnum.Reactions);
 
   if (likes) {
     return likes;
