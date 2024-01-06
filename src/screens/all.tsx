@@ -4,8 +4,6 @@ import { BiCommentDetail, BiLike, BiReset } from 'react-icons/bi';
 import { AiOutlineEye } from 'react-icons/ai';
 import { BsCalendarDay } from 'react-icons/bs';
 import { FloatingActionButtons } from '@/features/FloatingActionButtons';
-import { LabelRange } from '@/forms/range/labelRange';
-import { InputSearch } from '@/forms/inputSearch';
 import { Range } from '@/forms/range';
 import { Cards } from '@/modules/musicCards/cards';
 import { IFiltersFields, useFilters } from '@/modules/musicCards/hooks/useFilters';
@@ -16,6 +14,8 @@ import {
   dataPercentCommentsLikes,
   dataPercentYear,
 } from '@/modules/musicCards/data/filters';
+import { LabelRange } from '@/forms/range/labelRange';
+import { InputSearch } from '@/forms/inputSearch';
 
 const INITIAL_LIMIT_SHOW_ITEMS = 12;
 

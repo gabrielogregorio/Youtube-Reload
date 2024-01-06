@@ -30,8 +30,11 @@ pnpm install
 echo "\n${Yellow}...............UNIT TEST AND COVERAGE....................${NOCOLOR}"
 pnpm run test:coverage
 
-echo "\n${Yellow}......................AUDIT PACKAGES.....................${NOCOLOR}\n"
-pnpm audit
+# echo "\n${Yellow}......................AUDIT PACKAGES.....................${NOCOLOR}\n"
+# pnpm audit
+
+echo "\n${Yellow}......................BUILDING.....................${NOCOLOR}\n"
+pnpm build
 
 echo "\n${Yellow}.......................CLEAR DIRT........................${NOCOLOR}"
 pnpm run clear

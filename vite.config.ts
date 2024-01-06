@@ -16,7 +16,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@/forms': resolve(__dirname, './src/components/base'),
+      '@/forms': resolve(__dirname, './src/components/forms'),
       '@/layouts': resolve(__dirname, './src/components/layouts'),
       '@/screens': resolve(__dirname, './src/screens'),
       '@/templates': resolve(__dirname, './src/components/templates'),
