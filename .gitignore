@@ -26,3 +26,6 @@ tsconfig.tsbuildinfo
 .env.sentry-build-plugin
 
 storybook-static
+
+lighthouseReport.html
+pa11y.html

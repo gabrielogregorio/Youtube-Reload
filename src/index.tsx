@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from '@/connections/store';
 import { MainContainer } from '@/pages/index';
+import { store } from '@/core/states/redux/store';
 
 import './assets/tailwindConfig.css';
 import '@/services/log/init';

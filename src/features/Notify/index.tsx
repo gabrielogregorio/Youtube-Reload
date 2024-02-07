@@ -25,10 +25,7 @@ export const Notify = () => {
   const newNotificationCount = notifications.length - viewedNotificationIds.length;
   const styleBellOnNotifyIsOpen = notifyIsOpen ? 'bg-dark-light' : '';
   return (
-    <div
-      className="ml-2 w-14 h-full flex items-center justify-center relative z-50"
-      role="alert"
-      aria-label="Notifications">
+    <div className="ml-2 w-14 h-full flex items-center justify-center relative z-50" role="alert" aria-label="Notifications">
       <button
         type="button"
         id="open-notify"

@@ -1,8 +1,8 @@
-import { Select } from '@/base/select/Select';
 import { StorageService } from '@/services/StorageService';
 import { BsFillTrashFill } from 'react-icons/bs';
 import { ScreenEnum } from '@/contracts/homeScreens';
 import { useCurrentScreen } from '@/hooks/useCurrentScreen';
+import { Select } from '@/forms/select/Select';
 
 export const ConfigScreen = () => {
   const { updateCurrentScreen } = useCurrentScreen();

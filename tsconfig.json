@@ -16,14 +16,18 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "baseUrl": ".",
+    "noEmit": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "rootDir": "src",
+    "outDir": "build",
+    "baseUrl": "./",
     "paths": {
-      "@/base/*": ["src/components/base/*"],
+      "@/forms/*": ["src/components/forms/*"],
       "@/layouts/*": ["src/components/layouts/*"],
       "@/templates/*": ["src/components/templates/*"],
       "@/widgets/*": ["src/components/widgets/*"],
       "@/screens/*": ["src/screens/*"],
-
       "@/mappers/*": ["src/core/mappers/*"],
       "@/configs/*": ["src/core/configs/*"],
       "@/connections/*": ["src/core/connections/*"],
@@ -38,18 +42,12 @@
       "@/services/*": ["src/core/services/*"],
       "@/utils/*": ["src/core/utils/*"],
       "@/features/*": ["src/features/*"],
-
+      "@/modules/*": ["src/modules/*"],
       "@/core/*": ["src/core/*"],
-
       "@/mocks/*": ["src/mocks/*"],
       "@/pages/*": ["src/pages/*"]
-    },
-    "noEmit": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "rootDir": "src",
-    "outDir": "build"
+    }
   },
-  "include": ["next-env.d.ts", "./src/**/*.ts", "./src/**/*.tsx", "../vite.config.ts", "../cypress.config.ts"],
+  "include": ["next-env.d.ts", "./src/**/*.ts", "./src/**/*.tsx"],
   "exclude": ["node_modules"]
 }

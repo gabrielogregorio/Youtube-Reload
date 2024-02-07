@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
-import { useMusicApplyFilters } from '@/hooks/useMusicApplyFilters';
-import { Range } from '@/base/range';
 import { FaDivide, FaPercent } from 'react-icons/fa';
 import { BiCommentDetail, BiLike, BiReset } from 'react-icons/bi';
 import { AiOutlineEye } from 'react-icons/ai';
-import { InputSearch } from '@/base/inputSearch';
-import { LabelRange } from '@/base/range/labelRange';
-import { IFiltersFields, useFilters } from '@/hooks/useFilters';
-import { dataCommentLikeViews, dataPercentApproval, dataPercentCommentsLikes, dataPercentYear } from '@/data/filters';
 import { BsCalendarDay } from 'react-icons/bs';
-import { Cards } from '@/widgets/cards';
 import { FloatingActionButtons } from '@/features/FloatingActionButtons';
+import { Range } from '@/forms/range';
+import { Cards } from '@/modules/musicCards/cards';
+import { IFiltersFields, useFilters } from '@/modules/musicCards/hooks/useFilters';
+import { useMusicApplyFilters } from '@/modules/musicCards/hooks/useMusicApplyFilters';
+import { dataCommentLikeViews, dataPercentApproval, dataPercentCommentsLikes, dataPercentYear } from '@/modules/musicCards/data/filters';
+import { LabelRange } from '@/forms/range/labelRange';
+import { InputSearch } from '@/forms/inputSearch';
 
 const INITIAL_LIMIT_SHOW_ITEMS = 12;
 
@@ -111,12 +111,7 @@ export const AllPage = () => {
         </div>
 
         <div className="mb-4">
-          <InputSearch<IFiltersFields>
-            label="Pesquise nome, autor, ano"
-            control={control}
-            name="textSearch"
-            placeholder="ding dong"
-          />
+          <InputSearch<IFiltersFields> label="Pesquise nome, autor, ano" control={control} name="textSearch" placeholder="ding dong" />
         </div>
 
         <button
