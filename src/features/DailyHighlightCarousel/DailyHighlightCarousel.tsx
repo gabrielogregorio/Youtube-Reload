@@ -11,7 +11,7 @@ export const DailyHighlightCarousel = () => {
   }
 
   return (
-    <div className="flex items-center justify-center ">
+    <div className="flex items-center justify-center">
       <div className="max-w-md w-full">
         <div
           className="text-sm flex border border-dark-dark shadow-md rounded-md w-full hover:scale-105 transition-all duration-150 min-h-[6rem] animate-fadeIn"
@@ -26,7 +26,7 @@ export const DailyHighlightCarousel = () => {
             </button>
           ) : undefined}
 
-          <div className="flex-1 flex-col md:flex-row flex items-center w-full mx-2 px-3 py-3 cursor-pointer">
+          <div className="flex-1 flex-col md:flex-row flex items-center w-full mx-2 px-3 py-3 cursor-pointer min-h-[130px]">
             <div className="text-2xl select-none">{dailyHighlight.emoji1}</div>
 
             <div className="flex-1 flex flex-col justify-center ml-3">

@@ -21,16 +21,6 @@ const mockNavbar: { index: number; screen: ScreenEnum; text: string }[] = [
     screen: ScreenEnum.unLikes,
     text: 'UnLikes',
   },
-  {
-    index: 4,
-    screen: ScreenEnum.all,
-    text: 'All',
-  },
-  {
-    index: 5,
-    screen: ScreenEnum.configs,
-    text: 'Configs',
-  },
 ];
 
 const spyUseAuth = vi.spyOn(useCurrentScreen, 'useCurrentScreen');

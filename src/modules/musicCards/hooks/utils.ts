@@ -1,6 +1,6 @@
-import { generateRandomPositiveZeroOrNegative } from '@/utils/generators';
 import { createStringToSearch } from '@/utils/normalizers';
 import { MusicFromApiMapper } from '@/modules/musicCards/mappers/get/fromApi';
+import { shuffleArray } from '@/utils/generators';
 import { IHasApplyStartAndEnd, keysItems } from './types';
 
 export const filterByTotalTag = (key: keysItems, based: IHasApplyStartAndEnd, filtered: MusicFromApiMapper[]) => {
@@ -45,5 +45,5 @@ export const applyOffsetAndLimit = (offset: number, limit: number, filtered: Mus
 };
 
 export const generateRandomPlaylist = (filtered: MusicFromApiMapper[]) => {
-  return [...filtered].sort(() => generateRandomPositiveZeroOrNegative());
+  return shuffleArray(filtered);
 };

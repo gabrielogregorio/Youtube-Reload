@@ -3,6 +3,19 @@ import { DateReload } from '@/utils/date';
 
 export const mockNotify: NotifyFromApiMapper[] = [
   {
+    id: 9,
+    title: 'Novas musicas, novo sistema de aleatóriedade',
+    date: DateReload.createDateAsSaoPauloTimeZoneAndReturnGmt({
+      day: 18,
+      month1to12: 2,
+      year: 2024,
+      hours1to24: 13,
+      minutes: 0,
+      seconds: 0,
+    }),
+    emoji: '👩‍🎤',
+  },
+  {
     id: 8,
     title: 'Mais 20 musicas adicionadas, e filtros melhorados na randomização',
     date: DateReload.createDateAsSaoPauloTimeZoneAndReturnGmt({
