@@ -1,4 +1,4 @@
-name: create tag and release on merge pr
+name: create tag and release on merge pr 2
 
 on:
   push:
