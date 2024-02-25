@@ -1,7 +1,7 @@
 import { randomPhrase } from '@/features/DailyHighlightCarousel/data/randomPhrase';
 import { ISpecialDate, specialDates } from '@/features/DailyHighlightCarousel/data/specialDates';
 import { DateReload } from '@/utils/date';
-import { generateRandomPositiveZeroOrNegative } from '@/utils/generators';
+import { shuffleArray } from '@/utils/generators';
 import { useEffect, useState } from 'react';
 
 const defaultSpecialDay: ISpecialDate = {
@@ -24,7 +24,7 @@ export const useGetDailyHighlights = () => {
       return specialDay.days.includes(actualDay);
     });
 
-    const phrases = [...randomPhrase].sort(() => generateRandomPositiveZeroOrNegative())[0];
+    const phrases = shuffleArray(randomPhrase)[0];
 
     listSpecialDates.push({
       title: phrases.author,

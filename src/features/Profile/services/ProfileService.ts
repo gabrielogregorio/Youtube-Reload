@@ -1,10 +1,10 @@
 import { emojis } from '@/features/Profile/data/profile';
 import { StorageAccessNameEnum, StorageService } from '@/services/StorageService';
-import { generateRandomPositiveZeroOrNegative } from '@/utils/generators';
+import { shuffleArray } from '@/utils/generators';
 
 export class ProfileService {
   private static generateRandomProfileEmoji(): string {
-    return [...emojis].sort((): number => generateRandomPositiveZeroOrNegative())[0];
+    return shuffleArray(emojis)[0];
   }
 
   private static updateEmoji(emoji: string): string {

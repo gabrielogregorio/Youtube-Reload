@@ -1,5 +1,14 @@
-const SUBTRACT_TO_CONSIDER_NEGATIVE_NUMBER = 0.5;
+export const shuffleArray = <T>(array: T[]): T[] => {
+  const arrayFinal = [...array];
+  let currentIndex = array.length;
+  let randomIndex;
 
-export const generateRandomPositiveZeroOrNegative = () => {
-  return Math.random() - SUBTRACT_TO_CONSIDER_NEGATIVE_NUMBER;
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    [arrayFinal[currentIndex], arrayFinal[randomIndex]] = [arrayFinal[randomIndex], arrayFinal[currentIndex]];
+  }
+
+  return arrayFinal;
 };
