@@ -1,4 +1,4 @@
-name: create tag and release on merge pr 2
+name: create tag and release on merge pr
 
 on:
   pull_request:
@@ -39,7 +39,7 @@ jobs:
           echo "RELEASE_NAME=$RELEASE_NAME" >> $GITHUB_ENV
 
       - name: create tag and release
-        uses: gabrielogregorio/create-tag-and-release@v1.0.2
+        uses: gabrielogregorio/create-tag-and-release@v2.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -48,6 +48,7 @@ jobs:
           body: |
             ${{ env.BODY_RELEASE }}
           make_latest: true
-          generate_release_notes: false
+          generate_release_notes: true
           draft: false
           prerelease: false
+          discussion_category_name: 'Announcements'
