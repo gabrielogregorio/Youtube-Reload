@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/youtube-reload/preview/npm_and_yarn-security-group-a1220766a4/sw.js', { scope: '/youtube-reload/preview/npm_and_yarn-security-group-a1220766a4/' })})}
