@@ -35,5 +35,6 @@ export const ReactButton = ({ isSelected, text, variant, sendReaction }: IReactB
       } ${isSelected ? styleVariant.select : styleVariant.unSelect}`}>
       {text}
     </button>
+    // what?
   );
 };

@@ -51,6 +51,7 @@ export const useGetDailyHighlights = () => {
   const prevDailyHighlight = () => {
     setDailyHighlightSelected((prev) => {
       if (prev - 1 < 0) {
+        // refactor magic numbers
         return dailyHighlights.length - 1;
       }
       return prev - 1;

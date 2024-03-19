@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 
 export const useFetchAllMusics = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | undefined>(undefined);
+  const [error, setError] = useState<string>('');
   const [musics, setMusics] = useState<MusicFromApiMapper[] | undefined>(undefined);
 
   useEffect(() => {
     setIsLoading(false);
-    setError(undefined);
+    setError(''); // create hook state
     setMusics(undefined);
 
     FetchReactionsService.fetch()

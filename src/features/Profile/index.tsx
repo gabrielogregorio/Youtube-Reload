@@ -1,5 +1,5 @@
 import { LogService } from '@/services/log/LogService';
-import { tailwindMerge } from '@/libs/tailwindMerge';
+import { tailwindMerge } from '@/facades/tailwindMerge';
 import { useGetProfile } from './hooks/useGetProfile';
 
 interface IProps {

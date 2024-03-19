@@ -1,15 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AiFillBell, AiOutlineBell } from 'react-icons/ai';
 import { LogService } from '@/services/log/LogService';
-import { tailwindMerge } from '@/libs/tailwindMerge';
 import { NotifyItems } from '@/features/Notify/NotifyItems';
 import { useFetchAllNotify } from '@/features/Notify/hooks/useFetchAllNotify';
+import { tailwindMerge } from '@/facades/tailwindMerge';
 
 const TIME_TO_MARK_VIEWED_NOTIFICATIONS_IN_MS = 3000;
 
 export const Notify = () => {
   const [notifyIsOpen, setNotifyIsOpen] = useState(false);
   const { notifications, viewedNotificationIds, updateViewedNotifications } = useFetchAllNotify();
+  const resetTimeout = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => {
+    if (resetTimeout.current) {
+      clearTimeout(resetTimeout.current);
+    }
+  }, []);
 
   const handleClickBell = () => {
     LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'open notify' });
@@ -17,7 +24,7 @@ export const Notify = () => {
 
     const idsAllNotifications = notifications.map((notification) => notification.id);
 
-    setTimeout(() => {
+    resetTimeout.current = setTimeout(() => {
       updateViewedNotifications(idsAllNotifications);
     }, TIME_TO_MARK_VIEWED_NOTIFICATIONS_IN_MS);
   };

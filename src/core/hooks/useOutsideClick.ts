@@ -4,11 +4,9 @@ export const useOutsideClick = (ref: RefObject<HTMLDivElement>, onOutsideClick: 
   const [clickedOutside, setClickedOutside] = useState<boolean>(false);
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const handleClickOutside = (event: any): void => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      const referencesContainTarget = (): boolean => !ref.current?.contains(event.target);
-      const clickedOutsideReference: boolean = (ref.current && referencesContainTarget()) || false;
+    const handleClickOutside = (event: MouseEvent): void => {
+      const referencesContainTarget = (): boolean => !ref.current?.contains(event.target as Node);
+      const clickedOutsideReference = (ref.current && referencesContainTarget()) || false;
 
       if (clickedOutsideReference) {
         onOutsideClick();

@@ -15,6 +15,7 @@ export const useReactions = () => {
   };
 
   useEffect(() => {
+    // split separtions redux
     saveInitialState();
   }, []);
 

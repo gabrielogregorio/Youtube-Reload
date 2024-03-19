@@ -24,6 +24,7 @@ export const FloatingActionButtons = ({ generateRandomPlaylist }: IFloatingActio
         title="Ir para cima"
         bottomPosition="bottom-[10rem]"
         variant={LateralButtonEnum.Dark}
+        // refactor to types
         icon={<AiOutlineArrowUp className="text-2xl" />}
       />
 

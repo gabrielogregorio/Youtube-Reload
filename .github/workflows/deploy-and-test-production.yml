@@ -103,34 +103,7 @@ jobs:
       - name: up coverage to codacy
         run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r ./coverage/lcov.info
 
-  linting:
-    needs: install
-    timeout-minutes: 5
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        pnpm-version: [8.3.1]
-
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2
-
-      - name: use pnpm.js ${{ matrix.pnpm-version }}
-        uses: pnpm/action-setup@v2
-        with:
-          version: ${{ matrix.pnpm-version }}
-
-      - name: restore node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
-
-      - name: check eslint
-        run: pnpm run eslint:lint
-
-  lint_tsc:
+  lint:
     needs: install
     timeout-minutes: 5
     runs-on: ubuntu-latest
@@ -155,7 +128,7 @@ jobs:
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: check typescript
-        run: pnpm run tsc:lint
+        run: pnpm run lint
 
   format:
     needs: install
@@ -186,7 +159,7 @@ jobs:
   deploy:
     environment: sentry
     timeout-minutes: 10
-    needs: [unit_tests_and_up_coverage, e2e_tests, linting, lint_tsc, format]
+    needs: [unit_tests_and_up_coverage, e2e_tests, lint, format]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 

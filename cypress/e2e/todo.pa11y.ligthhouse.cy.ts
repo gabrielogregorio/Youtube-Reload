@@ -1,3 +1,4 @@
+// fix style
 describe('todo', () => {
   beforeEach(() => {
     cy.visit('http://localhost:5556');
@@ -34,7 +35,7 @@ describe('todo', () => {
     cy.lighthouse(thresholds, options, config);
   });
 
-  it.skip(
+  it(
     'should run pa11y the audits',
     {
       retries: 0,

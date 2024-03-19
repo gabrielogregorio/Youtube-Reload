@@ -16,7 +16,6 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@/forms': resolve(__dirname, './src/components/forms'),
       '@/layouts': resolve(__dirname, './src/components/layouts'),
       '@/screens': resolve(__dirname, './src/screens'),
       '@/templates': resolve(__dirname, './src/components/templates'),
@@ -33,7 +32,7 @@ export default defineConfig({
       '@/errors': resolve(__dirname, './src/core/errors'),
       '@/guard': resolve(__dirname, './src/core/guard'),
       '@/hooks': resolve(__dirname, './src/core/hooks'),
-      '@/libs': resolve(__dirname, './src/core/libs'),
+      '@/facades': resolve(__dirname, './src/core/facades'),
       '@/locales': resolve(__dirname, './src/core/locales'),
       '@/services': resolve(__dirname, './src/core/services'),
       '@/utils': resolve(__dirname, './src/core/utils'),
