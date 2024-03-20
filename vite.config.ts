@@ -16,6 +16,14 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      // bdd loader
+      '@badeball/cypress-cucumber-preprocessor/*': resolve(
+        __dirname,
+        './node_modules/@badeball/cypress-cucumber-preprocessor/dist/subpath-entrypoints/*',
+      ),
+
+      // rest
+
       '@/layouts': resolve(__dirname, './src/components/layouts'),
       '@/screens': resolve(__dirname, './src/screens'),
       '@/templates': resolve(__dirname, './src/components/templates'),

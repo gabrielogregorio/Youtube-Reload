@@ -15,6 +15,7 @@
     "check": "pnpm run prettier:format && pnpm run eslint:lint && pnpm run lint && pnpm run test:coverage && pnpm run build",
     "e2e:headless": "start-server-and-test _starting_app http://0.0.0.0:5556 _headless",
     "e2e": "start-server-and-test _starting_app http://0.0.0.0:5556 _open",
+    "cypress":"pnpm run e2e",
     "lint": "eslint -c ./.eslintrc.js --ext '.tsx,.ts' './src/**' --fix && tsc -p .",
     "prettier:format": "prettier *.{ts,js,md,tsx,jsx} --write",
     "prettier:check": "prettier *.{ts,js,md,tsx,jsx} --check",
@@ -59,6 +60,8 @@
     ]
   },
   "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.2",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
     "@cypress-audit/lighthouse": "^1.4.2",

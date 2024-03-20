@@ -22,16 +22,16 @@ export const specialDates: { [month in MonthsNormalizedEnum]: ISpecialDate[] } =
   ],
 
   [MonthsNormalizedEnum.February]: [],
-  [MonthsNormalizedEnum.March]: [],
-  [MonthsNormalizedEnum.April]: [
+  [MonthsNormalizedEnum.March]: [
     {
       title: 'Páscoa',
       description: '',
-      days: [9],
+      days: [31],
       emoji1: '🐇',
       emoji2: '🐇 ',
     },
   ],
+  [MonthsNormalizedEnum.April]: [],
   [MonthsNormalizedEnum.May]: [],
   [MonthsNormalizedEnum.June]: [],
   [MonthsNormalizedEnum.July]: [],

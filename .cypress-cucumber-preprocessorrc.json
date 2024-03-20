@@ -1,0 +1,7 @@
+{
+  "stepDefinitions": [
+    "cypress/e2e/bdd/cases/*.{js,ts}",
+    "cypress/e2e/bdd/common/*.{js,ts}",
+    "cypress/support/step_definitions/**/*.{js,ts}"
+  ]
+}
