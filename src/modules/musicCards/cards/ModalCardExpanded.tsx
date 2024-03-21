@@ -16,11 +16,11 @@ export const ModalCardExpanded = ({ cardIsOpen, onCloseModal }: IProps) => {
     <div>
       <button
         type="button"
-        className="fixed top-0 bottom-0 flex items-center justify-center w-screen h-screen z-20 transition-all duration-150 bg-dark/50 backdrop-blur-xl shadow-md"
+        className="fixed top-0 bottom-0 flex items-center justify-center w-screen h-screen z-20 transition-all duration-150 bg-dark-slate/50 backdrop-blur-xl shadow-md"
         onClick={() => onCloseModal()}>
         <button
           type="button"
-          className="w-[70vw] h-[80vh] bg-dark shadow-md flex flex-col items-center justify-center px-2 py-3 rounded-md"
+          className="w-[70vw] h-[80vh] bg-dark-slate shadow-md flex flex-col items-center justify-center px-2 py-3 rounded-md"
           onClick={(event: MouseEvent<HTMLButtonElement>): void => event.preventDefault()}>
           <div className="flex items-center justify-end w-full mb-4">
             <button type="button" onClick={() => onCloseModal()}>

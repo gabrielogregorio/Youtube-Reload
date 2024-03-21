@@ -6,5 +6,5 @@
     "noEmit": true,
     "types": ["node", "cypress", "cypress-audit", "cypress-real-events"]
   },
-  "includes": ["../node_modules/cypress", "./**/*.ts", "./"]
+  "includes": ["../node_modules/cypress", "./**/*.ts", "./", "./cypress.config.ts"]
 }

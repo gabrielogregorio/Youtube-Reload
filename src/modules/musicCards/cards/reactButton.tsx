@@ -14,14 +14,14 @@ interface IDefaultColorType {
 export const ReactButton = ({ isSelected, text, variant, sendReaction }: IReactButtonProps) => {
   const variants: { [key in IReactButtonProps['variant']]: IDefaultColorType } = {
     blue: {
-      select: 'bg-blue text-white',
-      unSelect: 'text-blue bg-dark-dark',
-      normal: 'hover:scale-95 hover:text-white hover:bg-blue border-blue',
+      select: 'bg-blue-cerulean text-white-ultra-light',
+      unSelect: 'text-blue-cerulean bg-dark-charcoal',
+      normal: 'hover:scale-95 hover:text-white-ultra-light hover:bg-blue-cerulean border-blue-cerulean',
     },
     red: {
-      select: 'bg-red-light text-white',
-      unSelect: 'text-red-light bg-dark-dark',
-      normal: 'hover:scale-105 hover:text-white hover:bg-red-light border-red-light',
+      select: 'bg-red-soft text-white-ultra-light',
+      unSelect: 'text-red-soft bg-dark-charcoal',
+      normal: 'hover:scale-105 hover:text-white-ultra-light hover:bg-red-soft border-red-soft',
     },
   };
 

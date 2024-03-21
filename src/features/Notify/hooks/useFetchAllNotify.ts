@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { NotifyFromApiMapper } from '@/features/Notify/mappers/fromApi';
 import { FetchNotifyService } from '@/features/Notify/services/FetchNotifyService';
 import { NotifyService } from '@/features/Notify/services/NotifyService';
+import { useOnMount } from '@/modules/musicCards/hooks/useOnMount';
 
 export const useFetchAllNotify = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -9,7 +10,7 @@ export const useFetchAllNotify = () => {
   const [notifications, setNotifications] = useState<NotifyFromApiMapper[]>([]);
   const [viewedNotificationIds, setViewedNotificationIds] = useState<number[]>([]);
 
-  useEffect(() => {
+  useOnMount(() => {
     setIsLoading(false);
     setError(undefined);
     setNotifications([]);
@@ -24,12 +25,12 @@ export const useFetchAllNotify = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  });
 
-  useEffect(() => {
+  useOnMount(() => {
     const items = NotifyService.getOrInitialize();
     setViewedNotificationIds(items);
-  }, []);
+  });
 
   const updateViewedNotifications = (item: number[]): void => {
     const newNotifies = NotifyService.updateNotify(item);

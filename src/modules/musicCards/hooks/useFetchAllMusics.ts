@@ -1,20 +1,18 @@
+import { useStatus } from '@/hooks/useStatus';
+import { useOnMount } from '@/modules/musicCards/hooks/useOnMount';
 import { MusicFromApiMapper } from '@/modules/musicCards/mappers/get/fromApi';
 import { FetchReactionsService } from '@/modules/musicCards/services/FetchMusicService';
-import { useEffect, useState } from 'react';
 
 export const useFetchAllMusics = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | undefined>(undefined);
-  const [musics, setMusics] = useState<MusicFromApiMapper[] | undefined>(undefined);
+  const { isLoading, error, setError, data, setData, reset, setIsLoading } = useStatus<MusicFromApiMapper[]>();
 
-  useEffect(() => {
-    setIsLoading(false);
-    setError(undefined);
-    setMusics(undefined);
+  useOnMount(() => {
+    reset();
+    setIsLoading(true);
 
     FetchReactionsService.fetch()
       .then((res: MusicFromApiMapper[]) => {
-        setMusics(res);
+        setData(res);
       })
       .catch(() => {
         setError('Error on Load Data');
@@ -22,11 +20,11 @@ export const useFetchAllMusics = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  });
 
   return {
     isLoading,
     error,
-    musics,
+    musics: data,
   };
 };

@@ -1,8 +1,9 @@
 import { randomPhrase } from '@/features/DailyHighlightCarousel/data/randomPhrase';
 import { ISpecialDate, specialDates } from '@/features/DailyHighlightCarousel/data/specialDates';
+import { useOnMount } from '@/modules/musicCards/hooks/useOnMount';
 import { DateReload } from '@/utils/date';
-import { shuffleArray } from '@/utils/generators';
-import { useEffect, useState } from 'react';
+import { shuffleArray } from '@/utils/shuffleArray';
+import { useState } from 'react';
 
 const defaultSpecialDay: ISpecialDate = {
   title: 'Bem vindo',
@@ -16,7 +17,7 @@ export const useGetDailyHighlights = () => {
   const [dailyHighlights, setDailyHighlights] = useState<ISpecialDate[]>([]);
   const [dailyHighlightSelected, setDailyHighlightSelected] = useState(0);
 
-  useEffect(() => {
+  useOnMount(() => {
     const actualMonth = DateReload.getMonthFrom1To12();
     const actualDay = DateReload.getDay();
 
@@ -37,7 +38,7 @@ export const useGetDailyHighlights = () => {
     listSpecialDates.push(defaultSpecialDay);
 
     setDailyHighlights(listSpecialDates);
-  }, []);
+  });
 
   const nextDailyHighlight = () => {
     setDailyHighlightSelected((prev) => {
@@ -51,6 +52,7 @@ export const useGetDailyHighlights = () => {
   const prevDailyHighlight = () => {
     setDailyHighlightSelected((prev) => {
       if (prev - 1 < 0) {
+        // refactor magic numbers
         return dailyHighlights.length - 1;
       }
       return prev - 1;

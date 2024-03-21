@@ -5,11 +5,10 @@ on:
     types:
       - opened
       - synchronize
-      # - edited
 
 jobs:
   assign_and_label:
-    timeout-minutes: 2 
+    timeout-minutes: 2
     runs-on: ubuntu-latest
     steps:
       - name: checkout repository
@@ -111,5 +110,3 @@ jobs:
               pull_number: context.issue.number,
               title: newTitle
             });
-
-          

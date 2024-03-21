@@ -4,7 +4,7 @@ import { IMusicApi, MusicFromApiMapper } from '@/modules/musicCards/mappers/get/
 
 export class FetchReactionsService {
   public static async fetch(): Promise<MusicFromApiMapper[]> {
-    return ApiReload.search('/musics', MusicMapper.toApi({ id: 123 })).then((res: IMusicApi[]) => {
+    return ApiReload.search().then((res: IMusicApi[]) => {
       return MusicMapper.fromApi(res);
     });
   }

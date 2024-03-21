@@ -16,9 +16,6 @@ body {
   background-color: #2d3036;
 }
 
-input[type='checkbox'] {
-  zoom: 1.6;
-}
 
 .scrollbar::-webkit-scrollbar {
   width: 15px;

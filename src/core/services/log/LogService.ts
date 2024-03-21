@@ -5,8 +5,7 @@ export class LogService {
     Sentry.setUser(user);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public static logError(error: any) {
+  public static logError(error: unknown) {
     Sentry.captureException(error);
   }
 

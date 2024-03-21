@@ -1,13 +1,9 @@
-import { AiOutlineEye } from 'react-icons/ai';
-import { FaDivide, FaPercent } from 'react-icons/fa';
-import { BiCommentDetail, BiLike } from 'react-icons/bi';
 import { HiArrowsExpand } from 'react-icons/hi';
 import { ReactButton } from '@/modules/musicCards/cards/reactButton';
-import { Statistics } from '@/modules/musicCards/cards/Statistics';
 import { IMusicWithTransformation } from '@/modules/musicCards/mappers/get/fromApi';
 import { ReactionEnum } from '@/modules/musicCards/services/ReactionsService';
 
-interface ICardProps {
+interface IProps {
   playlistLocal: IMusicWithTransformation;
   sendReaction: (idContent: string, reaction: ReactionEnum) => void;
   reaction: ReactionEnum;
@@ -15,11 +11,11 @@ interface ICardProps {
   showExtra: boolean;
 }
 
-export const Card = ({ playlistLocal, sendReaction, openModalExpanded, reaction, showExtra }: ICardProps) => {
+export const Card = ({ playlistLocal, sendReaction, openModalExpanded, reaction, showExtra }: IProps) => {
   return (
     <li
       key={playlistLocal.url}
-      className="flex flex-col group cursor-pointer bg-dark-dark border-dark-dark border rounded-xl md:hover:scale-105 transition-all duration-300 shadow-xl">
+      className="flex flex-col group cursor-pointer bg-dark-charcoal border-dark-charcoal border rounded-xl md:hover:scale-105 transition-all duration-300 shadow-xl">
       <article>
         <header>
           <a target="_blank" href={playlistLocal.url} rel="noreferrer" aria-label={`View ${playlistLocal.title} on YouTube`}>
@@ -35,11 +31,12 @@ export const Card = ({ playlistLocal, sendReaction, openModalExpanded, reaction,
         <section className="flex-1 flex flex-col py-[15px] px-[20px]">
           <div className="flex-1 flex flex-col">
             <div className="overflow-hidden text-ellipsis">
+              {/* // create components */}
               <button
                 type="button"
                 onClick={() => openModalExpanded(playlistLocal)}
                 title={playlistLocal.title}
-                className="text-[0.9rem] text-left font-bold border-b-2 border-dark-dark hover:border-b-blue  text-white hover:text-blue pr-1.5 transition-all duration-150 flex items-center justify-between gap-2 w-full">
+                className="text-[0.9rem] text-left font-bold border-b-2 border-dark-charcoal hover:border-b-blue-cerulean text-white-ultra-light hover:text-blue-cerulean pr-1.5 transition-all duration-150 flex items-center justify-between gap-2 w-full">
                 {playlistLocal.title}
                 <HiArrowsExpand width={15} height={15} className="w-[15px] h-[15px] inline-block flex-shrink-0" />
               </button>
@@ -53,30 +50,12 @@ export const Card = ({ playlistLocal, sendReaction, openModalExpanded, reaction,
                   href={playlistLocal.url}
                   aria-label={`View artist ${playlistLocal.artist} on YouTube`}
                   rel="noreferrer"
-                  className="text-[0.7rem] font-medium text-white-dark">
+                  className="text-[0.7rem] font-medium text-white-soft">
                   {playlistLocal.artist}
                 </a>
               </div>
             </div>
           </div>
-
-          {showExtra ? (
-            <section aria-label="Statistics">
-              <div className="text-sm flex justify-start items-center gap-2">
-                <Statistics icon={<AiOutlineEye className="text-[.7rem] mr-1" />}>{playlistLocal.views.tag}</Statistics>
-
-                <Statistics icon={<BiLike className="text-[.7rem] mr-1" />}>{playlistLocal.likes.tag}</Statistics>
-
-                <Statistics icon={<BiCommentDetail className="text-[.7rem] mr-1" />}>{playlistLocal.comments.tag}</Statistics>
-              </div>
-
-              <div className="text-sm flex justify-start items-center gap-2">
-                <Statistics icon={<FaPercent className="text-[.7rem] mr-1" />}>{playlistLocal.percentViewsLikesComments}</Statistics>
-
-                <Statistics icon={<FaDivide className="text-[.7rem] mr-1" />}>{playlistLocal.percentLikesComments}</Statistics>
-              </div>
-            </section>
-          ) : undefined}
 
           <footer className="flex justify-between mt-2 w-full">
             <ReactButton

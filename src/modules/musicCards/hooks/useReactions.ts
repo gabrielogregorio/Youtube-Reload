@@ -1,8 +1,9 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from '@/core/states/redux/store/useRedux';
 import { saveReaction } from '@/core/states/redux/features/reactions/slices';
 import { reactionsSelector } from '@/core/states/redux/features/reactions/selectors';
 import { IReactionsOptions, ReactionsService, ReactionEnum } from '@/modules/musicCards/services/ReactionsService';
+import { useOnMount } from '@/modules/musicCards/hooks/useOnMount';
 
 export const useReactions = () => {
   const dispatch = useAppDispatch();
@@ -14,11 +15,11 @@ export const useReactions = () => {
     ReactionsService.updateReactions(reactionsLocal);
   };
 
-  useEffect(() => {
+  useOnMount(() => {
     saveInitialState();
-  }, []);
+  });
 
-  const sendReaction: (idContent: string, reaction: ReactionEnum) => void = useCallback(
+  const sendReaction = useCallback(
     (idContent: string, reaction: ReactionEnum): void => {
       const newReaction = reactions;
 

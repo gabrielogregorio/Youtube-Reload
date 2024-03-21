@@ -8,7 +8,7 @@ const fs = require('fs');
 const { lighthouse, prepareAudit } = require('@cypress-audit/lighthouse');
 const { pa11y } = require('@cypress-audit/pa11y');
 
-module.exports = (on) => {
+export default function (on, config) {
   on('before:browser:launch', (_browser, launchOptions) => {
     prepareAudit(launchOptions);
   });
@@ -20,4 +20,4 @@ module.exports = (on) => {
     }),
     pa11y: pa11y((report) => fs.writeFileSync('pa11y.html', JSON.stringify(report))),
   });
-};
+}

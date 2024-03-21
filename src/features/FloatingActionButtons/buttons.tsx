@@ -7,9 +7,9 @@ export enum LateralButtonEnum {
 }
 
 const variantLateralButtonStyle: { [key in LateralButtonEnum]: string } = {
-  [LateralButtonEnum.Dark]: 'bg-dark-light text-white hover:bg-dark-light',
-  [LateralButtonEnum.Red]: 'bg-red text-white hover:bg-red',
-  [LateralButtonEnum.Blue]: 'bg-blue-dark text-white hover:bg-blue-darker',
+  [LateralButtonEnum.Dark]: 'bg-dark-grey text-white-ultra-light hover:bg-dark-grey',
+  [LateralButtonEnum.Red]: 'bg-red-bright text-white-ultra-light hover:bg-red-bright',
+  [LateralButtonEnum.Blue]: 'bg-blue-vivid text-white-ultra-light hover:bg-blue-deep',
 };
 
 interface ILateralButtonProps {

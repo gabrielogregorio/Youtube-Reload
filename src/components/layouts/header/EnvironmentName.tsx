@@ -5,5 +5,5 @@ export const EnvironmentName = () => {
     return <div />;
   }
 
-  return <div className="text-[2rem] font-[800] fixed top-1 left-4 z-[190] text-white/75">{envs.VITE_ENVIRONMENT}</div>;
+  return <div className="text-[2rem] font-[800] fixed top-1 left-4 z-[190] text-white-ultra-light/75">{envs.VITE_ENVIRONMENT}</div>;
 };

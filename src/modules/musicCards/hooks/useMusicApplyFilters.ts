@@ -1,11 +1,5 @@
 import { useState } from 'react';
-import {
-  applyOffsetAndLimit,
-  applyTextFilter,
-  filterByNumber,
-  filterByTotalTag,
-  generateRandomPlaylist,
-} from '@/modules/musicCards/hooks/utils';
+import { generateRandomPlaylist, applyOffsetAndLimit } from '@/modules/musicCards/hooks/utils';
 import { useFetchAllMusics } from '@/modules/musicCards/hooks/useFetchAllMusics';
 import { useReactions } from '@/modules/musicCards/hooks/useReactions';
 import { MusicFromApiMapper } from '@/modules/musicCards/mappers/get/fromApi';
@@ -14,46 +8,20 @@ import { parseToYoutubeContent } from '@/modules/musicCards/utils/parseToYoutube
 
 const LIMIT_FILTER = 500;
 
+interface IUseMusicApplyFiltersInputType {
+  random?: boolean;
+  offset?: number;
+  limit?: number;
+  likeFilter?: 'none' | 'onlyLike' | 'onlyUnlike';
+  onlyUnLikes?: boolean;
+}
+
 export const useMusicApplyFilters = ({
   random = false,
   offset = 0,
   limit = LIMIT_FILTER,
-  onlyLikes = false,
-  onlyUnLikes = false,
-  ignoreLikes = false,
-  ignoreUnLikes = false,
-  textSearch = '',
-  period = {
-    apply: false,
-    start: 0,
-    end: 0,
-  },
-  likes = {
-    apply: false,
-    start: 0,
-    end: 0,
-  },
-  comments = {
-    apply: false,
-    start: 0,
-    end: 0,
-  },
-  views = {
-    apply: false,
-    start: 0,
-    end: 0,
-  },
-  percent = {
-    apply: false,
-    start: 0,
-    end: 0,
-  },
-  approvalComments = {
-    apply: false,
-    start: 0,
-    end: 0,
-  },
-}) => {
+  likeFilter = 'none',
+}: IUseMusicApplyFiltersInputType) => {
   const { musics } = useFetchAllMusics();
   const { reactions } = useReactions();
   const [filter, setFilter] = useState<MusicFromApiMapper[]>([]);
@@ -69,31 +37,18 @@ export const useMusicApplyFilters = ({
       filtered = generateRandomPlaylist(filtered);
     }
 
-    if (onlyLikes) {
-      filtered = filtered.filter((item) => reactions?.[item.id] === ReactionEnum.like);
-    }
+    filtered = filtered.filter((item) => {
+      let showItem = true;
+      if (likeFilter === 'onlyLike') {
+        showItem = reactions?.[item.id] === ReactionEnum.like;
+      }
 
-    if (ignoreLikes) {
-      filtered = filtered.filter((item) => reactions?.[item.id] !== ReactionEnum.like);
-    }
+      if (likeFilter === 'onlyUnlike') {
+        showItem = reactions?.[item.id] === ReactionEnum.unlike;
+      }
 
-    if (onlyUnLikes) {
-      filtered = filtered.filter((item) => reactions?.[item.id] === ReactionEnum.unlike);
-    }
-
-    if (ignoreUnLikes) {
-      filtered = filtered.filter((item) => reactions?.[item.id] !== ReactionEnum.unlike);
-    }
-
-    filtered = filterByTotalTag('likes', likes, filtered);
-    filtered = filterByTotalTag('comments', comments, filtered);
-    filtered = filterByTotalTag('views', views, filtered);
-
-    filtered = filterByNumber('year', period, filtered);
-    filtered = filterByNumber('percentViewsLikesComments', percent, filtered);
-    filtered = filterByNumber('percentLikesComments', approvalComments, filtered);
-
-    filtered = applyTextFilter(filtered, textSearch);
+      return showItem;
+    });
 
     filtered = applyOffsetAndLimit(offset, limit, filtered);
 

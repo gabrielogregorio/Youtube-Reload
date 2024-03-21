@@ -6,7 +6,7 @@ import { Cards } from '@/modules/musicCards/cards';
 export const LikesPage = () => {
   const { filtered, applyFilters, musics } = useMusicApplyFilters({
     random: true,
-    onlyLikes: true,
+    likeFilter: 'onlyLike',
   });
 
   useEffect(() => {

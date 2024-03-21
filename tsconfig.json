@@ -13,7 +13,7 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -23,7 +23,8 @@
     "outDir": "build",
     "baseUrl": "./",
     "paths": {
-      "@/forms/*": ["src/components/forms/*"],
+      "@badeball/cypress-cucumber-preprocessor/*": ["./node_modules/@badeball/cypress-cucumber-preprocessor/dist/subpath-entrypoints/*"],
+
       "@/layouts/*": ["src/components/layouts/*"],
       "@/templates/*": ["src/components/templates/*"],
       "@/widgets/*": ["src/components/widgets/*"],
@@ -37,7 +38,7 @@
       "@/errors/*": ["src/core/errors/*"],
       "@/guard/*": ["src/core/guard/*"],
       "@/hooks/*": ["src/core/hooks/*"],
-      "@/libs/*": ["src/core/libs/*"],
+      "@/facades/*": ["src/core/facades/*"],
       "@/locales/*": ["src/core/locales/*"],
       "@/services/*": ["src/core/services/*"],
       "@/utils/*": ["src/core/utils/*"],
@@ -49,5 +50,5 @@
     }
   },
   "include": ["next-env.d.ts", "./src/**/*.ts", "./src/**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "./cypress.config.ts"]
 }

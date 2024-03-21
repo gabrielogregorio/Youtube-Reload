@@ -11,6 +11,7 @@ Sentry.init({
     new Sentry.Replay(),
   ],
   tracesSampleRate: 0.2,
+  enabled: !!envs.SENTRY_DSN,
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
   environment: envs.VITE_ENVIRONMENT,

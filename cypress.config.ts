@@ -1,4 +1,33 @@
 import { defineConfig } from 'cypress';
+import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
+import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
+// @ts-ignore
+import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild';
+
+import pluginConfig from './cypress/plugins/index';
+
+const loadBddConfig = async (on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) => {
+  // reference https://github.com/badeball/cypress-cucumber-preprocessor/blob/master/docs/step-definitions.md
+  await addCucumberPreprocessorPlugin(on, config);
+
+  const bundler = createBundler({
+    plugins: [createEsbuildPlugin(config)],
+  });
+
+  on('file:preprocessor', bundler);
+};
+
+const loadCustomPlugins = (on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) => {
+  pluginConfig(on, config);
+};
+
+async function setupNodeEvents(on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions): Promise<Cypress.PluginConfigOptions> {
+  loadCustomPlugins(on, config);
+
+  await loadBddConfig(on, config);
+
+  return config;
+}
 
 export default defineConfig({
   chromeWebSecurity: false,
@@ -12,9 +41,8 @@ export default defineConfig({
   video: false,
   retries: 2,
   e2e: {
-    setupNodeEvents(on, config) {
-      return require('./cypress/plugins/index.js')(on, config);
-    },
+    setupNodeEvents,
+    specPattern: ['cypress/e2e/bdd/cases/*.feature', 'cypress/e2e/tests/*.{js,ts}'],
     baseUrl: 'http://127.0.0.1:5556',
   },
 });
