@@ -26,7 +26,6 @@ export class MusicFromApiMapper {
 
   public readonly minuteToSkipIntroduction?: number;
 
-  // eslint-disable-next-line sonarjs/cognitive-complexity
   public constructor(item?: IMusicApi) {
     const year: number = Number(item?.year) || 0;
     const artist: string = String(item?.artist || '');

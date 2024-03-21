@@ -1,10 +1,10 @@
 import { MusicFromApiMapper } from '@/modules/musicCards/mappers/get/fromApi';
-import { shuffleArray } from '@/utils/generators';
+import { shuffleArray } from '@/utils/shuffleArray';
 
-export const applyOffsetAndLimit = (offset: number, limit: number, filtered: MusicFromApiMapper[]) => {
+export const applyOffsetAndLimit = (offset: number, limit: number, filtered: MusicFromApiMapper[]): MusicFromApiMapper[] => {
   return filtered.slice(offset, limit);
 };
 
-export const generateRandomPlaylist = (filtered: MusicFromApiMapper[]) => {
+export const generateRandomPlaylist = (filtered: MusicFromApiMapper[]): MusicFromApiMapper[] => {
   return shuffleArray(filtered);
 };

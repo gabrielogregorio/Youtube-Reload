@@ -1,7 +1,6 @@
 import { Then, When, Given } from '@badeball/cypress-cucumber-preprocessor';
 
 Given('the user is logged in to the website', () => {
-  // cy.clock(new Date(2010, 1, 1).getTime(), ['Date']);
   cy.clock();
   cy.visit('/');
 });

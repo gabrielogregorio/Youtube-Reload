@@ -1,10 +1,9 @@
-// fix style
 describe('todo', () => {
   beforeEach(() => {
     cy.visit('http://localhost:5556');
   });
 
-  it.skip('should run lighthouse the audits', { retries: 0 }, () => {
+  it('should run lighthouse the audits', { retries: 0 }, () => {
     const thresholds = {
       accessibility: 40,
       'best-practices': 40,

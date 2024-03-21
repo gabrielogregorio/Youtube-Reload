@@ -6,7 +6,7 @@ import { useMusicApplyFilters } from '@/modules/musicCards/hooks/useMusicApplyFi
 export const UnLikesPage = () => {
   const { filtered, applyFilters, musics } = useMusicApplyFilters({
     random: true,
-    onlyUnLikes: true,
+    likeFilter: 'onlyUnlike',
   });
 
   useEffect(() => {

@@ -35,5 +35,3 @@ export class ReactionsService {
     document.location.reload();
   }
 }
-
-// fixme

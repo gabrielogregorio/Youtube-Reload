@@ -15,7 +15,7 @@ export const Card = ({ playlistLocal, sendReaction, openModalExpanded, reaction,
   return (
     <li
       key={playlistLocal.url}
-      className="flex flex-col group cursor-pointer bg-dark-dark border-dark-dark border rounded-xl md:hover:scale-105 transition-all duration-300 shadow-xl">
+      className="flex flex-col group cursor-pointer bg-dark-charcoal border-dark-charcoal border rounded-xl md:hover:scale-105 transition-all duration-300 shadow-xl">
       <article>
         <header>
           <a target="_blank" href={playlistLocal.url} rel="noreferrer" aria-label={`View ${playlistLocal.title} on YouTube`}>
@@ -36,7 +36,7 @@ export const Card = ({ playlistLocal, sendReaction, openModalExpanded, reaction,
                 type="button"
                 onClick={() => openModalExpanded(playlistLocal)}
                 title={playlistLocal.title}
-                className="text-[0.9rem] text-left font-bold border-b-2 border-dark-dark hover:border-b-blue text-white hover:text-blue pr-1.5 transition-all duration-150 flex items-center justify-between gap-2 w-full">
+                className="text-[0.9rem] text-left font-bold border-b-2 border-dark-charcoal hover:border-b-blue-cerulean text-white-ultra-light hover:text-blue-cerulean pr-1.5 transition-all duration-150 flex items-center justify-between gap-2 w-full">
                 {playlistLocal.title}
                 <HiArrowsExpand width={15} height={15} className="w-[15px] h-[15px] inline-block flex-shrink-0" />
               </button>
@@ -50,7 +50,7 @@ export const Card = ({ playlistLocal, sendReaction, openModalExpanded, reaction,
                   href={playlistLocal.url}
                   aria-label={`View artist ${playlistLocal.artist} on YouTube`}
                   rel="noreferrer"
-                  className="text-[0.7rem] font-medium text-white-dark">
+                  className="text-[0.7rem] font-medium text-white-soft">
                   {playlistLocal.artist}
                 </a>
               </div>

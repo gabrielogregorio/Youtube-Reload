@@ -24,7 +24,7 @@ export const Profile = ({ className = undefined }: IProps) => {
         aria-label="Trocar foto de perfil"
         type="button"
         onClick={handleUpdateEmojiProfile}
-        className="flex items-center justify-center h-6 w-6 hover:h-8 hover:w-8 rounded-full text-xl cursor-pointer select-none hover:bg-dark-light transition-all duration-150">
+        className="flex items-center justify-center h-6 w-6 hover:h-8 hover:w-8 rounded-full text-xl cursor-pointer select-none hover:bg-dark-grey transition-all duration-150">
         {emoji}
       </button>
     </div>

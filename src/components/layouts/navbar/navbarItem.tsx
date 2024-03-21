@@ -19,7 +19,7 @@ export const NavbarItem = ({ text, nameScreen, isActive, icon }: INavbarItemProp
     updateCurrentScreen(nameScreen);
   };
 
-  const styleOnActive = isActive ? 'border-red-light text-red-light' : 'border-transparent text-white';
+  const styleOnActive = isActive ? 'border-red-soft text-red-soft' : 'border-transparent text-white-ultra-light';
 
   return (
     <button

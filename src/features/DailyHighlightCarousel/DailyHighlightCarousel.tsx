@@ -14,14 +14,14 @@ export const DailyHighlightCarousel = () => {
     <div className="flex items-center justify-center">
       <div className="max-w-md w-full">
         <div
-          className="text-sm flex border border-dark-dark shadow-md rounded-md w-full hover:scale-105 transition-all duration-150 min-h-[6rem] animate-fadeIn"
+          className="text-sm flex border border-dark-charcoal shadow-md rounded-md w-full hover:scale-105 transition-all duration-150 min-h-[6rem] animate-fadeIn"
           title="Data comemorativa">
           {showNavigationButtons ? (
             <button
               type="button"
               aria-label="Ver evento anterior"
               onClick={() => prevDailyHighlight()}
-              className="flex items-center justify-center cursor-pointer hover:bg-dark-dark px-2 transition-all duration-150 ">
+              className="flex items-center justify-center cursor-pointer hover:bg-dark-charcoal px-2 transition-all duration-150 ">
               <MdOutlineNavigateNext className=" text-2xl rotate-180" />
             </button>
           ) : undefined}
@@ -40,7 +40,7 @@ export const DailyHighlightCarousel = () => {
               type="button"
               aria-label="Ver proximo evento"
               onClick={() => nextDailyHighlight()}
-              className="flex items-center justify-center cursor-pointer hover:bg-dark-dark px-2 transition-all duration-150 ">
+              className="flex items-center justify-center cursor-pointer hover:bg-dark-charcoal px-2 transition-all duration-150 ">
               <MdOutlineNavigateNext className=" text-2xl" />
             </button>
           ) : undefined}

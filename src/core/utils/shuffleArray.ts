@@ -12,5 +12,3 @@ export const shuffleArray = <T>(array: T[]): T[] => {
 
   return arrayFinal;
 };
-
-// fixname

@@ -13,7 +13,7 @@ export const MainTemplate = ({ children }: ITemplateDefaultProps) => {
     <div className="relative mt-[120px]">
       <EnvironmentName />
 
-      <header className="fixed top-0 left-0 z-50 w-full flex items-center justify-end bg-dark/50 backdrop-blur-sm shadow-md h-14 ">
+      <header className="fixed top-0 left-0 z-50 w-full flex items-center justify-end bg-dark-slate/50 backdrop-blur-sm shadow-md h-14 ">
         <div className="ml-6 hidden md:block" />
         <div className="ml-2 w-14 h-full hidden md:block" />
         <div className="ml-2 w-14 h-full hidden md:block" />

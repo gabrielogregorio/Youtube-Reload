@@ -1,6 +1,6 @@
 import { emojis } from '@/features/Profile/data/profile';
 import { StorageAccessNameEnum, StorageService } from '@/services/StorageService';
-import { shuffleArray } from '@/utils/generators';
+import { shuffleArray } from '@/utils/shuffleArray';
 
 export class ProfileService {
   private static generateRandomProfileEmoji(): string {

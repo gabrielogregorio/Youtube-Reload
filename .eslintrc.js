@@ -66,7 +66,7 @@ module.exports = {
       {
         min: 3,
         properties: 'never',
-        exceptions: ['id'],
+        exceptions: ['id', 'on', 'config'],
       },
     ],
     'react/require-default-props': [
@@ -165,11 +165,14 @@ module.exports = {
           'fieldset',
           'readonly',
           'href',
+          'bdd',
           'dsn',
           'integrations',
           'emojis',
           'Sao',
           'Paulo',
+          'Bundler',
+          'Esbuild',
           'Gmt',
         ],
         minLength: 3,

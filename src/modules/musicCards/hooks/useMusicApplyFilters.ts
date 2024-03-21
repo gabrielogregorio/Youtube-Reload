@@ -8,7 +8,20 @@ import { parseToYoutubeContent } from '@/modules/musicCards/utils/parseToYoutube
 
 const LIMIT_FILTER = 500;
 
-export const useMusicApplyFilters = ({ random = false, offset = 0, limit = LIMIT_FILTER, onlyLikes = false, onlyUnLikes = false }) => {
+interface IUseMusicApplyFiltersInputType {
+  random?: boolean;
+  offset?: number;
+  limit?: number;
+  likeFilter?: 'none' | 'onlyLike' | 'onlyUnlike';
+  onlyUnLikes?: boolean;
+}
+
+export const useMusicApplyFilters = ({
+  random = false,
+  offset = 0,
+  limit = LIMIT_FILTER,
+  likeFilter = 'none',
+}: IUseMusicApplyFiltersInputType) => {
   const { musics } = useFetchAllMusics();
   const { reactions } = useReactions();
   const [filter, setFilter] = useState<MusicFromApiMapper[]>([]);
@@ -24,19 +37,23 @@ export const useMusicApplyFilters = ({ random = false, offset = 0, limit = LIMIT
       filtered = generateRandomPlaylist(filtered);
     }
 
-    if (onlyLikes) {
-      filtered = filtered.filter((item) => reactions?.[item.id] === ReactionEnum.like);
-    }
+    filtered = filtered.filter((item) => {
+      let showItem = true;
+      if (likeFilter === 'onlyLike') {
+        showItem = reactions?.[item.id] === ReactionEnum.like;
+      }
 
-    if (onlyUnLikes) {
-      filtered = filtered.filter((item) => reactions?.[item.id] === ReactionEnum.unlike);
-    }
+      if (likeFilter === 'onlyUnlike') {
+        showItem = reactions?.[item.id] === ReactionEnum.unlike;
+      }
+
+      return showItem;
+    });
 
     filtered = applyOffsetAndLimit(offset, limit, filtered);
 
     setFilter(filtered);
   };
-  // refactor
 
   return {
     filtered: parseToYoutubeContent(filter),
