@@ -52,7 +52,7 @@ export class DateReload {
   }
 
   public static convertGmtToTimezoneSaoPauloAndPtBrStyle(dateGmt: string) {
-    return new Date(dateGmt).toLocaleString('pt-BR', {
+    return new Date(dateGmt).toLocaleString('pt', {
       timeZone: 'America/Sao_Paulo',
       dateStyle: 'full',
     });

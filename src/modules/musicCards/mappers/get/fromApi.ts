@@ -1,9 +1,12 @@
 import { CategoryEnum } from '@/modules/musicCards/data/data.reload';
 
+export type languageType = 'en' | 'pt' | 'es';
+
 export interface IMusicApi {
   year: number;
   artist: string;
   id: string;
+  language: languageType;
   title: string;
   durationInSeconds: number;
   category: CategoryEnum;
@@ -20,6 +23,8 @@ export class MusicFromApiMapper {
 
   public readonly id: string;
 
+  public readonly language: languageType;
+
   public readonly title: string;
 
   public readonly durationInSeconds: number;
@@ -35,6 +40,7 @@ export class MusicFromApiMapper {
     this.artist = artist;
     this.id = String(item?.id || '');
     this.title = title;
+    this.language = item?.language as languageType;
     this.durationInSeconds = Number(item?.durationInSeconds) || 0;
     this.minuteToSkipIntroduction = item?.minuteToSkipIntroduction;
   }

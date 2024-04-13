@@ -25,11 +25,13 @@ export const NavbarItem = ({ text, nameScreen, isActive, icon }: INavbarItemProp
     <button
       type="button"
       onClick={handleClickNavItem}
+      disabled={false}
+      aria-current={isActive ? 'page' : 'false'}
       className={tailwindMerge(
         'border-b-4 bg-transparent bg-dark-slate decoration-none p-5 pb-1 mb-4 cursor-pointer transition-all duration-150 hover:scale-110 select-none font-bold flex items-center justify-center',
         styleOnActive,
       )}
-      aria-label={`Navigate to ${text}`}>
+      aria-label={`${text}`}>
       <span className="md:hidden">{icon}</span>
       <span className="ml-2 hidden md:block text-base">{text}</span>
     </button>

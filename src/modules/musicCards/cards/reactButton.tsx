@@ -5,6 +5,8 @@ interface IReactButtonProps {
   text: string;
   variant: 'blue' | 'red';
   sendReaction: () => void;
+  ariaLabel: string;
+  title: string;
 }
 
 interface IDefaultColorType {
@@ -13,7 +15,7 @@ interface IDefaultColorType {
   normal: string;
 }
 
-export const ReactButton = ({ isSelected, text, variant, sendReaction }: IReactButtonProps) => {
+export const ReactButton = ({ isSelected, text, variant, sendReaction, ariaLabel, title }: IReactButtonProps) => {
   const variants: { [key in IReactButtonProps['variant']]: IDefaultColorType } = {
     blue: {
       select: 'bg-blue-deep text-white border-blue-deep hover:text-white',
@@ -32,6 +34,9 @@ export const ReactButton = ({ isSelected, text, variant, sendReaction }: IReactB
     <button
       type="button"
       onClick={() => sendReaction()}
+      aria-pressed={isSelected ? 'true' : 'false'}
+      aria-label={ariaLabel}
+      title={title}
       className={tailwindMerge(
         `text-[0.9rem] py-[10px] font-bold px-[15px] cursor-pointer bg-transparent transition-all duration-150 border-2 rounded-xl select-none ${
           styleVariant.normal

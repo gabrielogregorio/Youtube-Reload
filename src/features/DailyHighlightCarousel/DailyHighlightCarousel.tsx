@@ -11,7 +11,7 @@ export const DailyHighlightCarousel = () => {
   }
 
   return (
-    <div className="flex items-center justify-center">
+    <section className="flex items-center justify-center" aria-label="Frase do dia">
       <div className="max-w-md w-full">
         <div
           className="text-sm flex border border-dark-charcoal shadow-md rounded-md w-full hover:scale-105 transition-all duration-150 min-h-[6rem] animate-fadeIn"
@@ -46,6 +46,6 @@ export const DailyHighlightCarousel = () => {
           ) : undefined}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
