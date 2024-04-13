@@ -11,7 +11,7 @@ module.exports = {
         display: ['Oswald'],
       },
       colors: {
-        white: { soft: '#ebebeb', 'white-ultra-light': '#fbfbfe' },
+        white: { soft: '#ebebeb', 'ultra-light': '#fbfbfe', DEFAULT: '#ffffff' },
         dark: {
           charcoal: '#1f2126',
           slate: '#2d3036',
@@ -19,12 +19,14 @@ module.exports = {
         },
         red: {
           bright: '#ff5959',
+          bright2: '#9B2727',
           soft: '#ff7373',
         },
         blue: {
           sky: '#5eb2ff',
           cerulean: '#49a7fc',
           vivid: '#2f81ff',
+          vivid2: '#2f81ff',
           deep: '#185fcc',
           navy: '#134187',
         },

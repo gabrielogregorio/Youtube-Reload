@@ -20,7 +20,7 @@ export const HomePage = () => {
     <div>
       <Cards cards={filtered} />
 
-      <section className="w-full flex justify-center items-center mt-16">
+      <section className="w-full flex justify-center items-center mt-16" aria-label="Generate playlist actions">
         <GeneratePlaylist generateRandomPlaylist={applyFilters} />
       </section>
 
