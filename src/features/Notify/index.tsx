@@ -46,7 +46,7 @@ export const Notify = () => {
         {notifyIsOpen ? <AiFillBell /> : <AiOutlineBell />}
 
         {newNotificationCount ? (
-          <div className="w-3 h-3 bg-red-bright rounded-full flex items-center justify-center absolute top-0 right-0 text-[0.7rem]">
+          <div className="w-3 h-3 bg-red-bright2 text-white font-bold rounded-full flex items-center justify-center absolute top-0 right-0 text-[0.7rem]">
             {newNotificationCount}
           </div>
         ) : undefined}

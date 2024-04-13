@@ -2,7 +2,7 @@
 
 context('<App /> ', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:5556');
+    cy.visit('/');
   });
 
   it('should render app', () => {

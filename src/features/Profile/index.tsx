@@ -15,15 +15,14 @@ export const Profile = ({ className = undefined }: IProps) => {
   };
 
   return (
-    <div className={tailwindMerge('ml-2 w-14 h-full flex items-center justify-center', className)} aria-label="User profile">
+    <section className={tailwindMerge('ml-2 w-14 h-full flex items-center justify-center', className)} aria-label="User profile">
       <button
-        title="Trocar de emoji"
-        aria-label="Trocar foto de perfil"
         type="button"
+        aria-label="Trocar foto de perfil"
         onClick={handleUpdateEmojiProfile}
-        className="flex items-center justify-center h-6 w-6 hover:h-8 hover:w-8 rounded-full text-xl cursor-pointer select-none hover:bg-dark-grey transition-all duration-150">
+        className="flex items-center justify-center h-6 w-6 hover:h-8 hover:w-8 rounded-full text-xl cursor-pointer select-none bg-dark-dark hover:bg-dark-grey transition-all duration-150">
         {emoji}
       </button>
-    </div>
+    </section>
   );
 };

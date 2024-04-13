@@ -13,7 +13,7 @@ export const Navbar = () => {
   const { currentScreen } = useCurrentScreen();
 
   return (
-    <nav className="w-full flex items-center justify-center" role="navigation" aria-label="Main Navigation">
+    <nav className="w-full flex items-center justify-center" aria-label="Main Navigation">
       {navItems.map((item) => (
         <NavbarItem key={item.screen} isActive={currentScreen === item.screen} nameScreen={item.screen} text={item.text} icon={item.icon} />
       ))}
