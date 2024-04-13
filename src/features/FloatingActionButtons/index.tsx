@@ -15,7 +15,7 @@ export const FloatingActionButtons = ({ generateRandomPlaylist }: IFloatingActio
   const { updateCurrentScreen } = useCurrentScreen();
 
   return (
-    <section>
+    <aside aria-label="Ações rápidas">
       <LateralButton
         action={() => {
           LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'move to top' });
@@ -51,6 +51,6 @@ export const FloatingActionButtons = ({ generateRandomPlaylist }: IFloatingActio
         variant={LateralButtonEnum.Blue}
         icon={<BiRefresh className="text-2xl" />}
       />
-    </section>
+    </aside>
   );
 };

@@ -15,7 +15,9 @@ export const UnLikesPage = () => {
 
   return (
     <div>
-      <Cards cards={filtered} />
+      <main>
+        <Cards cards={filtered} />
+      </main>
 
       <FloatingActionButtons generateRandomPlaylist={applyFilters} />
     </div>

@@ -1,16 +1,16 @@
-describe('todo', () => {
+describe('ValidateAccessibility', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:5556');
+    cy.visit('/');
   });
 
   it('should run lighthouse the audits', { retries: 0 }, () => {
     const thresholds = {
-      accessibility: 40,
-      'best-practices': 40,
-      seo: 0,
+      accessibility: 90,
+      'best-practices': 90,
+      seo: 90,
       pwa: 0,
       performance: 40,
-      'first-contentful-paint': 400000,
+      'first-contentful-paint': 30000,
     };
 
     const options = {
@@ -37,10 +37,12 @@ describe('todo', () => {
   it.skip(
     'should run pa11y the audits',
     {
-      retries: 0,
+      retries: 2,
     },
     () => {
-      cy.pa11y({ reporter: 'html', ignore: [], threshold: 7 });
+      cy.get('button:contains("Gerar Playlist")').should('be.visible');
+
+      cy.pa11y({ reporter: 'html', ignore: [], threshold: 7, rootElement: '#root-react-youtube-reload-app' });
     },
   );
 });

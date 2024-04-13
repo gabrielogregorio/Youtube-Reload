@@ -67,7 +67,7 @@ jobs:
         run: npx cypress install
 
       - name: running e2e tests
-        run: pnpm run e2e:headless
+        run: pnpm run prod:e2e:headless
 
   unit_tests_and_up_coverage:
     needs: install

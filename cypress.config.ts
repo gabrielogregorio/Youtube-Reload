@@ -1,9 +1,7 @@
 import { defineConfig } from 'cypress';
 import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
 import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-preprocessor';
-// @ts-ignore
 import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild';
-
 import pluginConfig from './cypress/plugins/index';
 
 const loadBddConfig = async (on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) => {
@@ -21,9 +19,18 @@ const loadCustomPlugins = (on: Cypress.PluginEvents, config: Cypress.PluginConfi
   pluginConfig(on, config);
 };
 
+const showCypressLogOnHeadlessMode = (on) => {
+  on('task', {
+    log(...message) {
+      console.log(...message);
+      return null;
+    },
+  });
+};
+
 async function setupNodeEvents(on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions): Promise<Cypress.PluginConfigOptions> {
   loadCustomPlugins(on, config);
-
+  showCypressLogOnHeadlessMode(on);
   await loadBddConfig(on, config);
 
   return config;
@@ -33,16 +40,16 @@ export default defineConfig({
   chromeWebSecurity: false,
   viewportWidth: 1366,
   viewportHeight: 768,
-  defaultCommandTimeout: 15000,
-  pageLoadTimeout: 15000,
-  requestTimeout: 15000,
-  responseTimeout: 15000,
+  defaultCommandTimeout: 5000,
+  pageLoadTimeout: 5000,
+  requestTimeout: 5000,
+  responseTimeout: 5000,
   screenshotOnRunFailure: true,
   video: false,
-  retries: 2,
+  retries: 1,
   e2e: {
     setupNodeEvents,
     specPattern: ['cypress/e2e/bdd/cases/*.feature', 'cypress/e2e/tests/*.{js,ts}'],
-    baseUrl: 'http://127.0.0.1:5556',
+    baseUrl: 'http://127.0.0.1:5556/youtube-reload',
   },
 });
