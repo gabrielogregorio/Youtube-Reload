@@ -4,7 +4,7 @@
     "baseUrl": "./cypress/",
     "isolatedModules": false,
     "noEmit": true,
-    "types": ["node", "cypress", "cypress-audit", "cypress-real-events"]
+    "types": ["node", "cypress", "cypress-audit", "cypress-real-events", "cypress-axe"]
   },
-  "includes": ["../node_modules/cypress", "./**/*.ts", "./", "./cypress.config.ts"]
+  "includes": ["../node_modules/cypress", "./**/*.ts", "./**/**/*.ts"]
 }

@@ -18,11 +18,13 @@ export const HomePage = () => {
 
   return (
     <div>
-      <Cards cards={filtered} />
+      <main>
+        <Cards cards={filtered} />
 
-      <section className="w-full flex justify-center items-center mt-16" aria-label="Generate playlist actions">
-        <GeneratePlaylist generateRandomPlaylist={applyFilters} />
-      </section>
+        <section className="w-full flex justify-center items-center mt-16" aria-label="Generate playlist actions">
+          <GeneratePlaylist generateRandomPlaylist={applyFilters} />
+        </section>
+      </main>
 
       <FloatingActionButtons generateRandomPlaylist={applyFilters} />
     </div>

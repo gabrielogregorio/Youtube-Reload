@@ -15,7 +15,9 @@ export const LikesPage = () => {
 
   return (
     <div>
-      <Cards cards={filtered} />
+      <main>
+        <Cards cards={filtered} />
+      </main>
 
       <FloatingActionButtons generateRandomPlaylist={applyFilters} />
     </div>

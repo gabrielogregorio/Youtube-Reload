@@ -8,7 +8,7 @@ import { store } from '@/core/states/redux/store';
 import './assets/tailwindConfig.css';
 import '@/services/log/init';
 
-const root: ReactDOM.Root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+const root: ReactDOM.Root = ReactDOM.createRoot(document.getElementById('root-react-youtube-reload-app') as HTMLElement);
 
 root.render(
   <React.StrictMode>

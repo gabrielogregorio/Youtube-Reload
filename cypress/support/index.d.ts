@@ -1,5 +1,10 @@
 declare namespace Cypress {
   interface Chainable {
-    login(email: string, password: string): Chainable<void>;
+    /**
+     * @example cy.verifyAccessibilityAxeA11y(props)
+     * cy.wait('@login')
+     *
+     */
+    verifyAccessibilityAxeA11y(props: { root: string; screensSizesToTest?: (Cypress.ViewportPreset | number[])[] });
   }
 }

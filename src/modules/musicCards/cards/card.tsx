@@ -13,7 +13,7 @@ export const Card = ({ playlistLocal, sendReaction, reaction }: IProps) => {
     <li
       key={playlistLocal.url}
       className="flex flex-col group cursor-pointer bg-dark-charcoal border-dark-charcoal border rounded-xl md:hover:scale-105 transition-all duration-300 shadow-xl">
-      <section aria-label="item">
+      <div>
         <a target="_blank" href={playlistLocal.url} rel="noreferrer" aria-label={`View ${playlistLocal.title} on YouTube`}>
           <header>
             <img
@@ -57,7 +57,7 @@ export const Card = ({ playlistLocal, sendReaction, reaction }: IProps) => {
             text="ignorar"
           />
         </footer>
-      </section>
+      </div>
     </li>
   );
 };
