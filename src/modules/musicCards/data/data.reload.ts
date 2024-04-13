@@ -11,6 +11,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Lucy Thomas',
     title: 'Hallelujah',
+    language: 'en',
     id: '4hjgkvuKES8',
     year: 2020,
     category: CategoryEnum.reload,
@@ -22,6 +23,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'a banda mais bonita da cidade (c/ leo fressato)',
     title: 'oração',
+    language: 'pt',
     id: 'QW0i1U4u0KE',
     year: 2011,
     category: CategoryEnum.reload,
@@ -33,6 +35,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Led Zeppelin',
     title: 'Immigrant Song',
+    language: 'en',
     id: 'P3Y8OWkiUts',
     year: 1970,
     category: CategoryEnum.reload,
@@ -44,6 +47,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Seal',
     title: 'Stand by Me (Live)',
+    language: 'en',
     id: 'OINw340XQbg',
     year: 2017,
     category: CategoryEnum.reload,
@@ -55,6 +59,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Banda Os Normais Musica',
     title: 'Vá Embora.',
+    language: 'pt',
     id: 'SxHk_XOA1kE',
     year: 2019,
     category: CategoryEnum.reload,
@@ -66,6 +71,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'P.O. Box',
     title: 'Papo de Jacaré',
+    language: 'pt',
     id: 'lMqeL99vwaY',
     year: 1997,
     category: CategoryEnum.reload,
@@ -77,6 +83,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Post Malone, Swae Lee',
     title: 'Sunflower (Spider-Man: Into the Spider-Verse)',
+    language: 'en',
     id: 'ApXoWvfEYVU',
     year: 2018,
     category: CategoryEnum.reload,
@@ -88,6 +95,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Maduk ft Veela',
     title: 'Ghost Assassin',
+    language: 'en',
     id: 'tEcggRukZCs',
     year: 2012,
     category: CategoryEnum.reload,
@@ -99,6 +107,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'The Wanted',
     title: 'Glad You Came',
+    language: 'en',
     id: '2ggzxInyzVE',
     year: 2012,
     category: CategoryEnum.reload,
@@ -110,6 +119,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Legião Urbana',
     title: 'Eduardo e Mônica',
+    language: 'pt',
     id: 'bsutUab2fkI',
     year: 1986,
     category: CategoryEnum.reload,
@@ -121,6 +131,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Amado Batista',
     title: 'O Fruto Do Nosso Amor (Amor Perfeito)',
+    language: 'pt',
     id: 'vusZcitPsrY',
     year: 2005,
     category: CategoryEnum.reload,
@@ -132,6 +143,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Amado Batista & Simone & Simaria',
     title: 'Folha Seca',
+    language: 'pt',
     id: 'auF-ZZQmNRY',
     year: 2019,
     category: CategoryEnum.reload,
@@ -143,6 +155,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Lykke Li',
     title: 'I Follow Rivers',
+    language: 'en',
     id: 'K3JGxj2rvAs',
     year: 2011,
     category: CategoryEnum.reload,
@@ -154,6 +167,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Boney M.',
     title: 'Rivers of Babylon',
+    language: 'en',
     id: 'l3QxT-w3WMo',
     year: 1979,
     category: CategoryEnum.reload,
@@ -165,6 +179,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Joelma',
     title: 'Voando Pro Pará',
+    language: 'pt',
     id: 'wR3jqHayULY',
     year: 2016,
     category: CategoryEnum.reload,
@@ -176,6 +191,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Tieta',
     title: 'Tieta',
+    language: 'pt',
     id: 'txuOLGvxWTg',
     year: 1989,
     category: CategoryEnum.reload,
@@ -187,6 +203,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Latino e Perlla',
     title: 'Selinho na Boca',
+    language: 'pt',
     id: 'N0jPJfQ_2hs',
     year: 2008,
     category: CategoryEnum.reload,
@@ -198,6 +215,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Jão',
     title: 'Idiota',
+    language: 'pt',
     id: 'h27qhWrgXIg',
     year: 2021,
     category: CategoryEnum.reload,
@@ -210,6 +228,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Dilson Monteiro',
     title: 'Eterno Amor',
+    language: 'pt',
     id: 'uQcrJI8l6ZA',
     year: 2021,
     category: CategoryEnum.reload,
@@ -221,6 +240,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'João Gomes e Vanessa da Mata',
     title: 'SÓ VOCÊ E EU / AMADO',
+    language: 'pt',
     id: 'RXrYjpFU8Tg',
     year: 2022,
     category: CategoryEnum.reload,
@@ -232,6 +252,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'The Black Eyed Peas',
     title: 'I Gotta Feeling',
+    language: 'en',
     id: 'uSD4vsh1zDA',
     year: 2009,
     category: CategoryEnum.reload,
@@ -243,6 +264,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Gnarls Barkley',
     title: 'Crazy',
+    language: 'en',
     id: '-N4jf6rtyuw',
     year: 2006,
     category: CategoryEnum.reload,
@@ -254,6 +276,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'P!nk',
     title: 'Get the Party Started',
+    language: 'en',
     id: 'mW1dbiD_zDk',
     year: 2001,
     category: CategoryEnum.reload,
@@ -265,6 +288,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Kelly Clarkson',
     title: "Stronger (What Doesn't Kill You)",
+    language: 'en',
     id: 'Xn676-fLq7I',
     year: 2011,
     category: CategoryEnum.reload,
@@ -276,6 +300,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Ultraje a Rigor',
     title: 'Nós Vamos Invadir sua Praia',
+    language: 'pt',
     id: 'VJNill3YOcs',
     year: 1985,
     category: CategoryEnum.reload,
@@ -287,6 +312,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Harry Nilsson',
     title: 'Without You',
+    language: 'en',
     id: 'G-ZDKirjQgM',
     year: 1971,
     category: CategoryEnum.reload,
@@ -298,6 +324,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Tears For Fears',
     title: 'Mad World',
+    language: 'en',
     id: 'u1ZvPSpLxCg',
     year: 1983,
     category: CategoryEnum.reload,
@@ -309,6 +336,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Kim Carnes',
     title: 'Bette Davis Eyes',
+    language: 'en',
     id: 'EPOIS5taqA8',
     year: 1981,
     category: CategoryEnum.reload,
@@ -320,6 +348,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'James Blunt',
     title: "You're Beautiful",
+    language: 'en',
     id: 'oofSnsGkops',
     year: 2004,
     category: CategoryEnum.reload,
@@ -331,6 +360,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Tropa de Elite',
     title: 'Tihuana',
+    language: 'pt',
     id: 'R7PqvzSwU9s',
     year: 2000,
     category: CategoryEnum.reload,
@@ -342,6 +372,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'MC Loma e as Gêmeas Lacração',
     title: 'Envolvimento',
+    language: 'pt',
     id: 'lgJOJAmXlBw',
     year: 2018,
     category: CategoryEnum.reload,
@@ -353,6 +384,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Coldplay',
     title: 'Viva La Vida',
+    language: 'en',
     id: 'dvgZkm1xWPE',
     year: 2008,
     category: CategoryEnum.reload,
@@ -364,6 +396,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Fernanda Abreu',
     title: 'Rio 40 Graus',
+    language: 'pt',
     id: 'AhuJ3dUVQvc',
     year: 1992,
     category: CategoryEnum.reload,
@@ -375,6 +408,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'MC Guimê',
     title: 'País do Futebol',
+    language: 'pt',
     id: 'mQq6lIv8QjA',
     year: 2014,
     category: CategoryEnum.reload,
@@ -386,6 +420,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Wolf Parade',
     title: "I'll Believe In Anything",
+    language: 'en',
     id: '7G1eLTV89dM',
     year: 2005,
     category: CategoryEnum.reload,
@@ -397,6 +432,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Ivete Sangalo',
     title: 'Sorte Grande',
+    language: 'pt',
     id: 'ZEaI-ZQ9yMs',
     year: 2003,
     category: CategoryEnum.reload,
@@ -408,6 +444,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Bonnie Tyler',
     title: 'Holding Out For A Hero ',
+    language: 'en',
     id: 'bWcASV2sey0',
     year: 1984,
     category: CategoryEnum.reload,
@@ -419,6 +456,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Chimarruts',
     title: 'Do Lado de Cá',
+    language: 'pt',
     id: 'JQlKMX2LLHg',
     year: 2010,
     category: CategoryEnum.reload,
@@ -431,6 +469,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'The Feelies',
     title: 'Crazy Rhythms',
+    language: 'en',
     id: '05GTWKu4uU8',
     year: 1980,
     category: CategoryEnum.reload,
@@ -442,6 +481,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Laura Branigan',
     title: 'Gloria',
+    language: 'en',
     id: 'nNEb2k_EmMg',
     year: 1982,
     category: CategoryEnum.reload,
@@ -453,6 +493,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Juice Newton',
     title: 'Queen of Hearts',
+    language: 'en',
     id: 'P0DK-0fIKCw',
     year: 1981,
     category: CategoryEnum.reload,
@@ -464,6 +505,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Desireless',
     title: 'Voyage Voyage',
+    language: 'en',
     id: 'wb_K0Omdfg0',
     year: 1989,
     category: CategoryEnum.reload,
@@ -475,6 +517,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Rod Stewart',
     title: "I Don't Want To Talk About It",
+    language: 'en',
     id: 'w46bWxS9IjY',
     year: 1975,
     category: CategoryEnum.reload,
@@ -486,6 +529,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Metrô',
     title: 'Tudo pode mudar',
+    language: 'pt',
     id: 'nAjT4TCj9Fs',
     year: 1985,
     category: CategoryEnum.reload,
@@ -497,6 +541,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Cyndi Lauper',
     title: 'Girls Just Want To Have Fun',
+    language: 'en',
     id: 'PIb6AZdTr-A',
     year: 1983,
     category: CategoryEnum.reload,
@@ -508,6 +553,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Olivia Newton-John, John Travolta',
     title: "You're The One That I Want",
+    language: 'en',
     id: 'e__Pp4FxsjU',
     year: 1978,
     category: CategoryEnum.reload,
@@ -519,6 +565,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'ABBA',
     title: 'Lay all your love on me',
+    language: 'en',
     id: 'Ln-Ua2teJKw',
     year: 1980,
     category: CategoryEnum.reload,
@@ -530,6 +577,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Blondie',
     title: 'Maria',
+    language: 'en',
     id: 'abw49k3rIN0',
     year: 1999,
     category: CategoryEnum.reload,
@@ -541,6 +589,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Alizée',
     title: "J'ien ai marre!",
+    language: 'en',
     id: 'G4LIM9VYhB0',
     year: 2007,
     category: CategoryEnum.reload,
@@ -552,6 +601,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Karametade',
     title: 'Morango do Nordeste',
+    language: 'pt',
     id: '8-2ejxovclc',
     year: 2000,
     category: CategoryEnum.reload,
@@ -563,6 +613,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Metro',
     title: 'Tudo Pode Mudar',
+    language: 'pt',
     id: 'rVS-O5wdNuQ',
     year: 1985,
     category: CategoryEnum.reload,
@@ -574,6 +625,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Regina Spektor',
     title: 'Us',
+    language: 'en',
     id: 'fczPlmz-Vug',
     year: 2003,
     category: CategoryEnum.reload,
@@ -585,6 +637,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Cheiro de Amor/Carla Visi',
     title: 'Vai Sacudir, Vai Abalar',
+    language: 'pt',
     id: 'bEjaM9GbI6s',
     year: 1996,
     category: CategoryEnum.reload,
@@ -596,6 +649,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Regina Spektor',
     title: "Don't Leave Me",
+    language: 'en',
     id: 'BWXWivwhi14',
     year: 2012,
     category: CategoryEnum.reload,
@@ -607,6 +661,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Banda Eva/Ivete Sangalo',
     title: 'Beleza Rara',
+    language: 'pt',
     id: 'I1cJnN-o7vU',
     year: 1996,
     category: CategoryEnum.reload,
@@ -618,6 +673,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Thaeme e Thiago',
     title: 'Cafajeste',
+    language: 'pt',
     id: '4GnnRiezYd8',
     year: 2014,
     category: CategoryEnum.reload,
@@ -629,6 +685,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Babado Novo',
     title: 'Bola De Sabão',
+    language: 'pt',
     id: '_w3AoEcImkw',
     year: 2005,
     category: CategoryEnum.reload,
@@ -640,6 +697,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Roxette',
     title: 'It Must Have Been Love',
+    language: 'en',
     id: 'k2C5TjS2sh4',
     year: 1986,
     category: CategoryEnum.reload,
@@ -651,6 +709,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Vivo',
     title: '"DELEI" - O rapaz que vive atrasado',
+    language: 'pt',
     id: '3QaxlK4kolw',
     year: 2014,
     category: CategoryEnum.reload,
@@ -662,6 +721,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Gaby Amarantos',
     title: 'Ex Mai Love',
+    language: 'pt',
     id: 's-5RfIXRIto',
     year: 2012,
     category: CategoryEnum.available,
@@ -673,6 +733,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Psirico',
     title: 'Lepo Lepo',
+    language: 'pt',
     id: 'AHVS5DW434g',
     year: 2014,
     category: CategoryEnum.reload,
@@ -684,6 +745,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Banda Vingadora',
     title: 'Metralhadora',
+    language: 'pt',
     id: 'YzCoZGsod0c',
     year: 2015,
     category: CategoryEnum.available,
@@ -695,6 +757,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Malu e LUCAS',
     title: 'DISCO ARRANHADO',
+    language: 'pt',
     id: 'JisUmQmEqB8',
     year: 2021,
     category: CategoryEnum.reload,
@@ -706,6 +769,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Luis Fonsi ft. Daddy Yankee',
     title: 'Despacito',
+    language: 'es',
     id: 'kJQP7kiw5Fk',
     year: 2017,
     category: CategoryEnum.reload,
@@ -717,6 +781,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Shakira ft. Pitbull',
     title: 'Rabiosa',
+    language: 'es',
     id: 'a5irTX82olg',
     year: 2010,
     category: CategoryEnum.reload,
@@ -728,6 +793,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Miley Cyrus',
     title: 'Party In The U.S.A.',
+    language: 'en',
     id: 'M11SvDtPBhA',
     year: 2009,
     category: CategoryEnum.reload,
@@ -739,6 +805,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Vengaboys',
     title: 'We like to Party!',
+    language: 'en',
     id: '6Zbi0XmGtMw',
     year: 1998,
     category: CategoryEnum.reload,
@@ -750,6 +817,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Giulia Be',
     title: 'menina solta',
+    language: 'pt',
     id: 'vz9XHsctOtc',
     year: 2020,
     category: CategoryEnum.available,
@@ -761,6 +829,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Caroline Jones',
     title: 'Rise',
+    language: 'en',
     id: 'VqlwKBrrMXk',
     year: 2017,
     category: CategoryEnum.reload,
@@ -772,6 +841,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Kelly Key',
     title: 'Cachorrinho',
+    language: 'pt',
     id: 'bANQVGy-wq4',
     year: 2001,
     category: CategoryEnum.reload,
@@ -783,6 +853,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Spice Girls',
     title: 'Wannabe',
+    language: 'en',
     id: 'gJLIiF15wjQ',
     year: 1996,
     category: CategoryEnum.reload,
@@ -794,6 +865,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Aqua',
     title: 'Barbie Girl',
+    language: 'en',
     id: 'ZyhrYis509A',
     year: 1997,
     category: CategoryEnum.reload,
@@ -805,6 +877,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Loona',
     title: 'Parapapapapa',
+    language: 'en',
     id: 'Q_NqQq51jaM',
     year: 2009,
     category: CategoryEnum.reload,
@@ -816,6 +889,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Vengaboys',
     title: 'Boom Boom Boom',
+    language: 'en',
     id: 'YKNkC6Sk7DU',
     year: 1998,
     category: CategoryEnum.available,
@@ -827,6 +901,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Carly Rae Jepsen',
     title: 'Call Me Maybe',
+    language: 'en',
     id: 'fWNaR-rxAic',
     year: 2012,
     category: CategoryEnum.reload,
@@ -838,6 +913,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Imagine Dragons',
     title: 'Radioactive',
+    language: 'en',
     id: 'ktvTqknDobU',
     year: 2012,
     category: CategoryEnum.reload,
@@ -849,6 +925,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Rednex',
     title: 'Cotton Eye Joe',
+    language: 'en',
     id: 'mOYZaiDZ7BM',
     year: 1995,
     category: CategoryEnum.reload,
@@ -860,6 +937,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Boom',
     title: 'How Do You Do',
+    language: 'en',
     id: '23UGN3qqBWY',
     year: 2009,
     category: CategoryEnum.reload,
@@ -871,6 +949,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Loretta Lynn, Conway Twitty',
     title: 'Louisiana Woman , Mississippi Man',
+    language: 'en',
     id: '2Gd0tgGVPB0',
     year: 1973,
     category: CategoryEnum.available,
@@ -882,6 +961,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Avicii',
     title: 'Hey Brother',
+    language: 'en',
     id: '6Cp6mKbRTQY',
     year: 2013,
     category: CategoryEnum.reload,
@@ -893,6 +973,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'OneRepublic',
     title: 'Counting Stars',
+    language: 'en',
     id: 'hT_nvWreIhg',
     year: 2013,
     category: CategoryEnum.reload,
@@ -904,6 +985,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'David Guetta ft. Sia',
     title: 'Titanium',
+    language: 'en',
     id: 'JRfuAukYTKg',
     year: 2011,
     category: CategoryEnum.reload,
@@ -915,6 +997,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Ricky Martin',
     title: 'Livin La Vida Loca',
+    language: 'en',
     id: 'p47fEXGabaY',
     year: 1999,
     category: CategoryEnum.reload,
@@ -926,6 +1009,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Las Ketchup',
     title: 'Aserejé',
+    language: 'en',
     id: 'arZZw8NyPq8',
     year: 2002,
     category: CategoryEnum.reload,
@@ -937,6 +1021,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'P!nk',
     title: 'Try',
+    language: 'en',
     id: 'yTCDVfMz15M',
     year: 2012,
     category: CategoryEnum.reload,
@@ -948,6 +1033,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Latino',
     title: 'Renata',
+    language: 'pt',
     id: 'LnAJjRflHFE',
     year: 2004,
     category: CategoryEnum.reload,
@@ -959,6 +1045,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Perlla',
     title: 'Tremendo Vacilao',
+    language: 'pt',
     id: 'DN5_iOrJjfc',
     year: 2006,
     category: CategoryEnum.reload,
@@ -970,6 +1057,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Anastacia',
     title: 'Sick and Tired',
+    language: 'en',
     id: 'CshDagHHzmI',
     year: 2017,
     category: CategoryEnum.reload,
@@ -981,6 +1069,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Anne Marie',
     title: 'Ciao Adios',
+    language: 'en',
     id: 'FrA98gZGbDI',
     year: 2016,
     category: CategoryEnum.reload,
@@ -992,6 +1081,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Luka',
     title: 'Tô nem aí',
+    language: 'pt',
     id: 'vO8XQD6mHNg',
     year: 2003,
     category: CategoryEnum.reload,
@@ -1003,6 +1093,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Charli XCX',
     title: 'Break The Rules',
+    language: 'en',
     id: 'ABhDiXbUaBE',
     year: 2014,
     category: CategoryEnum.reload,
@@ -1014,6 +1105,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Marcelo D2',
     title: 'Desabafar / Deixa Eu Dizer',
+    language: 'pt',
     id: 'fTGIHRT9KsI',
     year: 2008,
     category: CategoryEnum.reload,
@@ -1025,6 +1117,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Shania Twain',
     title: 'Any Man Of Mine (Official Music Video)',
+    language: 'en',
     id: '8N2k-gv6xNE',
     year: 1995,
     category: CategoryEnum.reload,
@@ -1036,6 +1129,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Ananda',
     title: 'Quero Que Tu Vá',
+    language: 'pt',
     id: 'w_ejwSACf_U',
     year: 2019,
     category: CategoryEnum.reload,
@@ -1047,6 +1141,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Jessie J ft. B.o.B',
     title: 'Price Tag',
+    language: 'en',
     id: 'qMxX-QOV9tI',
     year: 2011,
     category: CategoryEnum.reload,
@@ -1058,6 +1153,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Sean Kingston',
     title: 'Beautiful Girls',
+    language: 'en',
     id: 'MrTz5xjmso4',
     year: 2009,
     category: CategoryEnum.reload,
@@ -1069,6 +1165,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Joan Osborne',
     title: 'One Of Us',
+    language: 'en',
     id: 'aDdOnl0bHO4',
     year: 1995,
     category: CategoryEnum.reload,
@@ -1080,6 +1177,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Amy Winehouse',
     title: 'Rehab',
+    language: 'en',
     id: 'KUmZp8pR1uc',
     year: 2006,
     category: CategoryEnum.reload,
@@ -1091,6 +1189,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Amy Winehouse',
     title: 'Back To Black',
+    language: 'en',
     id: 'TJAfLE39ZZ8',
     year: 2006,
     category: CategoryEnum.reload,
@@ -1102,6 +1201,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Avril Lavigne',
     title: 'Complicated',
+    language: 'en',
     id: '5NPBIwQyPWE',
     year: 2002,
     category: CategoryEnum.reload,
@@ -1113,6 +1213,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Maroon 5',
     title: 'Sugar',
+    language: 'en',
     id: '09R8_2nJtjg',
     year: 2015,
     category: CategoryEnum.reload,
@@ -1124,6 +1225,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Camila Cabello ft. Young Thug',
     title: 'Havana',
+    language: 'en',
     id: 'HCjNJDNzw8Y',
     year: 2018,
     category: CategoryEnum.reload,
@@ -1135,6 +1237,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Twenty One Pilots',
     title: 'Ride',
+    language: 'en',
     id: 'Pw-0pbY9JeU',
     year: 2015,
     category: CategoryEnum.reload,
@@ -1146,6 +1249,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Loona',
     title: 'Vamos a la playa ',
+    language: 'es',
     id: 'X-77txuiVXs',
     year: 2010,
     category: CategoryEnum.reload,
@@ -1157,6 +1261,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Cherona',
     title: 'Rigga-Ding-Dong-Song',
+    language: 'en',
     id: '3f43xmRqxOM',
     year: 2009,
     category: CategoryEnum.reload,
@@ -1168,6 +1273,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Aqua',
     title: 'Cartoon Heroes',
+    language: 'en',
     id: 'Q_LPJllaogU',
     year: 2003,
     category: CategoryEnum.reload,
@@ -1179,6 +1285,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Red Hot Chili Peppers',
     title: 'Californication',
+    language: 'en',
     id: 'YlUKcNNmywk',
     year: 1999,
     category: CategoryEnum.reload,
@@ -1190,6 +1297,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Thaeme & Thiago',
     title: 'Ai que Dó',
+    language: 'en',
     id: 'Ul4fQt4VvoA',
     year: 2012,
     category: CategoryEnum.reload,
@@ -1201,6 +1309,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Kesha',
     title: 'Take It Off',
+    language: 'en',
     id: 'edP0L6LQzZE',
     year: 2010,
     category: CategoryEnum.reload,
@@ -1212,6 +1321,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Empreguetes',
     title: 'Vida De Empreguete',
+    language: 'pt',
     id: 'LuNexytb77g',
     year: 2012,
     category: CategoryEnum.reload,
@@ -1223,6 +1333,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Jameika Mansur',
     title: 'Clima de Rodeio',
+    language: 'en',
     id: '8rGgsN5RAmI',
     year: 2003,
     category: CategoryEnum.reload,
@@ -1234,6 +1345,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Miranda Cosgrove',
     title: 'About You Now',
+    language: 'en',
     id: 'AlIUNtQEI_s',
     year: 2008,
     category: CategoryEnum.reload,
@@ -1245,6 +1357,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Miranda Cosgrove',
     title: 'Leave It All To Me',
+    language: 'en',
     id: 'HPM05dQgdig',
     year: 2008,
     category: CategoryEnum.reload,
@@ -1256,6 +1369,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Lily Allen',
     title: 'Not Fair',
+    language: 'en',
     id: 'fUYaosyR4bE',
     year: 2009,
     category: CategoryEnum.reload,
@@ -1267,6 +1381,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Roberta Campos',
     title: 'De Janeiro A Janeiro',
+    language: 'pt',
     id: 'J08WH4-4798',
     year: 2008,
     category: CategoryEnum.reload,
@@ -1278,6 +1393,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Heart',
     title: 'Barracuda',
+    language: 'en',
     id: 'PeMvMNpvB5M',
     year: 1977,
     category: CategoryEnum.reload,
@@ -1289,6 +1405,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Legião Urbana',
     title: 'Faroeste Caboclo',
+    language: 'pt',
     id: 'qBIxI580dI8',
     year: 1987,
     category: CategoryEnum.reload,
@@ -1300,6 +1417,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Social Distortion',
     title: 'Story of My Life',
+    language: 'en',
     id: 'oh8zcbC_Dcw',
     year: 1990,
     category: CategoryEnum.reload,
@@ -1311,6 +1429,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Poison',
     title: 'Talk Dirty To Me',
+    language: 'en',
     id: 'xCChxBSRo1Y',
     year: 1986,
     category: CategoryEnum.reload,
@@ -1322,6 +1441,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Journey',
     title: "Don't Stop Believin",
+    language: 'en',
     id: 'VcjzHMhBtf0',
     year: 1981,
     category: CategoryEnum.reload,
@@ -1333,6 +1453,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'João Bosco & Vinícius',
     title: 'Chora, Me Liga',
+    language: 'pt',
     id: '6fJayNqtkM4',
     year: 2009,
     category: CategoryEnum.reload,
@@ -1344,6 +1465,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Pat Benatar',
     title: 'Hit Me With Your Best Shot',
+    language: 'en',
     id: 'JRD80XRMT7s',
     year: 1980,
     category: CategoryEnum.reload,
@@ -1355,6 +1477,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Los Hermanos',
     title: 'Anna Júlia',
+    language: 'pt',
     id: 'umMIcZODm2k',
     year: 1999,
     category: CategoryEnum.reload,
@@ -1366,6 +1489,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Victor & Leo',
     title: 'Fada',
+    language: 'pt',
     id: 'OqukL-DFYms',
     year: 2004,
     category: CategoryEnum.reload,
@@ -1377,6 +1501,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Michel Teló',
     title: 'BARÁ BERÊ',
+    language: 'pt',
     id: 'gEiqSUzQ1fo',
     year: 2011,
     category: CategoryEnum.reload,
@@ -1388,6 +1513,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'The Animals',
     title: 'House of the Rising Sun',
+    language: 'en',
     id: '4-43lLKaqBQ',
     year: 1964,
     category: CategoryEnum.reload,
@@ -1399,6 +1525,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Linkin Park',
     title: 'In The End',
+    language: 'en',
     id: 'eVTXPUF4Oz4',
     year: 2000,
     category: CategoryEnum.reload,
@@ -1410,6 +1537,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Cynthia Erivo',
     title: 'Stand Up',
+    language: 'en',
     id: 'NEMsIHVejWM',
     year: 2019,
     category: CategoryEnum.reload,
@@ -1421,6 +1549,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'The Verve',
     title: 'Bitter Sweet Symphony',
+    language: 'en',
     id: '1lyu1KKwC74',
     year: 1997,
     category: CategoryEnum.reload,
@@ -1432,6 +1561,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Pink Floyd',
     title: 'another brick in the wall',
+    language: 'en',
     id: '5IpYOF4Hi6Q',
     year: 1979,
     category: CategoryEnum.reload,
@@ -1443,6 +1573,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Queen',
     title: 'I want to break free',
+    language: 'en',
     id: 'Kee9Et2j7DA',
     year: 1984,
     category: CategoryEnum.reload,
@@ -1455,6 +1586,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'LS Jack',
     title: 'Carla',
+    language: 'pt',
     id: 'EdZi3tZnbds',
     year: 2002,
     category: CategoryEnum.reload,
@@ -1466,6 +1598,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'O Surto',
     title: 'OA Cera',
+    language: 'pt',
     id: 'i0QCHeCoIz4',
     year: 2000,
     category: CategoryEnum.reload,
@@ -1477,6 +1610,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Bonnie Tyler',
     title: "It's A Heartache",
+    language: 'en',
     id: 'bEOl38y8Nj8',
     year: 0,
     category: CategoryEnum.reload,
@@ -1488,6 +1622,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Projota',
     title: 'Ela Só Quer Paz',
+    language: 'pt',
     id: 'SBs_pd1QQu8',
     year: 2016,
     category: CategoryEnum.reload,
@@ -1499,6 +1634,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Don Henley',
     title: 'The Boys of Summer',
+    language: 'en',
     id: 'DtxlvQqvDQs',
     year: 1984,
     category: CategoryEnum.reload,
@@ -1510,6 +1646,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'John Lennon',
     title: 'IMAGINE',
+    language: 'en',
     id: 'YkgkThdzX-8',
     year: 1971,
     category: CategoryEnum.reload,
@@ -1521,6 +1658,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'The Beatles (reup)',
     title: 'Let It Be',
+    language: 'en',
     id: 'QDYfEBY9NM4',
     year: 1970,
     category: CategoryEnum.reload,
@@ -1532,6 +1670,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Blondie',
     title: 'Heart Of Glass',
+    language: 'en',
     id: 'WGU_4-5RaxU',
     year: 1978,
     category: CategoryEnum.reload,
@@ -1543,6 +1682,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Netinho',
     title: 'Milla',
+    language: 'pt',
     id: 'RYbl88mMMJw',
     year: 1996,
     category: CategoryEnum.reload,
@@ -1554,6 +1694,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Kiss',
     title: 'Rock And Roll All Nite',
+    language: 'en',
     id: 'EFMD7Usflbg',
     year: 1975,
     category: CategoryEnum.reload,
@@ -1565,6 +1706,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'MC Poze do Rodo',
     title: 'No Baile Nós É Mídia',
+    language: 'pt',
     id: 'WZIGwN-5Ioo',
     year: 0,
     category: CategoryEnum.reload,
@@ -1573,10 +1715,10 @@ export const dataMusic: IMusicApi[] = [
     comments: '37k',
     durationInSeconds: 2.49,
   },
-
   {
     artist: 'Banda Djavú e DJ Juninho Portugal',
     title: 'Me Libera',
+    language: 'pt',
     id: 'OT1tRdIJvKw',
     year: 2009,
     category: CategoryEnum.reload,
@@ -1588,6 +1730,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'CPM 22',
     title: 'Um Minuto Para O Fim Do Mundo',
+    language: 'pt',
     id: 'RsEeyZNiwUk',
     year: 2005,
     category: CategoryEnum.reload,
@@ -1599,6 +1742,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Victor & Leo',
     title: 'Borboletas',
+    language: 'pt',
     id: 'FxVRXGraRtc',
     year: 2008,
     category: CategoryEnum.reload,
@@ -1610,6 +1754,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'AronChupa, Little Sis Nora',
     title: "I'm an Albatraoz | ",
+    language: 'en',
     id: 'Bznxx12Ptl0',
     year: 2014,
     category: CategoryEnum.reload,
@@ -1618,10 +1763,10 @@ export const dataMusic: IMusicApi[] = [
     comments: '269k',
     durationInSeconds: 2.28,
   },
-
   {
     artist: 'Pharrell Williams',
     title: 'Happy',
+    language: 'en',
     id: 'ZbZSe6N_BXs',
     year: 2013,
     category: CategoryEnum.reload,
@@ -1630,10 +1775,10 @@ export const dataMusic: IMusicApi[] = [
     comments: '203k',
     durationInSeconds: 4,
   },
-
   {
     artist: 'Gordon Jenkins & His Orchestra, The Weavers',
     title: 'The Weavers Goodnight, Irene',
+    language: 'en',
     id: 'MSDyiUBrUSk',
     year: 1950,
     category: CategoryEnum.reload,
@@ -1645,6 +1790,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Munhoz & Mariano, João Neto & Frederico',
     title: 'BALADA LOUCA',
+    language: 'pt',
     id: 'ndb3uaGdy28',
     year: 2012,
     category: CategoryEnum.reload,
@@ -1657,6 +1803,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'ABBA',
     title: 'bba - Dancing Queen',
+    language: 'en',
     id: 'xFrGuyw1V8s',
     year: 1976,
     category: CategoryEnum.reload,
@@ -1668,6 +1815,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'César Menotti & Fabiano',
     title: 'Ciumenta',
+    language: 'pt',
     id: 'TlYgdZTymkY',
     year: 2008,
     category: CategoryEnum.reload,
@@ -1679,6 +1827,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'César Menotti & Fabiano',
     title: 'Leilão',
+    language: 'pt',
     id: 'rS2FDyOKR2g',
     year: 2005,
     category: CategoryEnum.reload,
@@ -1690,6 +1839,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Titãs',
     title: 'É Preciso Saber Viver',
+    language: 'pt',
     id: 'LpYj_sI79v8',
     year: 1998,
     category: CategoryEnum.reload,
@@ -1701,6 +1851,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Gabriel Diniz',
     title: 'Jenifer',
+    language: 'pt',
     id: 'D2rG7pXd2LY',
     year: 2019,
     category: CategoryEnum.reload,
@@ -1712,6 +1863,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Tiago Iorc',
     title: 'Amei Te Ver',
+    language: 'pt',
     id: 'W62-ZG9tPpI',
     year: 2015,
     category: CategoryEnum.reload,
@@ -1723,6 +1875,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Beyoncé ft. JAY Z',
     title: 'Crazy In Love',
+    language: 'en',
     id: 'ViwtNLUqkMY',
     year: 2003,
     category: CategoryEnum.reload,
@@ -1734,6 +1887,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: '4 Non Blondes',
     title: "What's Up",
+    language: 'en',
     id: '6NXnxTNIWkc',
     year: 0,
     category: CategoryEnum.reload,
@@ -1745,6 +1899,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Bruno & Marrone',
     title: 'Dormi na Praça',
+    language: 'pt',
     id: 'uWX0O8ATY3k',
     year: 1994,
     category: CategoryEnum.reload,
@@ -1756,6 +1911,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Cascada',
     title: 'Everytime We Touch',
+    language: 'en',
     id: '4G6QDNC4jPs',
     year: 2006,
     category: CategoryEnum.reload,
@@ -1767,6 +1923,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Alexandra Stan',
     title: 'Mr. Saxobeat',
+    language: 'en',
     id: 'lAhHNCfA7NI',
     year: 2011,
     category: CategoryEnum.reload,
@@ -1778,6 +1935,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Daddy Kall, Latino',
     title: 'Dança Kuduro',
+    language: 'en',
     id: 'Rl35FK7fGU0',
     year: 2012,
     category: CategoryEnum.reload,
@@ -1789,6 +1947,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Corona',
     title: 'The Rhythm of the Night',
+    language: 'en',
     id: 'OnT58cIJSpw',
     year: 1995,
     category: CategoryEnum.reload,
@@ -1800,6 +1959,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Maiara & Maraisa',
     title: 'Medo Bobo',
+    language: 'pt',
     id: 'Jzl_nrTkfIM',
     year: 2016,
     category: CategoryEnum.reload,
@@ -1811,6 +1971,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Smile.dk, Smile',
     title: 'Butterfly',
+    language: 'en',
     id: 'QzcvRDWgRIE',
     year: 2003,
     category: CategoryEnum.reload,
@@ -1822,6 +1983,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Queen',
     title: 'Radio Ga Ga',
+    language: 'en',
     id: 'azdwsXLmrHE',
     year: 1984,
     category: CategoryEnum.reload,
@@ -1833,6 +1995,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Queen',
     title: 'Bohemian Rhapsody',
+    language: 'en',
     id: 'fJ9rUzIMcZQ',
     year: 1975,
     category: CategoryEnum.reload,
@@ -1844,6 +2007,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Kaoma',
     title: 'Lambada 1989 HD',
+    language: 'en',
     id: 'iyLdoQGBchQ',
     year: 1989,
     category: CategoryEnum.reload,
@@ -1855,6 +2019,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Eiffel 65',
     title: 'Blue (Da Ba Dee)',
+    language: 'en',
     id: 'zA52uNzx7Y4',
     year: 1998,
     category: CategoryEnum.reload,
@@ -1866,6 +2031,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'The Killers',
     title: 'When You Were Young (Official Music Video)',
+    language: 'en',
     id: 'ff0oWESdmH0',
     year: 2006,
     category: CategoryEnum.reload,
@@ -1878,6 +2044,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Rouge',
     title: 'Ragatanga',
+    language: 'en',
     id: 'eIpHQs6LDok',
     year: 2002,
     category: CategoryEnum.reload,
@@ -1889,6 +2056,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Lipps Inc (reup)',
     title: 'Funkytown',
+    language: 'en',
     id: 'uhzy7JaU2Zc',
     year: 1979,
     category: CategoryEnum.reload,
@@ -1900,6 +2068,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Mamonas Assassinas',
     title: 'Pelados Em Santos',
+    language: 'pt',
     id: 'Nz7101ulkK0',
     year: 1995,
     category: CategoryEnum.reload,
@@ -1911,6 +2080,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Thiago Brava Ft. Jorge',
     title: 'Dona Maria',
+    language: 'pt',
     id: 'qaPDDTLkB2U',
     year: 2017,
     category: CategoryEnum.reload,
@@ -1922,6 +2092,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Creedence Clearwater Revival',
     title: 'Have You Ever Seen The Rain (Official)',
+    language: 'en',
     id: 'u1V8YRJnr4Q',
     year: 0,
     category: CategoryEnum.reload,
@@ -1933,6 +2104,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Muse',
     title: 'Knights Of Cydonia',
+    language: 'en',
     id: 'G_sBOsh-vyI',
     year: 2006,
     category: CategoryEnum.reload,
@@ -1944,6 +2116,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Basshunter',
     title: 'Basshunter DotA',
+    language: 'en',
     id: 'qTsaS1Tm-Ic',
     year: 2006,
     category: CategoryEnum.reload,
@@ -1955,6 +2128,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Naiara Azevedo',
     title: 'Coitado',
+    language: 'pt',
     id: 'QlODF8Z5emo',
     year: 2011,
     category: CategoryEnum.reload,
@@ -1966,6 +2140,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Tom Odell',
     title: 'Another Love',
+    language: 'en',
     id: 'MwpMEbgC7DA',
     year: 2013,
     category: CategoryEnum.reload,
@@ -1977,6 +2152,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'George Harrison',
     title: 'My Sweet Lord',
+    language: 'en',
     id: '04v-SdKeEpE',
     year: 1970,
     category: CategoryEnum.reload,
@@ -1988,6 +2164,7 @@ export const dataMusic: IMusicApi[] = [
   {
     artist: 'Falamansa',
     title: 'Xote Da Alegria',
+    language: 'pt',
     id: '-1iKYof-C7o',
     year: 2001,
     category: CategoryEnum.reload,

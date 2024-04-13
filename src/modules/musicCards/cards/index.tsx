@@ -12,11 +12,18 @@ export const Cards = ({ cards }: ICardsProps) => {
 
   return (
     <div className="animate-fadeIn min-h-screen mt-20">
-      <section className="mx-auto md:max-w-[700px] lg:max-w-[1000px] w-full" aria-label="Items Sugeridos">
+      <section className="mx-auto md:max-w-[700px] lg:max-w-[1000px] w-full" aria-label="Sugestões">
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {cards.map((card: IMusicWithTransformation) => {
+          {cards.map((card: IMusicWithTransformation, index) => {
             return (
-              <Card reaction={reactions?.[card.id] || ReactionEnum.none} key={card.url} playlistLocal={card} sendReaction={sendReaction} />
+              <Card
+                index={index}
+                language={card.language}
+                reaction={reactions?.[card.id] || ReactionEnum.none}
+                key={card.url}
+                playlistLocal={card}
+                sendReaction={sendReaction}
+              />
             );
           })}
         </ul>

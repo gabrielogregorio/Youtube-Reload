@@ -15,7 +15,7 @@ export const Profile = ({ className = undefined }: IProps) => {
   };
 
   return (
-    <section className={tailwindMerge('ml-2 w-14 h-full flex items-center justify-center', className)} aria-label="User profile">
+    <section className={tailwindMerge('ml-2 w-14 h-full flex items-center justify-center', className)} aria-label="Perfil">
       <button
         type="button"
         aria-label="Trocar foto de perfil"

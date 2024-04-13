@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react';
 import { ScreenEnum } from '@/contracts/homeScreens';
-import { Header } from '@/layouts/header';
 import { useCurrentScreen } from '@/hooks/useCurrentScreen';
 import { useAuthConfigure } from '@/hooks/useAuthConfigure';
 import { UnLikesPage } from '@/screens/unlikes';
@@ -19,13 +18,5 @@ export const MainContainer = () => {
 
   useAuthConfigure();
 
-  return (
-    <MainTemplate>
-      <>
-        <Header />
-
-        {screens[currentScreen]}
-      </>
-    </MainTemplate>
-  );
+  return <MainTemplate>{screens[currentScreen]}</MainTemplate>;
 };

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { FloatingActionButtons } from '@/features/FloatingActionButtons';
 import { Cards } from '@/modules/musicCards/cards';
 import { useMusicApplyFilters } from '@/modules/musicCards/hooks/useMusicApplyFilters';
+import { Header } from '@/layouts/header';
 
 export const UnLikesPage = () => {
   const { filtered, applyFilters, musics } = useMusicApplyFilters({
@@ -15,7 +16,9 @@ export const UnLikesPage = () => {
 
   return (
     <div>
-      <main>
+      <main id="main-content">
+        <Header />
+
         <Cards cards={filtered} />
       </main>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt">
   <head>
     <meta charset="UTF-8" />
     <meta name="theme-color" content="#2d3036" />
@@ -31,15 +31,43 @@
     <title>Youtube Reload</title>
   </head>
   <body style="overflow-y: scroll; background-color: #2d3036" class="scrollbar">
+    <a href="#main-content" class="skip-link">Ir para conteúdo principal</a>
     <style>
       * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
       }
+
+      .skip-link {
+        position: absolute;
+        top: -100px;
+        left: 0;
+        background-color: #ffffff;
+        color: #000000;
+        padding: 10px;
+        z-index: 100;
+      }
+
+      .skip-link:focus {
+        top: 0;
+      }
     </style>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root-react-youtube-reload-app"></div>
     <script type="module" src="./src/index.tsx"></script>
   </body>
+  <noscript
+    style="
+      color: white;
+      background-color: #2d3036;
+      display: flex;
+      justify-items: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 80px 10px;
+      font-family: sans-serif;
+    ">
+    <h1>Javascript não está disponível.</h1>
+    <p>Esse site precisa do Javascript para funcionar corretamente, desculpe-nos!</p>
+  </noscript>
 </html>

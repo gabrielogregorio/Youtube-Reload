@@ -15,7 +15,7 @@ export const FloatingActionButtons = ({ generateRandomPlaylist }: IFloatingActio
   const { updateCurrentScreen } = useCurrentScreen();
 
   return (
-    <aside aria-label="Ações rápidas">
+    <aside aria-label="Menu atalhos">
       <LateralButton
         action={() => {
           LogService.addBreadcrumb({ type: 'click', level: 'info', message: 'move to top' });
