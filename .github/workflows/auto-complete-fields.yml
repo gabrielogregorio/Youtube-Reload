@@ -14,13 +14,6 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v2
 
-      - name: get pr commits
-        id: pr_commits
-        run: |
-          pr_commits=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          "${{ github.event.pull_request.commits_url }}")
-          echo "::set-output name=pr_commits::$pr_commits"
-
       - name: get current version
         id: get-version
         run: |

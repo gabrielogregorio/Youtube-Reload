@@ -47,3 +47,9 @@ pnpm run dev
 
 Acesse http://localhost:5173/
 
+
+## How run gh actions local
+
+1. [Install act cli](https://nektosact.com/installation/chocolatey.html)
+
+2. act -W '.\.github\workflows\deploy-and-test-production.yml'

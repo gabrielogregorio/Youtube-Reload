@@ -33,19 +33,19 @@ pnpm install
 #pnpm build
 
 echo "\n${Yellow}.......................CLEAR DIRT........................${NOCOLOR}"
-pnpm run clear
+pnpm run clear:env
 
 echo "\n${Yellow}....................PRETTIER CHECKING....................${NOCOLOR}"
-pnpm run prettier:check
+pnpm run format:check
 
 echo "\n${Yellow}...................LINT CHECKING...................${NOCOLOR}"
 pnpm run lint
 
 echo "\n${Yellow}...............UNIT TEST AND COVERAGE....................${NOCOLOR}"
-pnpm run test:coverage
+pnpm run unit:coverage
 
 echo "\n${Yellow}...............E2E TESTS....................${NOCOLOR}"
-pnpm run prod:e2e:headless
+pnpm run e2e
 
 
 echo "\n${Cyan}=========================================================${NOCOLOR}"
