@@ -50,7 +50,7 @@ jobs:
       - name: check if bot comment exists
         id: check-bot-comment
         run: |
-          echo "::set-output name=comment-exists::${{ steps.find-old-bot-comment.outputs.comment-id != '' }}"
+          echo "comment-exists=${{ steps.find-old-bot-comment.outputs.comment-id != '' }}" >> "$GITHUB_OUTPUT"
 
       - name: create first bot comment if not exists
         id: create-first-bot-comment
@@ -64,7 +64,7 @@ jobs:
       - name: get comment id, existing or new
         id: get-new-or-old-comment-id
         run: |
-          echo "::set-output name=comment-id::${{ steps.find-old-bot-comment.outputs.comment-id != '' && steps.find-old-bot-comment.outputs.comment-id || steps.create-first-bot-comment.outputs.comment-id }}"
+          echo "comment-id=${{ steps.find-old-bot-comment.outputs.comment-id != '' && steps.find-old-bot-comment.outputs.comment-id || steps.create-first-bot-comment.outputs.comment-id }}" >> "$GITHUB_OUTPUT"
 
       - name: comment on pr, deploy to preview
         uses: peter-evans/create-or-update-comment@v3
@@ -106,20 +106,20 @@ jobs:
           BRANCH_NAME=${GITHUB_HEAD_REF##*/}
           echo "Branch name: $BRANCH_NAME"
           echo "Build directory: preview/$BRANCH_NAME"
-          echo "::set-output name=build_directory::preview/$BRANCH_NAME"
-          echo "::set-output name=branch_name::$BRANCH_NAME"
+          echo "build_directory=preview/$BRANCH_NAME" >> "$GITHUB_OUTPUT"
+          echo "branch_name=$BRANCH_NAME" >> "$GITHUB_OUTPUT"
 
       - name: get current version
         id: get-version
         run: |
           VERSION=$(node -p "require('./package.json').version")
-          echo "::set-output name=version::$VERSION"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: get current date
         id: 'get-date'
         run: |
           TIME_BUILD=$(node -p "new Date().toLocaleString('pt-br')")
-          echo "::set-output name=time_build::$TIME_BUILD"
+          echo "time_build=$TIME_BUILD" >> "$GITHUB_OUTPUT"
 
       - name: build App
         run: |
@@ -155,7 +155,7 @@ jobs:
 
       - name: Get current time
         id: currentTime
-        run: echo "::set-output name=current_time::$(date +'%d-%m-%Y-%H.%M:%S')"
+        run: echo "current_time=$(date +'%d-%m-%Y-%H.%M:%S')" >> "$GITHUB_OUTPUT"
         shell: bash
 
       - name: comment on PR
