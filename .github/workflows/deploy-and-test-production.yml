@@ -75,7 +75,7 @@ jobs:
           path: build
           key: build-${{ runner.os }}
 
-  e2e_tests:
+  e2e_features:
     needs: install_and_build
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -241,7 +241,7 @@ jobs:
   deploy:
     environment: sentry
     timeout-minutes: 10
-    needs: [unit_tests_and_up_coverage, e2e_tests, e2e_accessibility, lint, format]
+    needs: [unit_tests_and_up_coverage, e2e_features, e2e_accessibility, lint, format]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
