@@ -49,7 +49,7 @@ export default defineConfig({
   retries: 1,
   e2e: {
     setupNodeEvents,
-    specPattern: ['cypress/e2e/bdd/cases/*.feature', 'cypress/e2e/tests/*.{js,ts}'],
+    specPattern: ['cypress/e2e/bdd/*.feature', 'cypress/e2e/accessibility/*.{js,ts}', 'cypress/e2e/tests/*.{js,ts}'],
     baseUrl: 'http://127.0.0.1:5556/youtube-reload',
   },
 });

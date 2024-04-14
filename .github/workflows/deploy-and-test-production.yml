@@ -67,7 +67,44 @@ jobs:
         run: npx cypress install
 
       - name: running e2e tests
-        run: pnpm run prod:e2e:headless
+        run: pnpm run e2e:features
+
+  e2e_accessibility:
+    needs: install
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        pnpm-version: [8.3.1]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: use pnpm ${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
+
+      - name: restore node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: Cache Cypress Binary
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            cypress-${{ runner.os }}-
+
+      - name: Install Cypress Binary
+        run: npx cypress install
+
+      - name: running e2e accessibility tests
+        run: pnpm run e2e:accessibility
 
   unit_tests_and_up_coverage:
     needs: install
@@ -98,7 +135,7 @@ jobs:
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: running tests and generate coverage
-        run: pnpm run test:coverage
+        run: pnpm run unit:coverage
 
       - name: up coverage to codacy
         run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r ./coverage/lcov.info
@@ -154,12 +191,12 @@ jobs:
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: verify if prettier is formated
-        run: pnpm run prettier:check
+        run: pnpm run format:check
 
   deploy:
     environment: sentry
     timeout-minutes: 10
-    needs: [unit_tests_and_up_coverage, e2e_tests, lint, format]
+    needs: [unit_tests_and_up_coverage, e2e_tests, e2e_accessibility, lint, format]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
