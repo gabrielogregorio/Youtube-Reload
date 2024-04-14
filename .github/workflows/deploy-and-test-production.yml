@@ -32,8 +32,51 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-  e2e_tests:
+      - name: cache cypress
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}
+
+  install_and_build:
+    runs-on: ubuntu-latest
     needs: install
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        pnpm-version: [8.3.1]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: use pnpm ${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
+
+      - name: restore node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: use pnpm ${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
+
+      - name: install dependencies
+        run: pnpm run build
+
+      - name: cache build
+        uses: actions/cache@v2
+        with:
+          path: build
+          key: build-${{ runner.os }}
+
+  e2e_tests:
+    needs: install_and_build
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
@@ -55,22 +98,23 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
 
+      - name: restore build
+        uses: actions/cache@v2
+        with:
+          path: build
+          key: build-${{ runner.os }}
+
       - name: Cache Cypress Binary
         uses: actions/cache@v2
         with:
           path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            cypress-${{ runner.os }}-
-
-      - name: Install Cypress Binary
-        run: npx cypress install
+          key: cypress-${{ runner.os }}
 
       - name: running e2e tests
         run: pnpm run e2e:features
 
   e2e_accessibility:
-    needs: install
+    needs: install_and_build
     runs-on: ubuntu-latest
     timeout-minutes: 5
     strategy:
@@ -86,6 +130,12 @@ jobs:
         with:
           version: ${{ matrix.pnpm-version }}
 
+      - name: restore build
+        uses: actions/cache@v2
+        with:
+          path: build
+          key: build-${{ runner.os }}
+
       - name: restore node_modules
         uses: actions/cache@v2
         with:
@@ -96,12 +146,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            cypress-${{ runner.os }}-
-
-      - name: Install Cypress Binary
-        run: npx cypress install
+          key: cypress-${{ runner.os }}
 
       - name: running e2e accessibility tests
         run: pnpm run e2e:accessibility
@@ -190,7 +235,7 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-      - name: verify if prettier is formated
+      - name: verify if prettier is formatted
         run: pnpm run format:check
 
   deploy:
