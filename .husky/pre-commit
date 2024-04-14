@@ -45,7 +45,7 @@ echo "\n${Yellow}...............UNIT TEST AND COVERAGE....................${NOCO
 pnpm run test:coverage
 
 echo "\n${Yellow}...............E2E TESTS....................${NOCOLOR}"
-pnpm run e2e:headless
+pnpm run prod:e2e:headless
 
 
 echo "\n${Cyan}=========================================================${NOCOLOR}"
