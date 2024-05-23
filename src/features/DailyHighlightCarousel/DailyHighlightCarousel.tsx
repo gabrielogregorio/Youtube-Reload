@@ -30,8 +30,10 @@ export const DailyHighlightCarousel = () => {
             <div className="text-2xl select-none">{dailyHighlight.emoji1}</div>
 
             <div className="flex-1 flex flex-col justify-center ml-3">
-              <h2 className="select-none text-sm font-bold">{dailyHighlight.title}</h2>
-              {dailyHighlight.description ? <div className="select-none text-sm">{dailyHighlight.description}</div> : undefined}
+              <h2 className="select-none text-base font-bold text-white bg-inherit">{dailyHighlight.title}</h2>
+              {dailyHighlight.description ? (
+                <div className="select-none text-base text-white bg-inherit">{dailyHighlight.description}</div>
+              ) : undefined}
             </div>
           </div>
 

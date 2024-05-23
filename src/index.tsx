@@ -7,6 +7,9 @@ import { store } from '@/core/states/redux/store';
 
 import './assets/tailwindConfig.css';
 import '@/services/log/init';
+import { runAxe } from './test/runAxe';
+
+runAxe(ReactDOM);
 
 const root: ReactDOM.Root = ReactDOM.createRoot(document.getElementById('root-react-youtube-reload-app') as HTMLElement);
 

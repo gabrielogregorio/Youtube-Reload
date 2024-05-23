@@ -168,6 +168,7 @@ module.exports = {
           'dsn',
           'integrations',
           'emojis',
+          'axe',
           'Sao',
           'Paulo',
           'Bundler',
